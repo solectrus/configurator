@@ -1,6 +1,5 @@
-import './assets/main.css'
-
 import { createApp } from 'vue'
 import App from './App.vue'
+import { surveyPlugin } from 'survey-vue3-ui'
 
-createApp(App).mount('#app')
+createApp(App).use(surveyPlugin).mount('#app')
