@@ -15,11 +15,7 @@ hljs.registerLanguage('env', env)
 
 watch(
   () => surveyStore.composeFile,
-  () => {
-    nextTick(() => {
-      hljs.highlightAll()
-    })
-  }
+  () => nextTick(() => hljs.highlightAll())
 )
 </script>
 
