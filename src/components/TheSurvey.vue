@@ -13,9 +13,8 @@ onMounted(async () => {
   const surveyConfigUrl = '/survey.json'
   try {
     const response = await fetch(surveyConfigUrl)
-    if (!response.ok) {
-      throw new Error('Failed to load survey configuration')
-    }
+    if (!response.ok) throw new Error('Failed to load survey configuration')
+
     const surveyJson = await response.json()
     survey.value = new Model(surveyJson)
     survey.value.locale = 'de'
