@@ -1,6 +1,4 @@
 image: ghcr.io/solectrus/solectrus:latest
-labels:
-  - 'com.centurylinklabs.watchtower.scope=solectrus'
 depends_on:
   db:
     condition: service_healthy

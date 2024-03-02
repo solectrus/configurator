@@ -1,6 +1,4 @@
 image: ghcr.io/solectrus/forecast-collector:latest
-labels:
-  - 'com.centurylinklabs.watchtower.scope=solectrus'
 depends_on:
   influxdb:
     condition: service_healthy

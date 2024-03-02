@@ -11,6 +11,7 @@
           "type": "checkbox",
           "name": "q_devices",
           "title": "Welche Geräte hast du in deinem Haus?",
+          "defaultValue": ["battery"],
           "isRequired": true,
           "validators": [
             {
@@ -64,16 +65,31 @@
           "type": "radiogroup",
           "name": "battery_vendor",
           "visibleIf": "{q_devices} contains 'battery'",
-          "title": "Von welchem Hersteller ist dein Stromspeicher?",
+          "title": {
+            "default": "Von welchem Hersteller ist dein Stromspeicher?",
+            "de": "Welchen Stromspeicher hast du?"
+          },
           "isRequired": true,
           "choices": [
             {
-              "value": "battery_senec",
-              "text": "SENEC"
+              "value": "battery_senec3",
+              "text": {
+                "default": "SENEC",
+                "de": "SENEC.Home V2.1 oder V3"
+              }
+            },
+            {
+              "value": "battery_senec4",
+              "text": {
+                "de": "SENEC.Home 4"
+              }
             },
             {
               "value": "battery_other",
-              "text": "anderer Hersteller"
+              "text": {
+                "default": "anderer Hersteller",
+                "de": "Speicher eines anderen Herstellers"
+              }
             }
           ]
         }
@@ -111,16 +127,120 @@
           "title": "Von welchem Hersteller ist deine Wallbox?",
           "choices": [
             {
-              "value": "Item 1",
+              "value": "wallbox_senec",
               "text": "SENEC (gesteuert vom Stromspeicher)"
             },
             {
-              "value": "Item 2",
+              "value": "wallbox_other",
               "text": "anderer Hersteller"
             }
           ]
         }
       ]
+    },
+    {
+      "name": "page6",
+      "elements": [
+        {
+          "type": "boolean",
+          "name": "q_updates",
+          "title": {
+            "de": "Möchtest du automatische Updates aktivieren?"
+          },
+          "defaultValue": "true"
+        }
+      ]
+    },
+    {
+      "name": "page7",
+      "elements": [
+        {
+          "type": "boolean",
+          "name": "q_forecast",
+          "title": {
+            "de": "Ertragsvorhersage per forecast.solar?"
+          },
+          "defaultValue": "true"
+        }
+      ]
+    },
+    {
+      "name": "page8",
+      "elements": [
+        {
+          "type": "text",
+          "name": "forecast_latitude",
+          "title": {
+            "de": "Latitude"
+          },
+          "description": {
+            "de": "-90 (Süd) bis 90 (Nord)"
+          },
+          "inputType": "number"
+        },
+        {
+          "type": "text",
+          "name": "forecast_longitude",
+          "title": {
+            "de": "Longitude"
+          },
+          "description": {
+            "de": "-180 (West) bis 180 (Ost)"
+          },
+          "inputType": "number"
+        },
+        {
+          "type": "text",
+          "name": "forecast_declination",
+          "title": {
+            "de": "Dachneigung"
+          },
+          "description": {
+            "de": "0 (horizontal) bis 90 (Vertikal)"
+          },
+          "inputType": "number"
+        },
+        {
+          "type": "text",
+          "name": "forecast_azimuth",
+          "title": {
+            "de": "Ausrichtung"
+          },
+          "description": {
+            "de": "-180 … 180 (-180 = Nord, -90 = Ost, 0 = Süd, 90 = West, 180 = Nord)"
+          },
+          "inputType": "number"
+        },
+        {
+          "type": "text",
+          "name": "forecast_kwp",
+          "title": {
+            "de": "Maximal-Leistung"
+          },
+          "description": {
+            "de": "kWp"
+          },
+          "inputType": "number"
+        },
+        {
+          "type": "text",
+          "name": "forecast_interval",
+          "title": {
+            "de": "Abfrage-Intervall"
+          },
+          "description": {
+            "de": "Angabe in Sekunden"
+          },
+          "inputType": "number"
+        }
+      ],
+      "visibleIf": "{q_forecast} = true",
+      "title": {
+        "de": "Standort der PV-Anlage"
+      },
+      "description": {
+        "de": "Erforderlich für die Ertragsvorhersage"
+      }
     }
   ]
 }

@@ -1,6 +1,4 @@
 image: influxdb:2.7-alpine
-labels:
-  - 'com.centurylinklabs.watchtower.scope=solectrus'
 volumes:
   - ${INFLUX_VOLUME_PATH}:/var/lib/influxdb2
 environment:

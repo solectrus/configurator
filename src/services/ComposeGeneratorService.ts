@@ -10,11 +10,22 @@ import mqttCollectorService from '@/templates/services/mqtt-collector.yml'
 import forecastCollectorService from '@/templates/services/forecast-collector.yml'
 import watchtowerService from '@/templates/services/watchtower.yml'
 
-type DockerService = {}
+type DockerService = {
+  image: string
+  environment?: string[]
+  ports?: string[]
+  volumes?: string[]
+  links: string[]
+  depends_on?: string[]
+  labels?: string[]
+  healthcheck?: {
+    test: string
+  }
+}
 
 export class ComposeGeneratorService {
   static generate(answers: Answers): string {
-    const dockerComposeObj: {
+    const compose: {
       version: string
       services: Record<string, DockerService | undefined>
     } = {
@@ -22,20 +33,46 @@ export class ComposeGeneratorService {
       services: {}
     }
 
-    dockerComposeObj.services['app'] = appService
-    dockerComposeObj.services['influxdb'] = influxdbService
-    dockerComposeObj.services['db'] = dbService
-    dockerComposeObj.services['redis'] = redisService
+    const WATCHTOWER_LABEL = 'com.centurylinklabs.watchtower.scope=solectrus'
 
-    if (answers.battery_vendor === 'battery_senec')
-      dockerComposeObj.services['senec-collector'] = senecCollectorService
+    compose.services.app = appService as DockerService
+    compose.services.influxdb = influxdbService as DockerService
+    compose.services.db = dbService as DockerService
+    compose.services.redis = redisService as DockerService
 
-    if (answers.battery_vendor === 'battery_other')
-      dockerComposeObj.services['mqtt-collector'] = mqttCollectorService
+    if (answers.q_updates == true) {
+      compose.services.watchtower = watchtowerService as DockerService
+      compose.services.app.labels = [WATCHTOWER_LABEL]
+      compose.services.influxdb.labels = [WATCHTOWER_LABEL]
+      compose.services.db.labels = [WATCHTOWER_LABEL]
+      compose.services.redis.labels = [WATCHTOWER_LABEL]
+    } else {
+      compose.services.app.labels = undefined
+      compose.services.influxdb.labels = undefined
+      compose.services.db.labels = undefined
+      compose.services.redis.labels = undefined
+    }
 
-    dockerComposeObj.services['forecast-collector'] = forecastCollectorService
-    dockerComposeObj.services['watchtower'] = watchtowerService
+    if (answers.battery_vendor == 'battery_senec3' || answers.battery_vendor == 'battery_senec4') {
+      compose.services['senec-collector'] = senecCollectorService as DockerService
 
-    return yaml.dump(dockerComposeObj, { lineWidth: -1 })
+      if (answers.q_updates == true) {
+        compose.services['senec-collector'].labels = [WATCHTOWER_LABEL]
+      }
+    } else if (answers.battery_vendor === 'battery_other') {
+      compose.services['mqtt-collector'] = mqttCollectorService as DockerService
+      if (answers.q_updates == true) {
+        compose.services['mqtt-collector'].labels = [WATCHTOWER_LABEL]
+      }
+    }
+
+    if (answers.q_forecast == true) {
+      compose.services['forecast-collector'] = forecastCollectorService as DockerService
+      if (answers.q_updates == true) {
+        compose.services['forecast-collector'].labels = [WATCHTOWER_LABEL]
+      }
+    }
+
+    return yaml.dump(compose, { lineWidth: -1 })
   }
 }

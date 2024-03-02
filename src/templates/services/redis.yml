@@ -1,6 +1,4 @@
 image: redis:7-alpine
-labels:
-  - 'com.centurylinklabs.watchtower.scope=solectrus'
 volumes:
   - ${REDIS_VOLUME_PATH}:/data
 restart: always
