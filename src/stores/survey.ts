@@ -1,19 +1,27 @@
 import { defineStore } from 'pinia'
+import { FileGeneratorService } from '@/services/FileGeneratorService'
 
-type Answer = string | number | boolean
+export type Answer = string | number | boolean
+export type Answers = Record<string, Answer>
 
 interface SurveyState {
-  answers: Record<string, Answer>
+  answers: Answers
+  composeFile: string
+  envFile: string
 }
 
 export const useSurveyStore = defineStore('survey', {
   state: (): SurveyState => ({
-    answers: {}
+    answers: {},
+    composeFile: '',
+    envFile: ''
   }),
 
   actions: {
-    setAnswers(newAnswers: Record<string, Answer>) {
+    setAnswers(newAnswers: Answers) {
       this.answers = newAnswers
+      this.composeFile = FileGeneratorService.generateComposeFile(this.answers)
+      this.envFile = FileGeneratorService.generateEnvFile(this.answers)
     }
   }
 })
