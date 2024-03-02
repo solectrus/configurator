@@ -4,6 +4,9 @@ import 'survey-core/i18n/german'
 import { onMounted, ref } from 'vue'
 import { Model } from 'survey-core'
 
+import { useSurveyStore } from '@/stores/survey'
+const surveyStore = useSurveyStore()
+
 const survey = ref<Model | null>(null)
 
 onMounted(async () => {
@@ -16,6 +19,7 @@ onMounted(async () => {
     const surveyJson = await response.json()
     survey.value = new Model(surveyJson)
     survey.value.locale = 'de'
+    survey.value.onValueChanged.add((sender) => surveyStore.setAnswers(sender.data))
   } catch (error) {
     console.error('Error loading survey config:', error)
   }

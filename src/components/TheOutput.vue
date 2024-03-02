@@ -1,9 +1,21 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useSurveyStore } from '@/stores/survey'
+const surveyStore = useSurveyStore()
+</script>
 
 <template>
-  <div class="font-mono p-10 bg-slate-100">
-    <h1>docker-compose.yml</h1>
+  <div class="font-mono py-10 bg-slate-100 space-y-10">
+    <div class="bg-slate-200 px-10 py-5">
+      <h1 class="text-xl font-bold">Answers</h1>
+      <pre>{{ surveyStore.answers }}</pre>
+    </div>
 
-    <h1>.env</h1>
+    <div class="bg-slate-200 px-10 py-5">
+      <h1 class="text-xl font-bold">docker-compose.yml</h1>
+    </div>
+
+    <div class="bg-slate-200 px-10 py-5">
+      <h1 class="text-xl font-bold">.env</h1>
+    </div>
   </div>
 </template>
