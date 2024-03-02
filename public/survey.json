@@ -1,6 +1,7 @@
 {
-  "title": "SOLECTRUS Konfigurator",
-  "description": "Erstelle Schritt für Schritt deine Installation von SOLECTRUS",
+  "locale": "de",
+  "title": "SOLECTRUS-Konfigurator",
+  "description": "Erstelle Schritt-für-Schritt deine Installation von SOLECTRUS",
   "logoPosition": "right",
   "pages": [
     {
@@ -8,14 +9,17 @@
       "elements": [
         {
           "type": "checkbox",
-          "name": "devices",
+          "name": "q_devices",
           "title": "Welche Geräte hast du in deinem Haus?",
           "isRequired": true,
-          "choices": [
+          "validators": [
             {
-              "value": "panels",
-              "text": "PV-Module mit Wechselrichter"
-            },
+              "type": "expression",
+              "text": "Ohne Stromspeicher geht's nicht!",
+              "expression": "{q_devices} contains 'battery'"
+            }
+          ],
+          "choices": [
             {
               "value": "battery",
               "text": "Stromspeicher"
@@ -43,7 +47,7 @@
           "choices": [
             {
               "value": "standalone",
-              "text": "Alles auf einem lokalen Gerät (Raspberry Pi, NAS, sonstiger Linux-Server)"
+              "text": "Alles auf einem lokalen Server (Raspberry Pi, NAS, sonstiger Linux-Server)"
             },
             {
               "value": "distributed",
@@ -59,6 +63,7 @@
         {
           "type": "radiogroup",
           "name": "battery_vendor",
+          "visibleIf": "{q_devices} contains 'battery'",
           "title": "Von welchem Hersteller ist dein Stromspeicher?",
           "isRequired": true,
           "choices": [
@@ -80,7 +85,7 @@
         {
           "type": "radiogroup",
           "name": "heatpump_access",
-          "visibleIf": "{devices} contains 'heatpump'",
+          "visibleIf": "{q_devices} contains 'heatpump'",
           "title": "Wie wird der Stromverbrauch der Wärmepumpe gemessen?",
           "isRequired": true,
           "choices": [
@@ -92,6 +97,28 @@
               "value": "heatpump_mqtt",
               "text": "Über MQTT"
             }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "page5",
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "wallbox_vendor",
+          "visibleIf": "{q_devices} contains 'wallbox'",
+          "title": "Von welchem Hersteller ist deine Wallbox?",
+          "choices": [
+            {
+              "value": "Item 1",
+              "text": "SENEC (gesteuert vom Stromspeicher)"
+            },
+            {
+              "value": "Item 2",
+              "text": "anderer Hersteller"
+            },
+            "Item 3"
           ]
         }
       ]
