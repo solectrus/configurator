@@ -28,5 +28,13 @@ onMounted(async () => {
 <template>
   <div v-if="survey">
     <SurveyComponent :model="survey" />
+
+    <section class="p-5">
+      <header>
+        <h1 class="text-xl font-bold">Antworten</h1>
+      </header>
+
+      <pre>{{ surveyStore.answers }}</pre>
+    </section>
   </div>
 </template>

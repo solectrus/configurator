@@ -1873,6 +1873,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"highlight.js@npm:^11.9.0":
+  version: 11.9.0
+  resolution: "highlight.js@npm:11.9.0"
+  checksum: 10c0/27cfa8717dc9d200aecbdb383eb122d5f45ce715d2f468583785d36fbfe5076ce033abb02486dc13b407171721cda6f474ed3f3a5a8e8c3d91367fa5f51ee374
+  languageName: node
+  linkType: hard
+
 "http-cache-semantics@npm:^4.1.1":
   version: 4.1.1
   resolution: "http-cache-semantics@npm:4.1.1"
@@ -3053,6 +3060,7 @@ __metadata:
     autoprefixer: "npm:^10.4.18"
     eslint: "npm:^8.57.0"
     eslint-plugin-vue: "npm:^9.22.0"
+    highlight.js: "npm:^11.9.0"
     npm-run-all2: "npm:^6.1.2"
     pinia: "npm:^2.1.7"
     postcss: "npm:^8.4.35"
