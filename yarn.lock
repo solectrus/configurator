@@ -256,6 +256,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@highlightjs/vue-plugin@npm:2.1.0":
+  version: 2.1.0
+  resolution: "@highlightjs/vue-plugin@npm:2.1.0"
+  peerDependencies:
+    highlight.js: ^11.0.1
+    vue: ^3
+  checksum: 10c0/c2f71940606319d8505c2adcc552ae57a48fb3ac19a2b495ea716ced1cc0828db17226b0912c8698f7e112cdad74b4fc9eb450f68cbd800eb91f1cced56f275b
+  languageName: node
+  linkType: hard
+
 "@humanwhocodes/config-array@npm:^0.11.14":
   version: 0.11.14
   resolution: "@humanwhocodes/config-array@npm:0.11.14"
@@ -3086,6 +3096,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "solectrus-configurator@workspace:."
   dependencies:
+    "@highlightjs/vue-plugin": "npm:2.1.0"
     "@modyfi/vite-plugin-yaml": "npm:^1.1.0"
     "@rushstack/eslint-patch": "npm:^1.7.2"
     "@tsconfig/node20": "npm:^20.1.2"
