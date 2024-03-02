@@ -8,6 +8,7 @@ import redisService from '@/templates/services/redis.yml'
 import senecCollectorService from '@/templates/services/senec-collector.yml'
 import mqttCollectorService from '@/templates/services/mqtt-collector.yml'
 import forecastCollectorService from '@/templates/services/forecast-collector.yml'
+import shellyCollectorService from '@/templates/services/shelly-collector.yml'
 import watchtowerService from '@/templates/services/watchtower.yml'
 
 type DockerService = {
@@ -70,6 +71,13 @@ export class ComposeGeneratorService {
       compose.services['forecast-collector'] = forecastCollectorService as DockerService
       if (answers.q_updates == true) {
         compose.services['forecast-collector'].labels = [WATCHTOWER_LABEL]
+      }
+    }
+
+    if (answers.heatpump_access == 'heatpump_shelly') {
+      compose.services['shelly-collector'] = shellyCollectorService as DockerService
+      if (answers.q_updates == true) {
+        compose.services['shelly-collector'].labels = [WATCHTOWER_LABEL]
       }
     }
 
