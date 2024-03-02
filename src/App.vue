@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import TheWelcome from './components/TheWelcome.vue'
+import TheSurvey from './components/TheSurvey.vue'
 import TheOutput from './components/TheOutput.vue'
 </script>
 
 <template>
-  <main class="flex gap-10 w-screen">
-    <TheWelcome class="flex-1" />
-
-    <TheOutput class="flex-1" />
+  <main class="flex gap-10">
+    <TheSurvey class="flex-1" />
+    <TheOutput class="flex-1 h-screen" />
   </main>
 </template>
+./components/TheSurvey.vue
