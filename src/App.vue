@@ -4,9 +4,8 @@ import TheOutput from './components/TheOutput.vue'
 </script>
 
 <template>
-  <main class="flex gap-10">
+  <main class="lg:flex lg:gap-10">
     <TheSurvey class="flex-1" />
-    <TheOutput class="flex-1 h-screen" />
+    <TheOutput class="flex-1 lg:h-screen" />
   </main>
 </template>
-./components/TheSurvey.vue
