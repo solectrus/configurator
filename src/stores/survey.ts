@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
-import { FileGeneratorService } from '@/services/FileGeneratorService'
+import { EnvGeneratorService } from '@/services/EnvGeneratorService'
+import { ComposeGeneratorService } from '@/services/ComposeGeneratorService'
 
 export type Answer = string | number | boolean
 export type Answers = Record<string, Answer>
@@ -20,8 +21,8 @@ export const useSurveyStore = defineStore('survey', {
   actions: {
     setAnswers(newAnswers: Answers) {
       this.answers = newAnswers
-      this.composeFile = FileGeneratorService.generateComposeFile(this.answers)
-      this.envFile = FileGeneratorService.generateEnvFile(this.answers)
+      this.composeFile = ComposeGeneratorService.generate(this.answers)
+      this.envFile = EnvGeneratorService.generate(this.answers)
     }
   }
 })
