@@ -34,7 +34,7 @@ services:
       - DB_USER=postgres
       - REDIS_URL=redis://redis:6379/1
       - INFLUX_HOST
-      - INFLUX_TOKEN=\{INFLUX_TOKEN_READ}
+      - INFLUX_TOKEN=\${INFLUX_TOKEN_READ}
       - INFLUX_ORG
       - INFLUX_BUCKET
       - INFLUX_MEASUREMENT_PV
