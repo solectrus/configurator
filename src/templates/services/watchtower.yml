@@ -1,0 +1,11 @@
+image: containrrr/watchtower
+labels:
+  - 'com.centurylinklabs.watchtower.scope=solectrus'
+volumes:
+  - /var/run/docker.sock:/var/run/docker.sock
+command: --scope solectrus --cleanup
+restart: always
+logging:
+  options:
+    max-size: '10m'
+    max-file: '3'

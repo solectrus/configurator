@@ -1,0 +1,21 @@
+# Don't change major version if you have an existing database!
+# If you have started with an older major version (like 15), you need to migrate your database.
+# This is not worth the effort, so don't do it.
+image: postgres:16-alpine
+labels:
+  - 'com.centurylinklabs.watchtower.scope=solectrus'
+environment:
+  - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+volumes:
+  - ${DB_VOLUME_PATH}:/var/lib/postgresql/data
+restart: always
+healthcheck:
+  test: ['CMD-SHELL', 'pg_isready -U postgres']
+  interval: 10s
+  timeout: 20s
+  retries: 5
+  start_period: 60s
+logging:
+  options:
+    max-size: '10m'
+    max-file: '3'
