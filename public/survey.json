@@ -429,5 +429,6 @@
         "default": "Credentials for SENEC Home.4"
       }
     }
-  ]
+  ],
+  "showCompletedPage": false
 }
