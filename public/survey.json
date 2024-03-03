@@ -230,6 +230,7 @@
             "de": "in Sekunden",
             "default": "in seconds"
           },
+          "defaultValue": 5,
           "isRequired": true,
           "inputType": "number"
         },
@@ -240,6 +241,7 @@
             "de": "Zugriffsprotokoll",
             "default": "Protocol schema"
           },
+          "defaultValue": "https",
           "isRequired": true,
           "choices": ["https", "http"]
         },
@@ -250,6 +252,7 @@
             "de": "Sprache",
             "default": "Language"
           },
+          "defaultValue": "de",
           "isRequired": true,
           "choices": [
             {
@@ -330,6 +333,7 @@
             "de": "in Sekunden",
             "default": "In seconds"
           },
+          "defaultValue": 60,
           "isRequired": true,
           "inputType": "number",
           "min": 30
@@ -441,6 +445,7 @@
             "de": "in Sekunden",
             "default": "in seconds"
           },
+          "defaultValue": 900,
           "isRequired": true,
           "inputType": "number"
         }
