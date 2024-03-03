@@ -372,6 +372,62 @@
           "defaultValue": "true"
         }
       ]
+    },
+    {
+      "name": "page10",
+      "elements": [
+        {
+          "type": "text",
+          "name": "senec_email",
+          "title": {
+            "de": "E-Mail-Adresse",
+            "default": "You email address"
+          },
+          "description": {
+            "de": "Das ist die Adresse, mit der du dich bei mein-senec.de bzw. der SENEC-App einloggst",
+            "default": "This is the address you use to log in to mein-senec.de or the SENEC app"
+          }
+        },
+        {
+          "type": "text",
+          "name": "senec_password",
+          "title": {
+            "de": "Dazugehöriges Passwort",
+            "default": "Corresponding password"
+          }
+        },
+        {
+          "type": "text",
+          "name": "senec_system_id",
+          "title": {
+            "de": "System-ID",
+            "default": "System id"
+          },
+          "description": {
+            "de": "Leer lassen, falls nicht bekannt oder wenn du nur einen Speicher hast, der auch noch nie ausgetauscht wurde.",
+            "default": "Leave empty if not known or if you only have one battery that has never been replaced."
+          }
+        },
+        {
+          "type": "text",
+          "name": "senec_interval_cloud",
+          "title": {
+            "de": "Abfrageintervall",
+            "default": "Query interval"
+          },
+          "description": {
+            "de": "in Sekunden",
+            "default": "In seconds"
+          },
+          "inputType": "number",
+          "min": 30
+        }
+      ],
+      "visibleIf": "{battery_vendor} = 'battery_senec4'",
+      "title": {
+        "de": "Zugangsdaten für SENEC Home.4",
+        "default": "Credentials for SENEC Home.4"
+      }
     }
   ]
 }
