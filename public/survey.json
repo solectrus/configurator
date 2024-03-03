@@ -365,6 +365,42 @@
       }
     },
     {
+      "name": "p_roofs",
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "question1",
+          "title": {
+            "de": "Wieviele Dachflächen hast du?",
+            "default": "How many roof surfaces do you have?"
+          },
+          "choices": [
+            {
+              "value": "Item 1",
+              "text": "1"
+            },
+            {
+              "value": "Item 2",
+              "text": "2"
+            },
+            {
+              "value": "Item 3",
+              "text": "3"
+            },
+            {
+              "value": "Item 4",
+              "text": "4"
+            }
+          ]
+        }
+      ],
+      "visibleIf": "{q_forecast} = true",
+      "title": {
+        "de": "Ertragsvorhersage: Dachflächen",
+        "default": "Yield forecast: Roofs"
+      }
+    },
+    {
       "name": "p_location",
       "elements": [
         {
@@ -453,7 +489,7 @@
       "visibleIf": "{q_forecast} = true",
       "title": {
         "default": "Location of the PV system",
-        "de": "Standort deiner PV-Anlage"
+        "de": "Ertragsvorhersage: Standort"
       },
       "description": {
         "de": "Erforderlich für die Ertragsvorhersage",
@@ -480,7 +516,6 @@
       }
     }
   ],
-  "showPageTitles": false,
   "showCompletedPage": false,
   "showQuestionNumbers": "off",
   "questionErrorLocation": "bottom"
