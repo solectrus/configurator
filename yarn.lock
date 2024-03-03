@@ -3119,7 +3119,6 @@ __metadata:
     tailwindcss: "npm:^3.4.1"
     typescript: "npm:^5.3.3"
     vite: "npm:^5.1.4"
-    vite-plugin-raw: "npm:^1.0.3"
     vue: "npm:^3.4.21"
     vue-tsc: "npm:^2.0.2"
   languageName: unknown
@@ -3463,13 +3462,6 @@ __metadata:
   version: 1.0.2
   resolution: "util-deprecate@npm:1.0.2"
   checksum: 10c0/41a5bdd214df2f6c3ecf8622745e4a366c4adced864bc3c833739791aeeeb1838119af7daed4ba36428114b5c67dcda034a79c882e97e43c03e66a4dd7389942
-  languageName: node
-  linkType: hard
-
-"vite-plugin-raw@npm:^1.0.3":
-  version: 1.0.3
-  resolution: "vite-plugin-raw@npm:1.0.3"
-  checksum: 10c0/17f5d4d59daa8bb8a7c4b6a4c802068c431a561fcf00f86d819a45749959a512ddf9c67c67669491ab796b01fcaf0770ebe39535c05e2efff5233a41ca467261
   languageName: node
   linkType: hard
 
