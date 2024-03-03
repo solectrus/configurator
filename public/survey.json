@@ -190,20 +190,6 @@
       "elements": [
         {
           "type": "boolean",
-          "name": "q_updates",
-          "title": {
-            "de": "Möchtest du automatische Updates aktivieren?",
-            "default": "Would you like to activate automatic updates?"
-          },
-          "defaultValue": "true"
-        }
-      ]
-    },
-    {
-      "name": "page7",
-      "elements": [
-        {
-          "type": "boolean",
           "name": "q_forecast",
           "title": {
             "de": "Möchtest du eine Ertragsvorhersage per forecast.solar?",
@@ -214,7 +200,7 @@
       ]
     },
     {
-      "name": "page8",
+      "name": "page7",
       "elements": [
         {
           "type": "text",
@@ -291,7 +277,7 @@
       }
     },
     {
-      "name": "page9",
+      "name": "page8",
       "elements": [
         {
           "type": "text",
@@ -360,6 +346,20 @@
         "default": "Zugriff auf deinen SENEC-Stromspeicher",
         "de": "Access to your SENEC battery"
       }
+    },
+    {
+      "name": "page9",
+      "elements": [
+        {
+          "type": "boolean",
+          "name": "q_updates",
+          "title": {
+            "de": "Möchtest du automatische Updates aktivieren?",
+            "default": "Would you like to activate automatic updates?"
+          },
+          "defaultValue": "true"
+        }
+      ]
     }
   ]
 }
