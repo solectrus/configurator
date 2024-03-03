@@ -183,6 +183,7 @@
             "de": "Von welchem Hersteller ist deine Wallbox?",
             "default": "Which manufacturer is your wallbox from?"
           },
+          "isRequired": true,
           "choices": [
             {
               "value": "wallbox_senec",
@@ -215,7 +216,8 @@
           "title": {
             "de": "IP-Adresse oder Hostname",
             "default": "IP address or host name"
-          }
+          },
+          "isRequired": true
         },
         {
           "type": "text",
@@ -228,6 +230,7 @@
             "de": "in Sekunden",
             "default": "in seconds"
           },
+          "isRequired": true,
           "inputType": "number"
         },
         {
@@ -237,6 +240,7 @@
             "de": "Zugriffsprotokoll",
             "default": "Protocol schema"
           },
+          "isRequired": true,
           "choices": ["https", "http"]
         },
         {
@@ -246,6 +250,7 @@
             "de": "Sprache",
             "default": "Language"
           },
+          "isRequired": true,
           "choices": [
             {
               "value": "de",
@@ -290,7 +295,8 @@
           "description": {
             "de": "Das ist die Adresse, mit der du dich bei mein-senec.de bzw. der SENEC-App einloggst",
             "default": "This is the address you use to log in to mein-senec.de or the SENEC app"
-          }
+          },
+          "isRequired": true
         },
         {
           "type": "text",
@@ -298,7 +304,8 @@
           "title": {
             "de": "Dazugehöriges Passwort",
             "default": "Corresponding password"
-          }
+          },
+          "isRequired": true
         },
         {
           "type": "text",
@@ -323,6 +330,7 @@
             "de": "in Sekunden",
             "default": "In seconds"
           },
+          "isRequired": true,
           "inputType": "number",
           "min": 30
         }
@@ -343,7 +351,8 @@
             "de": "Möchtest du eine Ertragsvorhersage per forecast.solar?",
             "default": "Would you like a yield forecast via forecast.solar?"
           },
-          "defaultValue": "true"
+          "defaultValue": "true",
+          "isRequired": true
         }
       ],
       "title": {
@@ -365,6 +374,7 @@
             "de": "-90 (Süd) bis 90 (Nord)",
             "default": "-90 (South) to 90 (North)"
           },
+          "isRequired": true,
           "inputType": "number"
         },
         {
@@ -378,6 +388,7 @@
             "de": "-180 (West) bis 180 (Ost)",
             "default": "-180 (West) to 180 (East)"
           },
+          "isRequired": true,
           "inputType": "number"
         },
         {
@@ -391,6 +402,7 @@
             "de": "0 (horizontal) bis 90 (Vertikal)",
             "default": "0 (horizontal) to 90 (vertical)"
           },
+          "isRequired": true,
           "inputType": "number"
         },
         {
@@ -404,6 +416,7 @@
             "de": "-180 … 180 (-180 = Nord, -90 = Ost, 0 = Süd, 90 = West, 180 = Nord)",
             "default": "-180 ... 180 (-180 = north, -90 = east, 0 = south, 90 = west, 180 = north)"
           },
+          "isRequired": true,
           "inputType": "number"
         },
         {
@@ -414,6 +427,7 @@
             "default": "Maximum power"
           },
           "description": "in kWp",
+          "isRequired": true,
           "inputType": "number"
         },
         {
@@ -427,6 +441,7 @@
             "de": "in Sekunden",
             "default": "in seconds"
           },
+          "isRequired": true,
           "inputType": "number"
         }
       ],
@@ -450,7 +465,8 @@
             "de": "Möchtest du automatische Updates aktivieren?",
             "default": "Would you like to activate automatic updates?"
           },
-          "defaultValue": "true"
+          "defaultValue": "true",
+          "isRequired": true
         }
       ],
       "title": {
