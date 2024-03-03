@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import 'survey-core/defaultV2.min.css'
 import 'survey-core/i18n/german'
 import { onMounted, ref } from 'vue'
 import { Model } from 'survey-core'
