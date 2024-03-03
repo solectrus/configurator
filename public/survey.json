@@ -1,7 +1,13 @@
 {
   "locale": "de",
-  "title": "SOLECTRUS-Konfigurator",
-  "description": "Erstelle Schritt-für-Schritt deine Installation von SOLECTRUS",
+  "title": {
+    "de": "SOLECTRUS-Konfigurator",
+    "default": "SOLECTRUS configurator"
+  },
+  "description": {
+    "de": "Erstelle Schritt-für-Schritt deine Installation von SOLECTRUS",
+    "default": "Create your SOLECTRUS installation step-by-step"
+  },
   "logoPosition": "right",
   "pages": [
     {
@@ -10,20 +16,29 @@
         {
           "type": "checkbox",
           "name": "q_devices",
-          "title": "Welche Geräte hast du in deinem Haus?",
+          "title": {
+            "de": "Welche Geräte hast du in deinem Haus?",
+            "default": "What appliances do you have in your home?"
+          },
           "defaultValue": ["battery"],
           "isRequired": true,
           "validators": [
             {
               "type": "expression",
-              "text": "Ohne Stromspeicher geht's nicht!",
+              "text": {
+                "default": "You can't do it without a battery!",
+                "de": "Ohne Stromspeicher geht's nicht!"
+              },
               "expression": "{q_devices} contains 'battery'"
             }
           ],
           "choices": [
             {
               "value": "battery",
-              "text": "Stromspeicher"
+              "text": {
+                "de": "Stromspeicher",
+                "default": "Battery"
+              }
             },
             {
               "value": "wallbox",
@@ -31,7 +46,10 @@
             },
             {
               "value": "heatpump",
-              "text": "Wärmepumpe"
+              "text": {
+                "de": "Wärmepumpe",
+                "default": "Heat pump"
+              }
             }
           ]
         }
@@ -43,16 +61,25 @@
         {
           "type": "radiogroup",
           "name": "installation_type",
-          "title": "Wie möchtest Du SOLECTRUS betreiben?",
+          "title": {
+            "de": "Wie möchtest Du SOLECTRUS betreiben?",
+            "default": "How would you like to operate SOLECTRUS?"
+          },
           "isRequired": true,
           "choices": [
             {
               "value": "standalone",
-              "text": "Alles auf einem lokalen Server (Raspberry Pi, NAS, sonstiger Linux-Server)"
+              "text": {
+                "de": "Alles auf einem lokalen Server (Raspberry Pi, NAS, sonstiger Linux-Server)",
+                "default": "Everything on a local server (Raspberry Pi, NAS, other Linux server)"
+              }
             },
             {
               "value": "distributed",
-              "text": "Verteilte Installation (Messwerte abfragen lokal, Datenbank und Dashboard auf einem Cloud-Server)"
+              "text": {
+                "de": "Verteilte Installation (Messwerte abfragen lokal, Datenbank und Dashboard auf einem Cloud-Server)",
+                "default": "Distributed installation (query measured values locally, database and dashboard on a cloud server)"
+              }
             }
           ]
         }
@@ -66,32 +93,34 @@
           "name": "battery_vendor",
           "visibleIf": "{q_devices} contains 'battery'",
           "title": {
-            "default": "Von welchem Hersteller ist dein Stromspeicher?",
-            "de": "Welchen Stromspeicher hast du?"
+            "de": "Von welchem Hersteller ist dein Stromspeicher?",
+            "default": "Which manufacturer is your storage system from?"
           },
           "isRequired": true,
           "choices": [
             {
               "value": "battery_senec3",
               "text": {
-                "default": "SENEC",
+                "default": "SENEC.Home V2.1 or V3",
                 "de": "SENEC.Home V2.1 oder V3"
               }
             },
             {
               "value": "battery_senec4",
-              "text": {
-                "de": "SENEC.Home 4"
-              }
+              "text": "SENEC.Home 4"
             },
             {
               "value": "battery_other",
               "text": {
-                "default": "anderer Hersteller",
-                "de": "Speicher eines anderen Herstellers"
+                "de": "Anderer",
+                "default": "Other"
               }
             }
-          ]
+          ],
+          "separateSpecialChoices": true,
+          "otherText": {
+            "de": "Sonstiges"
+          }
         }
       ]
     },
@@ -102,16 +131,25 @@
           "type": "radiogroup",
           "name": "heatpump_access",
           "visibleIf": "{q_devices} contains 'heatpump'",
-          "title": "Wie wird der Stromverbrauch der Wärmepumpe gemessen?",
+          "title": {
+            "de": "Wie wird der Stromverbrauch der Wärmepumpe gemessen?",
+            "default": "How is the electricity consumption of the heat pump measured?"
+          },
           "isRequired": true,
           "choices": [
             {
               "value": "heatpump_shelly",
-              "text": "Über einen Shelly"
+              "text": {
+                "de": "Über einen Shelly",
+                "default": "Using Shelly"
+              }
             },
             {
               "value": "heatpump_mqtt",
-              "text": "Über MQTT"
+              "text": {
+                "de": "Über MQTT",
+                "default": "Via MQTT"
+              }
             }
           ]
         }
@@ -124,15 +162,24 @@
           "type": "radiogroup",
           "name": "wallbox_vendor",
           "visibleIf": "{q_devices} contains 'wallbox'",
-          "title": "Von welchem Hersteller ist deine Wallbox?",
+          "title": {
+            "de": "Von welchem Hersteller ist deine Wallbox?",
+            "default": "Which manufacturer is your wallbox from?"
+          },
           "choices": [
             {
               "value": "wallbox_senec",
-              "text": "SENEC (gesteuert vom Stromspeicher)"
+              "text": {
+                "de": "SENEC (gesteuert vom Stromspeicher)",
+                "default": "SENEC (controlled by the battery)"
+              }
             },
             {
               "value": "wallbox_other",
-              "text": "anderer Hersteller"
+              "text": {
+                "default": "Other",
+                "de": "Anderer"
+              }
             }
           ]
         }
@@ -145,7 +192,8 @@
           "type": "boolean",
           "name": "q_updates",
           "title": {
-            "de": "Möchtest du automatische Updates aktivieren?"
+            "de": "Möchtest du automatische Updates aktivieren?",
+            "default": "Would you like to activate automatic updates?"
           },
           "defaultValue": "true"
         }
@@ -158,7 +206,8 @@
           "type": "boolean",
           "name": "q_forecast",
           "title": {
-            "de": "Ertragsvorhersage per forecast.solar?"
+            "de": "Möchtest du eine Ertragsvorhersage per forecast.solar?",
+            "default": "Would you like a yield forecast via forecast.solar?"
           },
           "defaultValue": "true"
         }
@@ -170,22 +219,20 @@
         {
           "type": "text",
           "name": "forecast_latitude",
-          "title": {
-            "de": "Latitude"
-          },
+          "title": "Latitude",
           "description": {
-            "de": "-90 (Süd) bis 90 (Nord)"
+            "de": "-90 (Süd) bis 90 (Nord)",
+            "default": "-90 (South) to 90 (North)"
           },
           "inputType": "number"
         },
         {
           "type": "text",
           "name": "forecast_longitude",
-          "title": {
-            "de": "Longitude"
-          },
+          "title": "Longitude",
           "description": {
-            "de": "-180 (West) bis 180 (Ost)"
+            "de": "-180 (West) bis 180 (Ost)",
+            "default": "-180 (West) to 180 (East)"
           },
           "inputType": "number"
         },
@@ -193,21 +240,22 @@
           "type": "text",
           "name": "forecast_declination",
           "title": {
-            "de": "Dachneigung"
+            "de": "Dachneigung",
+            "default": "Roof declination"
           },
           "description": {
-            "de": "0 (horizontal) bis 90 (Vertikal)"
+            "de": "0 (horizontal) bis 90 (Vertikal)",
+            "default": "0 (horizontal) to 90 (vertical)"
           },
           "inputType": "number"
         },
         {
           "type": "text",
           "name": "forecast_azimuth",
-          "title": {
-            "de": "Ausrichtung"
-          },
+          "title": "Azimuth",
           "description": {
-            "de": "-180 … 180 (-180 = Nord, -90 = Ost, 0 = Süd, 90 = West, 180 = Nord)"
+            "de": "-180 … 180 (-180 = Nord, -90 = Ost, 0 = Süd, 90 = West, 180 = Nord)",
+            "default": "-180 ... 180 (-180 = north, -90 = east, 0 = south, 90 = west, 180 = north)"
           },
           "inputType": "number"
         },
@@ -215,31 +263,31 @@
           "type": "text",
           "name": "forecast_kwp",
           "title": {
-            "de": "Maximal-Leistung"
+            "de": "Maximal-Leistung",
+            "default": "Maximum power"
           },
-          "description": {
-            "de": "kWp"
-          },
+          "description": "in kWp",
           "inputType": "number"
         },
         {
           "type": "text",
           "name": "forecast_interval",
           "title": {
-            "de": "Abfrage-Intervall"
+            "de": "Abfrage-Intervall",
+            "default": "Query interval"
           },
           "description": {
-            "de": "Angabe in Sekunden"
+            "de": "in Sekunden",
+            "default": "in seconds"
           },
           "inputType": "number"
         }
       ],
       "visibleIf": "{q_forecast} = true",
-      "title": {
-        "de": "Standort der PV-Anlage"
-      },
+      "title": "Location of the PV system",
       "description": {
-        "de": "Erforderlich für die Ertragsvorhersage"
+        "de": "Erforderlich für die Ertragsvorhersage",
+        "default": "Required for the yield forecast"
       }
     }
   ]
