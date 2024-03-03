@@ -289,6 +289,77 @@
         "de": "Erforderlich für die Ertragsvorhersage",
         "default": "Required for the yield forecast"
       }
+    },
+    {
+      "name": "page9",
+      "elements": [
+        {
+          "type": "text",
+          "name": "senec_host",
+          "title": {
+            "de": "IP-Adresse oder Hostname",
+            "default": "IP address or host name"
+          }
+        },
+        {
+          "type": "text",
+          "name": "senec_interval",
+          "title": {
+            "de": "Abfrage-Intervall",
+            "default": "Query interval"
+          },
+          "description": {
+            "de": "in Sekunden",
+            "default": "in seconds"
+          },
+          "inputType": "number"
+        },
+        {
+          "type": "radiogroup",
+          "name": "senec_schema",
+          "title": {
+            "de": "Zugriffsprotokoll",
+            "default": "Protocol schema"
+          },
+          "choices": ["https", "http"]
+        },
+        {
+          "type": "radiogroup",
+          "name": "senec_language",
+          "title": {
+            "de": "Sprache",
+            "default": "Language"
+          },
+          "choices": [
+            {
+              "value": "de",
+              "text": {
+                "de": "Deutsch",
+                "default": "German"
+              }
+            },
+            {
+              "value": "en",
+              "text": {
+                "de": "Englisch",
+                "default": "English"
+              }
+            },
+            {
+              "value": "it",
+              "text": {
+                "de": "Italienisch",
+                "default": "Italian"
+              }
+            }
+          ]
+        }
+      ],
+      "visibleIf": "{battery_vendor} = 'battery_senec3'",
+      "title": {
+        "default": "Zugriff auf deinen SENEC-Stromspeicher",
+        "de": "Access to your SENEC battery"
+      }
     }
   ]
 }
