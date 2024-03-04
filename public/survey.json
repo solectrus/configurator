@@ -424,22 +424,43 @@
             "default": "Would you like a yield forecast via forecast.solar?"
           },
           "isRequired": true
-        }
-      ],
-      "title": {
-        "de": "Ertragsvorhersage",
-        "default": "Yield forecast"
-      }
-    },
-    {
-      "name": "p_roofs",
-      "elements": [
+        },
+        {
+          "type": "text",
+          "name": "forecast_latitude",
+          "visibleIf": "{q_forecast} = true",
+          "title": {
+            "default": "Latitude",
+            "de": "Breitengrad"
+          },
+          "description": {
+            "de": "-90 (Süd) bis 90 (Nord)",
+            "default": "-90 (South) to 90 (North)"
+          },
+          "isRequired": true,
+          "inputType": "number"
+        },
+        {
+          "type": "text",
+          "name": "forecast_longitude",
+          "visibleIf": "{q_forecast} = true",
+          "title": {
+            "default": "Longitude",
+            "de": "Längengrad"
+          },
+          "description": {
+            "de": "-180 (West) bis 180 (Ost)",
+            "default": "-180 (West) to 180 (East)"
+          },
+          "isRequired": true,
+          "inputType": "number"
+        },
         {
           "type": "radiogroup",
           "name": "q_forecast_roofs",
           "visibleIf": "{q_forecast} = true",
           "title": {
-            "de": "Wieviele Dachflächen hast du?",
+            "de": "Wieviele Dachflächen gibt es auf dem Haus?",
             "default": "How many roof surfaces do you have?"
           },
           "choices": [
@@ -460,12 +481,27 @@
               "text": "4"
             }
           ]
+        },
+        {
+          "type": "text",
+          "name": "forecast_interval",
+          "visibleIf": "{q_forecast} = true",
+          "title": {
+            "de": "Abfrage-Intervall bei forecast.solar",
+            "default": "Query interval"
+          },
+          "description": {
+            "de": "in Sekunden",
+            "default": "in seconds"
+          },
+          "defaultValue": 900,
+          "isRequired": true,
+          "inputType": "number"
         }
       ],
-      "visibleIf": "{q_forecast} = true",
       "title": {
-        "de": "Ertragsvorhersage: Dachflächen",
-        "default": "Yield forecast: Roofs"
+        "de": "Ertragsvorhersage",
+        "default": "Yield forecast"
       }
     },
     {
@@ -473,28 +509,14 @@
       "elements": [
         {
           "type": "text",
-          "name": "forecast_latitude",
+          "name": "forecast_azimuth",
           "title": {
-            "default": "Latitude",
-            "de": "Breitengrad"
+            "default": "Azimuth",
+            "de": "Ausrichtung"
           },
           "description": {
-            "de": "-90 (Süd) bis 90 (Nord)",
-            "default": "-90 (South) to 90 (North)"
-          },
-          "isRequired": true,
-          "inputType": "number"
-        },
-        {
-          "type": "text",
-          "name": "forecast_longitude",
-          "title": {
-            "default": "Longitude",
-            "de": "Längengrad"
-          },
-          "description": {
-            "de": "-180 (West) bis 180 (Ost)",
-            "default": "-180 (West) to 180 (East)"
+            "de": "-180 … 180 (-180 = Nord, -90 = Ost, 0 = Süd, 90 = West, 180 = Nord)",
+            "default": "-180 ... 180 (-180 = north, -90 = east, 0 = south, 90 = west, 180 = north)"
           },
           "isRequired": true,
           "inputType": "number"
@@ -515,20 +537,6 @@
         },
         {
           "type": "text",
-          "name": "forecast_azimuth",
-          "title": {
-            "default": "Azimuth",
-            "de": "Ausrichtung"
-          },
-          "description": {
-            "de": "-180 … 180 (-180 = Nord, -90 = Ost, 0 = Süd, 90 = West, 180 = Nord)",
-            "default": "-180 ... 180 (-180 = north, -90 = east, 0 = south, 90 = west, 180 = north)"
-          },
-          "isRequired": true,
-          "inputType": "number"
-        },
-        {
-          "type": "text",
           "name": "forecast_kwp",
           "title": {
             "de": "Maximal-Leistung",
@@ -537,27 +545,12 @@
           "description": "in kWp",
           "isRequired": true,
           "inputType": "number"
-        },
-        {
-          "type": "text",
-          "name": "forecast_interval",
-          "title": {
-            "de": "Abfrage-Intervall",
-            "default": "Query interval"
-          },
-          "description": {
-            "de": "in Sekunden",
-            "default": "in seconds"
-          },
-          "defaultValue": 900,
-          "isRequired": true,
-          "inputType": "number"
         }
       ],
       "visibleIf": "{q_forecast} = true",
       "title": {
         "default": "Location of the PV system",
-        "de": "Ertragsvorhersage: Standort"
+        "de": "Ertragsvorhersage: Dachflächen"
       },
       "description": {
         "de": "Erforderlich für die Ertragsvorhersage",
