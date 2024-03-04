@@ -60,40 +60,6 @@
       }
     },
     {
-      "name": "p_mode",
-      "elements": [
-        {
-          "type": "radiogroup",
-          "name": "installation_type",
-          "title": {
-            "de": "Wie möchtest Du SOLECTRUS betreiben?",
-            "default": "How would you like to operate SOLECTRUS?"
-          },
-          "isRequired": true,
-          "choices": [
-            {
-              "value": "standalone",
-              "text": {
-                "de": "Alles auf einem lokalen Server (Raspberry Pi, NAS, sonstiger Linux-Server)",
-                "default": "Everything on a local server (Raspberry Pi, NAS, other Linux server)"
-              }
-            },
-            {
-              "value": "distributed",
-              "text": {
-                "de": "Verteilte Installation (Messwerte abfragen lokal, Datenbank und Dashboard auf einem Cloud-Server)",
-                "default": "Distributed installation (query measured values locally, database and dashboard on a cloud server)"
-              }
-            }
-          ]
-        }
-      ],
-      "title": {
-        "de": "Betriebsart von SOLECTRUS",
-        "default": "SOLECTRUS operating mode"
-      }
-    },
-    {
       "name": "p_vendor_battery",
       "elements": [
         {
@@ -101,7 +67,7 @@
           "name": "battery_vendor",
           "visibleIf": "{q_devices} contains 'battery'",
           "title": {
-            "de": "Von welchem Hersteller ist dein Stromspeicher?",
+            "de": "Welchen Stromspeicher hast du?",
             "default": "Which manufacturer is your storage system from?"
           },
           "isRequired": true,
@@ -109,8 +75,8 @@
             {
               "value": "battery_senec3",
               "text": {
-                "default": "SENEC.Home V2.1 or V3",
-                "de": "SENEC.Home V2.1 oder V3"
+                "default": "SENEC.Home V3 or V2.1",
+                "de": "SENEC.Home V3 oder v2.1"
               }
             },
             {
@@ -133,7 +99,7 @@
         }
       ],
       "title": {
-        "de": "Hersteller Stromspeicher",
+        "de": "Stromspeicher",
         "default": "Battery vendor"
       }
     },
@@ -168,7 +134,7 @@
         }
       ],
       "title": {
-        "de": "Einbindung Wärmepumpe",
+        "de": "Wärmepumpe",
         "default": "Integration of heat pump"
       }
     },
@@ -203,8 +169,50 @@
         }
       ],
       "title": {
-        "de": "Hersteller Wallbox",
+        "de": "Wallbox",
         "default": "Vendor Wallbox"
+      }
+    },
+    {
+      "name": "p_mode",
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "installation_type",
+          "title": {
+            "de": "Wie möchtest Du SOLECTRUS betreiben?",
+            "default": "How would you like to operate SOLECTRUS?"
+          },
+          "isRequired": true,
+          "choices": [
+            {
+              "value": "local",
+              "text": {
+                "de": "Lokal: Alle Komponenten auf einem Raspberry, NAS etc.",
+                "default": "Local: All components on a Raspberry, NAS etc."
+              }
+            },
+            {
+              "value": "cloud",
+              "text": {
+                "de": "Cloud: Alle Komponenten auf einem Cloud-Server",
+                "default": "Cloud: All components on a cloud server"
+              },
+              "enableIf": "{battery_vendor} = 'battery_senec4' and {wallbox_vendor} <> 'wallbox_other' and {q_devices} notcontains 'heatpump'"
+            },
+            {
+              "value": "distributed",
+              "text": {
+                "de": "Verteilt: Lokale Messwerterfassung, Server in der Cloud",
+                "default": "Distributed: Local measurement, server in the cloud"
+              }
+            }
+          ]
+        }
+      ],
+      "title": {
+        "de": "Betriebsart",
+        "default": "SOLECTRUS operating mode"
       }
     },
     {
