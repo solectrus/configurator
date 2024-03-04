@@ -52,8 +52,8 @@ export class ComposeGeneratorService {
   private configureBaseServices() {
     if (
       this.answers.installation_type &&
-      this.answers.installation_type != 'distributed' &&
-      this.answers.q_distributed_choice != 'local'
+      (this.answers.installation_type != 'distributed' ||
+        this.answers.q_distributed_choice != 'local')
     ) {
       this.addService('influxdb', influxdbService)
       this.addService('db', dbService)
@@ -72,27 +72,45 @@ export class ComposeGeneratorService {
   }
 
   private configureCollectorServices() {
-    if (
-      this.answers.battery_vendor == 'battery_senec3' ||
-      this.answers.battery_vendor == 'battery_senec4'
-    ) {
-      this.addService('senec-collector', senecCollectorService)
-    } else if (this.answers.battery_vendor === 'battery_other') {
-      this.addService('mqtt-collector', mqttCollectorService)
+    switch (this.answers.battery_vendor) {
+      case 'battery_senec3':
+        if (
+          this.answers.installation_type &&
+          (this.answers.installation_type !== 'distributed' ||
+            this.answers.q_distributed_choice === 'local')
+        )
+          this.addService('senec-collector', senecCollectorService)
+        break
+
+      case 'battery_senec4':
+        this.addService('senec-collector', senecCollectorService)
+        break
+
+      case 'battery_other':
+        this.addService('mqtt-collector', mqttCollectorService)
+        break
     }
 
-    if (this.answers.q_forecast === true) {
-      this.addService('forecast-collector', forecastCollectorService)
+    if (this.answers.wallbox_vendor === 'wallbox_other') {
+      if (
+        this.answers.installation_type === 'local' ||
+        this.answers.q_distributed_choice === 'local'
+      )
+        this.addService('mqtt-collector', mqttCollectorService)
     }
 
     if (this.answers.heatpump_access == 'heatpump_shelly') {
       this.addService('shelly-collector', shellyCollectorService)
     }
+
+    if (this.answers.q_forecast === true) {
+      this.addService('forecast-collector', forecastCollectorService)
+    }
   }
 
   private configureWatchtower() {
     if (this.answers.q_updates === true) {
-      this.compose.services.watchtower = watchtowerService as DockerService
+      this.addService('watchtower', watchtowerService)
 
       for (const serviceName in this.compose.services) {
         this.compose.services[serviceName].labels = [
