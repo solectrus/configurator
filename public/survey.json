@@ -594,45 +594,39 @@
             "default": "Do you have an account at AWS and want to back up the databases there automatically?"
           },
           "isRequired": true
-        }
-      ],
-      "title": {
-        "de": "Backup auf Amazon S3",
-        "default": "Backup to Amazon S3"
-      }
-    },
-    {
-      "name": "page1",
-      "elements": [
+        },
         {
           "type": "text",
           "name": "s3_access_key",
+          "visibleIf": "{q_backup} = true",
           "title": "Access Key ID",
           "isRequired": true
         },
         {
           "type": "text",
           "name": "s3_secret_access_key",
+          "visibleIf": "{q_backup} = true",
           "title": "Secret Access Key",
           "isRequired": true
         },
         {
           "type": "text",
           "name": "s3_region",
+          "visibleIf": "{q_backup} = true",
           "title": "Region",
           "isRequired": true
         },
         {
           "type": "text",
           "name": "s3_bucket",
+          "visibleIf": "{q_backup} = true",
           "title": "Bucket",
           "isRequired": true
         }
       ],
-      "visibleIf": "{q_backup} = true",
       "title": {
-        "de": "Zugangsdaten für Amazon S3",
-        "default": "Credentials for Amazon S3"
+        "de": "Backup auf Amazon S3",
+        "default": "Backup to Amazon S3"
       }
     }
   ],
