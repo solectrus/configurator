@@ -100,7 +100,11 @@ export class ComposeGeneratorService {
     }
 
     if (this.answers.heatpump_access == 'heatpump_shelly') {
-      this.addService('shelly-collector', shellyCollectorService)
+      if (
+        this.answers.installation_type === 'local' ||
+        this.answers.q_distributed_choice === 'local'
+      )
+        this.addService('shelly-collector', shellyCollectorService)
     }
 
     if (this.answers.q_forecast === true) {
