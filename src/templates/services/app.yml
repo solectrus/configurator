@@ -1,13 +1,13 @@
 image: ghcr.io/solectrus/solectrus:latest
 depends_on:
-  db:
+  postgresql:
     condition: service_healthy
   influxdb:
     condition: service_healthy
   redis:
     condition: service_healthy
 links:
-  - db
+  - postgresql
   - influxdb
   - redis
 ports:
@@ -19,7 +19,7 @@ environment:
   - INSTALLATION_DATE
   - ADMIN_PASSWORD
   - FRAME_ANCESTORS
-  - DB_HOST=db
+  - DB_HOST=postgresql
   - DB_PASSWORD=${POSTGRES_PASSWORD}
   - DB_USER=postgres
   - REDIS_URL=redis://redis:6379/1

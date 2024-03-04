@@ -3,13 +3,15 @@ import yaml from 'js-yaml'
 
 import appService from '@/templates/services/app.yml'
 import influxdbService from '@/templates/services/influxdb.yml'
-import dbService from '@/templates/services/db.yml'
+import postgresqlService from '@/templates/services/postgresql.yml'
 import redisService from '@/templates/services/redis.yml'
 import senecCollectorService from '@/templates/services/senec-collector.yml'
 import mqttCollectorService from '@/templates/services/mqtt-collector.yml'
 import forecastCollectorService from '@/templates/services/forecast-collector.yml'
 import shellyCollectorService from '@/templates/services/shelly-collector.yml'
 import watchtowerService from '@/templates/services/watchtower.yml'
+import postgresqlBackupService from '@/templates/services/postgresql-backup.yml'
+import influxdbBackupService from '@/templates/services/influxdb-backup.yml'
 
 type DockerService = {
   image: string
@@ -43,6 +45,7 @@ export class ComposeGeneratorService {
     this.configureBaseServices()
     this.configureCollectorServices()
     this.configureWatchtower()
+    this.configureBackup()
 
     return Object.keys(this.compose.services).length
       ? yaml.dump(this.compose, { lineWidth: -1 })
@@ -56,7 +59,7 @@ export class ComposeGeneratorService {
         this.answers.q_distributed_choice != 'local')
     ) {
       this.addService('influxdb', influxdbService)
-      this.addService('db', dbService)
+      this.addService('postgresql', postgresqlService)
       this.addService('redis', redisService)
       this.addService('app', appService)
     }
@@ -121,6 +124,18 @@ export class ComposeGeneratorService {
           ...(this.compose.services[serviceName].labels ?? []),
           'com.centurylinklabs.watchtower.scope=solectrus'
         ]
+      }
+    }
+  }
+
+  private configureBackup() {
+    if (this.answers.q_backup === true) {
+      if (this.compose.services.postgresql) {
+        this.addService('postgresql-backup', postgresqlBackupService)
+      }
+
+      if (this.compose.services.influxdb) {
+        this.addService('influxdb-backup', influxdbBackupService)
       }
     }
   }

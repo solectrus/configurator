@@ -1,0 +1,15 @@
+image: ghcr.io/solectrus/influxdb2-s3-backup:latest
+environment:
+  - INFLUXDB_HOST=influxdb
+  - INFLUXDB_ORG=${INFLUX_ORG}
+  - INFLUXDB_TOKEN=${INFLUX_ADMIN_TOKEN}
+  - INFLUXDB_BACKUP_PORT=8086
+  - BACKUP_PATH='/data/influxdb/backup'
+  - S3_BUCKET=${AWS_BUCKET}
+  - S3_PREFIX='influxdb_backup'
+  - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY}
+  - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_KEY}
+  - CRON: '0 2 * * *'
+restart: unless-stopped
+links:
+  - influxdb
