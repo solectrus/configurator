@@ -420,8 +420,11 @@
           "name": "q_forecast",
           "visibleIf": "{q_distributed_choice} <> 'local'",
           "title": {
-            "de": "Möchtest du eine Ertragsvorhersage per forecast.solar?",
+            "de": "Möchtest du eine Vorhersage des PV-Ertrages?",
             "default": "Would you like a yield forecast via forecast.solar?"
+          },
+          "description": {
+            "de": "Die Prognose erfolgt über den Anbieter forecast.solar"
           },
           "isRequired": true
         },
@@ -482,23 +485,6 @@
               "text": "4"
             }
           ]
-        },
-        {
-          "type": "text",
-          "name": "forecast_interval",
-          "visibleIf": "{q_forecast} = true",
-          "title": {
-            "de": "Abfrage-Intervall bei forecast.solar",
-            "default": "Query interval"
-          },
-          "description": {
-            "de": "in Sekunden",
-            "default": "in seconds"
-          },
-          "defaultValue": 900,
-          "defaultValueExpression": "iif(q_forecast_roofs == \"one\", 900, iif(q_forecast_roofs == \"two\", 1800, iif(q_forecast_roofs == \"three\", 2700, iif(q_forecast_roofs == \"four\", 3600))))\n",
-          "isRequired": true,
-          "inputType": "number"
         }
       ],
       "title": {
