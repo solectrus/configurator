@@ -581,6 +581,60 @@
         "de": "Automatische Updates",
         "default": "Automatic updates"
       }
+    },
+    {
+      "name": "p_backup",
+      "elements": [
+        {
+          "type": "boolean",
+          "name": "q_backup",
+          "visibleIf": "{q_distributed_choice} <> 'local'",
+          "title": {
+            "de": "Hast Du einen Account bei AWS und möchtest die Datenbanken automatisch dorthin sichern?"
+          },
+          "isRequired": true
+        }
+      ],
+      "title": {
+        "de": "Backup auf Amazon S3"
+      }
+    },
+    {
+      "name": "page1",
+      "elements": [
+        {
+          "type": "text",
+          "name": "s3_access_key",
+          "title": {
+            "de": "Access Key ID"
+          }
+        },
+        {
+          "type": "text",
+          "name": "s3_secret_access_key",
+          "title": {
+            "de": "Secret Access Key"
+          }
+        },
+        {
+          "type": "text",
+          "name": "s3_region",
+          "title": {
+            "de": "Region"
+          }
+        },
+        {
+          "type": "text",
+          "name": "s3_bucket",
+          "title": {
+            "de": "Bucket"
+          }
+        }
+      ],
+      "visibleIf": "{q_backup} = true",
+      "title": {
+        "de": "Zugangsdaten für Amazon S3"
+      }
     }
   ],
   "showCompletedPage": false,
