@@ -18,6 +18,7 @@ onMounted(async () => {
     survey.value = new Model(surveyJson)
     survey.value.locale = 'de'
     survey.value.onValueChanged.add((sender) => surveyStore.setAnswers(sender.data))
+    survey.value.onComplete.add(() => surveyStore.finish())
   } catch (error) {
     console.error('Error loading survey config:', error)
   }
@@ -25,7 +26,17 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div v-if="survey">
-    <SurveyComponent :model="survey" />
+  <div>
+    <div v-if="survey">
+      <SurveyComponent :model="survey" />
+    </div>
+
+    <div v-if="surveyStore.finished" class="p-6 text-slate-600">
+      <h1 class="text-xl font-bold uppercase tracking-wide">Fertig!</h1>
+
+      <p class="mt-5 text-lg">
+        Kopiere die nebenstehenden Konfigurations-Dateien auf deinen Server und los gehts!
+      </p>
+    </div>
   </div>
 </template>

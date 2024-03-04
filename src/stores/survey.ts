@@ -7,6 +7,7 @@ export type Answers = Record<string, Answer>
 
 interface SurveyState {
   answers: Answers
+  finished: boolean
   composeFile: string
   envFile: string
 }
@@ -14,6 +15,7 @@ interface SurveyState {
 export const useSurveyStore = defineStore('survey', {
   state: (): SurveyState => ({
     answers: {},
+    finished: false,
     composeFile: '',
     envFile: ''
   }),
@@ -21,8 +23,13 @@ export const useSurveyStore = defineStore('survey', {
   actions: {
     setAnswers(newAnswers: Answers) {
       this.answers = newAnswers
-      this.composeFile = ComposeGeneratorService.generate(this.answers)
+      this.finished = false
+      this.composeFile = new ComposeGeneratorService(this.answers).build()
       this.envFile = EnvGeneratorService.generate(this.answers)
+    },
+
+    finish() {
+      this.finished = true
     }
   }
 })
