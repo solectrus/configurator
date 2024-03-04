@@ -36,47 +36,47 @@ export class ComposeGeneratorService {
 
     const WATCHTOWER_LABEL = 'com.centurylinklabs.watchtower.scope=solectrus'
 
-    compose.services.app = appService as DockerService
-    compose.services.influxdb = influxdbService as DockerService
-    compose.services.db = dbService as DockerService
-    compose.services.redis = redisService as DockerService
+    if (answers.q_distributed_choice != 'local') {
+      compose.services.app = appService as DockerService
+      compose.services.influxdb = influxdbService as DockerService
+      compose.services.db = dbService as DockerService
+      compose.services.redis = redisService as DockerService
+    }
 
-    if (answers.q_updates == true) {
+    if (answers.q_updates === true) {
       compose.services.watchtower = watchtowerService as DockerService
-      compose.services.app.labels = [WATCHTOWER_LABEL]
-      compose.services.influxdb.labels = [WATCHTOWER_LABEL]
-      compose.services.db.labels = [WATCHTOWER_LABEL]
-      compose.services.redis.labels = [WATCHTOWER_LABEL]
-    } else {
-      compose.services.app.labels = undefined
-      compose.services.influxdb.labels = undefined
-      compose.services.db.labels = undefined
-      compose.services.redis.labels = undefined
+
+      if (answers.q_distributed_choice != 'local') {
+        compose.services.app!.labels = [WATCHTOWER_LABEL]
+        compose.services.influxdb!.labels = [WATCHTOWER_LABEL]
+        compose.services.db!.labels = [WATCHTOWER_LABEL]
+        compose.services.redis!.labels = [WATCHTOWER_LABEL]
+      }
     }
 
     if (answers.battery_vendor == 'battery_senec3' || answers.battery_vendor == 'battery_senec4') {
       compose.services['senec-collector'] = senecCollectorService as DockerService
 
-      if (answers.q_updates == true) {
+      if (answers.q_updates === true) {
         compose.services['senec-collector'].labels = [WATCHTOWER_LABEL]
       }
     } else if (answers.battery_vendor === 'battery_other') {
       compose.services['mqtt-collector'] = mqttCollectorService as DockerService
-      if (answers.q_updates == true) {
+      if (answers.q_updates === true) {
         compose.services['mqtt-collector'].labels = [WATCHTOWER_LABEL]
       }
     }
 
-    if (answers.q_forecast == true) {
+    if (answers.q_forecast === true) {
       compose.services['forecast-collector'] = forecastCollectorService as DockerService
-      if (answers.q_updates == true) {
+      if (answers.q_updates === true) {
         compose.services['forecast-collector'].labels = [WATCHTOWER_LABEL]
       }
     }
 
     if (answers.heatpump_access == 'heatpump_shelly') {
       compose.services['shelly-collector'] = shellyCollectorService as DockerService
-      if (answers.q_updates == true) {
+      if (answers.q_updates === true) {
         compose.services['shelly-collector'].labels = [WATCHTOWER_LABEL]
       }
     }
