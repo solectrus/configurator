@@ -198,7 +198,7 @@
                 "de": "Cloud: Alle Komponenten auf einem Cloud-Server",
                 "default": "Cloud: All components on a cloud server"
               },
-              "enableIf": "{battery_vendor} = 'battery_senec4' and {wallbox_vendor} <> 'wallbox_other' and {q_devices} notcontains 'heatpump'"
+              "enableIf": "{battery_vendor} <> 'battery_other' and {wallbox_vendor} <> 'wallbox_other' and {q_devices} notcontains 'heatpump'"
             },
             {
               "value": "distributed",
@@ -406,7 +406,7 @@
           "inputType": "number"
         }
       ],
-      "visibleIf": "{heatpump_access} = 'heatpump_shelly' and {q_distributed_choice} <> 'cloud'",
+      "visibleIf": "{heatpump_access} = 'heatpump_shelly' and {q_distributed_choice} <> 'cloud' and {installation_type} <> 'cloud'",
       "title": {
         "de": "Zugriff auf Shelly-Stromzähler"
       }
