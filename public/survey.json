@@ -463,21 +463,22 @@
             "de": "Wieviele Dachflächen gibt es auf dem Haus?",
             "default": "How many roof surfaces do you have?"
           },
+          "defaultValue": "one",
           "choices": [
             {
-              "value": "Item 1",
+              "value": "one",
               "text": "1"
             },
             {
-              "value": "Item 2",
+              "value": "two",
               "text": "2"
             },
             {
-              "value": "Item 3",
+              "value": "three",
               "text": "3"
             },
             {
-              "value": "Item 4",
+              "value": "four",
               "text": "4"
             }
           ]
@@ -495,6 +496,7 @@
             "default": "in seconds"
           },
           "defaultValue": 900,
+          "defaultValueExpression": "iif(q_forecast_roofs == \"one\", 900, iif(q_forecast_roofs == \"two\", 1800, iif(q_forecast_roofs == \"three\", 2700, iif(q_forecast_roofs == \"four\", 3600))))\n",
           "isRequired": true,
           "inputType": "number"
         }
