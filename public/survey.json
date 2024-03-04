@@ -205,7 +205,8 @@
               "text": {
                 "de": "Verteilt: Lokale Messwerterfassung, Server in der Cloud",
                 "default": "Distributed: Local measurement, server in the cloud"
-              }
+              },
+              "enableIf": "{battery_vendor} anyof ['battery_other', 'battery_senec3'] or {wallbox_vendor} = 'wallbox_other' and {q_devices} contains 'heatpump'"
             }
           ]
         }
