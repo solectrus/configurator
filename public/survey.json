@@ -216,6 +216,39 @@
       }
     },
     {
+      "name": "p_distributed_installation",
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "q_distributed_choice",
+          "title": {
+            "de": "Welchen Teil der Installation möchtest Du jetzt angehen?"
+          },
+          "description": {
+            "de": "Es sind zwei Installationen erforderlich. Welchen Teil erledigen wir jetzt?"
+          },
+          "choices": [
+            {
+              "value": "local",
+              "text": {
+                "de": "Die lokale Installation auf Raspberry Pi, NAS etc."
+              }
+            },
+            {
+              "value": "cloud",
+              "text": {
+                "de": "Die Installation auf dem Cloud-Server"
+              }
+            }
+          ]
+        }
+      ],
+      "visibleIf": "{installation_type} = 'distributed'",
+      "title": {
+        "de": "Verteile Installation"
+      }
+    },
+    {
       "name": "p_senec3_access",
       "elements": [
         {
@@ -377,7 +410,7 @@
       "elements": [
         {
           "type": "radiogroup",
-          "name": "question1",
+          "name": "q_forecast_roofs",
           "title": {
             "de": "Wieviele Dachflächen hast du?",
             "default": "How many roof surfaces do you have?"
