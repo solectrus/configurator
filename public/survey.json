@@ -320,7 +320,7 @@
           ]
         }
       ],
-      "visibleIf": "{battery_vendor} = 'battery_senec3'",
+      "visibleIf": "{battery_vendor} = 'battery_senec3' and {q_distributed_choice} <> 'cloud'",
       "title": {
         "de": "Zugriff auf SENEC-Stromspeicher",
         "default": "Access to your SENEC battery"
@@ -384,6 +384,31 @@
       "title": {
         "de": "Zugangsdaten für SENEC Home.4",
         "default": "Credentials for SENEC Home.4"
+      }
+    },
+    {
+      "name": "q_shelly",
+      "elements": [
+        {
+          "type": "text",
+          "name": "question1",
+          "title": {
+            "de": "IP-Adresse oder Hostname"
+          }
+        },
+        {
+          "type": "text",
+          "name": "question2",
+          "title": {
+            "de": "Abfrage-Intervall"
+          },
+          "defaultValue": 5,
+          "inputType": "number"
+        }
+      ],
+      "visibleIf": "{heatpump_access} = 'heatpump_shelly' and {q_distributed_choice} <> 'cloud'",
+      "title": {
+        "de": "Zugriff auf Shelly-Stromzähler"
       }
     },
     {
