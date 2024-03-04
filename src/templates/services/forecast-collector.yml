@@ -41,7 +41,7 @@ environment:
   - FORECAST_3_DAMPING_EVENING
   - FORECAST_INTERVAL
   - FORECAST_SOLAR_APIKEY
-restart: always
+restart: unless-stopped
 logging:
   options:
     max-size: '10m'

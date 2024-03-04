@@ -12,7 +12,7 @@ command: influxd run --bolt-path /var/lib/influxdb2/influxd.bolt --engine-path /
 # Optional: Allow InfluxDB to be accessed from the outside.
 # ports:
 #   - 8086:8086
-restart: always
+restart: unless-stopped
 healthcheck:
   test: ['CMD', 'influx', 'ping']
   interval: 30s

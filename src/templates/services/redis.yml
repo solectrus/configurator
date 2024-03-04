@@ -1,7 +1,7 @@
 image: redis:7-alpine
 volumes:
   - ${REDIS_VOLUME_PATH}:/data
-restart: always
+restart: unless-stopped
 healthcheck:
   test: ['CMD', 'redis-cli', 'ping']
   interval: 10s
