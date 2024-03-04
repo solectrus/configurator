@@ -607,22 +607,26 @@
         {
           "type": "text",
           "name": "s3_access_key",
-          "title": "Access Key ID"
+          "title": "Access Key ID",
+          "isRequired": true
         },
         {
           "type": "text",
           "name": "s3_secret_access_key",
-          "title": "Secret Access Key"
+          "title": "Secret Access Key",
+          "isRequired": true
         },
         {
           "type": "text",
           "name": "s3_region",
-          "title": "Region"
+          "title": "Region",
+          "isRequired": true
         },
         {
           "type": "text",
           "name": "s3_bucket",
-          "title": "Bucket"
+          "title": "Bucket",
+          "isRequired": true
         }
       ],
       "visibleIf": "{q_backup} = true",
