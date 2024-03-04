@@ -1,9 +1,4 @@
 image: ghcr.io/solectrus/forecast-collector:latest
-depends_on:
-  influxdb:
-    condition: service_healthy
-links:
-  - influxdb
 environment:
   - INFLUX_HOST
   - INFLUX_TOKEN=${INFLUX_TOKEN_WRITE}

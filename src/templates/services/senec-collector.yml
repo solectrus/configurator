@@ -1,9 +1,4 @@
 image: ghcr.io/solectrus/senec-collector:latest
-depends_on:
-  influxdb:
-    condition: service_healthy
-links:
-  - influxdb
 environment:
   - SENEC_HOST
   - SENEC_SCHEMA

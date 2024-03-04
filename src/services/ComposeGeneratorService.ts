@@ -17,7 +17,7 @@ type DockerService = {
   ports?: string[]
   volumes?: string[]
   links: string[]
-  depends_on?: string[]
+  depends_on?: Record<string, { condition: string }>
   labels?: string[]
   healthcheck?: {
     test: string
@@ -25,7 +25,7 @@ type DockerService = {
 }
 
 export class ComposeGeneratorService {
-  static generate(answers: Answers): string {
+  static generate(answers: Answers): string | undefined {
     const compose: {
       version: string
       services: Record<string, DockerService | undefined>
@@ -36,32 +36,58 @@ export class ComposeGeneratorService {
 
     const WATCHTOWER_LABEL = 'com.centurylinklabs.watchtower.scope=solectrus'
 
-    if (answers.q_distributed_choice != 'local') {
+    if (
+      answers.installation_type &&
+      answers.installation_type != 'distributed' &&
+      answers.q_distributed_choice != 'local'
+    ) {
       compose.services.app = appService as DockerService
       compose.services.influxdb = influxdbService as DockerService
       compose.services.db = dbService as DockerService
       compose.services.redis = redisService as DockerService
-    }
 
-    if (answers.q_updates === true) {
-      compose.services.watchtower = watchtowerService as DockerService
-
-      if (answers.q_distributed_choice != 'local') {
-        compose.services.app!.labels = [WATCHTOWER_LABEL]
-        compose.services.influxdb!.labels = [WATCHTOWER_LABEL]
-        compose.services.db!.labels = [WATCHTOWER_LABEL]
-        compose.services.redis!.labels = [WATCHTOWER_LABEL]
+      if (answers.q_updates === true) {
+        compose.services.app.labels = [WATCHTOWER_LABEL]
+        compose.services.influxdb.labels = [WATCHTOWER_LABEL]
+        compose.services.db.labels = [WATCHTOWER_LABEL]
+        compose.services.redis.labels = [WATCHTOWER_LABEL]
       }
     }
 
-    if (answers.battery_vendor == 'battery_senec3' || answers.battery_vendor == 'battery_senec4') {
+    if (
+      (answers.installation_type === 'local' ||
+        answers.installation_type === 'cloud' ||
+        answers.q_distributed_choice === 'local') &&
+      (answers.battery_vendor == 'battery_senec3' || answers.battery_vendor == 'battery_senec4')
+    ) {
       compose.services['senec-collector'] = senecCollectorService as DockerService
+
+      if (compose.services.influxdb) {
+        compose.services['senec-collector'].links = ['influxdb']
+
+        compose.services['senec-collector'].depends_on = {
+          influxdb: {
+            condition: 'service_healthy'
+          }
+        }
+      }
 
       if (answers.q_updates === true) {
         compose.services['senec-collector'].labels = [WATCHTOWER_LABEL]
       }
     } else if (answers.battery_vendor === 'battery_other') {
       compose.services['mqtt-collector'] = mqttCollectorService as DockerService
+
+      if (compose.services.influxdb) {
+        compose.services['mqtt-collector'].links = ['influxdb']
+
+        compose.services['mqtt-collector'].depends_on = {
+          influxdb: {
+            condition: 'service_healthy'
+          }
+        }
+      }
+
       if (answers.q_updates === true) {
         compose.services['mqtt-collector'].labels = [WATCHTOWER_LABEL]
       }
@@ -69,6 +95,17 @@ export class ComposeGeneratorService {
 
     if (answers.q_forecast === true) {
       compose.services['forecast-collector'] = forecastCollectorService as DockerService
+
+      if (compose.services.influxdb) {
+        compose.services['forecast-collector'].links = ['influxdb']
+
+        compose.services['forecast-collector'].depends_on = {
+          influxdb: {
+            condition: 'service_healthy'
+          }
+        }
+      }
+
       if (answers.q_updates === true) {
         compose.services['forecast-collector'].labels = [WATCHTOWER_LABEL]
       }
@@ -76,11 +113,26 @@ export class ComposeGeneratorService {
 
     if (answers.heatpump_access == 'heatpump_shelly') {
       compose.services['shelly-collector'] = shellyCollectorService as DockerService
+
+      if (compose.services.influxdb) {
+        compose.services['shelly-collector'].links = ['influxdb']
+
+        compose.services['shelly-collector'].depends_on = {
+          influxdb: {
+            condition: 'service_healthy'
+          }
+        }
+      }
+
       if (answers.q_updates === true) {
         compose.services['shelly-collector'].labels = [WATCHTOWER_LABEL]
       }
     }
 
-    return yaml.dump(compose, { lineWidth: -1 })
+    if (answers.q_updates === true) {
+      compose.services.watchtower = watchtowerService as DockerService
+    }
+
+    if (Object.keys(compose.services).length) return yaml.dump(compose, { lineWidth: -1 })
   }
 }
