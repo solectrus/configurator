@@ -573,7 +573,6 @@
             "de": "Möchtest du automatische Updates aktivieren?",
             "default": "Would you like to activate automatic updates?"
           },
-          "defaultValue": "true",
           "isRequired": true
         }
       ],
