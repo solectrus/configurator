@@ -392,11 +392,11 @@
         {
           "type": "boolean",
           "name": "q_forecast",
+          "visibleIf": "{q_distributed_choice} <> 'local'",
           "title": {
             "de": "Möchtest du eine Ertragsvorhersage per forecast.solar?",
             "default": "Would you like a yield forecast via forecast.solar?"
           },
-          "defaultValue": "true",
           "isRequired": true
         }
       ],
@@ -411,6 +411,7 @@
         {
           "type": "radiogroup",
           "name": "q_forecast_roofs",
+          "visibleIf": "{q_forecast} = true",
           "title": {
             "de": "Wieviele Dachflächen hast du?",
             "default": "How many roof surfaces do you have?"
