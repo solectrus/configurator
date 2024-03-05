@@ -1,11 +1,27 @@
 <script setup lang="ts">
+import { ref, watch } from 'vue'
 import { useSurveyStore } from '@/stores/survey'
 
 const surveyStore = useSurveyStore()
+const animateClass = ref(false)
+
+watch(
+  () => surveyStore.composeFile,
+  (newValue, oldValue) => {
+    if (newValue !== oldValue) {
+      animateClass.value = true
+      setTimeout(() => (animateClass.value = false), 500)
+    }
+  },
+)
 </script>
 
 <template>
-  <div v-if="surveyStore.composeFile" class="space-y-10 bg-blue-50 font-mono">
+  <div
+    v-if="surveyStore.composeFile"
+    :class="{ 'animate-vote': animateClass }"
+    class="space-y-10 bg-blue-50 font-mono"
+  >
     <section class="space-y-5 bg-slate-200 px-0 py-5 text-sm lg:px-10">
       <header
         class="sticky top-0 border-b-2 border-slate-800 bg-slate-200 py-2 text-center lg:text-left"
