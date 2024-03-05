@@ -4,6 +4,12 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import ViteYaml from '@modyfi/vite-plugin-yaml'
 
+import { brotliCompress } from 'zlib'
+import { promisify } from 'util'
+import gzipPlugin from 'rollup-plugin-gzip'
+
+const brotliPromise = promisify(brotliCompress)
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue(), ViteYaml({})],
@@ -16,6 +22,15 @@ export default defineConfig({
 
   build: {
     rollupOptions: {
+      plugins: [
+        // GZIP compression as .gz files
+        gzipPlugin(),
+        // Brotli compression as .br files
+        gzipPlugin({
+          customCompression: (content) => brotliPromise(Buffer.from(content)),
+          fileName: '.br'
+        })
+      ],
       output: {
         manualChunks(id) {
           // Extract large dependencies into separate chunks
