@@ -1332,9 +1332,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.4.668":
-  version: 1.4.690
-  resolution: "electron-to-chromium@npm:1.4.690"
-  checksum: 10c0/fba87387968bac5ac55161dc176e55d92a54146ae1e5fb16c3fdd5bf4f250ce6f271713659c0cdfa7fc0fd9a9ea1a79803f266fa2b936535b208c0759a4d3983
+  version: 1.4.692
+  resolution: "electron-to-chromium@npm:1.4.692"
+  checksum: 10c0/2a875e54be4ae100b43766dcc1d4c8de87c1b4c96b085c01939ec636e1fa4b6684ec157a9d682dbcf4231ee8fb8df6cd58bc0101ef46631f5688c4d6d3db595e
   languageName: node
   linkType: hard
 
@@ -3118,7 +3118,7 @@ __metadata:
     survey-vue3-ui: "npm:^1.9.132"
     tailwindcss: "npm:^3.4.1"
     typescript: "npm:^5.3.3"
-    vite: "npm:^5.1.4"
+    vite: "npm:^5.1.5"
     vue: "npm:^3.4.21"
     vue-tsc: "npm:^2.0.4"
   languageName: unknown
@@ -3465,9 +3465,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^5.1.4":
-  version: 5.1.4
-  resolution: "vite@npm:5.1.4"
+"vite@npm:^5.1.5":
+  version: 5.1.5
+  resolution: "vite@npm:5.1.5"
   dependencies:
     esbuild: "npm:^0.19.3"
     fsevents: "npm:~2.3.3"
@@ -3501,7 +3501,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: 10c0/8f04c8bed33f266bde27f432412456a3b893b51fe1857f0b8cd259100b376c1393a7927db1dd6344a4376baed72ed179ec5b0428aef2ae8508f1f28f95acb908
+  checksum: 10c0/29be99ba0bec5e3ad50290510ba764b6c1016979a1ba70cf2071be9f1338f27e582a120836222e1fad6efb01c886a8fb57cb33471fadd0fceaa922bfc92bbbf7
   languageName: node
   linkType: hard
 
