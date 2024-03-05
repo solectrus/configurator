@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { Model } from 'survey-core'
+import 'survey-core/i18n/german'
 import { EnvGeneratorService } from '@/services/EnvGeneratorService'
 import { ComposeGeneratorService } from '@/services/ComposeGeneratorService'
 
