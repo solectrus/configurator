@@ -37,7 +37,7 @@ export class ComposeGeneratorService {
     this.answers = answers
     this.compose = {
       version: '3.7',
-      services: {}
+      services: {},
     }
   }
 
@@ -122,7 +122,7 @@ export class ComposeGeneratorService {
       for (const serviceName in this.compose.services) {
         this.compose.services[serviceName].labels = [
           ...(this.compose.services[serviceName].labels ?? []),
-          'com.centurylinklabs.watchtower.scope=solectrus'
+          'com.centurylinklabs.watchtower.scope=solectrus',
         ]
       }
     }
