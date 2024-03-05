@@ -185,7 +185,7 @@
           "type": "radiogroup",
           "name": "installation_type",
           "title": {
-            "de": "Wie möchtest Du SOLECTRUS betreiben?",
+            "de": "Wie möchtest du SOLECTRUS betreiben?",
             "default": "How would you like to operate SOLECTRUS?"
           },
           "isRequired": true,
@@ -228,7 +228,7 @@
           "type": "radiogroup",
           "name": "q_distributed_choice",
           "title": {
-            "de": "Welchen Teil der Installation möchtest Du jetzt angehen?"
+            "de": "Welchen Teil der Installation möchtest du jetzt angehen?"
           },
           "description": {
             "de": "Es sind zwei Installationen erforderlich. Welchen Teil erledigen wir jetzt?"
@@ -576,7 +576,7 @@
           "name": "q_backup",
           "visibleIf": "{q_distributed_choice} <> 'local'",
           "title": {
-            "de": "Hast Du einen Account bei AWS und möchtest die Datenbanken automatisch dorthin sichern?",
+            "de": "Hast du einen Account bei AWS und möchtest die Datenbanken automatisch dorthin sichern?",
             "default": "Do you have an account at AWS and want to back up the databases there automatically?"
           },
           "isRequired": true
