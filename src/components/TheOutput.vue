@@ -31,8 +31,8 @@ const surveyStore = useSurveyStore()
 
   <div
     v-else
-    class="flex items-center justify-center p-10 text-xl text-slate-600 lg:bg-blue-50 lg:text-3xl"
+    class="flex items-center justify-center p-10 text-center text-xl text-slate-600 lg:bg-blue-50 lg:text-3xl"
   >
-    Noch keine Konfiguration vorhanden
+    Hier erscheint die Konfiguration <br />nach Beantwortung der Fragen.
   </div>
 </template>
