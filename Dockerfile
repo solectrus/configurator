@@ -6,8 +6,8 @@ LABEL org.opencontainers.image.description="SOLECTRUS Configurator"
 # Copy built assets from 'dist' to the serve directory
 COPY dist /usr/share/nginx/html
 
-# Optional: Copy your custom nginx.conf if you have one
-# COPY nginx.conf /etc/nginx/nginx.conf
+COPY _nginx/nginx.conf /etc/nginx/conf.d/default.conf
+COPY _nginx/general-security-headers.conf /etc/nginx/snippets/general-security-headers.conf
 
 EXPOSE 80
 
