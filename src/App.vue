@@ -15,18 +15,24 @@ onMounted(() => {
 </script>
 
 <template>
+  <div class="background-image"></div>
+
   <div class="flex h-screen w-screen flex-col">
-    <header class="w-full bg-yellow-200 p-2 text-center font-bold text-yellow-700">
-      !!! Work in progress !!!
-    </header>
-
     <main class="flex-1 lg:flex lg:gap-10 lg:overflow-hidden">
-      <TheSurvey class="w-full max-w-2xl lg:h-full lg:overflow-y-scroll" />
-      <TheOutput class="flex-1 lg:h-full lg:overflow-y-scroll" />
+      <TheSurvey class="no-scrollbar w-full max-w-2xl lg:h-full lg:overflow-y-scroll" />
+      <TheOutput class="no-scrollbar flex-1 lg:h-full lg:overflow-y-scroll" />
     </main>
-
-    <footer class="bg-slate-100 p-2 text-left text-sm">
-      <a class="underline underline-offset-2" href="https://solectrus.de">solectrus.de</a>
-    </footer>
   </div>
 </template>
+
+<style scoped>
+.background-image {
+  width: 100%; /* Breite nach Bedarf anpassen */
+  height: 100vh; /* Höhe nach Bedarf anpassen */
+  background-image: url('/images/background.jpg'); /* Pfad relativ zum `public`-Ordner */
+  background-size: cover; /* Sorgt dafür, dass das Bild den Container vollständig bedeckt */
+  background-position: center; /* Zentriert das Bild */
+  position: absolute;
+  z-index: -1;
+}
+</style>

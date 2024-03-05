@@ -21,9 +21,9 @@ watch(
   <div
     v-if="surveyStore.composeFile"
     :class="{ 'animate-vote': animateClass }"
-    class="space-y-10 bg-blue-50 font-mono"
+    class="space-y-10 font-mono"
   >
-    <section class="space-y-5 bg-slate-200 px-0 py-5 text-sm lg:px-10">
+    <section class="space-y-5 rounded-bl bg-slate-200 px-0 py-5 text-sm lg:px-10">
       <header
         class="sticky top-0 flex items-end justify-between border-b-2 border-slate-800 bg-slate-200 py-2 text-center lg:text-left"
       >
@@ -37,7 +37,7 @@ watch(
       <highlightjs language="yaml" :code="surveyStore.composeFile" />
     </section>
 
-    <section class="space-y-5 bg-slate-200 px-0 py-5 text-sm lg:px-10">
+    <section class="space-y-5 rounded-tl bg-slate-200 px-0 py-5 text-sm lg:px-10">
       <header
         class="sticky top-0 flex items-end justify-between border-b-2 border-slate-800 bg-slate-200 py-2 text-center lg:text-left"
       >
@@ -52,7 +52,7 @@ watch(
 
   <div
     v-else
-    class="flex items-center justify-center p-10 text-center text-xl text-slate-600 lg:bg-blue-50 lg:text-3xl"
+    class="flex items-center justify-center p-10 text-center text-xl text-slate-600 opacity-90 lg:bg-blue-50 lg:text-3xl"
   >
     Hier erscheint die Konfiguration <br />nach Beantwortung der Fragen.
   </div>
