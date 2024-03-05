@@ -8,6 +8,11 @@
     "de": "Erstelle Schritt-für-Schritt deine Installation von SOLECTRUS",
     "default": "Create your SOLECTRUS installation step-by-step"
   },
+  "logo": {
+    "de": "https://solectrus.de/favicon.png"
+  },
+  "logoWidth": "100px",
+  "logoHeight": "100px",
   "logoPosition": "right",
   "pages": [
     {
@@ -613,5 +618,6 @@
   ],
   "showCompletedPage": false,
   "showQuestionNumbers": "off",
-  "questionErrorLocation": "bottom"
+  "questionErrorLocation": "bottom",
+  "showProgressBar": "bottom"
 }
