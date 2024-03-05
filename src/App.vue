@@ -16,8 +16,8 @@ surveyStore.setSurvey(surveyJson)
     </header>
 
     <main class="flex-1 lg:flex lg:gap-10 lg:overflow-hidden">
-      <TheSurvey class="w-full max-w-2xl overflow-y-scroll lg:h-full" />
-      <TheOutput class="flex-1 lg:h-full overflow-y-scroll" />
+      <TheSurvey class="w-full max-w-2xl lg:overflow-y-scroll lg:h-full" />
+      <TheOutput class="flex-1 lg:h-full lg:overflow-y-scroll" />
     </main>
 
     <footer class="p-2 bg-slate-100 text-left text-sm">

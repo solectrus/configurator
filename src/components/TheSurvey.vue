@@ -8,8 +8,12 @@ const surveyStore = useSurveyStore()
     <div v-if="surveyStore.survey">
       <SurveyComponent :model="surveyStore.survey" />
 
-      <div class="text-right">
-        <a class="text-slate-500 underline text-sm" href="/">Neu starten</a>
+      <div class="text-center lg:text-right p-2 pr-0 mt-2">
+        <a
+          class="text-slate-500 space-x-2 text-sm hover:bg-red-300 hover:text-white p-2 rounded"
+          href="/"
+          >↻ Neu starten</a
+        >
       </div>
     </div>
 
