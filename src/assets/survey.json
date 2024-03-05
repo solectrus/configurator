@@ -5,7 +5,7 @@
     "default": "SOLECTRUS configurator"
   },
   "description": {
-    "de": "Erstelle Schritt-für-Schritt deine Installation von SOLECTRUS",
+    "de": "In einfachen Schritten zur Docker-Konfiguration von SOLECTRUS",
     "default": "Create your SOLECTRUS installation step-by-step"
   },
   "logo": {
