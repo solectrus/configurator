@@ -38,7 +38,7 @@ export const useSurveyStore = defineStore('survey', {
       this.answers = newAnswers
       this.finished = false
       this.composeFile = new ComposeGeneratorService(this.answers).build()
-      this.envFile = EnvGeneratorService.generate(this.answers)
+      this.envFile = new EnvGeneratorService(this.answers).build()
     },
   },
 })
