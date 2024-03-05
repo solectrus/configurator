@@ -38,3 +38,9 @@ jobs:
           context: .
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      - name: Deploy
+        env:
+          DEPLOY_HOOK: ${{ secrets.DEPLOY_HOOK }}
+        if: github.ref == 'refs/heads/main' && env.DEPLOY_HOOK != null
+        run: curl -X POST ${{ secrets.DEPLOY_HOOK }}
