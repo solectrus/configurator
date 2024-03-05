@@ -5,12 +5,12 @@ const surveyStore = useSurveyStore()
 </script>
 
 <template>
-  <div v-if="surveyStore.composeFile" class="font-mono bg-slate-100 space-y-10">
-    <section class="bg-slate-200 px-0 lg:px-10 py-5 space-y-5 text-sm">
+  <div v-if="surveyStore.composeFile" class="space-y-10 bg-slate-100 font-mono">
+    <section class="space-y-5 bg-slate-200 px-0 py-5 text-sm lg:px-10">
       <header
-        class="sticky top-0 bg-slate-200 py-2 border-b-2 border-green-600 text-center lg:text-left"
+        class="sticky top-0 border-b-2 border-green-600 bg-slate-200 py-2 text-center lg:text-left"
       >
-        <h1 class="bg-slate-800 text-slate-100 py-1 px-2 rounded-lg inline-block">
+        <h1 class="inline-block rounded-lg bg-slate-800 px-2 py-1 text-slate-100">
           docker-compose.yml
         </h1>
       </header>
@@ -18,11 +18,11 @@ const surveyStore = useSurveyStore()
       <highlightjs language="yaml" :code="surveyStore.composeFile" />
     </section>
 
-    <section class="bg-slate-200 px-0 lg:px-10 py-5 space-y-5 text-sm">
+    <section class="space-y-5 bg-slate-200 px-0 py-5 text-sm lg:px-10">
       <header
-        class="sticky top-0 bg-slate-200 py-2 border-b-2 border-green-600 text-center lg:text-left"
+        class="sticky top-0 border-b-2 border-green-600 bg-slate-200 py-2 text-center lg:text-left"
       >
-        <h1 class="bg-slate-800 text-slate-100 py-1 px-2 rounded-lg inline-block">.env</h1>
+        <h1 class="inline-block rounded-lg bg-slate-800 px-2 py-1 text-slate-100">.env</h1>
       </header>
 
       <highlightjs language="env" :code="surveyStore.envFile" />
@@ -31,7 +31,7 @@ const surveyStore = useSurveyStore()
 
   <div
     v-else
-    class="flex items-center justify-center lg:bg-slate-100 text-slate-600 text-xl lg:text-3xl p-10"
+    class="flex items-center justify-center p-10 text-xl text-slate-600 lg:bg-slate-100 lg:text-3xl"
   >
     Noch keine Konfiguration vorhanden
   </div>

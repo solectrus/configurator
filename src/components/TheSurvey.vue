@@ -8,9 +8,9 @@ const surveyStore = useSurveyStore()
     <div v-if="surveyStore.survey">
       <SurveyComponent :model="surveyStore.survey" />
 
-      <div class="text-center lg:text-right p-2 pr-0 mt-2">
+      <div class="mt-2 p-2 pr-0 text-center lg:text-right">
         <a
-          class="text-slate-500 space-x-2 text-sm hover:bg-red-300 hover:text-white p-2 rounded"
+          class="space-x-2 rounded p-2 text-sm text-slate-500 hover:bg-red-300 hover:text-white"
           href="/"
           >↻ Neu starten</a
         >
