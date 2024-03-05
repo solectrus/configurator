@@ -618,6 +618,5 @@
   ],
   "showCompletedPage": false,
   "showQuestionNumbers": "off",
-  "questionErrorLocation": "bottom",
-  "showProgressBar": "bottom"
+  "questionErrorLocation": "bottom"
 }
