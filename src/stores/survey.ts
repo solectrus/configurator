@@ -30,6 +30,8 @@ export const useSurveyStore = defineStore('survey', {
       this.survey.locale = 'de'
       this.survey.onValueChanged.add((sender) => this.setAnswers(sender.data))
       this.survey.onComplete.add(() => (this.finished = true))
+
+      return this.survey
     },
 
     setAnswers(newAnswers: Answers) {
