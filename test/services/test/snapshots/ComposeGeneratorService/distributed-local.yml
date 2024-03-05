@@ -1,0 +1,21 @@
+version: '3.7'
+services:
+  senec-collector:
+    image: ghcr.io/solectrus/senec-collector:latest
+    environment:
+      - SENEC_HOST
+      - SENEC_SCHEMA
+      - SENEC_INTERVAL
+      - SENEC_LANGUAGE
+      - INFLUX_HOST
+      - INFLUX_SCHEMA
+      - INFLUX_PORT
+      - INFLUX_TOKEN=${INFLUX_TOKEN_WRITE}
+      - INFLUX_ORG
+      - INFLUX_BUCKET
+      - INFLUX_MEASUREMENT=${INFLUX_MEASUREMENT_PV}
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: 10m
+        max-file: '3'

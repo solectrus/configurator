@@ -3,7 +3,7 @@ import { Model } from 'survey-core'
 import { EnvGeneratorService } from '@/services/EnvGeneratorService'
 import { ComposeGeneratorService } from '@/services/ComposeGeneratorService'
 
-export type Answer = string | number | boolean
+export type Answer = string | string[] | number | boolean
 export type Answers = Record<string, Answer>
 
 interface SurveyState {
