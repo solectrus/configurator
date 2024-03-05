@@ -1,4 +1,4 @@
-name: Build and Deploy to ghcr.io
+name: Test, build, and deploy to ghcr.io
 
 on:
   push:
@@ -18,24 +18,9 @@ jobs:
 
       - run: yarn install
 
+      - run: yarn vitest run
+
       - run: yarn build
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: dist
-          path: dist
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/download-artifact@v4
-        with:
-          name: dist
-          path: dist
 
       - uses: docker/login-action@v3
         with:
