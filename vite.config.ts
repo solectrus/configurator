@@ -20,7 +20,8 @@ export default defineConfig({
         manualChunks(id) {
           // Extract large dependencies into separate chunks
           if (id.includes('node_modules/survey')) return 'surveyjs'
-          if (id.includes('node_modules/@vue')) return 'vue'
+          else if (id.includes('node_modules/@vue') || id.includes('node_modules/pinia'))
+            return 'vue'
         }
       }
     }
