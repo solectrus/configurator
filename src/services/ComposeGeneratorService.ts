@@ -1,7 +1,7 @@
 import type { Answers } from '@/stores/survey'
 import yaml from 'js-yaml'
 
-import appService from '@/templates/services/app.yml'
+import dashboardService from '@/templates/services/dashboard.yml'
 import influxdbService from '@/templates/services/influxdb.yml'
 import postgresqlService from '@/templates/services/postgresql.yml'
 import redisService from '@/templates/services/redis.yml'
@@ -61,7 +61,7 @@ export class ComposeGeneratorService {
       this.addService('influxdb', influxdbService)
       this.addService('postgresql', postgresqlService)
       this.addService('redis', redisService)
-      this.addService('app', appService)
+      this.addService('dashboard', dashboardService)
     }
   }
 

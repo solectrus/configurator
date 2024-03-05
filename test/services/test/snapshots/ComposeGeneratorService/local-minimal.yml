@@ -63,7 +63,7 @@ services:
       options:
         max-size: 10m
         max-file: '3'
-  app:
+  dashboard:
     image: ghcr.io/solectrus/solectrus:latest
     depends_on:
       influxdb:

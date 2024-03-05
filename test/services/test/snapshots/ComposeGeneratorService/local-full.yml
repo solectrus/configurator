@@ -69,7 +69,7 @@ services:
         max-file: '3'
     labels:
       - com.centurylinklabs.watchtower.scope=solectrus
-  app:
+  dashboard:
     image: ghcr.io/solectrus/solectrus:latest
     depends_on:
       influxdb:
