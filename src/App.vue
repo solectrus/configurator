@@ -1,6 +1,12 @@
 <script setup lang="ts">
-import TheSurvey from './components/TheSurvey.vue'
-import TheOutput from './components/TheOutput.vue'
+import TheSurvey from '@/components/TheSurvey.vue'
+import TheOutput from '@/components/TheOutput.vue'
+
+import { useSurveyStore } from '@/stores/survey'
+import surveyJson from '@/assets/survey.json'
+
+const surveyStore = useSurveyStore()
+surveyStore.setSurvey(surveyJson)
 </script>
 
 <template>
