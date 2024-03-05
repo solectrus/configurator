@@ -12,7 +12,7 @@ surveyStore.setSurvey(surveyJson)
 <template>
   <div class="flex h-screen w-screen flex-col">
     <header class="w-full bg-yellow-200 p-2 text-center font-bold text-yellow-700">
-      Unfertig, bitte noch nicht verwenden!
+      !!! Work in progress !!!
     </header>
 
     <main class="flex-1 lg:flex lg:gap-10 lg:overflow-hidden">
