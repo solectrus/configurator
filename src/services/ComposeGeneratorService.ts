@@ -26,30 +26,35 @@ type DockerService = {
   }
 }
 
-export class ComposeGeneratorService {
-  private answers: Answers
-  private compose: {
-    version: string
-    services: Record<string, DockerService>
-  }
+export type DockerCompose = {
+  version: string
+  services: Record<string, DockerService>
+}
 
-  constructor(answers: Answers) {
-    this.answers = answers
+export class ComposeGeneratorService {
+  private compose: DockerCompose
+
+  constructor(private answers: Answers) {
     this.compose = {
       version: '3.7',
       services: {},
     }
   }
 
-  public build(): string {
+  public build() {
     this.configureBaseServices()
     this.configureCollectorServices()
     this.configureWatchtower()
     this.configureBackup()
 
-    return Object.keys(this.compose.services).length
+    const text = Object.keys(this.compose.services).length
       ? yaml.dump(this.compose, { lineWidth: -1 })
       : ''
+
+    return {
+      raw: () => this.compose,
+      text: () => text,
+    }
   }
 
   private configureBaseServices() {

@@ -1,18 +1,19 @@
 import type { Answers } from '@/stores/survey'
+import type { DockerCompose } from '@/services/ComposeGeneratorService'
 
 import dashboardVariables from '@/templates/variables/dashboard.env?raw'
 import forecastCollectorVariables from '@/templates/variables/forecast-collector.env?raw'
 import influxdbVariables from '@/templates/variables/influxdb.env?raw'
 import senecCollectorVariables from '@/templates/variables/senec-collector.env?raw'
+import mqttCollectorVariables from '@/templates/variables/mqtt-collector.env?raw'
 import postgresqlVariables from '@/templates/variables/postgresql.env?raw'
 import redisVariables from '@/templates/variables/redis.env?raw'
 
 export class EnvGeneratorService {
-  private answers: Answers
-
-  constructor(answers: Answers) {
-    this.answers = answers
-  }
+  constructor(
+    private compose: DockerCompose,
+    private answers: Answers,
+  ) {}
 
   public build(): string {
     return [
@@ -20,37 +21,58 @@ export class EnvGeneratorService {
       this.buildForecastCollectorVariables(),
       this.buildInfluxdbVariables(),
       this.buildSenecCollectorVariables(),
+      this.buildMQTTCollectorVariables(),
       this.buildPostgresqlVariables(),
       this.buildRedisVariables(),
-    ].join('\n')
+    ]
+      .filter(Boolean)
+      .join('\n')
   }
 
-  private buildDashboardVariables(): string {
-    return this.replaceEnvValues(dashboardVariables, {
-      APP_HOST: 'myapp.local',
-      SECRET_KEY_BASE: this.generateSecretKeyBase(),
-      INSTALLATION_DATE: this.answers.q_installation_date as string,
-    })
+  private buildDashboardVariables(): string | undefined {
+    if (this.compose.services['dashboard']) {
+      return this.replaceEnvValues(dashboardVariables, {
+        APP_HOST: 'myapp.local',
+        SECRET_KEY_BASE: this.generateSecretKeyBase(),
+        INSTALLATION_DATE: this.answers.q_installation_date as string,
+      })
+    }
   }
 
-  private buildForecastCollectorVariables(): string {
-    return this.replaceEnvValues(forecastCollectorVariables, {})
+  private buildForecastCollectorVariables(): string | undefined {
+    if (this.compose.services['forecast-collector']) {
+      return this.replaceEnvValues(forecastCollectorVariables, {})
+    }
   }
 
-  private buildInfluxdbVariables(): string {
-    return this.replaceEnvValues(influxdbVariables, {})
+  private buildInfluxdbVariables(): string | undefined {
+    if (this.compose.services['influxdb']) {
+      return this.replaceEnvValues(influxdbVariables, {})
+    }
   }
 
-  private buildSenecCollectorVariables(): string {
-    return this.replaceEnvValues(senecCollectorVariables, {})
+  private buildSenecCollectorVariables(): string | undefined {
+    if (this.compose.services['senec-collector']) {
+      return this.replaceEnvValues(senecCollectorVariables, {})
+    }
   }
 
-  private buildPostgresqlVariables(): string {
-    return this.replaceEnvValues(postgresqlVariables, {})
+  private buildMQTTCollectorVariables(): string | undefined {
+    if (this.compose.services['mqtt-collector']) {
+      return this.replaceEnvValues(mqttCollectorVariables, {})
+    }
   }
 
-  private buildRedisVariables(): string {
-    return this.replaceEnvValues(redisVariables, {})
+  private buildPostgresqlVariables(): string | undefined {
+    if (this.compose.services['postgresql']) {
+      return this.replaceEnvValues(postgresqlVariables, {})
+    }
+  }
+
+  private buildRedisVariables(): string | undefined {
+    if (this.compose.services['postgresql']) {
+      return this.replaceEnvValues(redisVariables, {})
+    }
   }
 
   // Replace the values of the given environment file content with the given replacements

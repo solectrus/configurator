@@ -44,7 +44,7 @@ describe('ComposeGeneratorService', () => {
     'correctly builds docker-compose.yml with different configurations',
     (expectedSnapshotFile, answers) => {
       const service = new ComposeGeneratorService(answers)
-      const result = service.build()
+      const result = service.build().text()
 
       expect(result).toMatchFileSnapshot(
         `test/snapshots/ComposeGeneratorService/${expectedSnapshotFile}.yml`,
