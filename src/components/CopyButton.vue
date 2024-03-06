@@ -10,14 +10,10 @@ const copied = ref(false)
 
 const copyTextToClipboard = async () => {
   if (props.text) {
-    try {
-      await navigator.clipboard.writeText(props.text)
+    await navigator.clipboard.writeText(props.text)
 
-      copied.value = true
-      setTimeout(() => (copied.value = false), 2000)
-    } catch (err) {
-      console.error('Copy to clipboard failed: ', err)
-    }
+    copied.value = true
+    setTimeout(() => (copied.value = false), 2000)
   }
 }
 </script>
