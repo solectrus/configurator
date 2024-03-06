@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import { useSurveyStore } from '@/stores/survey'
-import CopyButton from '@/components/CopyButton.vue'
+import CodeContainer from '@/components/CodeContainer.vue'
 
 const surveyStore = useSurveyStore()
 const animateClass = ref(false)
@@ -23,31 +23,9 @@ watch(
     :class="{ 'animate-vote': animateClass }"
     class="space-y-10 font-mono"
   >
-    <section class="space-y-5 rounded-bl bg-slate-200 px-0 py-5 text-sm lg:px-10">
-      <header
-        class="sticky top-0 flex items-end justify-between border-b-2 border-slate-800 bg-slate-200 py-2 text-center lg:text-left"
-      >
-        <h1 class="inline-block rounded-lg bg-slate-800 px-2 py-1 text-slate-100">
-          docker-compose.yml
-        </h1>
+    <CodeContainer language="yaml" :code="surveyStore.composeFile" filename="docker-compose.yml" />
 
-        <CopyButton :text="surveyStore.composeFile" />
-      </header>
-
-      <highlightjs language="yaml" :code="surveyStore.composeFile" />
-    </section>
-
-    <section class="space-y-5 rounded-tl bg-slate-200 px-0 py-5 text-sm lg:px-10">
-      <header
-        class="sticky top-0 flex items-end justify-between border-b-2 border-slate-800 bg-slate-200 py-2 text-center lg:text-left"
-      >
-        <h1 class="inline-block rounded-lg bg-slate-800 px-2 py-1 text-slate-100">.env</h1>
-
-        <CopyButton :text="surveyStore.envFile" />
-      </header>
-
-      <highlightjs language="env" :code="surveyStore.envFile" />
-    </section>
+    <CodeContainer language="env" :code="surveyStore.envFile" filename=".env" />
   </div>
 
   <div
