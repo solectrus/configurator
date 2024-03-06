@@ -1,6 +1,7 @@
 import type { Answers } from '@/stores/survey'
 
 export const testCases: [string, Answers][] = [
+  ['blank', {}],
   [
     'local-full',
     {
