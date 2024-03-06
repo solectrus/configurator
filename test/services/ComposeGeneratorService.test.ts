@@ -15,6 +15,18 @@ const testCases: [string, Answers][] = [
     },
   ],
   [
+    'local-full-mqtt',
+    {
+      installation_type: 'local',
+      battery_vendor: 'battery_other',
+      wallbox_vendor: 'wallbox_other',
+      heatpump_access: 'heatpump_mqtt',
+      q_forecast: true,
+      q_updates: true,
+      q_backup: true,
+    },
+  ],
+  [
     'local-minimal',
     {
       installation_type: 'local',

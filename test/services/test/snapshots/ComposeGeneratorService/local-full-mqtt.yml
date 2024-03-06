@@ -1,0 +1,249 @@
+version: '3.7'
+services:
+  influxdb:
+    image: influxdb:2.7-alpine
+    volumes:
+      - ${INFLUX_VOLUME_PATH}:/var/lib/influxdb2
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=${INFLUX_USERNAME}
+      - DOCKER_INFLUXDB_INIT_PASSWORD=${INFLUX_PASSWORD}
+      - DOCKER_INFLUXDB_INIT_ORG=${INFLUX_ORG}
+      - DOCKER_INFLUXDB_INIT_BUCKET=${INFLUX_BUCKET}
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=${INFLUX_ADMIN_TOKEN}
+    command: influxd run --bolt-path /var/lib/influxdb2/influxd.bolt --engine-path /var/lib/influxdb2/engine --store disk
+    restart: unless-stopped
+    healthcheck:
+      test:
+        - CMD
+        - influx
+        - ping
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    logging:
+      options:
+        max-size: 10m
+        max-file: '3'
+    labels:
+      - com.centurylinklabs.watchtower.scope=solectrus
+  postgresql:
+    image: postgres:16-alpine
+    environment:
+      - POSTGRES_PASSWORD
+    volumes:
+      - ${DB_VOLUME_PATH}:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U postgres
+      interval: 10s
+      timeout: 20s
+      retries: 5
+      start_period: 60s
+    logging:
+      options:
+        max-size: 10m
+        max-file: '3'
+    labels:
+      - com.centurylinklabs.watchtower.scope=solectrus
+  redis:
+    image: redis:7-alpine
+    volumes:
+      - ${REDIS_VOLUME_PATH}:/data
+    restart: unless-stopped
+    healthcheck:
+      test:
+        - CMD
+        - redis-cli
+        - ping
+      interval: 10s
+      timeout: 20s
+      retries: 5
+      start_period: 60s
+    logging:
+      options:
+        max-size: 10m
+        max-file: '3'
+    labels:
+      - com.centurylinklabs.watchtower.scope=solectrus
+  dashboard:
+    image: ghcr.io/solectrus/solectrus:latest
+    depends_on:
+      influxdb:
+        condition: service_healthy
+    links:
+      - influxdb
+    ports:
+      - '3000:3000'
+    environment:
+      - APP_HOST
+      - FORCE_SSL
+      - SECRET_KEY_BASE
+      - INSTALLATION_DATE
+      - ADMIN_PASSWORD
+      - FRAME_ANCESTORS
+      - DB_HOST=postgresql
+      - DB_PASSWORD=${POSTGRES_PASSWORD}
+      - DB_USER=postgres
+      - REDIS_URL=redis://redis:6379/1
+      - INFLUX_HOST
+      - INFLUX_TOKEN=${INFLUX_TOKEN_READ}
+      - INFLUX_ORG
+      - INFLUX_BUCKET
+      - INFLUX_POLL_INTERVAL
+      - WEB_CONCURRENCY
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - nc -z 127.0.0.1 3000 || exit 1
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: 10m
+        max-file: '3'
+    labels:
+      - com.centurylinklabs.watchtower.scope=solectrus
+  mqtt-collector:
+    image: ghcr.io/solectrus/mqtt-collector:latest
+    environment:
+      - INFLUX_HOST
+      - INFLUX_SCHEMA
+      - INFLUX_PORT
+      - INFLUX_TOKEN=${INFLUX_TOKEN_WRITE}
+      - INFLUX_ORG
+      - INFLUX_BUCKET
+      - INFLUX_MEASUREMENT=${MQTT_INFLUX_MEASUREMENT}
+      - MQTT_HOST
+      - MQTT_PORT
+      - MQTT_SSL
+      - MQTT_USERNAME
+      - MQTT_PASSWORD
+      - MQTT_TOPIC_HOUSE_POW
+      - MQTT_TOPIC_GRID_POW
+      - MQTT_TOPIC_BAT_CHARGE_CURRENT
+      - MQTT_TOPIC_BAT_FUEL_CHARGE
+      - MQTT_TOPIC_BAT_POWER
+      - MQTT_TOPIC_BAT_VOLTAGE
+      - MQTT_TOPIC_CASE_TEMP
+      - MQTT_TOPIC_CURRENT_STATE
+      - MQTT_TOPIC_MPP1_POWER
+      - MQTT_TOPIC_MPP2_POWER
+      - MQTT_TOPIC_MPP3_POWER
+      - MQTT_TOPIC_INVERTER_POWER
+      - MQTT_TOPIC_WALLBOX_CHARGE_POWER
+      - MQTT_FLIP_BAT_POWER
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: 10m
+        max-file: '3'
+    depends_on:
+      influxdb:
+        condition: service_healthy
+    links:
+      - influxdb
+    labels:
+      - com.centurylinklabs.watchtower.scope=solectrus
+  forecast-collector:
+    image: ghcr.io/solectrus/forecast-collector:latest
+    environment:
+      - INFLUX_HOST
+      - INFLUX_TOKEN=${INFLUX_TOKEN_WRITE}
+      - INFLUX_ORG
+      - INFLUX_BUCKET
+      - INFLUX_MEASUREMENT=${FORECAST_INFLUX_MEASUREMENT}
+      - FORECAST_LATITUDE
+      - FORECAST_LONGITUDE
+      - FORECAST_DECLINATION
+      - FORECAST_AZIMUTH
+      - FORECAST_KWP
+      - FORECAST_CONFIGURATIONS
+      - FORECAST_0_LATITUDE
+      - FORECAST_0_LONGITUDE
+      - FORECAST_0_DECLINATION
+      - FORECAST_0_AZIMUTH
+      - FORECAST_0_KWP
+      - FORECAST_0_DAMPING_MORNING
+      - FORECAST_0_DAMPING_EVENING
+      - FORECAST_1_LATITUDE
+      - FORECAST_1_LONGITUDE
+      - FORECAST_1_DECLINATION
+      - FORECAST_1_AZIMUTH
+      - FORECAST_1_KWP
+      - FORECAST_1_DAMPING_MORNING
+      - FORECAST_1_DAMPING_EVENING
+      - FORECAST_2_LATITUDE
+      - FORECAST_2_LONGITUDE
+      - FORECAST_2_DECLINATION
+      - FORECAST_2_AZIMUTH
+      - FORECAST_2_KWP
+      - FORECAST_2_DAMPING_MORNING
+      - FORECAST_2_DAMPING_EVENING
+      - FORECAST_3_LATITUDE
+      - FORECAST_3_LONGITUDE
+      - FORECAST_3_DECLINATION
+      - FORECAST_3_AZIMUTH
+      - FORECAST_3_KWP
+      - FORECAST_3_DAMPING_MORNING
+      - FORECAST_3_DAMPING_EVENING
+      - FORECAST_INTERVAL
+      - FORECAST_SOLAR_APIKEY
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: 10m
+        max-file: '3'
+    depends_on:
+      influxdb:
+        condition: service_healthy
+    links:
+      - influxdb
+    labels:
+      - com.centurylinklabs.watchtower.scope=solectrus
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: '--scope solectrus --cleanup'
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: 10m
+        max-file: '3'
+    labels:
+      - com.centurylinklabs.watchtower.scope=solectrus
+  postgresql-backup:
+    image: eeshugerman/postgres-backup-s3:16
+    environment:
+      - POSTGRES_DATABASE=solectrus_production
+      - POSTGRES_HOST=postgresql
+      - POSTGRES_PASSWORD
+      - POSTGRES_USER=postgres
+      - S3_ACCESS_KEY_ID=${AWS_ACCESS_KEY}
+      - S3_SECRET_ACCESS_KEY=${AWS_SECRET_KEY}
+      - S3_REGION=${AWS_REGION}
+      - S3_BUCKET=${AWS_BUCKET}
+      - S3_PREFIX=postgres_backup
+      - SCHEDULE=@daily
+    links:
+      - postgresql
+    restart: unless-stopped
+  influxdb-backup:
+    image: ghcr.io/solectrus/influxdb2-s3-backup:latest
+    environment:
+      - INFLUXDB_HOST=influxdb
+      - INFLUXDB_ORG=${INFLUX_ORG}
+      - INFLUXDB_TOKEN=${INFLUX_ADMIN_TOKEN}
+      - INFLUXDB_BACKUP_PORT=8086
+      - BACKUP_PATH='/data/influxdb/backup'
+      - S3_BUCKET=${AWS_BUCKET}
+      - S3_PREFIX='influxdb_backup'
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_KEY}
+      - CRON: 0 2 * * *
+    restart: unless-stopped
+    links:
+      - influxdb
