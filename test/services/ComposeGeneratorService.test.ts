@@ -11,32 +11,32 @@ const testCases: [string, Answers][] = [
       heatpump_access: 'heatpump_shelly',
       q_forecast: true,
       q_updates: true,
-      q_backup: true
-    }
+      q_backup: true,
+    },
   ],
   [
     'local-minimal',
     {
       installation_type: 'local',
-      battery_vendor: 'battery_senec3'
-    }
+      battery_vendor: 'battery_senec3',
+    },
   ],
   [
     'distributed-local',
     {
       installation_type: 'distributed',
       q_distributed_choice: 'local',
-      battery_vendor: 'battery_senec3'
-    }
+      battery_vendor: 'battery_senec3',
+    },
   ],
   [
     'distributed-cloud',
     {
       installation_type: 'distributed',
       q_distributed_choice: 'cloud',
-      battery_vendor: 'battery_senec3'
-    }
-  ]
+      battery_vendor: 'battery_senec3',
+    },
+  ],
 ]
 
 describe('ComposeGeneratorService', () => {
@@ -47,8 +47,8 @@ describe('ComposeGeneratorService', () => {
       const result = service.build()
 
       expect(result).toMatchFileSnapshot(
-        `test/snapshots/ComposeGeneratorService/${expectedSnapshotFile}.yml`
+        `test/snapshots/ComposeGeneratorService/${expectedSnapshotFile}.yml`,
       )
-    }
+    },
   )
 })
