@@ -25,7 +25,10 @@ watch(
 </script>
 
 <template>
-  <section class="rounded-bl text-sm transition-colors duration-500 ease-out">
+  <section
+    class="flex flex-1 flex-col rounded-bl font-mono text-sm transition-colors duration-500 ease-out"
+    :class="{ 'bg-yellow-100': isFlashing }"
+  >
     <header
       class="sticky top-0 flex items-end justify-between bg-slate-700/80 py-3 text-center lg:px-5 lg:text-left"
     >
@@ -34,21 +37,10 @@ watch(
       <CopyButton :text="code" v-if="code" />
     </header>
 
-    <highlightjs
-      :language="language"
-      :code="code"
-      :class="{ 'bg-yellow-100': isFlashing }"
-      v-if="code"
-    />
+    <highlightjs :language="language" :code="code" v-if="code" />
 
-    <div v-else class="bg-gray-800 py-20 text-slate-300/20">
-      <svg
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1"
-        stroke="currentColor"
-        class="mx-auto h-80 w-80"
-      >
+    <div v-else class="flex flex-1 items-center justify-center bg-gray-800 text-slate-300/20">
+      <svg fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="h-80 w-80">
         <path
           stroke-linecap="round"
           stroke-linejoin="round"

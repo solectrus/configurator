@@ -6,9 +6,14 @@ const surveyStore = useSurveyStore()
 </script>
 
 <template>
-  <div class="space-y-10 font-mono">
-    <CodeContainer language="yaml" :code="surveyStore.composeFile" filename="docker-compose.yml" />
+  <div class="flex flex-col gap-10">
+    <CodeContainer
+      language="yaml"
+      :code="surveyStore.composeFile"
+      filename="compose.yml"
+      class="flex-1"
+    />
 
-    <CodeContainer language="env" :code="surveyStore.envFile" filename=".env" />
+    <CodeContainer language="env" :code="surveyStore.envFile" filename=".env" class="flex-1" />
   </div>
 </template>

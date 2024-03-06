@@ -27,7 +27,7 @@ onMounted(() => {
 
 <style scoped>
 .background-image {
-  @apply absolute -z-10 h-screen w-full bg-cover bg-center;
+  @apply fixed -z-10 h-screen w-screen bg-cover bg-center;
 
   background-image: url('/images/background.jpg');
 }
