@@ -57,25 +57,10 @@
               }
             }
           ]
-        },
-        {
-          "type": "text",
-          "name": "q_installation_date",
-          "title": {
-            "de": "Inbetriebnahme deiner PV-Anlage",
-            "default": "Commissioning of your PV system"
-          },
-          "description": {
-            "de": "Datum der Installation",
-            "default": "Date of installation"
-          },
-          "isRequired": true,
-          "inputType": "date",
-          "maxValueExpression": "today()"
         }
       ],
       "title": {
-        "de": "Geräte",
+        "de": "Photovoltaik-Anlage",
         "default": "Devices"
       }
     },
@@ -629,6 +614,39 @@
         "de": "Backup auf Amazon S3",
         "default": "Backup to Amazon S3"
       }
+    },
+    {
+      "name": "p_dashboard",
+      "elements": [
+        {
+          "type": "text",
+          "name": "q_installation_date",
+          "title": {
+            "de": "Inbetriebnahme deiner PV-Anlage",
+            "default": "Commissioning of your PV system"
+          },
+          "description": {
+            "de": "Datum der Installation, wird für die Auswahl von Zeiträumen benötigt",
+            "default": "Date of installation"
+          },
+          "isRequired": true,
+          "inputType": "date",
+          "maxValueExpression": "today()"
+        },
+        {
+          "type": "text",
+          "name": "question1",
+          "title": {
+            "de": "Administrator-Passwort",
+            "default": "Administrator password"
+          },
+          "description": {
+            "de": "Nur der Admin kann Einstellungen und Strompreise bearbeiten",
+            "default": "Only the admin can edit settings and electricity prices"
+          }
+        }
+      ],
+      "title": "Dashboard"
     }
   ],
   "showCompletedPage": false,

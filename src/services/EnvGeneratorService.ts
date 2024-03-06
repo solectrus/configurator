@@ -6,6 +6,7 @@ import forecastCollectorVariables from '@/templates/variables/forecast-collector
 import influxdbVariables from '@/templates/variables/influxdb.env?raw'
 import senecCollectorVariables from '@/templates/variables/senec-collector.env?raw'
 import mqttCollectorVariables from '@/templates/variables/mqtt-collector.env?raw'
+import shellyCollectorVariables from '@/templates/variables/shelly-collector.env?raw'
 import postgresqlVariables from '@/templates/variables/postgresql.env?raw'
 import redisVariables from '@/templates/variables/redis.env?raw'
 
@@ -21,6 +22,7 @@ export class EnvGeneratorService {
       this.buildForecastCollectorVariables(),
       this.buildInfluxdbVariables(),
       this.buildSenecCollectorVariables(),
+      this.buildShellyCollectorVariables(),
       this.buildMQTTCollectorVariables(),
       this.buildPostgresqlVariables(),
       this.buildRedisVariables(),
@@ -77,6 +79,12 @@ export class EnvGeneratorService {
             SENEC_INTERVAL: this.answers.senec_interval_cloud as string,
           })
       }
+    }
+  }
+
+  private buildShellyCollectorVariables(): string | undefined {
+    if (this.compose.services['shelly-collector']) {
+      return this.replaceEnvValues(shellyCollectorVariables, {})
     }
   }
 

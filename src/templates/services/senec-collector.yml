@@ -1,5 +1,6 @@
 image: ghcr.io/solectrus/senec-collector:latest
 environment:
+  - SENEC_ADAPTER
   - SENEC_HOST
   - SENEC_SCHEMA
   - SENEC_INTERVAL
