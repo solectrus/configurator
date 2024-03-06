@@ -20,3 +20,20 @@ services:
       options:
         max-size: 10m
         max-file: '3'
+  shelly-collector:
+    image: ghcr.io/solectrus/shelly-collector:latest
+    environment:
+      - INFLUX_SCHEMA
+      - INFLUX_HOST
+      - INFLUX_TOKEN
+      - INFLUX_ORG
+      - INFLUX_BUCKET
+      - INFLUX_PORT
+      - INFLUX_MEASUREMENT=${SHELLY_INFLUX_MEASUREMENT}
+      - SHELLY_HOST
+      - SHELLY_INTERVAL
+    logging:
+      options:
+        max-size: 10m
+        max-file: '3'
+    restart: unless-stopped

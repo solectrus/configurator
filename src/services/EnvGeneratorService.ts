@@ -80,8 +80,8 @@ export class EnvGeneratorService {
           SENEC_HOST: undefined,
           SENEC_LANGUAGE: undefined,
           SENEC_SCHEMA: undefined,
-          SENEC_USERNAME: (this.answers.senec_username || 'me@example.com') as string,
-          SENEC_PASSWORD: (this.answers.senec_password || 'secret') as string,
+          SENEC_USERNAME: this.answers.senec_username as string,
+          SENEC_PASSWORD: this.answers.senec_password as string,
           SENEC_SYSTEM_ID: this.answers.senec_system_id as string,
           SENEC_INTERVAL: this.answers.senec_interval_cloud as string,
         })
