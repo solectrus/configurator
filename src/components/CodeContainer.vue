@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps, ref, watch } from 'vue'
+import { ref, watch } from 'vue'
 import CopyButton from '@/components/CopyButton.vue'
 
 interface CodeContainerProps {
