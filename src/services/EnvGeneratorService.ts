@@ -55,30 +55,36 @@ export class EnvGeneratorService {
 
   private buildSenecCollectorVariables(): string | undefined {
     if (this.compose.services['senec-collector']) {
-      switch (this.answers.battery_vendor) {
-        case 'battery_senec3':
-          return this.replaceEnvValues(senecCollectorVariables, {
-            SENEC_ADAPTER: 'local',
-            SENEC_HOST: this.answers.senec_host as string,
-            SENEC_LANGUAGE: this.answers.senec_language as string,
-            SENEC_SCHEMA: this.answers.senec_schema as string,
-            SENEC_USERNAME: undefined,
-            SENEC_PASSWORD: undefined,
-            SENEC_SYSTEM_ID: undefined,
-            SENEC_INTERVAL: this.answers.senec_interval as string,
-          })
-        case 'battery_senec4':
-          return this.replaceEnvValues(senecCollectorVariables, {
-            SENEC_ADAPTER: 'cloud',
-            SENEC_HOST: undefined,
-            SENEC_LANGUAGE: undefined,
-            SENEC_SCHEMA: undefined,
-            SENEC_USERNAME: (this.answers.senec_username || 'me@example.com') as string,
-            SENEC_PASSWORD: (this.answers.senec_password || 'secret') as string,
-            SENEC_SYSTEM_ID: this.answers.senec_system_id as string,
-            SENEC_INTERVAL: this.answers.senec_interval_cloud as string,
-          })
-      }
+      if (
+        (this.answers.battery_vendor === 'battery_senec3' &&
+          this.answers.installation_type === 'local') ||
+        this.answers.q_distributed_choice === 'local'
+      )
+        return this.replaceEnvValues(senecCollectorVariables, {
+          SENEC_ADAPTER: 'local',
+          SENEC_HOST: this.answers.senec_host as string,
+          SENEC_LANGUAGE: this.answers.senec_language as string,
+          SENEC_SCHEMA: this.answers.senec_schema as string,
+          SENEC_USERNAME: undefined,
+          SENEC_PASSWORD: undefined,
+          SENEC_SYSTEM_ID: undefined,
+          SENEC_INTERVAL: this.answers.senec_interval as string,
+        })
+      else if (
+        this.answers.battery_vendor === 'battery_senec4' ||
+        (this.answers.battery_vendor === 'battery_senec3' &&
+          this.answers.installation_type === 'cloud')
+      )
+        return this.replaceEnvValues(senecCollectorVariables, {
+          SENEC_ADAPTER: 'cloud',
+          SENEC_HOST: undefined,
+          SENEC_LANGUAGE: undefined,
+          SENEC_SCHEMA: undefined,
+          SENEC_USERNAME: (this.answers.senec_username || 'me@example.com') as string,
+          SENEC_PASSWORD: (this.answers.senec_password || 'secret') as string,
+          SENEC_SYSTEM_ID: this.answers.senec_system_id as string,
+          SENEC_INTERVAL: this.answers.senec_interval_cloud as string,
+        })
     }
   }
 
