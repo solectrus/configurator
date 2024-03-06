@@ -61,7 +61,7 @@ export class ComposeGeneratorService {
     if (
       this.answers.installation_type &&
       (this.answers.installation_type != 'distributed' ||
-        this.answers.q_distributed_choice != 'local')
+        (this.answers.q_distributed_choice && this.answers.q_distributed_choice != 'local'))
     ) {
       this.addService('influxdb', influxdbService)
       this.addService('postgresql', postgresqlService)
@@ -85,7 +85,7 @@ export class ComposeGeneratorService {
         if (
           this.answers.installation_type &&
           (this.answers.installation_type !== 'distributed' ||
-            this.answers.q_distributed_choice === 'local')
+            (this.answers.q_distributed_choice && this.answers.q_distributed_choice === 'local'))
         )
           this.addService('senec-collector', senecCollectorService)
         break
