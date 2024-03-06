@@ -20,7 +20,16 @@ const surveyStore = useSurveyStore()
         />
       </svg>
 
-      <SurveyComponent :model="surveyStore.survey" class="rounded-r" />
+      <div v-if="surveyStore.finished" class="my-10 rounded-r bg-slate-300/90 p-6 text-slate-600">
+        <h1 class="text-xl font-bold">Konfiguration erstellt</h1>
+
+        <p class="mt-5 text-lg">
+          Kopiere die zwei individuell für dich erstellen Konfigurations-Dateien auf deinen Server
+          &dash; und los geht's!
+        </p>
+      </div>
+
+      <SurveyComponent :model="surveyStore.survey" class="rounded-r" v-else />
 
       <div class="mt-2 flex items-end justify-between p-2 pr-0 text-center lg:text-right">
         <a class="p-2 text-slate-300 underline underline-offset-2" href="https://solectrus.de"
@@ -48,14 +57,6 @@ const surveyStore = useSurveyStore()
           Neu starten
         </a>
       </div>
-    </div>
-
-    <div v-if="surveyStore.finished" class="p-6 text-slate-600">
-      <h1 class="text-xl font-bold uppercase tracking-wide">Fertig!</h1>
-
-      <p class="mt-5 text-lg">
-        Kopiere die nebenstehenden Konfigurations-Dateien auf deinen Server und los gehts!
-      </p>
     </div>
   </div>
 </template>
