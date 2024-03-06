@@ -5,7 +5,7 @@ import { testCases } from '../fixtures/answers'
 
 describe('EnvGeneratorService', () => {
   test.each(testCases)(
-    'correctly builds compose.yml with different configurations',
+    'correctly builds .env with different configurations',
     (expectedSnapshotFile, answers) => {
       const compose = new ComposeGeneratorService(answers).build()
       const service = new EnvGeneratorService(compose.raw(), answers)
