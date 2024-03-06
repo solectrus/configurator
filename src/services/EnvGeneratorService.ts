@@ -154,7 +154,7 @@ export class EnvGeneratorService {
 
     return Array.from({ length: length / 2 }, () => {
       seedInt = (seedInt * 9_301 + 49_297) % 233_280
-      const value = Math.floor((seedInt / 233_280) * 256)
+      const value = (Math.floor((seedInt / 233_280) * 256) + 256) % 256
       return value.toString(16).padStart(2, '0')
     }).join('')
   }
