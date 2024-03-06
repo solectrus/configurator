@@ -1,5 +1,46 @@
 version: '3.7'
 services:
+  dashboard:
+    image: ghcr.io/solectrus/solectrus:latest
+    depends_on:
+      postgresql:
+        condition: service_healthy
+      influxdb:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    links:
+      - postgresql
+      - influxdb
+      - redis
+    ports:
+      - '3000:3000'
+    environment:
+      - APP_HOST
+      - FORCE_SSL
+      - SECRET_KEY_BASE
+      - INSTALLATION_DATE
+      - ADMIN_PASSWORD
+      - FRAME_ANCESTORS
+      - DB_HOST=postgresql
+      - DB_PASSWORD=${POSTGRES_PASSWORD}
+      - DB_USER=postgres
+      - REDIS_URL=redis://redis:6379/1
+      - INFLUX_HOST
+      - INFLUX_TOKEN=${INFLUX_TOKEN_READ}
+      - INFLUX_ORG
+      - INFLUX_BUCKET
+      - INFLUX_POLL_INTERVAL
+      - WEB_CONCURRENCY
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - nc -z 127.0.0.1 3000 || exit 1
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: 10m
+        max-file: '3'
   influxdb:
     image: influxdb:2.7-alpine
     volumes:
@@ -59,41 +100,6 @@ services:
       timeout: 20s
       retries: 5
       start_period: 60s
-    logging:
-      options:
-        max-size: 10m
-        max-file: '3'
-  dashboard:
-    image: ghcr.io/solectrus/solectrus:latest
-    depends_on:
-      influxdb:
-        condition: service_healthy
-    links:
-      - influxdb
-    ports:
-      - '3000:3000'
-    environment:
-      - APP_HOST
-      - FORCE_SSL
-      - SECRET_KEY_BASE
-      - INSTALLATION_DATE
-      - ADMIN_PASSWORD
-      - FRAME_ANCESTORS
-      - DB_HOST=postgresql
-      - DB_PASSWORD=${POSTGRES_PASSWORD}
-      - DB_USER=postgres
-      - REDIS_URL=redis://redis:6379/1
-      - INFLUX_HOST
-      - INFLUX_TOKEN=${INFLUX_TOKEN_READ}
-      - INFLUX_ORG
-      - INFLUX_BUCKET
-      - INFLUX_POLL_INTERVAL
-      - WEB_CONCURRENCY
-    healthcheck:
-      test:
-        - CMD-SHELL
-        - nc -z 127.0.0.1 3000 || exit 1
-    restart: unless-stopped
     logging:
       options:
         max-size: 10m

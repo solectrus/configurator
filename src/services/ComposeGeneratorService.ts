@@ -63,10 +63,10 @@ export class ComposeGeneratorService {
       (this.answers.installation_type != 'distributed' ||
         (this.answers.q_distributed_choice && this.answers.q_distributed_choice != 'local'))
     ) {
+      this.addService('dashboard', dashboardService)
       this.addService('influxdb', influxdbService)
       this.addService('postgresql', postgresqlService)
       this.addService('redis', redisService)
-      this.addService('dashboard', dashboardService)
     }
   }
 

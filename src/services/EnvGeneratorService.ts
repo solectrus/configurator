@@ -19,11 +19,11 @@ export class EnvGeneratorService {
   public build(): string {
     return [
       this.buildDashboardVariables(),
-      this.buildForecastCollectorVariables(),
-      this.buildInfluxdbVariables(),
       this.buildSenecCollectorVariables(),
       this.buildShellyCollectorVariables(),
       this.buildMQTTCollectorVariables(),
+      this.buildForecastCollectorVariables(),
+      this.buildInfluxdbVariables(),
       this.buildPostgresqlVariables(),
       this.buildRedisVariables(),
     ]
