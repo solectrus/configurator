@@ -46,6 +46,7 @@ export const testCases: [string, Answers][] = [
       installation_type: 'distributed',
       q_distributed_choice: 'local',
       battery_vendor: 'battery_senec3',
+      wallbox_vendor: 'wallbox_other',
       heatpump_access: 'heatpump_shelly',
       senec_host: '1.2.3.4',
       senec_language: 'it',

@@ -20,6 +20,40 @@ services:
       options:
         max-size: 10m
         max-file: '3'
+  mqtt-collector:
+    image: ghcr.io/solectrus/mqtt-collector:latest
+    environment:
+      - INFLUX_HOST
+      - INFLUX_SCHEMA
+      - INFLUX_PORT
+      - INFLUX_TOKEN=${INFLUX_TOKEN_WRITE}
+      - INFLUX_ORG
+      - INFLUX_BUCKET
+      - INFLUX_MEASUREMENT=${MQTT_INFLUX_MEASUREMENT}
+      - MQTT_HOST
+      - MQTT_PORT
+      - MQTT_SSL
+      - MQTT_USERNAME
+      - MQTT_PASSWORD
+      - MQTT_TOPIC_HOUSE_POW
+      - MQTT_TOPIC_GRID_POW
+      - MQTT_TOPIC_BAT_CHARGE_CURRENT
+      - MQTT_TOPIC_BAT_FUEL_CHARGE
+      - MQTT_TOPIC_BAT_POWER
+      - MQTT_TOPIC_BAT_VOLTAGE
+      - MQTT_TOPIC_CASE_TEMP
+      - MQTT_TOPIC_CURRENT_STATE
+      - MQTT_TOPIC_MPP1_POWER
+      - MQTT_TOPIC_MPP2_POWER
+      - MQTT_TOPIC_MPP3_POWER
+      - MQTT_TOPIC_INVERTER_POWER
+      - MQTT_TOPIC_WALLBOX_CHARGE_POWER
+      - MQTT_FLIP_BAT_POWER
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: 10m
+        max-file: '3'
   shelly-collector:
     image: ghcr.io/solectrus/shelly-collector:latest
     environment:
