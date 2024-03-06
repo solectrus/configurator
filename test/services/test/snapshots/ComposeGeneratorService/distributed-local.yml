@@ -14,7 +14,7 @@ services:
       - INFLUX_TOKEN=${INFLUX_TOKEN_WRITE}
       - INFLUX_ORG
       - INFLUX_BUCKET
-      - INFLUX_MEASUREMENT=${INFLUX_MEASUREMENT_PV}
+      - INFLUX_MEASUREMENT=${SENEC_INFLUX_MEASUREMENT}
     restart: unless-stopped
     logging:
       options:
