@@ -59,7 +59,7 @@ describe('ComposeGeneratorService', () => {
       const result = service.build().text()
 
       expect(result).toMatchFileSnapshot(
-        `test/snapshots/ComposeGeneratorService/${expectedSnapshotFile}.yml`,
+        `../snapshots/services/ComposeGeneratorService/${expectedSnapshotFile}.yml`,
       )
     },
   )

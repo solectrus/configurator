@@ -86,7 +86,7 @@ describe('EnvGeneratorService', () => {
       const result = service.build()
 
       expect(result).toMatchFileSnapshot(
-        `test/snapshots/EnvGeneratorService/${expectedSnapshotFile}.env`,
+        `../snapshots/services/EnvGeneratorService/${expectedSnapshotFile}.env`,
       )
     },
   )
