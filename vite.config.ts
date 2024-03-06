@@ -16,8 +16,8 @@ export default defineConfig({
 
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
   },
 
   build: {
@@ -28,8 +28,8 @@ export default defineConfig({
         // Brotli compression as .br files
         gzipPlugin({
           customCompression: (content) => brotliPromise(Buffer.from(content)),
-          fileName: '.br'
-        })
+          fileName: '.br',
+        }),
       ],
       output: {
         manualChunks(id) {
@@ -37,8 +37,8 @@ export default defineConfig({
           if (id.includes('node_modules/survey')) return 'surveyjs'
           else if (id.includes('node_modules/@vue') || id.includes('node_modules/pinia'))
             return 'vue'
-        }
-      }
-    }
-  }
+        },
+      },
+    },
+  },
 })
