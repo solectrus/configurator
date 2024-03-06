@@ -16,6 +16,10 @@ export const testCases: [string, Answers][] = [
       q_backup: true,
       q_installation_date: '2021-01-01',
       admin_password: 'admin-password',
+      aws_access_key_id: 'aws-access-key-id',
+      aws_secret_access_key: 'aws-secret',
+      aws_region: 'eu-central-1',
+      aws_bucket: 'my-bucket',
     },
   ],
   [
@@ -29,6 +33,10 @@ export const testCases: [string, Answers][] = [
       q_updates: true,
       q_backup: true,
       admin_password: 'admin-password',
+      aws_access_key_id: 'aws-access-key-id',
+      aws_secret_access_key: 'aws-secret',
+      aws_region: 'eu-central-1',
+      aws_bucket: 'my-bucket',
     },
   ],
   [

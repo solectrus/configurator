@@ -580,28 +580,28 @@
         },
         {
           "type": "text",
-          "name": "s3_access_key",
+          "name": "aws_access_key_id",
           "visibleIf": "{q_backup} = true",
           "title": "Access Key ID",
           "isRequired": true
         },
         {
           "type": "text",
-          "name": "s3_secret_access_key",
+          "name": "aws_secret_access_key",
           "visibleIf": "{q_backup} = true",
           "title": "Secret Access Key",
           "isRequired": true
         },
         {
           "type": "text",
-          "name": "s3_region",
+          "name": "aws_region",
           "visibleIf": "{q_backup} = true",
           "title": "Region",
           "isRequired": true
         },
         {
           "type": "text",
-          "name": "s3_bucket",
+          "name": "aws_bucket",
           "visibleIf": "{q_backup} = true",
           "title": "Bucket",
           "isRequired": true

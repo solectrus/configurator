@@ -9,6 +9,7 @@ import mqttCollectorVariables from '@/templates/variables/mqtt-collector.env?raw
 import shellyCollectorVariables from '@/templates/variables/shelly-collector.env?raw'
 import postgresqlVariables from '@/templates/variables/postgresql.env?raw'
 import redisVariables from '@/templates/variables/redis.env?raw'
+import awsVariables from '@/templates/variables/aws.env?raw'
 
 export class EnvGeneratorService {
   constructor(
@@ -26,6 +27,7 @@ export class EnvGeneratorService {
       this.buildInfluxdbVariables(),
       this.buildPostgresqlVariables(),
       this.buildRedisVariables(),
+      this.buildAwsVariables(),
     ]
       .filter(Boolean)
       .join('\n')
@@ -108,8 +110,19 @@ export class EnvGeneratorService {
   }
 
   private buildRedisVariables(): string | undefined {
-    if (this.compose.services['postgresql']) {
+    if (this.compose.services['redis']) {
       return this.replaceEnvValues(redisVariables, {})
+    }
+  }
+
+  private buildAwsVariables(): string | undefined {
+    if (this.compose.services['postgresql-backup'] || this.compose.services['influxdb-backup']) {
+      return this.replaceEnvValues(awsVariables, {
+        AWS_ACCESS_KEY_ID: this.answers.aws_access_key_id as string,
+        AWS_SECRET_ACCESS_KEY: this.answers.aws_secret_access_key as string,
+        AWS_REGION: this.answers.aws_region as string,
+        AWS_BUCKET: this.answers.aws_bucket as string,
+      })
     }
   }
 
