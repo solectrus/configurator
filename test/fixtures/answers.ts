@@ -65,7 +65,7 @@ export const testCases: [string, Answers][] = [
     },
   ],
   [
-    'cloud',
+    'cloud-senec3',
     {
       installation_type: 'cloud',
       battery_vendor: 'battery_senec3',
@@ -74,6 +74,18 @@ export const testCases: [string, Answers][] = [
       senec_system_id: '111',
       senec_interval_cloud: '45',
       q_installation_date: '2021-01-05',
+    },
+  ],
+  [
+    'cloud-senec4',
+    {
+      installation_type: 'cloud',
+      battery_vendor: 'battery_senec4',
+      senec_username: 'peter@gmx.de',
+      senec_password: 'mysecret',
+      senec_system_id: '111',
+      senec_interval_cloud: '45',
+      q_installation_date: '2021-01-06',
     },
   ],
 ]
