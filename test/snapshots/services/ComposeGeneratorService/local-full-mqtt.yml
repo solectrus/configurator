@@ -109,13 +109,6 @@ services:
   mqtt-collector:
     image: ghcr.io/solectrus/mqtt-collector:latest
     environment:
-      - INFLUX_HOST
-      - INFLUX_SCHEMA
-      - INFLUX_PORT
-      - INFLUX_TOKEN=${INFLUX_TOKEN_WRITE}
-      - INFLUX_ORG
-      - INFLUX_BUCKET
-      - INFLUX_MEASUREMENT=${MQTT_INFLUX_MEASUREMENT}
       - MQTT_HOST
       - MQTT_PORT
       - MQTT_SSL
@@ -135,6 +128,13 @@ services:
       - MQTT_TOPIC_INVERTER_POWER
       - MQTT_TOPIC_WALLBOX_CHARGE_POWER
       - MQTT_FLIP_BAT_POWER
+      - INFLUX_HOST
+      - INFLUX_SCHEMA
+      - INFLUX_PORT
+      - INFLUX_TOKEN=${INFLUX_TOKEN_WRITE}
+      - INFLUX_ORG
+      - INFLUX_BUCKET
+      - INFLUX_MEASUREMENT=${MQTT_INFLUX_MEASUREMENT}
     restart: unless-stopped
     logging:
       options:
@@ -150,11 +150,6 @@ services:
   forecast-collector:
     image: ghcr.io/solectrus/forecast-collector:latest
     environment:
-      - INFLUX_HOST
-      - INFLUX_TOKEN=${INFLUX_TOKEN_WRITE}
-      - INFLUX_ORG
-      - INFLUX_BUCKET
-      - INFLUX_MEASUREMENT=${FORECAST_INFLUX_MEASUREMENT}
       - FORECAST_LATITUDE
       - FORECAST_LONGITUDE
       - FORECAST_DECLINATION
@@ -191,6 +186,13 @@ services:
       - FORECAST_3_DAMPING_EVENING
       - FORECAST_INTERVAL
       - FORECAST_SOLAR_APIKEY
+      - INFLUX_HOST
+      - INFLUX_PORT
+      - INFLUX_SCHEMA
+      - INFLUX_TOKEN=${INFLUX_TOKEN_WRITE}
+      - INFLUX_ORG
+      - INFLUX_BUCKET
+      - INFLUX_MEASUREMENT=${FORECAST_INFLUX_MEASUREMENT}
     restart: unless-stopped
     logging:
       options:
