@@ -23,7 +23,7 @@ const copyTextToClipboard = async () => {
 </script>
 
 <template>
-  <div v-if="copied" class="flex select-none items-end gap-2 font-sans text-sm text-green-800">
+  <div v-if="copied" class="flex select-none items-end gap-2 font-sans text-sm text-green-300">
     <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
       <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
     </svg>
@@ -31,7 +31,12 @@ const copyTextToClipboard = async () => {
     Kopiert!
   </div>
 
-  <button v-else @click="copyTextToClipboard" class="flex items-end gap-2" title="Kopieren">
+  <button
+    v-else
+    @click="copyTextToClipboard"
+    class="flex items-end gap-2 text-slate-300"
+    title="Kopieren"
+  >
     <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
       <path
         stroke-linecap="round"
