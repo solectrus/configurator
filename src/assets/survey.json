@@ -1,15 +1,12 @@
 {
   "locale": "de",
   "title": {
-    "de": "SOLECTRUS-Konfigurator",
+    "de": "Konfigurator",
     "default": "SOLECTRUS configurator"
   },
   "description": {
-    "de": "In einfachen Schritten zur Docker-Konfiguration von SOLECTRUS",
+    "de": "In einfachen Schritten zur Docker-Konfiguration",
     "default": "Create your SOLECTRUS installation step-by-step"
-  },
-  "logo": {
-    "de": "https://solectrus.de/favicon.png"
   },
   "logoWidth": "100px",
   "logoHeight": "100px",

@@ -34,7 +34,28 @@ watch(
       <CopyButton :text="code" v-if="code" />
     </header>
 
-    <highlightjs :language="language" :code="code" :class="{ 'bg-yellow-100': isFlashing }" />
+    <highlightjs
+      :language="language"
+      :code="code"
+      :class="{ 'bg-yellow-100': isFlashing }"
+      v-if="code"
+    />
+
+    <div v-else class="bg-gray-800 py-20 text-slate-300/20">
+      <svg
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1"
+        stroke="currentColor"
+        class="mx-auto h-80 w-80"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5"
+        />
+      </svg>
+    </div>
   </section>
 </template>
 

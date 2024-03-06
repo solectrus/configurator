@@ -27,12 +27,8 @@ onMounted(() => {
 
 <style scoped>
 .background-image {
-  width: 100%; /* Breite nach Bedarf anpassen */
-  height: 100vh; /* Höhe nach Bedarf anpassen */
-  background-image: url('/images/background.jpg'); /* Pfad relativ zum `public`-Ordner */
-  background-size: cover; /* Sorgt dafür, dass das Bild den Container vollständig bedeckt */
-  background-position: center; /* Zentriert das Bild */
-  position: absolute;
-  z-index: -1;
+  @apply absolute -z-10 h-screen w-full bg-cover bg-center;
+
+  background-image: url('/images/background.jpg');
 }
 </style>

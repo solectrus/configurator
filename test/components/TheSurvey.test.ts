@@ -11,6 +11,6 @@ describe('TheSurvey', () => {
     surveyStore.setSurvey(surveyJson)
 
     const wrapper = mount(TheSurvey)
-    expect(wrapper.text()).toContain('SOLECTRUS-Konfigurator')
+    expect(wrapper.text()).toContain('Konfigurator')
   })
 })
