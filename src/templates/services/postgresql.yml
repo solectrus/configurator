@@ -3,7 +3,7 @@
 # This is not worth the effort, so don't do it.
 image: postgres:16-alpine
 environment:
-  - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+  - POSTGRES_PASSWORD
 volumes:
   - ${DB_VOLUME_PATH}:/var/lib/postgresql/data
 restart: unless-stopped
