@@ -352,7 +352,7 @@
       "elements": [
         {
           "type": "text",
-          "name": "senec_email",
+          "name": "senec_username",
           "title": {
             "de": "E-Mail-Adresse",
             "default": "You email address"
