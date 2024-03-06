@@ -16,4 +16,12 @@ describe('EnvGeneratorService', () => {
       )
     },
   )
+
+  test('builds empty .env when no services are configured', () => {
+    const compose = new ComposeGeneratorService({}).build()
+    const service = new EnvGeneratorService(compose.raw(), {})
+    const result = service.build()
+
+    expect(result).toEqual('')
+  })
 })

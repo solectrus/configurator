@@ -14,4 +14,11 @@ describe('ComposeGeneratorService', () => {
       )
     },
   )
+
+  test('builds empty compose.yml when no services are configured', () => {
+    const service = new ComposeGeneratorService({})
+    const result = service.build().text()
+
+    expect(result).toEqual('')
+  })
 })
