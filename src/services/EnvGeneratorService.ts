@@ -33,7 +33,7 @@ export class EnvGeneratorService {
     if (this.compose.services['dashboard']) {
       return this.replaceEnvValues(dashboardVariables, {
         APP_HOST: 'myapp.local',
-        SECRET_KEY_BASE: this.generateSecretKeyBase(),
+        SECRET_KEY_BASE: this.generateSecretKeyBase('admin-password'),
         INSTALLATION_DATE: this.answers.q_installation_date as string,
       })
     }
@@ -121,9 +121,17 @@ export class EnvGeneratorService {
     return result
   }
 
-  private generateSecretKeyBase(length = 128) {
-    const array = new Uint8Array(length / 2) // 2 bytes per hex char
-    window.crypto.getRandomValues(array)
-    return Array.from(array, (byte) => byte.toString(16).padStart(2, '0')).join('')
+  private generateSecretKeyBase(seed: string, length = 128) {
+    let seedInt = this.stringToSeed(seed)
+
+    return Array.from({ length: length / 2 }, () => {
+      seedInt = (seedInt * 9_301 + 49_297) % 233_280
+      const value = Math.floor((seedInt / 233_280) * 256)
+      return value.toString(16).padStart(2, '0')
+    }).join('')
+  }
+
+  private stringToSeed(str: string): number {
+    return Array.from(str).reduce((hash, char) => ((hash << 5) - hash + char.charCodeAt(0)) | 0, 0)
   }
 }
