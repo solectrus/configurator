@@ -35,7 +35,8 @@ export class EnvGeneratorService {
     if (this.compose.services['dashboard']) {
       return this.replaceEnvValues(dashboardVariables, {
         APP_HOST: 'myapp.local',
-        SECRET_KEY_BASE: this.generateSecretKeyBase('admin-password'),
+        ADMIN_PASSWORD: this.answers.admin_password as string,
+        SECRET_KEY_BASE: this.generateSecretKeyBase(this.answers.admin_password as string),
         INSTALLATION_DATE: this.answers.q_installation_date as string,
       })
     }

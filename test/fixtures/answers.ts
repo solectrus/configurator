@@ -15,6 +15,7 @@ export const testCases: [string, Answers][] = [
       q_updates: true,
       q_backup: true,
       q_installation_date: '2021-01-01',
+      admin_password: 'admin-password',
     },
   ],
   [
@@ -27,6 +28,7 @@ export const testCases: [string, Answers][] = [
       q_forecast: true,
       q_updates: true,
       q_backup: true,
+      admin_password: 'admin-password',
     },
   ],
   [
@@ -38,6 +40,7 @@ export const testCases: [string, Answers][] = [
       senec_language: 'it',
       senec_schema: 'http',
       q_installation_date: '2021-01-02',
+      admin_password: 'admin-password',
     },
   ],
   [
@@ -52,6 +55,7 @@ export const testCases: [string, Answers][] = [
       senec_language: 'it',
       senec_schema: 'http',
       q_installation_date: '2021-01-03',
+      admin_password: 'admin-password',
     },
   ],
   [
@@ -61,6 +65,7 @@ export const testCases: [string, Answers][] = [
       q_distributed_choice: 'cloud',
       battery_vendor: 'battery_senec3',
       q_installation_date: '2021-01-04',
+      admin_password: 'admin-password',
     },
   ],
   [
@@ -73,6 +78,7 @@ export const testCases: [string, Answers][] = [
       senec_system_id: '111',
       senec_interval_cloud: '45',
       q_installation_date: '2021-01-05',
+      admin_password: 'admin-password',
     },
   ],
   [
@@ -85,6 +91,7 @@ export const testCases: [string, Answers][] = [
       senec_system_id: '111',
       senec_interval_cloud: '45',
       q_installation_date: '2021-01-06',
+      admin_password: 'admin-password',
     },
   ],
 ]

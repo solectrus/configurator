@@ -632,7 +632,7 @@
         },
         {
           "type": "text",
-          "name": "question1",
+          "name": "admin_password",
           "title": {
             "de": "Administrator-Passwort",
             "default": "Administrator password"
