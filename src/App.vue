@@ -6,11 +6,9 @@ import TheOutput from '@/components/TheOutput.vue'
 import { useSurveyStore } from '@/stores/survey'
 import surveyJson from '@/assets/survey.json'
 
-import { BorderlessLight } from 'survey-core/themes/borderless-light'
-
 onMounted(() => {
   const surveyStore = useSurveyStore()
-  surveyStore.setSurvey(surveyJson).applyTheme(BorderlessLight)
+  surveyStore.setSurvey(surveyJson)
 })
 </script>
 

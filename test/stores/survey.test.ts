@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach } from 'vitest'
 import { createPinia, setActivePinia } from 'pinia'
 import { useSurveyStore } from '@/stores/survey'
 import type { Answers } from '@/types/answers'
+import surveyJson from '@/assets/survey.json'
 
 describe('useSurveyStore', () => {
   beforeEach(() => {
@@ -19,8 +20,7 @@ describe('useSurveyStore', () => {
 
   it('can set survey', () => {
     const store = useSurveyStore()
-    const dummySurveyJson = {}
-    const survey = store.setSurvey(dummySurveyJson)
+    const survey = store.setSurvey(surveyJson)
 
     expect(survey).toBeDefined()
     expect(survey).toBe(store.survey)
@@ -30,11 +30,22 @@ describe('useSurveyStore', () => {
 
   it('can set answers', () => {
     const store = useSurveyStore()
-    store.setSurvey({})
+    store.setSurvey(surveyJson)
     const newAnswers: Answers = { installation_date: '2021-01-01' }
     store.setAnswers(newAnswers)
 
     expect(store.answers).toStrictEqual(newAnswers)
+    expect(store.finished).toBe(false)
+  })
+
+  it('can reset the survey', () => {
+    const store = useSurveyStore()
+    store.setSurvey(surveyJson)
+    store.setAnswers({ installation_date: '2021-01-01' })
+    store.reset()
+
+    expect(store.survey).toBeDefined()
+    expect(store.answers).toBeNull()
     expect(store.finished).toBe(false)
   })
 })

@@ -36,9 +36,11 @@ const surveyStore = useSurveyStore()
           solectrus.de
         </a>
 
-        <a
-          href="/"
+        <button
+          v-if="surveyStore.survey.currentPageNo > 0"
+          type="button"
           class="inline-flex items-center gap-2 space-x-2 rounded p-2 text-sm text-slate-300 hover:bg-red-400 hover:text-white"
+          @click="surveyStore.reset()"
         >
           <svg
             fill="none"
@@ -54,7 +56,7 @@ const surveyStore = useSurveyStore()
             />
           </svg>
           Neu starten
-        </a>
+        </button>
       </div>
     </div>
   </div>
