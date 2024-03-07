@@ -626,6 +626,7 @@
           }
         }
       ],
+      "visibleIf": "{installation_type} anyof ['local', 'cloud'] or {distributed_choice} = 'cloud'",
       "title": "Dashboard"
     }
   ],
