@@ -17,7 +17,7 @@
       "elements": [
         {
           "type": "checkbox",
-          "name": "q_devices",
+          "name": "devices",
           "title": {
             "de": "Welche Geräte gehören zu deiner Photovoltaik-Anlage?",
             "default": "What appliances do you have in your home?"
@@ -31,7 +31,7 @@
                 "default": "You can't do it without a battery!",
                 "de": "Ohne Stromspeicher geht's nicht!"
               },
-              "expression": "{q_devices} contains 'battery'"
+              "expression": "{devices} contains 'battery'"
             }
           ],
           "choices": [
@@ -62,12 +62,12 @@
       }
     },
     {
-      "name": "p_vendor_battery",
+      "name": "p_battery",
       "elements": [
         {
           "type": "radiogroup",
           "name": "battery_vendor",
-          "visibleIf": "{q_devices} contains 'battery'",
+          "visibleIf": "{devices} contains 'battery'",
           "title": {
             "de": "Welchen Stromspeicher hast du?",
             "default": "Which manufacturer is your storage system from?"
@@ -75,18 +75,18 @@
           "isRequired": true,
           "choices": [
             {
-              "value": "battery_senec3",
+              "value": "senec3",
               "text": {
                 "default": "SENEC.Home V3 or V2.1",
                 "de": "SENEC.Home V3 oder v2.1"
               }
             },
             {
-              "value": "battery_senec4",
+              "value": "senec4",
               "text": "SENEC.Home 4"
             },
             {
-              "value": "battery_other",
+              "value": "other",
               "text": {
                 "de": "Anderer",
                 "default": "Other"
@@ -106,12 +106,12 @@
       }
     },
     {
-      "name": "p_heatpump_connection",
+      "name": "p_heatpump",
       "elements": [
         {
           "type": "radiogroup",
           "name": "heatpump_access",
-          "visibleIf": "{q_devices} contains 'heatpump'",
+          "visibleIf": "{devices} contains 'heatpump'",
           "title": {
             "de": "Wie wird der Stromverbrauch der Wärmepumpe gemessen?",
             "default": "How is the electricity consumption of the heat pump measured?"
@@ -119,14 +119,14 @@
           "isRequired": true,
           "choices": [
             {
-              "value": "heatpump_shelly",
+              "value": "shelly",
               "text": {
                 "de": "Über einen Shelly",
                 "default": "Using Shelly"
               }
             },
             {
-              "value": "heatpump_mqtt",
+              "value": "mqtt",
               "text": {
                 "de": "Über MQTT",
                 "default": "Via MQTT"
@@ -141,12 +141,12 @@
       }
     },
     {
-      "name": "p_vendor_wallbox",
+      "name": "p_wallbox",
       "elements": [
         {
           "type": "radiogroup",
           "name": "wallbox_vendor",
-          "visibleIf": "{q_devices} contains 'wallbox'",
+          "visibleIf": "{devices} contains 'wallbox'",
           "title": {
             "de": "Von welchem Hersteller ist deine Wallbox?",
             "default": "Which manufacturer is your wallbox from?"
@@ -154,14 +154,14 @@
           "isRequired": true,
           "choices": [
             {
-              "value": "wallbox_senec",
+              "value": "senec",
               "text": {
                 "de": "SENEC (gesteuert vom Stromspeicher)",
                 "default": "SENEC (controlled by the battery)"
               }
             },
             {
-              "value": "wallbox_other",
+              "value": "other",
               "text": {
                 "default": "Other",
                 "de": "Anderer"
@@ -200,7 +200,7 @@
                 "de": "Cloud: Alle Komponenten auf einem Cloud-Server",
                 "default": "Cloud: All components on a cloud server"
               },
-              "enableIf": "{battery_vendor} <> 'battery_other' and {wallbox_vendor} <> 'wallbox_other' and {q_devices} notcontains 'heatpump'"
+              "enableIf": "(({battery_vendor} != 'other') and ({wallbox_vendor} != 'other')) and ({devices} notcontains 'heatpump')"
             },
             {
               "value": "distributed",
@@ -208,7 +208,7 @@
                 "de": "Verteilt: Lokale Messwerterfassung, Server in der Cloud",
                 "default": "Distributed: Local measurement, server in the cloud"
               },
-              "enableIf": "{battery_vendor} anyof ['battery_other', 'battery_senec3'] or {wallbox_vendor} = 'wallbox_other' and {q_devices} contains 'heatpump'"
+              "enableIf": "({battery_vendor} anyof ['other', 'senec3']) or (({wallbox_vendor} = 'other') and ({devices} contains 'heatpump'))"
             }
           ]
         }
@@ -223,7 +223,7 @@
       "elements": [
         {
           "type": "radiogroup",
-          "name": "q_distributed_choice",
+          "name": "distributed_choice",
           "title": {
             "de": "Welchen Teil der Installation möchtest du jetzt angehen?"
           },
@@ -252,7 +252,7 @@
       }
     },
     {
-      "name": "p_senec3_access",
+      "name": "p_senec3",
       "elements": [
         {
           "type": "text",
@@ -323,14 +323,14 @@
           ]
         }
       ],
-      "visibleIf": "{battery_vendor} = 'battery_senec3' and {q_distributed_choice} <> 'cloud'",
+      "visibleIf": "({battery_vendor} = 'senec3') and ({distributed_choice} != 'cloud')",
       "title": {
         "de": "Zugriff auf SENEC-Stromspeicher",
         "default": "Access to your SENEC battery"
       }
     },
     {
-      "name": "p_senec4_access",
+      "name": "p_senec4",
       "elements": [
         {
           "type": "text",
@@ -383,14 +383,14 @@
           "min": 30
         }
       ],
-      "visibleIf": "{battery_vendor} = 'battery_senec4'",
+      "visibleIf": "{battery_vendor} = 'senec4'",
       "title": {
         "de": "Zugangsdaten für SENEC Home.4",
         "default": "Credentials for SENEC Home.4"
       }
     },
     {
-      "name": "q_shelly",
+      "name": "p_shelly",
       "elements": [
         {
           "type": "text",
@@ -409,7 +409,7 @@
           "inputType": "number"
         }
       ],
-      "visibleIf": "{heatpump_access} = 'heatpump_shelly' and {q_distributed_choice} <> 'cloud' and {installation_type} <> 'cloud'",
+      "visibleIf": "(({heatpump_access} = 'shelly') and ({distributed_choice} != 'cloud')) and ({installation_type} != 'cloud')",
       "title": {
         "de": "Zugriff auf Shelly-Stromzähler"
       }
@@ -419,8 +419,8 @@
       "elements": [
         {
           "type": "boolean",
-          "name": "q_forecast",
-          "visibleIf": "{q_distributed_choice} <> 'local'",
+          "name": "forecast",
+          "visibleIf": "{distributed_choice} <> 'local'",
           "title": {
             "de": "Möchtest du eine Vorhersage des PV-Ertrages?",
             "default": "Would you like a yield forecast via forecast.solar?"
@@ -433,7 +433,7 @@
         {
           "type": "text",
           "name": "forecast_latitude",
-          "visibleIf": "{q_forecast} = true",
+          "visibleIf": "{forecast} = true",
           "title": {
             "default": "Latitude",
             "de": "Breitengrad"
@@ -448,7 +448,7 @@
         {
           "type": "text",
           "name": "forecast_longitude",
-          "visibleIf": "{q_forecast} = true",
+          "visibleIf": "{forecast} = true",
           "title": {
             "default": "Longitude",
             "de": "Längengrad"
@@ -462,31 +462,14 @@
         },
         {
           "type": "radiogroup",
-          "name": "q_forecast_roofs",
-          "visibleIf": "{q_forecast} = true",
+          "name": "forecast_roofs",
+          "visibleIf": "{forecast} = true",
           "title": {
             "de": "Wieviele Dachflächen gibt es auf dem Haus?",
             "default": "How many roof surfaces do you have?"
           },
           "defaultValue": "one",
-          "choices": [
-            {
-              "value": "one",
-              "text": "1"
-            },
-            {
-              "value": "two",
-              "text": "2"
-            },
-            {
-              "value": "three",
-              "text": "3"
-            },
-            {
-              "value": "four",
-              "text": "4"
-            }
-          ]
+          "choices": ["1", "2", "3", "4"]
         }
       ],
       "title": {
@@ -495,7 +478,7 @@
       }
     },
     {
-      "name": "p_location",
+      "name": "p_forecast_roofs",
       "elements": [
         {
           "type": "text",
@@ -537,7 +520,7 @@
           "inputType": "number"
         }
       ],
-      "visibleIf": "{q_forecast} = true",
+      "visibleIf": "{forecast} = true",
       "title": {
         "default": "Location of the PV system",
         "de": "Ertragsvorhersage: Dachflächen"
@@ -552,7 +535,7 @@
       "elements": [
         {
           "type": "boolean",
-          "name": "q_updates",
+          "name": "updates",
           "title": {
             "de": "Möchtest du automatische Updates aktivieren?",
             "default": "Would you like to activate automatic updates?"
@@ -570,8 +553,8 @@
       "elements": [
         {
           "type": "boolean",
-          "name": "q_backup",
-          "visibleIf": "{q_distributed_choice} <> 'local'",
+          "name": "backup",
+          "visibleIf": "{distributed_choice} <> 'local'",
           "title": {
             "de": "Hast du einen Account bei AWS und möchtest die Datenbanken automatisch dorthin sichern?",
             "default": "Do you have an account at AWS and want to back up the databases there automatically?"
@@ -581,28 +564,28 @@
         {
           "type": "text",
           "name": "aws_access_key_id",
-          "visibleIf": "{q_backup} = true",
+          "visibleIf": "{backup} = true",
           "title": "Access Key ID",
           "isRequired": true
         },
         {
           "type": "text",
           "name": "aws_secret_access_key",
-          "visibleIf": "{q_backup} = true",
+          "visibleIf": "{backup} = true",
           "title": "Secret Access Key",
           "isRequired": true
         },
         {
           "type": "text",
           "name": "aws_region",
-          "visibleIf": "{q_backup} = true",
+          "visibleIf": "{backup} = true",
           "title": "Region",
           "isRequired": true
         },
         {
           "type": "text",
           "name": "aws_bucket",
-          "visibleIf": "{q_backup} = true",
+          "visibleIf": "{backup} = true",
           "title": "Bucket",
           "isRequired": true
         }
@@ -617,7 +600,7 @@
       "elements": [
         {
           "type": "text",
-          "name": "q_installation_date",
+          "name": "installation_date",
           "title": {
             "de": "Inbetriebnahme deiner PV-Anlage",
             "default": "Commissioning of your PV system"

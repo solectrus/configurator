@@ -31,7 +31,7 @@ describe('useSurveyStore', () => {
   it('can set answers', () => {
     const store = useSurveyStore()
     store.setSurvey({})
-    const newAnswers: Answers = { q_installation_date: '2021-01-01' }
+    const newAnswers: Answers = { installation_date: '2021-01-01' }
     store.setAnswers(newAnswers)
 
     expect(store.answers).toStrictEqual(newAnswers)

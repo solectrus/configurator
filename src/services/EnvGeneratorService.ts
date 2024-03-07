@@ -39,7 +39,7 @@ export class EnvGeneratorService {
         APP_HOST: 'myapp.local',
         ADMIN_PASSWORD: this.answers.admin_password,
         SECRET_KEY_BASE: this.generateSecretKeyBase(this.answers.admin_password || ''),
-        INSTALLATION_DATE: this.answers.q_installation_date,
+        INSTALLATION_DATE: this.answers.installation_date,
       })
     }
   }
@@ -59,9 +59,8 @@ export class EnvGeneratorService {
   private buildSenecCollectorVariables(): string | undefined {
     if (this.compose.services['senec-collector']) {
       if (
-        (this.answers.battery_vendor === 'battery_senec3' &&
-          this.answers.installation_type === 'local') ||
-        this.answers.q_distributed_choice === 'local'
+        (this.answers.battery_vendor === 'senec3' && this.answers.installation_type === 'local') ||
+        this.answers.distributed_choice === 'local'
       )
         return this.replaceEnvValues(senecCollectorVariables, {
           SENEC_ADAPTER: 'local',
@@ -74,9 +73,8 @@ export class EnvGeneratorService {
           SENEC_INTERVAL: this.answers.senec_interval,
         })
       else if (
-        this.answers.battery_vendor === 'battery_senec4' ||
-        (this.answers.battery_vendor === 'battery_senec3' &&
-          this.answers.installation_type === 'cloud')
+        this.answers.battery_vendor === 'senec4' ||
+        (this.answers.battery_vendor === 'senec3' && this.answers.installation_type === 'cloud')
       )
         return this.replaceEnvValues(senecCollectorVariables, {
           SENEC_ADAPTER: 'cloud',

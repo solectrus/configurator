@@ -61,7 +61,7 @@ export class ComposeGeneratorService {
     if (
       this.answers.installation_type &&
       (this.answers.installation_type != 'distributed' ||
-        (this.answers.q_distributed_choice && this.answers.q_distributed_choice != 'local'))
+        (this.answers.distributed_choice && this.answers.distributed_choice != 'local'))
     ) {
       this.addService('dashboard', dashboardService)
       this.addService('influxdb', influxdbService)
@@ -81,47 +81,41 @@ export class ComposeGeneratorService {
 
   private configureCollectorServices() {
     switch (this.answers.battery_vendor) {
-      case 'battery_senec3':
+      case 'senec3':
         if (
           this.answers.installation_type &&
           (this.answers.installation_type !== 'distributed' ||
-            (this.answers.q_distributed_choice && this.answers.q_distributed_choice === 'local'))
+            (this.answers.distributed_choice && this.answers.distributed_choice === 'local'))
         )
           this.addService('senec-collector', senecCollectorService)
         break
 
-      case 'battery_senec4':
+      case 'senec4':
         this.addService('senec-collector', senecCollectorService)
         break
 
-      case 'battery_other':
+      case 'other':
         this.addService('mqtt-collector', mqttCollectorService)
         break
     }
 
-    if (this.answers.wallbox_vendor === 'wallbox_other') {
-      if (
-        this.answers.installation_type === 'local' ||
-        this.answers.q_distributed_choice === 'local'
-      )
+    if (this.answers.wallbox_vendor === 'other') {
+      if (this.answers.installation_type === 'local' || this.answers.distributed_choice === 'local')
         this.addService('mqtt-collector', mqttCollectorService)
     }
 
-    if (this.answers.heatpump_access == 'heatpump_shelly') {
-      if (
-        this.answers.installation_type === 'local' ||
-        this.answers.q_distributed_choice === 'local'
-      )
+    if (this.answers.heatpump_access == 'shelly') {
+      if (this.answers.installation_type === 'local' || this.answers.distributed_choice === 'local')
         this.addService('shelly-collector', shellyCollectorService)
     }
 
-    if (this.answers.q_forecast === true) {
+    if (this.answers.forecast === true) {
       this.addService('forecast-collector', forecastCollectorService)
     }
   }
 
   private configureWatchtower() {
-    if (this.answers.q_updates === true) {
+    if (this.answers.updates === true) {
       this.addService('watchtower', watchtowerService)
 
       for (const serviceName in this.compose.services) {
@@ -134,7 +128,7 @@ export class ComposeGeneratorService {
   }
 
   private configureBackup() {
-    if (this.answers.q_backup === true) {
+    if (this.answers.backup === true) {
       if (this.compose.services.postgresql) {
         this.addService('postgresql-backup', postgresqlBackupService)
       }
