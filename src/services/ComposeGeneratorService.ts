@@ -1,4 +1,4 @@
-import type { Answers } from '@/stores/survey'
+import type { Answers } from '@/types/answers'
 import yaml from 'js-yaml'
 
 import dashboardService from '@/templates/services/dashboard.yml'

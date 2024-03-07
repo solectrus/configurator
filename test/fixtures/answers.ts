@@ -1,4 +1,4 @@
-import type { Answers } from '@/stores/survey'
+import type { Answers } from '@/types/answers'
 
 export const testCases: [string, Answers][] = [
   [
@@ -84,7 +84,7 @@ export const testCases: [string, Answers][] = [
       senec_username: 'peter@gmx.de',
       senec_password: 'mysecret',
       senec_system_id: '111',
-      senec_interval_cloud: '45',
+      senec_interval_cloud: 45,
       q_installation_date: '2021-01-05',
       admin_password: 'admin-password',
     },
@@ -97,7 +97,7 @@ export const testCases: [string, Answers][] = [
       senec_username: 'peter@gmx.de',
       senec_password: 'mysecret',
       senec_system_id: '111',
-      senec_interval_cloud: '45',
+      senec_interval_cloud: 45,
       q_installation_date: '2021-01-06',
       admin_password: 'admin-password',
     },

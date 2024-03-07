@@ -1,4 +1,4 @@
-import type { Answers } from '@/stores/survey'
+import type { Answers } from '@/types/answers'
 import type { DockerCompose } from '@/services/ComposeGeneratorService'
 
 import dashboardVariables from '@/templates/variables/dashboard.env?raw'
@@ -37,9 +37,9 @@ export class EnvGeneratorService {
     if (this.compose.services['dashboard']) {
       return this.replaceEnvValues(dashboardVariables, {
         APP_HOST: 'myapp.local',
-        ADMIN_PASSWORD: this.answers.admin_password as string,
-        SECRET_KEY_BASE: this.generateSecretKeyBase((this.answers.admin_password as string) || ''),
-        INSTALLATION_DATE: this.answers.q_installation_date as string,
+        ADMIN_PASSWORD: this.answers.admin_password,
+        SECRET_KEY_BASE: this.generateSecretKeyBase(this.answers.admin_password || ''),
+        INSTALLATION_DATE: this.answers.q_installation_date,
       })
     }
   }
@@ -65,13 +65,13 @@ export class EnvGeneratorService {
       )
         return this.replaceEnvValues(senecCollectorVariables, {
           SENEC_ADAPTER: 'local',
-          SENEC_HOST: this.answers.senec_host as string,
-          SENEC_LANGUAGE: this.answers.senec_language as string,
-          SENEC_SCHEMA: this.answers.senec_schema as string,
+          SENEC_HOST: this.answers.senec_host,
+          SENEC_LANGUAGE: this.answers.senec_language,
+          SENEC_SCHEMA: this.answers.senec_schema,
           SENEC_USERNAME: undefined,
           SENEC_PASSWORD: undefined,
           SENEC_SYSTEM_ID: undefined,
-          SENEC_INTERVAL: this.answers.senec_interval as string,
+          SENEC_INTERVAL: this.answers.senec_interval,
         })
       else if (
         this.answers.battery_vendor === 'battery_senec4' ||
@@ -83,10 +83,10 @@ export class EnvGeneratorService {
           SENEC_HOST: undefined,
           SENEC_LANGUAGE: undefined,
           SENEC_SCHEMA: undefined,
-          SENEC_USERNAME: this.answers.senec_username as string,
-          SENEC_PASSWORD: this.answers.senec_password as string,
-          SENEC_SYSTEM_ID: this.answers.senec_system_id as string,
-          SENEC_INTERVAL: this.answers.senec_interval_cloud as string,
+          SENEC_USERNAME: this.answers.senec_username,
+          SENEC_PASSWORD: this.answers.senec_password,
+          SENEC_SYSTEM_ID: this.answers.senec_system_id,
+          SENEC_INTERVAL: this.answers.senec_interval_cloud,
         })
     }
   }
@@ -118,10 +118,10 @@ export class EnvGeneratorService {
   private buildAwsVariables(): string | undefined {
     if (this.compose.services['postgresql-backup'] || this.compose.services['influxdb-backup']) {
       return this.replaceEnvValues(awsVariables, {
-        AWS_ACCESS_KEY_ID: this.answers.aws_access_key_id as string,
-        AWS_SECRET_ACCESS_KEY: this.answers.aws_secret_access_key as string,
-        AWS_REGION: this.answers.aws_region as string,
-        AWS_BUCKET: this.answers.aws_bucket as string,
+        AWS_ACCESS_KEY_ID: this.answers.aws_access_key_id,
+        AWS_SECRET_ACCESS_KEY: this.answers.aws_secret_access_key,
+        AWS_REGION: this.answers.aws_region,
+        AWS_BUCKET: this.answers.aws_bucket,
       })
     }
   }
@@ -131,7 +131,7 @@ export class EnvGeneratorService {
   // Example: replaceEnvValues('FOO=bar\nBAZ=qux', { FOO: 'baz' }) => 'FOO=baz\nBAZ=qux'
   private replaceEnvValues(
     envContent: string,
-    replacements: Record<string, string | undefined>,
+    replacements: Record<string, string | number | undefined>,
   ): string {
     let result = envContent
 

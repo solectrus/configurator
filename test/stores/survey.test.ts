@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 import { createPinia, setActivePinia } from 'pinia'
 import { useSurveyStore } from '@/stores/survey'
+import type { Answers } from '@/types/answers'
 
 describe('useSurveyStore', () => {
   beforeEach(() => {
@@ -10,7 +11,7 @@ describe('useSurveyStore', () => {
   it('can initializes the store', () => {
     const store = useSurveyStore()
     expect(store.survey).toBeNull()
-    expect(store.answers).toStrictEqual({})
+    expect(store.answers).toBeNull()
     expect(store.finished).toBe(false)
     expect(store.composeFile).toBe('')
     expect(store.envFile).toBe('')
@@ -30,7 +31,7 @@ describe('useSurveyStore', () => {
   it('can set answers', () => {
     const store = useSurveyStore()
     store.setSurvey({})
-    const newAnswers = { test: 'value' }
+    const newAnswers: Answers = { q_installation_date: '2021-01-01' }
     store.setAnswers(newAnswers)
 
     expect(store.answers).toStrictEqual(newAnswers)

@@ -4,12 +4,11 @@ import 'survey-core/i18n/german'
 import { EnvGeneratorService } from '@/services/EnvGeneratorService'
 import { ComposeGeneratorService } from '@/services/ComposeGeneratorService'
 
-export type Answer = string | string[] | number | boolean
-export type Answers = Record<string, Answer>
+import type { Answers } from '@/types/answers'
 
 interface SurveyState {
   survey: Model | null
-  answers: Answers
+  answers: Answers | null
   finished: boolean
   composeFile: string
   envFile: string
@@ -18,7 +17,7 @@ interface SurveyState {
 export const useSurveyStore = defineStore('survey', {
   state: (): SurveyState => ({
     survey: null,
-    answers: {},
+    answers: null,
     finished: false,
     composeFile: '',
     envFile: '',
