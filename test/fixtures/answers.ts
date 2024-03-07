@@ -102,4 +102,11 @@ export const testCases: [string, Answers][] = [
       admin_password: 'admin-password',
     },
   ],
+  [
+    'partial',
+    {
+      installation_type: 'cloud',
+      battery_vendor: 'senec4',
+    },
+  ],
 ]

@@ -38,7 +38,7 @@ export class EnvGeneratorService {
       return this.replaceEnvValues(dashboardVariables, {
         APP_HOST: 'myapp.local',
         ADMIN_PASSWORD: this.answers.admin_password,
-        SECRET_KEY_BASE: this.generateSecretKeyBase(this.answers.admin_password || ''),
+        SECRET_KEY_BASE: this.generateSecretKeyBase(this.answers.admin_password),
         INSTALLATION_DATE: this.answers.installation_date,
       })
     }
@@ -147,8 +147,8 @@ export class EnvGeneratorService {
     return result
   }
 
-  private generateSecretKeyBase(seed: string, length = 128) {
-    let seedInt = this.stringToSeed(seed)
+  private generateSecretKeyBase(seed?: string, length = 128) {
+    let seedInt = this.stringToSeed(seed || '')
 
     return Array.from({ length: length / 2 }, () => {
       seedInt = (seedInt * 9_301 + 49_297) % 233_280
