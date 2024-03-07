@@ -13,6 +13,7 @@ export default mergeConfig(
       setupFiles: ['./test/setup.ts'],
       coverage: {
         include: ['src/**/*'],
+        exclude: ['src/types/**/*'],
       },
     },
   }),
