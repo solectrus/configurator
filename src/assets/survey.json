@@ -258,8 +258,8 @@
           "type": "text",
           "name": "senec_host",
           "title": {
-            "de": "IP-Adresse oder Hostname",
-            "default": "IP address or host name"
+            "de": "Lokale IP-Adresse oder Hostname",
+            "default": "Local IP address or host name"
           },
           "isRequired": true
         },
@@ -325,7 +325,7 @@
       ],
       "visibleIf": "{battery_vendor} = 'senec3' and {distributed_choice} <> 'cloud' and {installation_type} <> 'cloud'",
       "title": {
-        "de": "Zugriff auf SENEC-Stromspeicher",
+        "de": "Direktzugriff auf SENEC-Stromspeicher",
         "default": "Access to your SENEC battery"
       }
     },
@@ -353,8 +353,7 @@
             "de": "Dazugehöriges Passwort",
             "default": "Corresponding password"
           },
-          "isRequired": true,
-          "inputType": "password"
+          "isRequired": true
         },
         {
           "type": "text",
@@ -398,14 +397,16 @@
           "type": "text",
           "name": "shelly_host",
           "title": {
-            "de": "IP-Adresse oder Hostname"
+            "de": "Lokale IP-Adresse oder Hostname",
+            "default": "Local IP address or host name"
           }
         },
         {
           "type": "text",
           "name": "shelly_interval",
           "title": {
-            "de": "Abfrage-Intervall"
+            "de": "Abfrage-Intervall",
+            "default": "Query interval"
           },
           "defaultValue": 5,
           "inputType": "number"
@@ -413,7 +414,8 @@
       ],
       "visibleIf": "(({heatpump_access} = 'shelly') and ({distributed_choice} != 'cloud')) and ({installation_type} != 'cloud')",
       "title": {
-        "de": "Zugriff auf Shelly-Stromzähler"
+        "de": "Zugriff auf Shelly-Stromzähler",
+        "default": "Access to Shelly energy monitor"
       }
     },
     {
@@ -630,7 +632,8 @@
       ],
       "visibleIf": "{installation_type} = 'cloud' or {distributed_choice} = 'cloud'",
       "title": {
-        "de": "Domain mit https"
+        "de": "Domain mit https",
+        "default": "Domain with https"
       }
     },
     {
