@@ -13,8 +13,6 @@ services:
       - postgresql
       - influxdb
       - redis
-    ports:
-      - '3000:3000'
     environment:
       - APP_HOST
       - FORCE_SSL

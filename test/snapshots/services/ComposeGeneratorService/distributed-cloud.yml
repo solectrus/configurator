@@ -67,6 +67,8 @@ services:
       options:
         max-size: 10m
         max-file: '3'
+    ports:
+      - '8086:8086'
   postgresql:
     image: postgres:16-alpine
     environment:

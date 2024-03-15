@@ -67,6 +67,11 @@ export class ComposeGeneratorService {
     ) {
       this.addService('dashboard', dashboardService)
       this.addService('influxdb', influxdbService)
+
+      if (this.answers.distributed_choice === 'cloud') {
+        this.compose.services.influxdb.ports = ['8086:8086']
+      }
+
       this.addService('postgresql', postgresqlService)
       this.addService('redis', redisService)
     }
@@ -145,8 +150,8 @@ export class ComposeGeneratorService {
     if (this.answers.traefik && this.compose.services.dashboard) {
       this.addService('traefik', traefikService)
 
-      this.compose.services['dashboard'].labels = [
-        ...(this.compose.services['dashboard'].labels ?? []),
+      this.compose.services.dashboard.labels = [
+        ...(this.compose.services.dashboard.labels ?? []),
         'traefik.enable=true',
         'traefik.http.routers.app-solectrus.rule=Host(`${APP_DOMAIN}`)',
         'traefik.http.routers.app-solectrus.entrypoints=websecure',
@@ -157,14 +162,17 @@ export class ComposeGeneratorService {
         'traefik.http.routers.redirs.middlewares=redirect-to-https',
       ]
 
-      this.compose.services['influxdb'].labels = [
-        ...(this.compose.services['influxdb'].labels ?? []),
+      this.compose.services.influxdb.labels = [
+        ...(this.compose.services.influxdb.labels ?? []),
         'traefik.enable=true',
         'traefik.http.routers.influxdb-solectrus.rule=Host(`${APP_DOMAIN}`)',
         'traefik.http.routers.influxdb-solectrus.entrypoints=influxdb',
         'traefik.http.routers.influxdb-solectrus.tls.certresolver=myresolver',
         'traefik.http.routers.influxdb-solectrus.tls=true',
       ]
+
+      this.compose.services.dashboard.ports = undefined
+      this.compose.services.influxdb.ports = undefined
     }
   }
 }
