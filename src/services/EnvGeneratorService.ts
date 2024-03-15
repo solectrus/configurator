@@ -42,6 +42,7 @@ export class EnvGeneratorService {
         ADMIN_PASSWORD: this.answers.admin_password,
         SECRET_KEY_BASE: this.generateSecretKeyBase(this.answers.admin_password),
         INSTALLATION_DATE: this.answers.installation_date,
+        INFLUX_POLL_INTERVAL: this.answers.senec_interval || this.answers.senec_interval_cloud || 5,
       })
     }
   }
