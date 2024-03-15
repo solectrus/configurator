@@ -27,6 +27,10 @@ export const useSurveyStore = defineStore('survey', {
     envFile: '',
   }),
 
+  getters: {
+    contentAvailable: (state) => state.composeFile || state.envFile,
+  },
+
   actions: {
     setSurvey(surveyJson: any) {
       this.surveyJson = surveyJson
