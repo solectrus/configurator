@@ -323,7 +323,7 @@
           ]
         }
       ],
-      "visibleIf": "({battery_vendor} = 'senec3') and ({distributed_choice} != 'cloud')",
+      "visibleIf": "{battery_vendor} = 'senec3' and {distributed_choice} <> 'cloud' and {installation_type} <> 'cloud'",
       "title": {
         "de": "Zugriff auf SENEC-Stromspeicher",
         "default": "Access to your SENEC battery"
@@ -383,10 +383,10 @@
           "min": 30
         }
       ],
-      "visibleIf": "{battery_vendor} = 'senec4'",
+      "visibleIf": "{battery_vendor} = 'senec4' or {installation_type} = 'cloud' and {battery_vendor} = 'senec3'",
       "title": {
-        "de": "Zugangsdaten für SENEC Home.4",
-        "default": "Credentials for SENEC Home.4"
+        "de": "Zugangsdaten für SENEC",
+        "default": "Credentials for SENEC"
       }
     },
     {
@@ -596,6 +596,42 @@
       }
     },
     {
+      "name": "p_traefik",
+      "elements": [
+        {
+          "type": "boolean",
+          "name": "traefik",
+          "title": {
+            "de": "Möchtest du eine eigene Domain oder Subdomain nutzen?",
+            "default": "Do you have your own domain or subdomain?"
+          },
+          "description": {
+            "de": "Dies ermöglicht die Nutzung von https und Let’s Encrypt-Zertifikat",
+            "default": "This enables encryption with https and Let's Encrypt certificate"
+          },
+          "isRequired": true
+        },
+        {
+          "type": "text",
+          "name": "app_domain",
+          "visibleIf": "{traefik} = true",
+          "title": {
+            "de": "Wie lautet deine Domain oder Subdomain?",
+            "default": "What is your domain or subdomain?"
+          },
+          "description": {
+            "de": "Beispiele: meine-domain.de oder solectrus.meine-domain.de",
+            "default": "Examples: my-domain.com or solectrus.my-domain.com"
+          },
+          "isRequired": true
+        }
+      ],
+      "visibleIf": "{installation_type} = 'cloud' or {distributed_choice} = 'cloud'",
+      "title": {
+        "de": "Domain mit https"
+      }
+    },
+    {
       "name": "p_dashboard",
       "elements": [
         {
@@ -623,7 +659,8 @@
           "description": {
             "de": "Nur der Admin kann Einstellungen und Strompreise bearbeiten",
             "default": "Only the admin can edit settings and electricity prices"
-          }
+          },
+          "isRequired": true
         }
       ],
       "visibleIf": "{installation_type} anyof ['local', 'cloud'] or {distributed_choice} = 'cloud'",

@@ -6,5 +6,8 @@
   "search.exclude": {
     "**/.yarn": true,
     "**/node_modules": true
+  },
+  "yaml.schemas": {
+    "https://json.schemastore.org/yamllint.json": "*.yml"
   }
 }

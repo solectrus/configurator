@@ -103,6 +103,21 @@ export const testCases: [string, Answers][] = [
     },
   ],
   [
+    'cloud-senec4-traefik',
+    {
+      installation_type: 'cloud',
+      battery_vendor: 'senec4',
+      senec_username: 'peter@gmx.de',
+      senec_password: 'mysecret',
+      senec_system_id: '111',
+      senec_interval_cloud: 45,
+      installation_date: '2021-01-06',
+      admin_password: 'admin-password',
+      traefik: true,
+      app_domain: 'solectrus.my-website.de',
+    },
+  ],
+  [
     'partial',
     {
       installation_type: 'cloud',

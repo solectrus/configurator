@@ -12,6 +12,7 @@ import shellyCollectorService from '@/templates/services/shelly-collector.yml'
 import watchtowerService from '@/templates/services/watchtower.yml'
 import postgresqlBackupService from '@/templates/services/postgresql-backup.yml'
 import influxdbBackupService from '@/templates/services/influxdb-backup.yml'
+import traefikService from '@/templates/services/traefik.yml'
 
 type DockerService = {
   image: string
@@ -46,6 +47,7 @@ export class ComposeGeneratorService {
     this.configureCollectorServices()
     this.configureWatchtower()
     this.configureBackup()
+    this.configureTraefik()
 
     const text = Object.keys(this.compose.services).length
       ? yaml.dump(this.compose, { lineWidth: -1 })
@@ -136,6 +138,33 @@ export class ComposeGeneratorService {
       if (this.compose.services.influxdb) {
         this.addService('influxdb-backup', influxdbBackupService)
       }
+    }
+  }
+
+  private configureTraefik() {
+    if (this.answers.traefik && this.compose.services.dashboard) {
+      this.addService('traefik', traefikService)
+
+      this.compose.services['dashboard'].labels = [
+        ...(this.compose.services['dashboard'].labels ?? []),
+        'traefik.enable=true',
+        'traefik.http.routers.app-solectrus.rule=Host(`${APP_DOMAIN}`)',
+        'traefik.http.routers.app-solectrus.entrypoints=websecure',
+        'traefik.http.routers.app-solectrus.tls.certresolver=myresolver',
+        'traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https',
+        'traefik.http.routers.redirs.rule=hostregexp(`{host:.+}`)',
+        'traefik.http.routers.redirs.entrypoints=web',
+        'traefik.http.routers.redirs.middlewares=redirect-to-https',
+      ]
+
+      this.compose.services['influxdb'].labels = [
+        ...(this.compose.services['influxdb'].labels ?? []),
+        'traefik.enable=true',
+        'traefik.http.routers.influxdb-solectrus.rule=Host(`${APP_DOMAIN}`)',
+        'traefik.http.routers.influxdb-solectrus.entrypoints=influxdb',
+        'traefik.http.routers.influxdb-solectrus.tls.certresolver=myresolver',
+        'traefik.http.routers.influxdb-solectrus.tls=true',
+      ]
     }
   }
 }

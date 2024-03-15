@@ -35,4 +35,6 @@ export interface Answers {
   aws_bucket?: string
   installation_date?: TDateISODate
   admin_password?: string
+  traefik?: boolean
+  app_domain?: string
 }

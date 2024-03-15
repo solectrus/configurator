@@ -10,6 +10,7 @@ import shellyCollectorVariables from '@/templates/variables/shelly-collector.env
 import postgresqlVariables from '@/templates/variables/postgresql.env?raw'
 import redisVariables from '@/templates/variables/redis.env?raw'
 import awsVariables from '@/templates/variables/aws.env?raw'
+import traefikVariables from '@/templates/variables/traefik.env?raw'
 
 export class EnvGeneratorService {
   constructor(
@@ -28,6 +29,7 @@ export class EnvGeneratorService {
       this.buildPostgresqlVariables(),
       this.buildRedisVariables(),
       this.buildAwsVariables(),
+      this.buildTraefikVariables(),
     ]
       .filter(Boolean)
       .join('\n')
@@ -120,6 +122,15 @@ export class EnvGeneratorService {
         AWS_SECRET_ACCESS_KEY: this.answers.aws_secret_access_key,
         AWS_REGION: this.answers.aws_region,
         AWS_BUCKET: this.answers.aws_bucket,
+      })
+    }
+  }
+
+  private buildTraefikVariables(): string | undefined {
+    if (this.compose.services['traefik']) {
+      return this.replaceEnvValues(traefikVariables, {
+        APP_DOMAIN: this.answers.app_domain,
+        LETSENCRYPT_EMAIL: `webmaster@${this.answers.app_domain}`,
       })
     }
   }
