@@ -223,18 +223,6 @@ services:
       - influxdb
     labels:
       - com.centurylinklabs.watchtower.scope=solectrus
-  watchtower:
-    image: containrrr/watchtower
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    command: '--scope solectrus --cleanup'
-    restart: unless-stopped
-    logging:
-      options:
-        max-size: 10m
-        max-file: '3'
-    labels:
-      - com.centurylinklabs.watchtower.scope=solectrus
   postgresql-backup:
     image: eeshugerman/postgres-backup-s3:16
     environment:
@@ -251,6 +239,8 @@ services:
     links:
       - postgresql
     restart: unless-stopped
+    labels:
+      - com.centurylinklabs.watchtower.scope=solectrus
   influxdb-backup:
     image: ghcr.io/solectrus/influxdb2-s3-backup:latest
     environment:
@@ -267,3 +257,17 @@ services:
     restart: unless-stopped
     links:
       - influxdb
+    labels:
+      - com.centurylinklabs.watchtower.scope=solectrus
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: '--scope solectrus --cleanup'
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: 10m
+        max-file: '3'
+    labels:
+      - com.centurylinklabs.watchtower.scope=solectrus

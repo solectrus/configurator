@@ -45,9 +45,9 @@ export class ComposeGeneratorService {
   public build() {
     this.configureBaseServices()
     this.configureCollectorServices()
-    this.configureWatchtower()
-    this.configureBackup()
     this.configureTraefik()
+    this.configureBackup()
+    this.configureWatchtower()
 
     const text = Object.keys(this.compose.services).length
       ? yaml.dump(this.compose, { lineWidth: -1 })
