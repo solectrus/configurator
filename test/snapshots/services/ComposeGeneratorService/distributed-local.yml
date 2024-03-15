@@ -8,6 +8,8 @@ services:
       - SENEC_SCHEMA
       - SENEC_INTERVAL
       - SENEC_LANGUAGE
+      - SENEC_USERNAME
+      - SENEC_PASSWORD
       - INFLUX_HOST
       - INFLUX_SCHEMA
       - INFLUX_PORT
