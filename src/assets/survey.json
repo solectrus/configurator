@@ -343,7 +343,8 @@
             "de": "Das ist die Adresse, mit der du dich bei mein-senec.de bzw. der SENEC-App einloggst",
             "default": "This is the address you use to log in to mein-senec.de or the SENEC app"
           },
-          "isRequired": true
+          "isRequired": true,
+          "inputType": "email"
         },
         {
           "type": "text",
@@ -352,7 +353,8 @@
             "de": "Dazugehöriges Passwort",
             "default": "Corresponding password"
           },
-          "isRequired": true
+          "isRequired": true,
+          "inputType": "password"
         },
         {
           "type": "text",
