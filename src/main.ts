@@ -19,6 +19,14 @@ import './styles/app.css'
 hljs.registerLanguage('yaml', yaml)
 hljs.registerLanguage('env', env)
 
+import Plausible from 'plausible-tracker'
+
+const { enableAutoPageviews } = Plausible({
+  domain: 'configurator.solectrus.de',
+  apiHost: 'https://p.solectrus.de',
+})
+enableAutoPageviews()
+
 // Go!
 const app = createApp(App)
 app.use(createPinia())
