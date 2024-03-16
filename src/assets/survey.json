@@ -19,22 +19,18 @@
           "type": "checkbox",
           "name": "devices",
           "title": {
-            "de": "Welche Geräte gehören zu deiner Photovoltaik-Anlage?",
-            "default": "What appliances do you have in your home?"
+            "de": "Woraus besteht deine Photovoltaik-Anlage?",
+            "default": "Which devices are part of your photovoltaic system?"
           },
-          "defaultValue": ["battery"],
           "isRequired": true,
-          "validators": [
-            {
-              "type": "expression",
-              "text": {
-                "default": "You can't do it without a battery!",
-                "de": "Ohne Stromspeicher geht's nicht!"
-              },
-              "expression": "{devices} contains 'battery'"
-            }
-          ],
           "choices": [
+            {
+              "value": "panels",
+              "text": {
+                "de": "Solarmodule auf dem Dach / Balkonkraftwerk",
+                "default": "Solar panels"
+              }
+            },
             {
               "value": "battery",
               "text": {
@@ -88,8 +84,8 @@
             {
               "value": "other",
               "text": {
-                "de": "Anderer",
-                "default": "Other"
+                "de": "Anderer (Messwerte per MQTT)",
+                "default": "Other (data via MQTT)"
               }
             }
           ],
@@ -121,8 +117,8 @@
             {
               "value": "shelly",
               "text": {
-                "de": "Über einen Shelly",
-                "default": "Using Shelly"
+                "de": "Über einen Shelly Stromzähler",
+                "default": "Using Shelly energy monitor"
               }
             },
             {
@@ -158,13 +154,14 @@
               "text": {
                 "de": "SENEC (gesteuert vom Stromspeicher)",
                 "default": "SENEC (controlled by the battery)"
-              }
+              },
+              "enableIf": "{devices} contains 'battery' and {battery_vendor} anyof ['senec3', 'senec4']"
             },
             {
               "value": "other",
               "text": {
-                "default": "Other",
-                "de": "Anderer"
+                "default": "Other (data via MQTT)",
+                "de": "Anderer (Messwerte per MQTT)"
               }
             }
           ]
@@ -190,7 +187,7 @@
             {
               "value": "local",
               "text": {
-                "de": "Lokal: Alle Komponenten auf einem Raspberry, NAS etc.",
+                "de": "Lokal: Alle Komponenten auf einem Raspberry Pi, NAS etc.",
                 "default": "Local: All components on a Raspberry, NAS etc."
               }
             },
@@ -225,22 +222,26 @@
           "type": "radiogroup",
           "name": "distributed_choice",
           "title": {
-            "de": "Welchen Teil der Installation möchtest du jetzt angehen?"
+            "de": "Welchen Teil der Installation möchtest du jetzt angehen?",
+            "default": "Which part of the installation do you want to tackle now?"
           },
           "description": {
-            "de": "Es sind zwei Installationen erforderlich. Welchen Teil erledigen wir jetzt?"
+            "de": "Es sind zwei Installationen erforderlich. Welchen Teil erledigen wir jetzt?",
+            "default": "Two installations are required. Which part do we do now?"
           },
           "choices": [
             {
               "value": "local",
               "text": {
-                "de": "Die lokale Installation auf Raspberry Pi, NAS etc."
+                "de": "Die lokale Installation auf Raspberry Pi, NAS etc.",
+                "default": "The local installation on Raspberry Pi, NAS etc."
               }
             },
             {
               "value": "cloud",
               "text": {
-                "de": "Die Installation auf dem Cloud-Server"
+                "de": "Die Installation auf dem Cloud-Server",
+                "default": "The installation on the cloud server"
               }
             }
           ]
@@ -426,11 +427,12 @@
           "name": "forecast",
           "visibleIf": "{distributed_choice} <> 'local'",
           "title": {
-            "de": "Möchtest du eine Vorhersage des PV-Ertrages?",
-            "default": "Would you like a yield forecast via forecast.solar?"
+            "de": "Möchtest du eine Prognose des PV-Ertrages?",
+            "default": "Would you like a forecast of the PV yield?"
           },
           "description": {
-            "de": "Die Prognose erfolgt über den Anbieter forecast.solar"
+            "de": "Die Prognose erfolgt kostenfrei für deinen Standort über forecast.solar",
+            "default": "The forecast is provided free of charge for your location via forecast.solar"
           },
           "isRequired": true
         },
@@ -469,13 +471,14 @@
           "name": "forecast_roofs",
           "visibleIf": "{forecast} = true",
           "title": {
-            "de": "Wieviele Dachflächen gibt es auf dem Haus?",
-            "default": "How many roof surfaces do you have?"
+            "de": "Wieviele Flächen mit Solarmodulen gibt es bei dir?",
+            "default": "How many planes do you have with solar modules?"
           },
           "defaultValue": "one",
           "choices": ["1", "2", "3", "4"]
         }
       ],
+      "visibleIf": "{devices} allof ['panels']",
       "title": {
         "de": "Ertragsvorhersage",
         "default": "Yield forecast"
@@ -541,8 +544,8 @@
           "type": "boolean",
           "name": "updates",
           "title": {
-            "de": "Möchtest du automatische Updates aktivieren?",
-            "default": "Would you like to activate automatic updates?"
+            "de": "Sollen alle Softwarebestandteile auf dem aktuellen Standard gehalten werden?",
+            "default": "Should all software components be kept up to date?"
           },
           "isRequired": true
         }
