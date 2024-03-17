@@ -26,7 +26,7 @@ yarn build
 ### Run Unit Tests with [Vitest](https://vitest.dev/)
 
 ```sh
-yarn test:unit
+yarn test
 ```
 
 ### Lint with [ESLint](https://eslint.org/)
@@ -34,3 +34,5 @@ yarn test:unit
 ```sh
 yarn lint
 ```
+
+Copyright (c) 2024 by Georg Ledermann (georg@ledermann.dev)
