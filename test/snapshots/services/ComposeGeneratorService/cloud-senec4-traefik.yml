@@ -162,3 +162,4 @@ services:
     volumes:
       - ${TRAEFIK_VOLUME_PATH}:/letsencrypt
       - /var/run/docker.sock:/var/run/docker.sock:ro
+    restart: unless-stopped
