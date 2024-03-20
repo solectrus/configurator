@@ -249,7 +249,7 @@
       ],
       "visibleIf": "{installation_type} = 'distributed'",
       "title": {
-        "de": "Verteile Installation"
+        "de": "Verteilte Installation"
       }
     },
     {
