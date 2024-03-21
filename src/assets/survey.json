@@ -443,7 +443,10 @@
             "default": "Invertert power"
           },
           "description": "in Watt",
-          "placeholder": "senec/0/ENERGY/GUI_INVERTER_POWER"
+          "placeholder": {
+            "default": "senec/0/ENERGY/GUI_INVERTER_POWER",
+            "de": "a/topic/looks/like/this"
+          }
         },
         {
           "type": "text",
@@ -453,7 +456,10 @@
             "default": "House power"
           },
           "description": "in Watt",
-          "placeholder": "senec/0/ENERGY/GUI_HOUSE_POW"
+          "placeholder": {
+            "default": "senec/0/ENERGY/GUI_HOUSE_POW",
+            "de": "a/topic/looks/like/this"
+          }
         },
         {
           "type": "text",
@@ -463,7 +469,10 @@
             "default": "Grid power import"
           },
           "description": "in Watt",
-          "placeholder": "senec/0/ENERGY/GUI_GRID_POW"
+          "placeholder": {
+            "default": "senec/0/ENERGY/GUI_GRID_POW",
+            "de": "a/topic/looks/like/this"
+          }
         },
         {
           "type": "radiogroup",
@@ -498,13 +507,17 @@
             "default": "Battery charging power"
           },
           "description": "in Watt",
-          "placeholder": "senec/0/ENERGY/GUI_BAT_DATA_POWER"
+          "placeholder": {
+            "default": "senec/0/ENERGY/GUI_BAT_DATA_POWER",
+            "de": "a/topic/looks/like/this"
+          }
         },
         {
           "type": "radiogroup",
           "name": "mqtt_battery_power_pos_neg",
           "title": {
-            "de": "Batterie: Vorzeichenbehandlung"
+            "de": "Batterie: Vorzeichenbehandlung",
+            "default": "Battery: Sign handling"
           },
           "choices": [
             {
@@ -532,7 +545,10 @@
             "default": "Battery SOC"
           },
           "description": "in %",
-          "placeholder": "senec/0/ENERGY/GUI_BAT_DATA_FUEL_CHARGE"
+          "placeholder": {
+            "default": "a/topic/looks/like/this",
+            "de": "so/sieht/ein/topic/aus"
+          }
         },
         {
           "type": "text",
@@ -543,7 +559,10 @@
             "default": "Wallbox power"
           },
           "description": "in Watt",
-          "placeholder": "senec/0/WALLBOX/APPARENT_CHARGING_POWER/0"
+          "placeholder": {
+            "default": "a/topic/looks/like/this",
+            "de": "so/sieht/ein/topic/aus"
+          }
         },
         {
           "type": "text",
@@ -554,7 +573,10 @@
             "default": "Case temperatur"
           },
           "description": "in °C",
-          "placeholder": "senec/0/TEMPMEASURE/CASE_TEMP"
+          "placeholder": {
+            "default": "a/topic/looks/like/this",
+            "de": "so/sieht/ein/topic/aus"
+          }
         },
         {
           "type": "text",
@@ -568,7 +590,10 @@
             "de": "als Text",
             "default": "as Text"
           },
-          "placeholder": "senec/0/ENERGY/STAT_STATE_Text"
+          "placeholder": {
+            "default": "a/topic/looks/like/this",
+            "de": "so/sieht/ein/topic/aus"
+          }
         },
         {
           "type": "text",
@@ -581,6 +606,10 @@
           "description": {
             "de": "als Boolscher Wert (Ja/Nein)",
             "default": "as Boolean"
+          },
+          "placeholder": {
+            "default": "a/topic/looks/like/this",
+            "de": "so/sieht/ein/topic/aus"
           }
         },
         {
@@ -591,7 +620,11 @@
             "de": "Einspeisebegrenzung",
             "default": "Grid export limit"
           },
-          "description": "in %"
+          "description": "in %",
+          "placeholder": {
+            "default": "a/topic/looks/like/this",
+            "de": "so/sieht/ein/topic/aus"
+          }
         },
         {
           "type": "text",
@@ -602,7 +635,10 @@
             "default": "Heatpump"
           },
           "description": "in Watt",
-          "placeholder": "daikin/0/CONSUMPTION"
+          "placeholder": {
+            "default": "a/topic/looks/like/this",
+            "de": "so/sieht/ein/topic/aus"
+          }
         }
       ],
       "visibleIf": "{battery_vendor} = 'other' or {wallbox_vendor} = 'other' or {heatpump_access} = 'mqtt' or {devices} = ['inverter']",
