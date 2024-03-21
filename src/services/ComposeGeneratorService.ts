@@ -122,7 +122,7 @@ export class ComposeGeneratorService {
   }
 
   private configureWatchtower() {
-    if (this.answers.updates === true) {
+    if (Object.keys(this.compose.services).length > 0) {
       this.addService('watchtower', watchtowerService)
 
       for (const serviceName in this.compose.services) {

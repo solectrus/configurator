@@ -539,24 +539,6 @@
       }
     },
     {
-      "name": "p_updates",
-      "elements": [
-        {
-          "type": "boolean",
-          "name": "updates",
-          "title": {
-            "de": "Sollen alle Softwarebestandteile auf dem aktuellen Standard gehalten werden?",
-            "default": "Should all software components be kept up to date?"
-          },
-          "isRequired": true
-        }
-      ],
-      "title": {
-        "de": "Automatische Updates",
-        "default": "Automatic updates"
-      }
-    },
-    {
       "name": "p_backup",
       "elements": [
         {

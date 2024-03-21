@@ -22,6 +22,8 @@ services:
       options:
         max-size: 10m
         max-file: '3'
+    labels:
+      - com.centurylinklabs.watchtower.scope=solectrus
   mqtt-collector:
     image: ghcr.io/solectrus/mqtt-collector:latest
     environment:
@@ -56,6 +58,8 @@ services:
       options:
         max-size: 10m
         max-file: '3'
+    labels:
+      - com.centurylinklabs.watchtower.scope=solectrus
   shelly-collector:
     image: ghcr.io/solectrus/shelly-collector:latest
     environment:
@@ -73,3 +77,17 @@ services:
         max-size: 10m
         max-file: '3'
     restart: unless-stopped
+    labels:
+      - com.centurylinklabs.watchtower.scope=solectrus
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: '--scope solectrus --cleanup'
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: 10m
+        max-file: '3'
+    labels:
+      - com.centurylinklabs.watchtower.scope=solectrus

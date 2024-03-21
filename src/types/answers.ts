@@ -27,7 +27,6 @@ export interface Answers {
   forecast_azimuth?: number
   forecast_declination?: number
   forecast_kwp?: number
-  updates?: boolean
   backup?: boolean
   aws_access_key_id?: string
   aws_secret_access_key?: string

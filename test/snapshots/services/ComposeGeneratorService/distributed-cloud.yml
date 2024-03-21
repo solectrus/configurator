@@ -55,6 +55,8 @@ services:
       options:
         max-size: 10m
         max-file: '3'
+    labels:
+      - com.centurylinklabs.watchtower.scope=solectrus
   influxdb:
     image: influxdb:2.7-alpine
     volumes:
@@ -83,6 +85,8 @@ services:
         max-file: '3'
     ports:
       - '8086:8086'
+    labels:
+      - com.centurylinklabs.watchtower.scope=solectrus
   postgresql:
     image: postgres:16-alpine
     environment:
@@ -102,6 +106,8 @@ services:
       options:
         max-size: 10m
         max-file: '3'
+    labels:
+      - com.centurylinklabs.watchtower.scope=solectrus
   redis:
     image: redis:7-alpine
     volumes:
@@ -120,3 +126,17 @@ services:
       options:
         max-size: 10m
         max-file: '3'
+    labels:
+      - com.centurylinklabs.watchtower.scope=solectrus
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: '--scope solectrus --cleanup'
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: 10m
+        max-file: '3'
+    labels:
+      - com.centurylinklabs.watchtower.scope=solectrus
