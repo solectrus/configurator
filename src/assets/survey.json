@@ -442,7 +442,8 @@
             "de": "Erzeugung",
             "default": "Invertert power"
           },
-          "description": "in Watt"
+          "description": "in Watt",
+          "placeholder": "senec/0/ENERGY/GUI_INVERTER_POWER"
         },
         {
           "type": "text",
@@ -451,46 +452,76 @@
             "de": "Hausverbrauch",
             "default": "House power"
           },
-          "description": "in Watt"
+          "description": "in Watt",
+          "placeholder": "senec/0/ENERGY/GUI_HOUSE_POW"
         },
         {
           "type": "text",
-          "name": "mqtt_grid_power_import",
+          "name": "mqtt_grid_power_import_export",
           "title": {
-            "de": "Netzbezug",
+            "de": "Netzbezug / -einspeisung",
             "default": "Grid power import"
           },
-          "description": "in Watt"
+          "description": "in Watt",
+          "placeholder": "senec/0/ENERGY/GUI_GRID_POW"
         },
         {
-          "type": "text",
-          "name": "mqtt_grid_power_export",
-          "visibleIf": "{devices} contains 'inverter'",
+          "type": "radiogroup",
+          "name": "mqtt_grid_power_pos_neg",
           "title": {
-            "de": "Netzeinspeisung",
-            "default": "Grid power export"
+            "de": "Netz: Vorzeichenbehandlung",
+            "default": "Grid: Sign handling"
           },
-          "description": "in Watt"
+          "choices": [
+            {
+              "value": "pos_neg",
+              "text": {
+                "de": "Positiv ist Netzbezug , Negativ ist Einspeisung",
+                "default": "Positive is grid import, negative is export"
+              }
+            },
+            {
+              "value": "neg_pos",
+              "text": {
+                "de": "Positiv ist Einspeisung , Negativ ist Netzbezug",
+                "default": "Positive is grid export, negative is import"
+              }
+            }
+          ]
         },
         {
           "type": "text",
-          "name": "mqtt_battery_charging_power",
+          "name": "mqtt_battery_charging_discharging_power",
           "visibleIf": "{devices} contains 'battery'",
           "title": {
-            "de": "Batteriebeladung",
+            "de": "Batteriebeladung / -entladung",
             "default": "Battery charging power"
           },
-          "description": "in Watt"
+          "description": "in Watt",
+          "placeholder": "senec/0/ENERGY/GUI_BAT_DATA_POWER"
         },
         {
-          "type": "text",
-          "name": "mqtt_battery_discharging_power",
-          "visibleIf": "{devices} contains 'battery'",
+          "type": "radiogroup",
+          "name": "mqtt_battery_power_pos_neg",
           "title": {
-            "de": "Batterieentladung",
-            "default": "Battery discharging power"
+            "de": "Batterie: Vorzeichenbehandlung"
           },
-          "description": "in Watt"
+          "choices": [
+            {
+              "value": "pos_neg",
+              "text": {
+                "de": "Positiv ist Beladung , Negativ ist Entladung",
+                "default": "Positive is charging, negative is discharging"
+              }
+            },
+            {
+              "value": "neg_pos",
+              "text": {
+                "de": "Positiv ist Entladung , Negativ ist Beladung",
+                "default": "Positive is discharging, negative is charging"
+              }
+            }
+          ]
         },
         {
           "type": "text",
@@ -500,7 +531,8 @@
             "de": "Batterie-Ladestand",
             "default": "Battery SOC"
           },
-          "description": "in %"
+          "description": "in %",
+          "placeholder": "senec/0/ENERGY/GUI_BAT_DATA_FUEL_CHARGE"
         },
         {
           "type": "text",
@@ -510,7 +542,8 @@
             "de": "Wallbox",
             "default": "Wallbox power"
           },
-          "description": "in Watt"
+          "description": "in Watt",
+          "placeholder": "senec/0/WALLBOX/APPARENT_CHARGING_POWER/0"
         },
         {
           "type": "text",
@@ -520,7 +553,8 @@
             "de": "Gehäusetemperatur",
             "default": "Case temperatur"
           },
-          "description": "in °C"
+          "description": "in °C",
+          "placeholder": "senec/0/TEMPMEASURE/CASE_TEMP"
         },
         {
           "type": "text",
@@ -533,7 +567,8 @@
           "description": {
             "de": "als Text",
             "default": "as Text"
-          }
+          },
+          "placeholder": "senec/0/ENERGY/STAT_STATE_Text"
         },
         {
           "type": "text",
@@ -566,12 +601,15 @@
             "de": "Wärmepumpe",
             "default": "Heatpump"
           },
-          "description": "in Watt"
+          "description": "in Watt",
+          "placeholder": "daikin/0/CONSUMPTION"
         }
       ],
-      "visibleIf": "{battery_vendor} = 'other' or {wallbox_vendor} = 'other' or {heatpump_access} = 'mqtt'",
-      "title": {
-        "de": "MQTT-Topics"
+      "visibleIf": "{battery_vendor} = 'other' or {wallbox_vendor} = 'other' or {heatpump_access} = 'mqtt' or {devices} = ['inverter']",
+      "title": "MQTT topics",
+      "description": {
+        "de": "Aufgrund deiner Vorauswahl wird ein externer MQTT-Broker (z.B. ioBroker)  benötigt, dessen Installation und Konfiguration hier nicht behandelt wird. \n\nLege hier nun jeweils fest, über welches Topic ein Messwert gefunden werden kann.",
+        "default": "Based on your preselection, an external MQTT broker (e.g. ioBroker) is required, the installation and configuration of which is not covered here. Now specify here which topic can be used to find a measured value."
       }
     },
     {
