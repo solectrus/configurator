@@ -133,4 +133,18 @@ export const testCases: [string, Answers][] = [
       battery_vendor: 'senec4',
     },
   ],
+  [
+    'no-devices',
+    {
+      devices: [],
+      installation_type: 'local',
+    },
+  ],
+  [
+    'balcony–power-plant',
+    {
+      devices: ['inverter'],
+      installation_type: 'local',
+    },
+  ],
 ]

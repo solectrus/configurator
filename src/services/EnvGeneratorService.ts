@@ -70,6 +70,7 @@ export class EnvGeneratorService {
       if (this.answers.battery_vendor === 'senec4' || this.answers.battery_vendor === 'senec3')
         result = { ...result, ...this.sensorsInverterSenec() }
       else result = { ...result, ...this.sensorsInverterOther() }
+    else result = { ...result, ...this.sensorsWithoutInverter() }
 
     if (this.answers.devices?.includes('battery'))
       if (this.answers.battery_vendor === 'senec4' || this.answers.battery_vendor === 'senec3')
@@ -114,6 +115,13 @@ export class EnvGeneratorService {
       INFLUX_SENSOR_SYSTEM_STATUS: 'PV:system_status',
       INFLUX_SENSOR_SYSTEM_STATUS_OK: 'PV:system_status_ok',
       INFLUX_SENSOR_GRID_EXPORT_LIMIT: 'PV:grid_export_limit',
+    }
+  }
+
+  private sensorsWithoutInverter() {
+    return {
+      INFLUX_SENSOR_GRID_POWER_IMPORT: 'HOME:grid_power_import',
+      INFLUX_SENSOR_HOUSE_POWER: 'HOME:house_power',
     }
   }
 
