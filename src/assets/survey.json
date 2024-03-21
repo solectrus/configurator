@@ -19,16 +19,16 @@
           "type": "checkbox",
           "name": "devices",
           "title": {
-            "de": "Woraus besteht deine Photovoltaik-Anlage?",
-            "default": "Which devices are part of your photovoltaic system?"
+            "de": "Welche Geräte möchtest du mit SOLECTRUS überwachen?",
+            "default": "Which devices do you want to monitor with SOLECTRUS?"
           },
           "isRequired": true,
           "choices": [
             {
-              "value": "panels",
+              "value": "inverter",
               "text": {
-                "de": "Solarmodule auf dem Dach / Balkonkraftwerk",
-                "default": "Solar panels"
+                "default": "Solar inverter",
+                "de": "Solarwechselrichter"
               }
             },
             {
@@ -53,8 +53,8 @@
         }
       ],
       "title": {
-        "de": "Photovoltaik-Anlage",
-        "default": "Devices"
+        "de": "Deine Photovoltaik-Anlage",
+        "default": "Your photovoltaic system"
       }
     },
     {
@@ -249,7 +249,8 @@
       ],
       "visibleIf": "{installation_type} = 'distributed'",
       "title": {
-        "de": "Verteilte Installation"
+        "de": "Verteilte Installation",
+        "default": "Distributed installation"
       }
     },
     {
@@ -478,7 +479,7 @@
           "choices": ["1", "2", "3", "4"]
         }
       ],
-      "visibleIf": "{devices} allof ['panels']",
+      "visibleIf": "{devices} allof ['inverter']",
       "title": {
         "de": "Ertragsvorhersage",
         "default": "Yield forecast"

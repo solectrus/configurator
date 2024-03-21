@@ -4,7 +4,7 @@ type TDay = `${number}${number}`
 type TDateISODate = `${TYear}-${TMonth}-${TDay}`
 
 export interface Answers {
-  devices?: Array<'battery' | 'wallbox' | 'heatpump'>
+  devices?: Array<'inverter' | 'battery' | 'wallbox' | 'heatpump'>
   battery_vendor?: 'senec3' | 'senec4' | 'other'
   heatpump_access?: 'shelly' | 'mqtt'
   wallbox_vendor?: 'senec' | 'other'
