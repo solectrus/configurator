@@ -71,21 +71,22 @@ export class EnvGeneratorService {
         result = { ...result, ...this.sensorsInverterSenec() }
       else result = { ...result, ...this.sensorsInverterOther() }
 
-    if (this.answers.battery_vendor === 'senec4' || this.answers.battery_vendor === 'senec3')
-      result = { ...result, ...this.sensorsBatterySenec() }
-    else if (this.answers.battery_vendor === 'other')
-      result = { ...result, ...this.sensorsBatteryOther() }
+    if (this.answers.devices?.includes('battery'))
+      if (this.answers.battery_vendor === 'senec4' || this.answers.battery_vendor === 'senec3')
+        result = { ...result, ...this.sensorsBatterySenec() }
+      else if (this.answers.battery_vendor === 'other')
+        result = { ...result, ...this.sensorsBatteryOther() }
 
-    if (this.answers.wallbox_vendor === 'senec')
-      result = { ...result, ...this.sensorsWallboxSenec() }
-
-    if (this.answers.wallbox_vendor === 'other')
-      result = { ...result, ...this.sensorsWallboxOther() }
-
-    if (this.answers.forecast) result = { ...result, ...this.sensorsForecast() }
+    if (this.answers.devices?.includes('wallbox'))
+      if (this.answers.wallbox_vendor === 'senec')
+        result = { ...result, ...this.sensorsWallboxSenec() }
+      else if (this.answers.wallbox_vendor === 'other')
+        result = { ...result, ...this.sensorsWallboxOther() }
 
     if (this.answers.devices?.includes('heatpump'))
       result = { ...result, ...this.sensorsHeatpump() }
+
+    if (this.answers.forecast) result = { ...result, ...this.sensorsForecast() }
 
     return result
   }
