@@ -22,7 +22,18 @@
             "de": "Welche Geräte möchtest du mit SOLECTRUS überwachen?",
             "default": "Which devices do you want to monitor with SOLECTRUS?"
           },
+          "defaultValue": ["inverter"],
           "isRequired": true,
+          "validators": [
+            {
+              "type": "expression",
+              "text": {
+                "de": "Ein Solarwechselrichter muss beteiligt sein",
+                "default": "A solar inverter must be involved"
+              },
+              "expression": "{devices} contains 'inverter'"
+            }
+          ],
           "choices": [
             {
               "value": "inverter",
@@ -197,7 +208,7 @@
                 "de": "Cloud: Alle Komponenten auf einem Cloud-Server",
                 "default": "Cloud: All components on a cloud server"
               },
-              "enableIf": "(({battery_vendor} != 'other') and ({wallbox_vendor} != 'other')) and ({devices} notcontains 'heatpump')"
+              "visibleIf": "{battery_vendor} anyof ['senec3', 'senec4'] and {devices} contains 'heatpump' and {wallbox_vendor} <> 'other'"
             },
             {
               "value": "distributed",
@@ -205,7 +216,7 @@
                 "de": "Verteilt: Lokale Messwerterfassung, Server in der Cloud",
                 "default": "Distributed: Local measurement, server in the cloud"
               },
-              "enableIf": "({battery_vendor} anyof ['other', 'senec3']) or (({wallbox_vendor} = 'other') and ({devices} contains 'heatpump'))"
+              "visibleIf": "{battery_vendor} anyof ['other', 'senec3'] or {wallbox_vendor} = 'other' or {devices} contains 'heatpump' or {devices} = ['inverter']"
             }
           ]
         }
@@ -622,7 +633,7 @@
           "choices": ["1", "2", "3", "4"]
         }
       ],
-      "visibleIf": "{devices} allof ['inverter']",
+      "visibleIf": "{devices} contains 'inverter'",
       "title": {
         "de": "Ertragsvorhersage",
         "default": "Yield forecast"
