@@ -421,6 +421,149 @@
       }
     },
     {
+      "name": "p_mqtt",
+      "elements": [
+        {
+          "type": "text",
+          "name": "mqtt_inverter_power",
+          "visibleIf": "{devices} contains 'inverter'",
+          "title": {
+            "de": "Erzeugung",
+            "default": "Invertert power"
+          },
+          "description": "in Watt"
+        },
+        {
+          "type": "text",
+          "name": "mqtt_house_power",
+          "title": {
+            "de": "Hausverbrauch",
+            "default": "House power"
+          },
+          "description": "in Watt"
+        },
+        {
+          "type": "text",
+          "name": "mqtt_grid_power_import",
+          "title": {
+            "de": "Netzbezug",
+            "default": "Grid power import"
+          },
+          "description": "in Watt"
+        },
+        {
+          "type": "text",
+          "name": "mqtt_grid_power_export",
+          "visibleIf": "{devices} contains 'inverter'",
+          "title": {
+            "de": "Netzeinspeisung",
+            "default": "Grid power export"
+          },
+          "description": "in Watt"
+        },
+        {
+          "type": "text",
+          "name": "mqtt_battery_charging_power",
+          "visibleIf": "{devices} contains 'battery'",
+          "title": {
+            "de": "Batteriebeladung",
+            "default": "Battery charging power"
+          },
+          "description": "in Watt"
+        },
+        {
+          "type": "text",
+          "name": "mqtt_battery_discharging_power",
+          "visibleIf": "{devices} contains 'battery'",
+          "title": {
+            "de": "Batterieentladung",
+            "default": "Battery discharging power"
+          },
+          "description": "in Watt"
+        },
+        {
+          "type": "text",
+          "name": "battery_soc",
+          "visibleIf": "{devices} contains 'battery'",
+          "title": {
+            "de": "Batterie-Ladestand",
+            "default": "Battery SOC"
+          },
+          "description": "in %"
+        },
+        {
+          "type": "text",
+          "name": "mqtt_wallbox_power",
+          "visibleIf": "{devices} contains 'wallbox' and {battery_vendor} = 'other'",
+          "title": {
+            "de": "Wallbox",
+            "default": "Wallbox power"
+          },
+          "description": "in Watt"
+        },
+        {
+          "type": "text",
+          "name": "mqtt_case_temp",
+          "visibleIf": "{devices} contains 'inverter'",
+          "title": {
+            "de": "Gehäusetemperatur",
+            "default": "Case temperatur"
+          },
+          "description": "in °C"
+        },
+        {
+          "type": "text",
+          "name": "mqtt_system_status",
+          "visibleIf": "{devices} contains 'inverter'",
+          "title": {
+            "de": "Systemstatus",
+            "default": "System status"
+          },
+          "description": {
+            "de": "als Text",
+            "default": "as Text"
+          }
+        },
+        {
+          "type": "text",
+          "name": "mqtt_system_status_ok",
+          "visibleIf": "{devices} contains 'inverter'",
+          "title": {
+            "de": "Systemstatus ist OK",
+            "default": "System status is ok"
+          },
+          "description": {
+            "de": "als Boolscher Wert (Ja/Nein)",
+            "default": "as Boolean"
+          }
+        },
+        {
+          "type": "text",
+          "name": "mqtt_grid_export_limit",
+          "visibleIf": "{devices} contains 'inverter'",
+          "title": {
+            "de": "Einspeisebegrenzung",
+            "default": "Grid export limit"
+          },
+          "description": "in %"
+        },
+        {
+          "type": "text",
+          "name": "mqtt_heatpump",
+          "visibleIf": "{devices} contains 'heatpump'",
+          "title": {
+            "de": "Wärmepumpe",
+            "default": "Heatpump"
+          },
+          "description": "in Watt"
+        }
+      ],
+      "visibleIf": "{battery_vendor} = 'other' or {wallbox_vendor} = 'other' or {heatpump_access} = 'mqtt'",
+      "title": {
+        "de": "MQTT-Topics"
+      }
+    },
+    {
       "name": "p_forecast",
       "elements": [
         {
