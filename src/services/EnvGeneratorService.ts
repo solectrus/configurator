@@ -42,9 +42,116 @@ export class EnvGeneratorService {
         ADMIN_PASSWORD: this.answers.admin_password,
         SECRET_KEY_BASE: this.generateSecretKeyBase(this.answers.admin_password),
         INSTALLATION_DATE: this.answers.installation_date,
-        INFLUX_POLL_INTERVAL: this.answers.senec_interval || this.answers.senec_interval_cloud || 5,
+        INFLUX_POLL_INTERVAL: this.answers.senec_interval ?? this.answers.senec_interval_cloud ?? 5,
+        ...this.sensors(),
       })
     }
+  }
+
+  private sensors() {
+    let result = {
+      INFLUX_SENSOR_INVERTER_POWER: '',
+      INFLUX_SENSOR_HOUSE_POWER: '',
+      INFLUX_SENSOR_GRID_POWER_IMPORT: '',
+      INFLUX_SENSOR_GRID_POWER_EXPORT: '',
+      INFLUX_SENSOR_BATTERY_CHARGING_POWER: '',
+      INFLUX_SENSOR_BATTERY_DISCHARGING_POWER: '',
+      INFLUX_SENSOR_BATTERY_SOC: '',
+      INFLUX_SENSOR_WALLBOX_POWER: '',
+      INFLUX_SENSOR_CASE_TEMP: '',
+      INFLUX_SENSOR_SYSTEM_STATUS: '',
+      INFLUX_SENSOR_SYSTEM_STATUS_OK: '',
+      INFLUX_SENSOR_GRID_EXPORT_LIMIT: '',
+      INFLUX_SENSOR_INVERTER_POWER_FORECAST: '',
+      INFLUX_SENSOR_HEATPUMP_POWER: '',
+    }
+
+    if (this.answers.devices?.includes('inverter'))
+      if (this.answers.battery_vendor === 'senec4' || this.answers.battery_vendor === 'senec3')
+        result = { ...result, ...this.sensorsInverterSenec() }
+      else result = { ...result, ...this.sensorsInverterOther() }
+
+    if (this.answers.battery_vendor === 'senec4' || this.answers.battery_vendor === 'senec3')
+      result = { ...result, ...this.sensorsBatterySenec() }
+    else if (this.answers.battery_vendor === 'other')
+      result = { ...result, ...this.sensorsBatteryOther() }
+
+    if (this.answers.wallbox_vendor === 'senec')
+      result = { ...result, ...this.sensorsWallboxSenec() }
+
+    if (this.answers.wallbox_vendor === 'other')
+      result = { ...result, ...this.sensorsWallboxOther() }
+
+    if (this.answers.forecast) result = { ...result, ...this.sensorsForecast() }
+
+    if (this.answers.devices?.includes('heatpump'))
+      result = { ...result, ...this.sensorsHeatpump() }
+
+    return result
+  }
+
+  private sensorsInverterSenec() {
+    return {
+      INFLUX_SENSOR_INVERTER_POWER: 'SENEC:inverter_power',
+      INFLUX_SENSOR_HOUSE_POWER: 'SENEC:house_power',
+      INFLUX_SENSOR_GRID_POWER_IMPORT: 'SENEC:grid_power_plus',
+      INFLUX_SENSOR_GRID_POWER_EXPORT: 'SENEC:grid_power_minus',
+      INFLUX_SENSOR_CASE_TEMP: 'SENEC:case_temp',
+      INFLUX_SENSOR_SYSTEM_STATUS: 'SENEC:current_state',
+      INFLUX_SENSOR_SYSTEM_STATUS_OK: 'SENEC:current_state_ok',
+      INFLUX_SENSOR_GRID_EXPORT_LIMIT: 'SENEC:power_ratio',
+    }
+  }
+
+  private sensorsInverterOther() {
+    return {
+      INFLUX_SENSOR_INVERTER_POWER: 'PV:inverter_power',
+      INFLUX_SENSOR_HOUSE_POWER: 'PV:house_power',
+      INFLUX_SENSOR_GRID_POWER_IMPORT: 'PV:grid_power_import',
+      INFLUX_SENSOR_GRID_POWER_EXPORT: 'PV:grid_power_export',
+      INFLUX_SENSOR_CASE_TEMP: 'PV:case_temp',
+      INFLUX_SENSOR_SYSTEM_STATUS: 'PV:system_status',
+      INFLUX_SENSOR_SYSTEM_STATUS_OK: 'PV:system_status_ok',
+      INFLUX_SENSOR_GRID_EXPORT_LIMIT: 'PV:grid_export_limit',
+    }
+  }
+
+  private sensorsBatterySenec() {
+    return {
+      INFLUX_SENSOR_BATTERY_CHARGING_POWER: 'SENEC:bat_power_plus',
+      INFLUX_SENSOR_BATTERY_DISCHARGING_POWER: 'SENEC:bat_power_minus',
+      INFLUX_SENSOR_BATTERY_SOC: 'SENEC:bat_fuel_charge',
+    }
+  }
+
+  private sensorsBatteryOther() {
+    return {
+      INFLUX_SENSOR_BATTERY_CHARGING_POWER: 'PV:battery_charging_power',
+      INFLUX_SENSOR_BATTERY_DISCHARGING_POWER: 'PV:battery_discharging_power',
+      INFLUX_SENSOR_BATTERY_SOC: 'PV:battery_soc',
+    }
+  }
+
+  private sensorsWallboxSenec() {
+    return {
+      INFLUX_SENSOR_WALLBOX_POWER: 'SENEC:wallbox_charge_power',
+    }
+  }
+
+  private sensorsWallboxOther() {
+    return {
+      INFLUX_SENSOR_WALLBOX_POWER: 'PV:wallbox_power',
+    }
+  }
+
+  private sensorsForecast() {
+    return {
+      INFLUX_SENSOR_INVERTER_POWER_FORECAST: 'FORECAST:watt',
+    }
+  }
+
+  private sensorsHeatpump() {
+    return { INFLUX_SENSOR_HEATPUMP_POWER: 'HEATPUMP:power' }
   }
 
   private buildForecastCollectorVariables(): string | undefined {

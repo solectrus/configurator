@@ -4,6 +4,7 @@ export const testCases: [string, Answers][] = [
   [
     'local-full',
     {
+      devices: ['inverter', 'battery', 'wallbox', 'heatpump'],
       installation_type: 'local',
       battery_vendor: 'senec3',
       wallbox_vendor: 'senec',
@@ -25,6 +26,7 @@ export const testCases: [string, Answers][] = [
   [
     'local-full-mqtt',
     {
+      devices: ['inverter', 'battery', 'wallbox', 'heatpump'],
       installation_type: 'local',
       battery_vendor: 'other',
       wallbox_vendor: 'other',
@@ -42,6 +44,7 @@ export const testCases: [string, Answers][] = [
   [
     'local-minimal',
     {
+      devices: ['inverter', 'battery'],
       installation_type: 'local',
       battery_vendor: 'senec3',
       senec_host: '1.2.3.4',
@@ -54,6 +57,7 @@ export const testCases: [string, Answers][] = [
   [
     'distributed-local',
     {
+      devices: ['inverter', 'battery', 'wallbox'],
       installation_type: 'distributed',
       distributed_choice: 'local',
       battery_vendor: 'senec3',
@@ -69,6 +73,7 @@ export const testCases: [string, Answers][] = [
   [
     'distributed-cloud',
     {
+      devices: ['inverter', 'battery'],
       installation_type: 'distributed',
       distributed_choice: 'cloud',
       battery_vendor: 'senec3',
@@ -79,6 +84,7 @@ export const testCases: [string, Answers][] = [
   [
     'cloud-senec3',
     {
+      devices: ['inverter', 'battery'],
       installation_type: 'cloud',
       battery_vendor: 'senec3',
       senec_username: 'peter@gmx.de',
@@ -92,6 +98,7 @@ export const testCases: [string, Answers][] = [
   [
     'cloud-senec4',
     {
+      devices: ['inverter', 'battery'],
       installation_type: 'cloud',
       battery_vendor: 'senec4',
       senec_username: 'peter@gmx.de',
@@ -105,6 +112,7 @@ export const testCases: [string, Answers][] = [
   [
     'cloud-senec4-traefik',
     {
+      devices: ['inverter', 'battery'],
       installation_type: 'cloud',
       battery_vendor: 'senec4',
       senec_username: 'peter@gmx.de',
@@ -120,6 +128,7 @@ export const testCases: [string, Answers][] = [
   [
     'partial',
     {
+      devices: ['inverter', 'battery'],
       installation_type: 'cloud',
       battery_vendor: 'senec4',
     },
