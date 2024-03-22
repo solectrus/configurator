@@ -444,8 +444,8 @@
           },
           "description": "in Watt",
           "placeholder": {
-            "default": "senec/0/ENERGY/GUI_INVERTER_POWER",
-            "de": "a/topic/looks/like/this"
+            "default": "a/topic/looks/like/this",
+            "de": "ein/topic/sieht/so/aus"
           }
         },
         {
@@ -457,21 +457,21 @@
           },
           "description": "in Watt",
           "placeholder": {
-            "default": "senec/0/ENERGY/GUI_HOUSE_POW",
-            "de": "a/topic/looks/like/this"
+            "default": "a/topic/looks/like/this",
+            "de": "ein/topic/sieht/so/aus"
           }
         },
         {
           "type": "text",
-          "name": "mqtt_grid_power_import_export",
+          "name": "mqtt_grid_power",
           "title": {
             "de": "Netzbezug / -einspeisung",
             "default": "Grid power import"
           },
           "description": "in Watt",
           "placeholder": {
-            "default": "senec/0/ENERGY/GUI_GRID_POW",
-            "de": "a/topic/looks/like/this"
+            "default": "a/topic/looks/like/this",
+            "de": "ein/topic/sieht/so/aus"
           }
         },
         {
@@ -481,6 +481,7 @@
             "de": "Netz: Vorzeichenbehandlung",
             "default": "Grid: Sign handling"
           },
+          "requiredIf": "{mqtt_grid_power} notempty",
           "choices": [
             {
               "value": "pos_neg",
@@ -500,25 +501,41 @@
         },
         {
           "type": "text",
-          "name": "mqtt_battery_charging_discharging_power",
+          "name": "mqtt_grid_export_limit",
+          "visibleIf": "{devices} contains 'inverter'",
+          "title": {
+            "de": "Einspeisebegrenzung",
+            "default": "Grid export limit"
+          },
+          "description": "in %",
+          "placeholder": {
+            "default": "a/topic/looks/like/this",
+            "de": "ein/topic/sieht/so/aus"
+          }
+        },
+        {
+          "type": "text",
+          "name": "mqtt_battery_power",
           "visibleIf": "{devices} contains 'battery'",
           "title": {
-            "de": "Batteriebeladung / -entladung",
+            "de": "Batterie: Beladung / -entladung",
             "default": "Battery charging power"
           },
           "description": "in Watt",
           "placeholder": {
-            "default": "senec/0/ENERGY/GUI_BAT_DATA_POWER",
-            "de": "a/topic/looks/like/this"
+            "default": "a/topic/looks/like/this",
+            "de": "ein/topic/sieht/so/aus"
           }
         },
         {
           "type": "radiogroup",
           "name": "mqtt_battery_power_pos_neg",
+          "visibleIf": "{devices} contains 'battery'",
           "title": {
             "de": "Batterie: Vorzeichenbehandlung",
             "default": "Battery: Sign handling"
           },
+          "requiredIf": "{mqtt_battery_power} notempty",
           "choices": [
             {
               "value": "pos_neg",
@@ -538,7 +555,7 @@
         },
         {
           "type": "text",
-          "name": "battery_soc",
+          "name": "mqtt_battery_soc",
           "visibleIf": "{devices} contains 'battery'",
           "title": {
             "de": "Batterie-Ladestand",
@@ -547,7 +564,7 @@
           "description": "in %",
           "placeholder": {
             "default": "a/topic/looks/like/this",
-            "de": "so/sieht/ein/topic/aus"
+            "de": "ein/topic/sieht/so/aus"
           }
         },
         {
@@ -561,7 +578,21 @@
           "description": "in Watt",
           "placeholder": {
             "default": "a/topic/looks/like/this",
-            "de": "so/sieht/ein/topic/aus"
+            "de": "ein/topic/sieht/so/aus"
+          }
+        },
+        {
+          "type": "text",
+          "name": "mqtt_heatpump",
+          "visibleIf": "{devices} contains 'heatpump'",
+          "title": {
+            "de": "Wärmepumpe",
+            "default": "Heatpump"
+          },
+          "description": "in Watt",
+          "placeholder": {
+            "default": "a/topic/looks/like/this",
+            "de": "ein/topic/sieht/so/aus"
           }
         },
         {
@@ -575,7 +606,7 @@
           "description": "in °C",
           "placeholder": {
             "default": "a/topic/looks/like/this",
-            "de": "so/sieht/ein/topic/aus"
+            "de": "ein/topic/sieht/so/aus"
           }
         },
         {
@@ -592,7 +623,7 @@
           },
           "placeholder": {
             "default": "a/topic/looks/like/this",
-            "de": "so/sieht/ein/topic/aus"
+            "de": "ein/topic/sieht/so/aus"
           }
         },
         {
@@ -609,40 +640,15 @@
           },
           "placeholder": {
             "default": "a/topic/looks/like/this",
-            "de": "so/sieht/ein/topic/aus"
-          }
-        },
-        {
-          "type": "text",
-          "name": "mqtt_grid_export_limit",
-          "visibleIf": "{devices} contains 'inverter'",
-          "title": {
-            "de": "Einspeisebegrenzung",
-            "default": "Grid export limit"
-          },
-          "description": "in %",
-          "placeholder": {
-            "default": "a/topic/looks/like/this",
-            "de": "so/sieht/ein/topic/aus"
-          }
-        },
-        {
-          "type": "text",
-          "name": "mqtt_heatpump",
-          "visibleIf": "{devices} contains 'heatpump'",
-          "title": {
-            "de": "Wärmepumpe",
-            "default": "Heatpump"
-          },
-          "description": "in Watt",
-          "placeholder": {
-            "default": "a/topic/looks/like/this",
-            "de": "so/sieht/ein/topic/aus"
+            "de": "ein/topic/sieht/so/aus"
           }
         }
       ],
       "visibleIf": "{battery_vendor} = 'other' or {wallbox_vendor} = 'other' or {heatpump_access} = 'mqtt' or {devices} = ['inverter']",
-      "title": "MQTT topics",
+      "title": {
+        "default": "MQTT topics",
+        "de": "MQTT-Topics"
+      },
       "description": {
         "de": "Aufgrund deiner Vorauswahl wird ein externer MQTT-Broker (z.B. ioBroker)  benötigt, dessen Installation und Konfiguration hier nicht behandelt wird. \n\nLege hier nun jeweils fest, über welches Topic ein Messwert gefunden werden kann.",
         "default": "Based on your preselection, an external MQTT broker (e.g. ioBroker) is required, the installation and configuration of which is not covered here. Now specify here which topic can be used to find a measured value."

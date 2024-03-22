@@ -34,8 +34,8 @@ services:
       - INFLUX_POLL_INTERVAL
       - INFLUX_SENSOR_INVERTER_POWER
       - INFLUX_SENSOR_HOUSE_POWER
-      - INFLUX_SENSOR_GRID_POWER_IMPORT
-      - INFLUX_SENSOR_GRID_POWER_EXPORT
+      - INFLUX_SENSOR_GRID_IMPORT_POWER
+      - INFLUX_SENSOR_GRID_EXPORT_POWER
       - INFLUX_SENSOR_BATTERY_CHARGING_POWER
       - INFLUX_SENSOR_BATTERY_DISCHARGING_POWER
       - INFLUX_SENSOR_BATTERY_SOC
@@ -124,6 +124,32 @@ services:
       options:
         max-size: 10m
         max-file: '3'
+    labels:
+      - com.centurylinklabs.watchtower.scope=solectrus
+  mqtt-collector:
+    image: ghcr.io/solectrus/mqtt-collector:latest
+    environment:
+      - MQTT_HOST
+      - MQTT_PORT
+      - MQTT_SSL
+      - MQTT_USERNAME
+      - MQTT_PASSWORD
+      - INFLUX_HOST
+      - INFLUX_SCHEMA
+      - INFLUX_PORT
+      - INFLUX_TOKEN=${INFLUX_TOKEN_WRITE}
+      - INFLUX_ORG
+      - INFLUX_BUCKET
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: 10m
+        max-file: '3'
+    depends_on:
+      influxdb:
+        condition: service_healthy
+    links:
+      - influxdb
     labels:
       - com.centurylinklabs.watchtower.scope=solectrus
   watchtower:

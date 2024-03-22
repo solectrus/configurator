@@ -20,6 +20,19 @@ export interface Answers {
   senec_interval_cloud?: number
   shelly_host?: string
   shelly_interval?: number
+  mqtt_inverter_power?: string
+  mqtt_house_power?: string
+  mqtt_grid_power?: string
+  mqtt_grid_power_pos_neg?: 'pos_neg' | 'neg_pos'
+  mqtt_battery_power?: string
+  mqtt_battery_power_pos_neg?: 'pos_neg' | 'neg_pos'
+  mqtt_battery_soc?: string
+  mqtt_wallbox_power?: string
+  mqtt_case_temp?: string
+  mqtt_system_status?: string
+  mqtt_system_status_ok?: string
+  mqtt_grid_export_limit?: string
+  mqtt_heatpump?: string
   forecast?: boolean
   forecast_latitude?: number
   forecast_longitude?: number

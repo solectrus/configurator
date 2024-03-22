@@ -1,5 +1,6 @@
 import type { Answers } from '@/types/answers'
 import yaml from 'js-yaml'
+import { MqttMapper } from './mqttMapper'
 
 import dashboardService from '@/templates/services/dashboard.yml'
 import influxdbService from '@/templates/services/influxdb.yml'
@@ -100,15 +101,6 @@ export class ComposeGeneratorService {
       case 'senec4':
         this.addService('senec-collector', senecCollectorService)
         break
-
-      case 'other':
-        this.addService('mqtt-collector', mqttCollectorService)
-        break
-    }
-
-    if (this.answers.wallbox_vendor === 'other') {
-      if (this.answers.installation_type === 'local' || this.answers.distributed_choice === 'local')
-        this.addService('mqtt-collector', mqttCollectorService)
     }
 
     if (this.answers.heatpump_access == 'shelly') {
@@ -116,9 +108,30 @@ export class ComposeGeneratorService {
         this.addService('shelly-collector', shellyCollectorService)
     }
 
+    if (this.mqttRequired()) {
+      // Deep clone to avoid modifying the original template
+      const service = structuredClone(mqttCollectorService)
+
+      // Add variable names
+      const varNames = Object.keys(this.mqttMapper.variables())
+      service.environment.push(...varNames)
+
+      this.addService('mqtt-collector', service)
+    }
+
     if (this.answers.forecast === true) {
       this.addService('forecast-collector', forecastCollectorService)
     }
+  }
+
+  private mqttRequired() {
+    if (this.answers.distributed_choice === 'cloud') return false
+
+    if (this.answers.battery_vendor === 'other') return true
+    if (this.answers.wallbox_vendor === 'other') return true
+    if (this.answers.devices?.length === 1 && this.answers.devices.includes('inverter')) return true
+
+    return false
   }
 
   private configureWatchtower() {
@@ -174,5 +187,9 @@ export class ComposeGeneratorService {
       this.compose.services.dashboard.ports = undefined
       this.compose.services.influxdb.ports = undefined
     }
+  }
+
+  private get mqttMapper() {
+    return new MqttMapper(this.answers)
   }
 }

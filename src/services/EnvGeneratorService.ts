@@ -1,5 +1,7 @@
 import type { Answers } from '@/types/answers'
 import type { DockerCompose } from '@/services/ComposeGeneratorService'
+import { MqttMapper } from './mqttMapper'
+import { SensorBuilder } from './sensorBuilder'
 
 import dashboardVariables from '@/templates/variables/dashboard.env?raw'
 import forecastCollectorVariables from '@/templates/variables/forecast-collector.env?raw'
@@ -43,124 +45,23 @@ export class EnvGeneratorService {
         SECRET_KEY_BASE: this.generateSecretKeyBase(this.answers.admin_password),
         INSTALLATION_DATE: this.answers.installation_date,
         INFLUX_POLL_INTERVAL: this.answers.senec_interval ?? this.answers.senec_interval_cloud ?? 5,
-        ...this.sensors(),
+        ...this.sensorVariables(),
       })
     }
   }
 
+  private sensorVariables() {
+    return Object.entries(this.sensors()).reduce((result, [key, value]) => {
+      return { ...result, [`INFLUX_SENSOR_${key}`]: value }
+    }, {})
+  }
+
   private sensors() {
-    let result = {
-      INFLUX_SENSOR_INVERTER_POWER: '',
-      INFLUX_SENSOR_HOUSE_POWER: '',
-      INFLUX_SENSOR_GRID_POWER_IMPORT: '',
-      INFLUX_SENSOR_GRID_POWER_EXPORT: '',
-      INFLUX_SENSOR_BATTERY_CHARGING_POWER: '',
-      INFLUX_SENSOR_BATTERY_DISCHARGING_POWER: '',
-      INFLUX_SENSOR_BATTERY_SOC: '',
-      INFLUX_SENSOR_WALLBOX_POWER: '',
-      INFLUX_SENSOR_CASE_TEMP: '',
-      INFLUX_SENSOR_SYSTEM_STATUS: '',
-      INFLUX_SENSOR_SYSTEM_STATUS_OK: '',
-      INFLUX_SENSOR_GRID_EXPORT_LIMIT: '',
-      INFLUX_SENSOR_INVERTER_POWER_FORECAST: '',
-      INFLUX_SENSOR_HEATPUMP_POWER: '',
-    }
-
-    if (this.answers.devices?.includes('inverter'))
-      if (this.answers.battery_vendor === 'senec4' || this.answers.battery_vendor === 'senec3')
-        result = { ...result, ...this.sensorsInverterSenec() }
-      else result = { ...result, ...this.sensorsInverterOther() }
-    else result = { ...result, ...this.sensorsWithoutInverter() }
-
-    if (this.answers.devices?.includes('battery'))
-      if (this.answers.battery_vendor === 'senec4' || this.answers.battery_vendor === 'senec3')
-        result = { ...result, ...this.sensorsBatterySenec() }
-      else if (this.answers.battery_vendor === 'other')
-        result = { ...result, ...this.sensorsBatteryOther() }
-
-    if (this.answers.devices?.includes('wallbox'))
-      if (this.answers.wallbox_vendor === 'senec')
-        result = { ...result, ...this.sensorsWallboxSenec() }
-      else if (this.answers.wallbox_vendor === 'other')
-        result = { ...result, ...this.sensorsWallboxOther() }
-
-    if (this.answers.devices?.includes('heatpump'))
-      result = { ...result, ...this.sensorsHeatpump() }
-
-    if (this.answers.forecast) result = { ...result, ...this.sensorsForecast() }
-
-    return result
+    return this.sensorBuilder.build()
   }
 
-  private sensorsInverterSenec() {
-    return {
-      INFLUX_SENSOR_INVERTER_POWER: 'SENEC:inverter_power',
-      INFLUX_SENSOR_HOUSE_POWER: 'SENEC:house_power',
-      INFLUX_SENSOR_GRID_POWER_IMPORT: 'SENEC:grid_power_plus',
-      INFLUX_SENSOR_GRID_POWER_EXPORT: 'SENEC:grid_power_minus',
-      INFLUX_SENSOR_CASE_TEMP: 'SENEC:case_temp',
-      INFLUX_SENSOR_SYSTEM_STATUS: 'SENEC:current_state',
-      INFLUX_SENSOR_SYSTEM_STATUS_OK: 'SENEC:current_state_ok',
-      INFLUX_SENSOR_GRID_EXPORT_LIMIT: 'SENEC:power_ratio',
-    }
-  }
-
-  private sensorsInverterOther() {
-    return {
-      INFLUX_SENSOR_INVERTER_POWER: 'PV:inverter_power',
-      INFLUX_SENSOR_HOUSE_POWER: 'PV:house_power',
-      INFLUX_SENSOR_GRID_POWER_IMPORT: 'PV:grid_power_import',
-      INFLUX_SENSOR_GRID_POWER_EXPORT: 'PV:grid_power_export',
-      INFLUX_SENSOR_CASE_TEMP: 'PV:case_temp',
-      INFLUX_SENSOR_SYSTEM_STATUS: 'PV:system_status',
-      INFLUX_SENSOR_SYSTEM_STATUS_OK: 'PV:system_status_ok',
-      INFLUX_SENSOR_GRID_EXPORT_LIMIT: 'PV:grid_export_limit',
-    }
-  }
-
-  private sensorsWithoutInverter() {
-    return {
-      INFLUX_SENSOR_GRID_POWER_IMPORT: 'HOME:grid_power_import',
-      INFLUX_SENSOR_HOUSE_POWER: 'HOME:house_power',
-    }
-  }
-
-  private sensorsBatterySenec() {
-    return {
-      INFLUX_SENSOR_BATTERY_CHARGING_POWER: 'SENEC:bat_power_plus',
-      INFLUX_SENSOR_BATTERY_DISCHARGING_POWER: 'SENEC:bat_power_minus',
-      INFLUX_SENSOR_BATTERY_SOC: 'SENEC:bat_fuel_charge',
-    }
-  }
-
-  private sensorsBatteryOther() {
-    return {
-      INFLUX_SENSOR_BATTERY_CHARGING_POWER: 'PV:battery_charging_power',
-      INFLUX_SENSOR_BATTERY_DISCHARGING_POWER: 'PV:battery_discharging_power',
-      INFLUX_SENSOR_BATTERY_SOC: 'PV:battery_soc',
-    }
-  }
-
-  private sensorsWallboxSenec() {
-    return {
-      INFLUX_SENSOR_WALLBOX_POWER: 'SENEC:wallbox_charge_power',
-    }
-  }
-
-  private sensorsWallboxOther() {
-    return {
-      INFLUX_SENSOR_WALLBOX_POWER: 'PV:wallbox_power',
-    }
-  }
-
-  private sensorsForecast() {
-    return {
-      INFLUX_SENSOR_INVERTER_POWER_FORECAST: 'FORECAST:watt',
-    }
-  }
-
-  private sensorsHeatpump() {
-    return { INFLUX_SENSOR_HEATPUMP_POWER: 'HEATPUMP:power' }
+  private get sensorBuilder() {
+    return new SensorBuilder(this.answers)
   }
 
   private buildForecastCollectorVariables(): string | undefined {
@@ -216,8 +117,18 @@ export class EnvGeneratorService {
 
   private buildMQTTCollectorVariables(): string | undefined {
     if (this.compose.services['mqtt-collector']) {
-      return this.replaceEnvValues(mqttCollectorVariables, {})
+      return this.replaceEnvValues(mqttCollectorVariables, {
+        ...this.mqttMappingVariables(),
+      })
     }
+  }
+
+  private mqttMappingVariables() {
+    return this.MqttMapper.variables()
+  }
+
+  private get MqttMapper() {
+    return new MqttMapper(this.answers)
   }
 
   private buildPostgresqlVariables(): string | undefined {
@@ -252,9 +163,10 @@ export class EnvGeneratorService {
     }
   }
 
-  // Replace the values of the given environment file content with the given replacements
+  // Replace the values of the given environment content with the given replacements
   // The replacements are expected to be in the format { key: value }
   // Example: replaceEnvValues('FOO=bar\nBAZ=qux', { FOO: 'baz' }) => 'FOO=baz\nBAZ=qux'
+  // If a key is not found, it will be added to the end
   private replaceEnvValues(
     envContent: string,
     replacements: Record<string, string | number | undefined>,
@@ -264,10 +176,15 @@ export class EnvGeneratorService {
     Object.entries(replacements).forEach(([key, value]) => {
       const regex = new RegExp(`^${key}=.*$`, 'gm')
       if (value) {
-        // Replace the value
-        result = result.replace(regex, `${key}=${value}`)
+        if (result.match(regex)) {
+          // Replace existing line
+          result = result.replace(regex, `${key}=${value}`)
+        } else {
+          // Add new line
+          result += `${key}=${value}\n`
+        }
       } else {
-        // Comment out the line if the value is empty
+        // Comment out the line
         result = result.replace(regex, `# $&`)
       }
     })
