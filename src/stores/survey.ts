@@ -3,8 +3,8 @@ import { Model } from 'survey-core'
 import 'survey-core/i18n/german'
 import { BorderlessLight } from 'survey-core/themes/borderless-light'
 
-import { EnvGeneratorService } from '@/services/EnvGeneratorService'
-import { ComposeGeneratorService } from '@/services/ComposeGeneratorService'
+import { EnvGenerator } from '@/services/EnvGenerator'
+import { ComposeGenerator } from '@/services/ComposeGenerator'
 
 import type { Answers } from '@/types/answers'
 
@@ -49,10 +49,10 @@ export const useSurveyStore = defineStore('survey', {
       this.finished = false
 
       if (this.answers) {
-        const compose = new ComposeGeneratorService(this.answers).build()
+        const compose = new ComposeGenerator(this.answers).build()
 
         this.composeFile = compose.text()
-        this.envFile = new EnvGeneratorService(compose.raw(), this.answers).build()
+        this.envFile = new EnvGenerator(compose.raw(), this.answers).build()
       } else {
         this.composeFile = this.envFile = ''
       }

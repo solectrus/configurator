@@ -1,5 +1,5 @@
 import type { Answers } from '@/types/answers'
-import type { DockerCompose } from '@/services/ComposeGeneratorService'
+import type { DockerCompose } from '@/services/ComposeGenerator'
 import { MqttMapper } from './mqttMapper'
 import { SensorBuilder } from './sensorBuilder'
 
@@ -14,7 +14,7 @@ import redisVariables from '@/templates/variables/redis.env?raw'
 import awsVariables from '@/templates/variables/aws.env?raw'
 import traefikVariables from '@/templates/variables/traefik.env?raw'
 
-export class EnvGeneratorService {
+export class EnvGenerator {
   constructor(
     private compose: DockerCompose,
     private answers: Answers,

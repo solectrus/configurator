@@ -1,22 +1,22 @@
-import { ComposeGeneratorService } from '@/services/ComposeGeneratorService'
+import { ComposeGenerator } from '@/services/ComposeGenerator'
 
 import { testCases } from '../fixtures/answers'
 
-describe('ComposeGeneratorService', () => {
+describe('ComposeGenerator', () => {
   test.each(testCases)(
     '$# - correctly builds compose.yml with different configurations for %s',
     (expectedSnapshotFile, answers) => {
-      const service = new ComposeGeneratorService(answers)
+      const service = new ComposeGenerator(answers)
       const result = service.build().text()
 
       expect(result).toMatchFileSnapshot(
-        `../snapshots/services/ComposeGeneratorService/${expectedSnapshotFile}.yml`,
+        `../snapshots/services/ComposeGenerator/${expectedSnapshotFile}.yml`,
       )
     },
   )
 
   test('builds empty compose.yml when no services are configured', () => {
-    const service = new ComposeGeneratorService({})
+    const service = new ComposeGenerator({})
     const result = service.build().text()
 
     expect(result).toEqual('')

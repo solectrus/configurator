@@ -33,7 +33,7 @@ export type DockerCompose = {
   services: Record<string, DockerService>
 }
 
-export class ComposeGeneratorService {
+export class ComposeGenerator {
   private compose: DockerCompose
 
   constructor(private answers: Answers) {
