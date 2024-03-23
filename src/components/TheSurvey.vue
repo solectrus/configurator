@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { useSurveyStore } from '@/stores/survey'
-const surveyStore = useSurveyStore()
+const store = useSurveyStore()
 </script>
 
 <template>
   <div class="py-20">
-    <div v-if="surveyStore.survey">
+    <div v-if="store.survey">
       <svg
         clip-rule="evenodd"
         fill-rule="evenodd"
@@ -20,7 +20,7 @@ const surveyStore = useSurveyStore()
         />
       </svg>
 
-      <div v-if="surveyStore.finished" class="my-10 rounded-r bg-slate-300/90 p-6 text-slate-600">
+      <div v-if="store.survey.finished" class="my-10 rounded-r bg-slate-300/90 p-6 text-slate-600">
         <h1 class="text-xl font-bold">Konfiguration erstellt</h1>
 
         <p class="mt-5 text-lg">
@@ -29,7 +29,7 @@ const surveyStore = useSurveyStore()
         </p>
       </div>
 
-      <SurveyComponent v-else :model="surveyStore.survey" class="rounded-r" />
+      <SurveyComponent v-else :model="store.survey" class="rounded-r" />
 
       <div class="mt-2 flex items-end justify-between p-2 pr-0 text-center lg:text-right">
         <a href="https://solectrus.de" class="p-2 text-slate-300 underline underline-offset-2">
@@ -37,10 +37,10 @@ const surveyStore = useSurveyStore()
         </a>
 
         <button
-          v-if="surveyStore.survey.currentPageNo > 0"
+          v-if="store.survey.currentPageNo > 0"
           type="button"
           class="inline-flex items-center gap-2 space-x-2 rounded p-2 text-sm text-slate-300 hover:bg-red-400 hover:text-white"
-          @click="surveyStore.reset()"
+          @click="store.survey.reset()"
         >
           <svg
             fill="none"

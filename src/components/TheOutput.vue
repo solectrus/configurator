@@ -2,21 +2,21 @@
 import { useSurveyStore } from '@/stores/survey'
 import CodeContainer from '@/components/CodeContainer.vue'
 
-const surveyStore = useSurveyStore()
+const store = useSurveyStore()
 </script>
 
 <template>
   <div
     class="flex transform flex-col gap-10 transition-transform duration-500"
-    :class="{ 'scale-0': !surveyStore.contentAvailable, 'flex-1': surveyStore.contentAvailable }"
+    :class="{ 'scale-0': !store.contentAvailable, 'flex-1': store.contentAvailable }"
   >
     <CodeContainer
       language="yaml"
-      :code="surveyStore.composeFile"
+      :code="store.composeFile"
       filename="compose.yml"
       class="flex-1"
     />
 
-    <CodeContainer language="env" :code="surveyStore.envFile" filename=".env" class="flex-1" />
+    <CodeContainer language="env" :code="store.envFile" filename=".env" class="flex-1" />
   </div>
 </template>

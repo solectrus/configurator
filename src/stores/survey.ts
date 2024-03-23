@@ -3,24 +3,23 @@ import { Model } from 'survey-core'
 import 'survey-core/i18n/german'
 import { BorderlessLight } from 'survey-core/themes/borderless-light'
 
-import { EnvGenerator } from '@/services/EnvGenerator'
-import { ComposeGenerator } from '@/services/ComposeGenerator'
-
 import type { Answers } from '@/types/answers'
 
+import { EnvGenerator } from '@/services/EnvGenerator'
+import { ComposeGenerator } from '@/services/ComposeGenerator'
+import surveyJson from '@/assets/survey.json'
+
 interface SurveyState {
-  surveyJson: any | null
-  survey: Model | null
   answers: Answers | null
   finished: boolean
   composeFile: string
   envFile: string
 }
 
+let survey: Model
+
 export const useSurveyStore = defineStore('survey', {
   state: (): SurveyState => ({
-    surveyJson: null,
-    survey: null,
     answers: null,
     finished: false,
     composeFile: '',
@@ -29,19 +28,17 @@ export const useSurveyStore = defineStore('survey', {
 
   getters: {
     contentAvailable: (state) => state.composeFile || state.envFile,
+    survey: () => survey,
   },
 
   actions: {
-    setSurvey(surveyJson: any) {
-      this.surveyJson = surveyJson
-      this.survey = new Model(surveyJson)
-      this.survey.applyTheme(BorderlessLight)
-      this.survey.locale = 'de'
-      this.survey.onValueChanged.add((sender) => this.setAnswers(sender.data))
-      this.survey.onComplete.add(() => (this.finished = true))
+    setupSurvey() {
+      survey = new Model(surveyJson)
+      survey.applyTheme(BorderlessLight)
+      survey.locale = 'de'
+      survey.onValueChanged.add((sender) => this.setAnswers(sender.data))
+      survey.onComplete.add(() => (this.finished = true))
       this.setAnswers(null)
-
-      return this.survey
     },
 
     setAnswers(newAnswers: Answers | null) {
@@ -59,11 +56,9 @@ export const useSurveyStore = defineStore('survey', {
     },
 
     reset() {
-      if (this.survey) {
-        // this.survey.clear(true, true) does not work as expected (it does not go to the first page)
-        // so we have to do it manually
-        this.setSurvey(this.surveyJson)
-      }
+      // survey.clear(true, true) does not work as expected (it does not go to the first page)
+      // so we have to do it manually
+      this.setupSurvey()
     },
   },
 })

@@ -1,6 +1,5 @@
 import { createPinia, setActivePinia } from 'pinia'
 import { useSurveyStore } from '@/stores/survey'
-import surveyJson from '@/assets/survey.json'
 import { Model } from 'survey-core'
 
 describe('useSurveyStore', () => {
@@ -10,9 +9,8 @@ describe('useSurveyStore', () => {
     setActivePinia(createPinia())
 
     const store = useSurveyStore()
-    store.setSurvey(surveyJson)
-
-    survey = store.survey as Model
+    store.setupSurvey()
+    survey = store.survey
   })
 
   it('offers MQTT questions (1)', () => {

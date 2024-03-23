@@ -3,10 +3,9 @@ import TheSurvey from '@/components/TheSurvey.vue'
 import TheOutput from '@/components/TheOutput.vue'
 
 import { useSurveyStore } from '@/stores/survey'
-import surveyJson from '@/assets/survey.json'
 
-const surveyStore = useSurveyStore()
-surveyStore.setSurvey(surveyJson)
+const store = useSurveyStore()
+store.setupSurvey()
 </script>
 
 <template>
@@ -15,7 +14,7 @@ surveyStore.setSurvey(surveyJson)
   <div class="flex h-screen w-screen flex-col">
     <main class="flex-1 justify-center lg:flex lg:gap-10 lg:overflow-hidden">
       <TheSurvey class="no-scrollbar max-w-2xl flex-1 lg:overflow-y-scroll" />
-      <TheOutput class="no-scrollbar lg:overflow-y-scroll" v-if="surveyStore.contentAvailable" />
+      <TheOutput class="no-scrollbar lg:overflow-y-scroll" v-if="store.contentAvailable" />
     </main>
   </div>
 </template>

@@ -3,12 +3,11 @@ import { mount } from '@vue/test-utils'
 
 import TheSurvey from '@/components/TheSurvey.vue'
 import { useSurveyStore } from '@/stores/survey'
-import surveyJson from '@/assets/survey.json'
 
 describe('TheSurvey', () => {
   it('renders properly', async () => {
-    const surveyStore = useSurveyStore()
-    surveyStore.setSurvey(surveyJson)
+    const store = useSurveyStore()
+    store.setupSurvey()
 
     const wrapper = mount(TheSurvey)
     expect(wrapper.text()).toContain('Konfigurator')
