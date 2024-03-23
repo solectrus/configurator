@@ -1,4 +1,3 @@
-import { describe, it, expect, beforeEach } from 'vitest'
 import { createPinia, setActivePinia } from 'pinia'
 import { useSurveyStore } from '@/stores/survey'
 import type { Answers } from '@/types/answers'
