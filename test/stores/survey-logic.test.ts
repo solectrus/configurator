@@ -9,7 +9,7 @@ describe('useSurveyStore', () => {
     setActivePinia(createPinia())
 
     const store = useSurveyStore()
-    store.setupSurvey()
+    store.initSurvey()
     survey = store.survey
   })
 

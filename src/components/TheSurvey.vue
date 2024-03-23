@@ -39,8 +39,9 @@ const store = useSurveyStore()
         <button
           v-if="store.survey.currentPageNo > 0"
           type="button"
+          name="restart"
           class="inline-flex items-center gap-2 space-x-2 rounded p-2 text-sm text-slate-300 hover:bg-red-400 hover:text-white"
-          @click="store.survey.reset()"
+          @click="store.restart()"
         >
           <svg
             fill="none"

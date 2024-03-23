@@ -27,12 +27,12 @@ export const useSurveyStore = defineStore('survey', {
   }),
 
   getters: {
-    contentAvailable: (state) => state.composeFile || state.envFile,
-    survey: () => survey,
+    contentAvailable: (state): boolean => Boolean(state.composeFile && state.envFile),
+    survey: (): Model => survey,
   },
 
   actions: {
-    setupSurvey() {
+    initSurvey() {
       survey = new Model(surveyJson)
       survey.applyTheme(BorderlessLight)
       survey.locale = 'de'
@@ -55,10 +55,9 @@ export const useSurveyStore = defineStore('survey', {
       }
     },
 
-    reset() {
-      // survey.clear(true, true) does not work as expected (it does not go to the first page)
-      // so we have to do it manually
-      this.setupSurvey()
+    restart() {
+      this.survey.clear(true, true)
+      this.setAnswers(null)
     },
   },
 })

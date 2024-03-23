@@ -2,6 +2,7 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import App from './App.vue'
+import { useSurveyStore } from '@/stores/survey'
 
 // SurveyJS
 import { surveyPlugin } from 'survey-vue3-ui'
@@ -32,4 +33,8 @@ const app = createApp(App)
 app.use(createPinia())
 app.use(surveyPlugin)
 app.use(hljsVuePlugin)
+
+const store = useSurveyStore()
+store.initSurvey()
+
 app.mount('#app')

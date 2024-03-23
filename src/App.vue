@@ -5,7 +5,6 @@ import TheOutput from '@/components/TheOutput.vue'
 import { useSurveyStore } from '@/stores/survey'
 
 const store = useSurveyStore()
-store.setupSurvey()
 </script>
 
 <template>

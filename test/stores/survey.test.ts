@@ -15,9 +15,9 @@ describe('useSurveyStore', () => {
     expect(store.envFile).toBe('')
   })
 
-  it('can set survey', () => {
+  it('can setup survey', () => {
     const store = useSurveyStore()
-    store.setupSurvey()
+    store.initSurvey()
 
     expect(store.survey).toBeDefined()
     expect(store.survey.locale).toBe('de')
@@ -25,19 +25,20 @@ describe('useSurveyStore', () => {
 
   it('can set answers', () => {
     const store = useSurveyStore()
-    store.setupSurvey()
-    const newAnswers: Answers = { installation_date: '2021-01-01' }
+    store.initSurvey()
+    const newAnswers: Answers = { devices: ['inverter'], installation_type: 'local' }
     store.setAnswers(newAnswers)
 
     expect(store.answers).toStrictEqual(newAnswers)
     expect(store.finished).toBe(false)
+    expect(store.contentAvailable).toBe(true)
   })
 
-  it('can reset the survey', () => {
+  it('can restart the survey', () => {
     const store = useSurveyStore()
-    store.setupSurvey()
+    store.initSurvey()
     store.setAnswers({ installation_date: '2021-01-01' })
-    store.reset()
+    store.restart()
 
     expect(store.survey).toBeDefined()
     expect(store.answers).toBeNull()
