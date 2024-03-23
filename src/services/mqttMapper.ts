@@ -158,9 +158,9 @@ export class MqttMapper {
   }
 
   private heatpumpPower(): Mapping | undefined {
-    if (this.answers.mqtt_heatpump)
+    if (this.answers.mqtt_heatpump_power)
       return {
-        topic: this.answers.mqtt_heatpump,
+        topic: this.answers.mqtt_heatpump_power,
         ...this.sensorBuilder.splittedSensor('HEATPUMP_POWER'),
       }
   }

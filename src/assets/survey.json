@@ -583,7 +583,7 @@
         },
         {
           "type": "text",
-          "name": "mqtt_heatpump",
+          "name": "mqtt_heatpump_power",
           "visibleIf": "{devices} contains 'heatpump'",
           "title": {
             "de": "Wärmepumpe",

@@ -32,7 +32,7 @@ export interface Answers {
   mqtt_system_status?: string
   mqtt_system_status_ok?: string
   mqtt_grid_export_limit?: string
-  mqtt_heatpump?: string
+  mqtt_heatpump_power?: string
   forecast?: boolean
   forecast_latitude?: number
   forecast_longitude?: number

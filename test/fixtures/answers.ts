@@ -49,7 +49,7 @@ export const testCases: [string, Answers][] = [
       mqtt_system_status: 'foo/0/system_status',
       mqtt_system_status_ok: 'foo/0/system_status_ok',
       mqtt_grid_export_limit: 'foo/0/grid_export_limit',
-      mqtt_heatpump: 'foo/0/heatpump',
+      mqtt_heatpump_power: 'foo/0/heatpump',
     },
   ],
   [
