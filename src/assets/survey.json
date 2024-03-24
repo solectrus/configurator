@@ -684,7 +684,9 @@
             "default": "-90 (South) to 90 (North)"
           },
           "isRequired": true,
-          "inputType": "number"
+          "inputType": "number",
+          "min": -90,
+          "max": 90
         },
         {
           "type": "text",
@@ -699,7 +701,9 @@
             "default": "-180 (West) to 180 (East)"
           },
           "isRequired": true,
-          "inputType": "number"
+          "inputType": "number",
+          "min": -180,
+          "max": 180
         },
         {
           "type": "radiogroup",
@@ -709,7 +713,6 @@
             "de": "Wieviele Flächen mit Solarmodulen gibt es bei dir?",
             "default": "How many planes do you have with solar modules?"
           },
-          "defaultValue": "one",
           "choices": ["1", "2", "3", "4"]
         }
       ],
@@ -720,46 +723,195 @@
       }
     },
     {
-      "name": "p_forecast_roofs",
+      "name": "p_forecast_roof1",
       "elements": [
         {
           "type": "text",
-          "name": "forecast_azimuth",
+          "name": "forecast_azimuth1",
+          "visibleIf": "{forecast_roofs} anyof [1, 2, 3, 4]",
           "title": {
-            "default": "Azimuth",
-            "de": "Ausrichtung"
+            "default": "1. Roof: Azimuth",
+            "de": "1. Dachfläche: Ausrichtung"
           },
           "description": {
             "de": "-180 … 180 (-180 = Nord, -90 = Ost, 0 = Süd, 90 = West, 180 = Nord)",
             "default": "-180 ... 180 (-180 = north, -90 = east, 0 = south, 90 = west, 180 = north)"
           },
           "isRequired": true,
-          "inputType": "number"
+          "inputType": "number",
+          "min": -180,
+          "max": 180
         },
         {
           "type": "text",
-          "name": "forecast_declination",
+          "name": "forecast_declination1",
+          "visibleIf": "{forecast_roofs} anyof [1, 2, 3, 4]",
           "title": {
-            "de": "Dachneigung",
-            "default": "Roof declination"
+            "de": "1. Dachfläche: Dachneigung",
+            "default": "1. Roof: Declination"
           },
           "description": {
             "de": "0 (horizontal) bis 90 (Vertikal)",
             "default": "0 (horizontal) to 90 (vertical)"
           },
           "isRequired": true,
-          "inputType": "number"
+          "inputType": "number",
+          "min": 0,
+          "max": 90
         },
         {
           "type": "text",
-          "name": "forecast_kwp",
+          "name": "forecast_kwp1",
+          "visibleIf": "{forecast_roofs} anyof [1, 2, 3, 4]",
           "title": {
-            "de": "Maximal-Leistung",
-            "default": "Maximum power"
+            "de": "1. Dachfläche: Maximal-Leistung",
+            "default": "1. Roof: Maximum power"
           },
           "description": "in kWp",
           "isRequired": true,
-          "inputType": "number"
+          "inputType": "number",
+          "min": 0
+        },
+        {
+          "type": "text",
+          "name": "forecast_azimuth2",
+          "visibleIf": "{forecast_roofs} anyof [2, 3, 4]",
+          "title": {
+            "default": "2. Roof: Azimuth",
+            "de": "2. Dachfläche: Ausrichtung"
+          },
+          "description": {
+            "de": "-180 … 180 (-180 = Nord, -90 = Ost, 0 = Süd, 90 = West, 180 = Nord)",
+            "default": "-180 ... 180 (-180 = north, -90 = east, 0 = south, 90 = west, 180 = north)"
+          },
+          "isRequired": true,
+          "inputType": "number",
+          "min": -180,
+          "max": 180
+        },
+        {
+          "type": "text",
+          "name": "forecast_declination2",
+          "visibleIf": "{forecast_roofs} anyof [2, 3, 4]",
+          "title": {
+            "de": "2. Dachfläche: Dachneigung",
+            "default": "2. Roof: Declination"
+          },
+          "description": {
+            "de": "0 (horizontal) bis 90 (Vertikal)",
+            "default": "0 (horizontal) to 90 (vertical)"
+          },
+          "isRequired": true,
+          "inputType": "number",
+          "min": 0,
+          "max": 90
+        },
+        {
+          "type": "text",
+          "name": "forecast_kwp2",
+          "visibleIf": "{forecast_roofs} anyof [2, 3, 4]",
+          "title": {
+            "de": "2. Dachfläche: Maximal-Leistung",
+            "default": "2. Roof: Maximum power"
+          },
+          "description": "in kWp",
+          "isRequired": true,
+          "inputType": "number",
+          "min": 0
+        },
+        {
+          "type": "text",
+          "name": "forecast_azimuth3",
+          "visibleIf": "{forecast_roofs} anyof [3, 4]",
+          "title": {
+            "default": "3. Roof: Azimuth",
+            "de": "3. Dachfläche: Ausrichtung"
+          },
+          "description": {
+            "de": "-180 … 180 (-180 = Nord, -90 = Ost, 0 = Süd, 90 = West, 180 = Nord)",
+            "default": "-180 ... 180 (-180 = north, -90 = east, 0 = south, 90 = west, 180 = north)"
+          },
+          "isRequired": true,
+          "inputType": "number",
+          "min": -180,
+          "max": 180
+        },
+        {
+          "type": "text",
+          "name": "forecast_declination3",
+          "visibleIf": "{forecast_roofs} anyof [3, 4]",
+          "title": {
+            "de": "3. Dachfläche: Dachneigung",
+            "default": "3. Roof: Declination"
+          },
+          "description": {
+            "de": "0 (horizontal) bis 90 (Vertikal)",
+            "default": "0 (horizontal) to 90 (vertical)"
+          },
+          "isRequired": true,
+          "inputType": "number",
+          "min": 0,
+          "max": 90
+        },
+        {
+          "type": "text",
+          "name": "forecast_kwp3",
+          "visibleIf": "{forecast_roofs} anyof [3, 4]",
+          "title": {
+            "de": "3. Dachfläche: Maximal-Leistung",
+            "default": "3. Roof: Maximum power"
+          },
+          "description": "in kWp",
+          "isRequired": true,
+          "inputType": "number",
+          "min": 0
+        },
+        {
+          "type": "text",
+          "name": "forecast_azimuth4",
+          "visibleIf": "{forecast_roofs} anyof [4]",
+          "title": {
+            "default": "4.Roof: Azimuth",
+            "de": "4. Dachfläche: Ausrichtung"
+          },
+          "description": {
+            "de": "-180 … 180 (-180 = Nord, -90 = Ost, 0 = Süd, 90 = West, 180 = Nord)",
+            "default": "-180 ... 180 (-180 = north, -90 = east, 0 = south, 90 = west, 180 = north)"
+          },
+          "isRequired": true,
+          "inputType": "number",
+          "min": -180,
+          "max": 180
+        },
+        {
+          "type": "text",
+          "name": "forecast_declination4",
+          "visibleIf": "{forecast_roofs} anyof [4]",
+          "title": {
+            "de": "4. Dachfläche: Dachneigung",
+            "default": "4. Roof: Declination"
+          },
+          "description": {
+            "de": "0 (horizontal) bis 90 (Vertikal)",
+            "default": "0 (horizontal) to 90 (vertical)"
+          },
+          "isRequired": true,
+          "inputType": "number",
+          "min": 0,
+          "max": 90
+        },
+        {
+          "type": "text",
+          "name": "forecast_kwp4",
+          "visibleIf": "{forecast_roofs} anyof [4]",
+          "title": {
+            "de": "4. Dachfläche: Maximal-Leistung",
+            "default": "4. Roof: Maximum power"
+          },
+          "description": "in kWp",
+          "isRequired": true,
+          "inputType": "number",
+          "min": 0
         }
       ],
       "visibleIf": "{forecast} = true",
@@ -768,7 +920,7 @@
         "de": "Ertragsvorhersage: Dachflächen"
       },
       "description": {
-        "de": "Erforderlich für die Ertragsvorhersage",
+        "de": "Einstellungen für jede einzelne Dachfläche",
         "default": "Required for the yield forecast"
       }
     },

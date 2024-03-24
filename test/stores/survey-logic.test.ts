@@ -37,4 +37,35 @@ describe('useSurveyStore', () => {
     expect(survey.getQuestionByName('mqtt_wallbox_power').isVisible).toBe(true)
     expect(survey.getQuestionByName('mqtt_heatpump_power').isVisible).toBe(true)
   })
+
+  it('offers forecast questions', () => {
+    survey.setValue('forecast', true)
+
+    expect(survey.getPageByName('p_forecast').isVisible).toBe(true)
+    expect(survey.getQuestionByName('forecast_roofs').isVisible).toBe(true)
+    expect(survey.getQuestionByName('forecast_latitude').isVisible).toBe(true)
+    expect(survey.getQuestionByName('forecast_longitude').isVisible).toBe(true)
+
+    expect(survey.getQuestionByName('forecast_azimuth1').isVisible).toBe(false)
+    expect(survey.getQuestionByName('forecast_declination1').isVisible).toBe(false)
+    expect(survey.getQuestionByName('forecast_kwp1').isVisible).toBe(false)
+
+    survey.setValue('forecast_roofs', '1')
+
+    expect(survey.getQuestionByName('forecast_azimuth1').isVisible).toBe(true)
+    expect(survey.getQuestionByName('forecast_declination1').isVisible).toBe(true)
+    expect(survey.getQuestionByName('forecast_kwp1').isVisible).toBe(true)
+
+    expect(survey.getQuestionByName('forecast_azimuth2').isVisible).toBe(false)
+    expect(survey.getQuestionByName('forecast_declination2').isVisible).toBe(false)
+    expect(survey.getQuestionByName('forecast_kwp2').isVisible).toBe(false)
+
+    expect(survey.getQuestionByName('forecast_azimuth3').isVisible).toBe(false)
+    expect(survey.getQuestionByName('forecast_declination3').isVisible).toBe(false)
+    expect(survey.getQuestionByName('forecast_kwp3').isVisible).toBe(false)
+
+    expect(survey.getQuestionByName('forecast_azimuth4').isVisible).toBe(false)
+    expect(survey.getQuestionByName('forecast_declination4').isVisible).toBe(false)
+    expect(survey.getQuestionByName('forecast_kwp4').isVisible).toBe(false)
+  })
 })

@@ -36,10 +36,19 @@ export interface Answers {
   forecast?: boolean
   forecast_latitude?: number
   forecast_longitude?: number
-  forecast_roofs?: 'one' | 'two' | 'three' | 'four'
-  forecast_azimuth?: number
-  forecast_declination?: number
-  forecast_kwp?: number
+  forecast_roofs?: '1' | '2' | '3' | '4'
+  forecast_azimuth1?: number
+  forecast_declination1?: number
+  forecast_kwp1?: number
+  forecast_azimuth2?: number
+  forecast_declination2?: number
+  forecast_kwp2?: number
+  forecast_azimuth3?: number
+  forecast_declination3?: number
+  forecast_kwp3?: number
+  forecast_azimuth4?: number
+  forecast_declination4?: number
+  forecast_kwp4?: number
   backup?: boolean
   aws_access_key_id?: string
   aws_secret_access_key?: string

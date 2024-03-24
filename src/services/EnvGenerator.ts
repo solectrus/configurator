@@ -64,9 +64,91 @@ export class EnvGenerator {
     return new SensorBuilder(this.answers)
   }
 
+  private forecastRoofCount(): number {
+    return +(this.answers.forecast_roofs ?? 0)
+  }
+
+  private forecastRoof1() {
+    if (this.forecastRoofCount() === 1)
+      return {
+        FORECAST_DECLINATION: this.answers.forecast_declination1,
+        FORECAST_AZIMUTH: this.answers.forecast_azimuth1,
+        FORECAST_KWP: this.answers.forecast_kwp1,
+
+        FORECAST_0_DECLINATION: undefined,
+        FORECAST_0_AZIMUTH: undefined,
+        FORECAST_0_KWP: undefined,
+      }
+
+    return {
+      FORECAST_DECLINATION: undefined,
+      FORECAST_AZIMUTH: undefined,
+      FORECAST_KWP: undefined,
+
+      FORECAST_0_DECLINATION: this.answers.forecast_declination1,
+      FORECAST_0_AZIMUTH: this.answers.forecast_azimuth1,
+      FORECAST_0_KWP: this.answers.forecast_kwp1,
+    }
+  }
+
+  private forecastRoof2() {
+    if (this.forecastRoofCount() < 2)
+      return {
+        FORECAST_1_DECLINATION: undefined,
+        FORECAST_1_AZIMUTH: undefined,
+        FORECAST_1_KWP: undefined,
+      }
+
+    return {
+      FORECAST_1_DECLINATION: this.answers.forecast_declination2,
+      FORECAST_1_AZIMUTH: this.answers.forecast_azimuth2,
+      FORECAST_1_KWP: this.answers.forecast_kwp2,
+    }
+  }
+
+  private forecastRoof3() {
+    if (this.forecastRoofCount() < 3)
+      return {
+        FORECAST_2_DECLINATION: undefined,
+        FORECAST_2_AZIMUTH: undefined,
+        FORECAST_2_KWP: undefined,
+      }
+
+    return {
+      FORECAST_2_DECLINATION: this.answers.forecast_declination3,
+      FORECAST_2_AZIMUTH: this.answers.forecast_azimuth3,
+      FORECAST_2_KWP: this.answers.forecast_kwp3,
+    }
+  }
+
+  private forecastRoof4() {
+    if (this.forecastRoofCount() < 4)
+      return {
+        FORECAST_3_DECLINATION: undefined,
+        FORECAST_3_AZIMUTH: undefined,
+        FORECAST_3_KWP: undefined,
+      }
+
+    return {
+      FORECAST_3_DECLINATION: this.answers.forecast_declination4,
+      FORECAST_3_AZIMUTH: this.answers.forecast_azimuth4,
+      FORECAST_3_KWP: this.answers.forecast_kwp4,
+    }
+  }
+
   private buildForecastCollectorVariables(): string | undefined {
     if (this.compose.services['forecast-collector']) {
-      return this.replaceEnvValues(forecastCollectorVariables, {})
+      return this.replaceEnvValues(forecastCollectorVariables, {
+        FORECAST_LATITUDE: this.answers.forecast_latitude,
+        FORECAST_LONGITUDE: this.answers.forecast_longitude,
+        FORECAST_CONFIGURATIONS:
+          this.forecastRoofCount() > 1 ? this.forecastRoofCount() : undefined,
+        ...this.forecastRoof1(),
+        ...this.forecastRoof2(),
+        ...this.forecastRoof3(),
+        ...this.forecastRoof4(),
+        FORECAST_INTERVAL: 900 * this.forecastRoofCount(),
+      })
     }
   }
 
