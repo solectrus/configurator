@@ -68,4 +68,26 @@ describe('useSurveyStore', () => {
     expect(survey.getQuestionByName('forecast_declination4').isVisible).toBe(false)
     expect(survey.getQuestionByName('forecast_kwp4').isVisible).toBe(false)
   })
+
+  it('offers installation_type question (senec3)', () => {
+    survey.setValue('devices', ['inverter', 'battery'])
+    survey.setValue('battery_vendor', 'senec3')
+
+    expect(survey.getPageByName('p_mode').isVisible).toBe(true)
+
+    const question = survey.getQuestionByName('installation_type')
+    const choices = question.visibleChoices.map((c: { id: string }) => c.id)
+    expect(choices).toEqual(['local', 'distributed'])
+  })
+
+  it('offers installation_type question (senec4)', () => {
+    survey.setValue('devices', ['inverter', 'battery'])
+    survey.setValue('battery_vendor', 'senec4')
+
+    expect(survey.getPageByName('p_mode').isVisible).toBe(true)
+
+    const question = survey.getQuestionByName('installation_type')
+    const choices = question.visibleChoices.map((c: { id: string }) => c.id)
+    expect(choices).toEqual(['local', 'cloud'])
+  })
 })
