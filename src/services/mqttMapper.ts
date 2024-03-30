@@ -9,6 +9,7 @@ type Mapping = {
   fieldPositive?: string
   fieldNegative?: string
   field?: string
+  type: 'float' | 'integer' | 'boolean' | 'string'
 }
 
 type Mappings = Mapping[]
@@ -41,6 +42,7 @@ export class MqttMapper {
           [`MAPPING_${index}_FIELD_POSITIVE`]: mapping.fieldPositive,
           [`MAPPING_${index}_FIELD_NEGATIVE`]: mapping.fieldNegative,
           [`MAPPING_${index}_FIELD`]: mapping.field,
+          [`MAPPING_${index}_TYPE`]: mapping.type,
         }
 
         // Remove null values
@@ -54,6 +56,7 @@ export class MqttMapper {
       return {
         topic: this.answers.mqtt_inverter_power,
         ...this.sensorBuilder.splittedSensor('INVERTER_POWER'),
+        type: 'integer',
       }
   }
 
@@ -62,6 +65,7 @@ export class MqttMapper {
       return {
         topic: this.answers.mqtt_house_power,
         ...this.sensorBuilder.splittedSensor('HOUSE_POWER'),
+        type: 'integer',
       }
   }
 
@@ -78,6 +82,7 @@ export class MqttMapper {
             measurementPositive: gridImportPower.measurement,
             fieldNegative: gridExportPower.field,
             fieldPositive: gridImportPower.field,
+            type: 'integer',
           }
         case 'neg_pos':
           return {
@@ -86,6 +91,7 @@ export class MqttMapper {
             measurementPositive: gridExportPower.measurement,
             fieldNegative: gridImportPower.field,
             fieldPositive: gridExportPower.field,
+            type: 'integer',
           }
       }
     }
@@ -104,6 +110,7 @@ export class MqttMapper {
             measurementPositive: batteryChargingPower.measurement,
             fieldNegative: batteryDischargingPower.field,
             fieldPositive: batteryChargingPower.field,
+            type: 'integer',
           }
         case 'neg_pos':
           return {
@@ -112,6 +119,7 @@ export class MqttMapper {
             measurementPositive: batteryDischargingPower.measurement,
             fieldNegative: batteryChargingPower.field,
             fieldPositive: batteryDischargingPower.field,
+            type: 'integer',
           }
       }
     }
@@ -122,6 +130,7 @@ export class MqttMapper {
       return {
         topic: this.answers.mqtt_battery_soc,
         ...this.sensorBuilder.splittedSensor('BATTERY_SOC'),
+        type: 'float',
       }
   }
 
@@ -130,6 +139,7 @@ export class MqttMapper {
       return {
         topic: this.answers.mqtt_case_temp,
         ...this.sensorBuilder.splittedSensor('CASE_TEMP'),
+        type: 'float',
       }
   }
 
@@ -138,6 +148,7 @@ export class MqttMapper {
       return {
         topic: this.answers.mqtt_system_status,
         ...this.sensorBuilder.splittedSensor('SYSTEM_STATUS'),
+        type: 'string',
       }
   }
 
@@ -146,6 +157,7 @@ export class MqttMapper {
       return {
         topic: this.answers.mqtt_system_status_ok,
         ...this.sensorBuilder.splittedSensor('SYSTEM_STATUS_OK'),
+        type: 'boolean',
       }
   }
 
@@ -154,6 +166,7 @@ export class MqttMapper {
       return {
         topic: this.answers.mqtt_wallbox_power,
         ...this.sensorBuilder.splittedSensor('WALLBOX_POWER'),
+        type: 'integer',
       }
   }
 
@@ -162,6 +175,7 @@ export class MqttMapper {
       return {
         topic: this.answers.mqtt_heatpump_power,
         ...this.sensorBuilder.splittedSensor('HEATPUMP_POWER'),
+        type: 'integer',
       }
   }
 
@@ -170,6 +184,7 @@ export class MqttMapper {
       return {
         topic: this.answers.mqtt_grid_export_limit,
         ...this.sensorBuilder.splittedSensor('GRID_EXPORT_LIMIT'),
+        type: 'float',
       }
   }
 
