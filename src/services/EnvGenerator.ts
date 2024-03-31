@@ -46,6 +46,7 @@ export class EnvGenerator {
         INSTALLATION_DATE: this.answers.installation_date,
         INFLUX_POLL_INTERVAL: this.answers.senec_interval ?? this.answers.senec_interval_cloud ?? 5,
         ...this.sensorVariables(),
+        INFLUX_EXCLUDE_FROM_HOUSE_POWER: this.influx_exclude_from_house_power,
       })
     }
   }
@@ -62,6 +63,20 @@ export class EnvGenerator {
 
   private get sensorBuilder() {
     return new SensorBuilder(this.answers)
+  }
+
+  private get influx_exclude_from_house_power() {
+    const result = []
+
+    if (this.answers.devices?.includes('heatpump')) {
+      result.push('HEATPUMP_POWER')
+    }
+
+    if (this.answers.devices?.includes('wallbox') && this.answers.wallbox_vendor === 'other') {
+      result.push('WALLBOX_POWER')
+    }
+
+    return result.join(',')
   }
 
   private forecastRoofCount(): number {
