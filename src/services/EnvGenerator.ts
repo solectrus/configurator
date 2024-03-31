@@ -193,7 +193,10 @@ export class EnvGenerator {
 
   private buildShellyCollectorVariables(): string | undefined {
     if (this.compose.services['shelly-collector']) {
-      return this.replaceEnvValues(shellyCollectorVariables, {})
+      return this.replaceEnvValues(shellyCollectorVariables, {
+        SHELLY_HOST: this.answers.shelly_host,
+        SHELLY_INTERVAL: this.answers.shelly_interval,
+      })
     }
   }
 
