@@ -203,6 +203,11 @@ export class EnvGenerator {
   private buildMQTTCollectorVariables(): string | undefined {
     if (this.compose.services['mqtt-collector']) {
       return this.replaceEnvValues(mqttCollectorVariables, {
+        MQTT_HOST: this.answers.mqtt_host,
+        MQTT_PORT: this.answers.mqtt_port,
+        MQTT_SSL: this.answers.mqtt_ssl ? 'true' : 'false',
+        MQTT_USERNAME: this.answers.mqtt_username,
+        MQTT_PASSWORD: this.answers.mqtt_password,
         ...this.mqttMappingVariables(),
       })
     }

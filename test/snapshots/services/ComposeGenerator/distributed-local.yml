@@ -57,6 +57,10 @@ services:
       - INFLUX_TOKEN=${INFLUX_TOKEN_WRITE}
       - INFLUX_ORG
       - INFLUX_BUCKET
+      - MAPPING_0_TOPIC
+      - MAPPING_0_MEASUREMENT
+      - MAPPING_0_FIELD
+      - MAPPING_0_TYPE
     restart: unless-stopped
     logging:
       options:

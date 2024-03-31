@@ -20,6 +20,11 @@ export interface Answers {
   senec_interval_cloud?: number
   shelly_host?: string
   shelly_interval?: number
+  mqtt_host?: string
+  mqtt_port?: number
+  mqtt_ssl?: boolean
+  mqtt_username?: string
+  mqtt_password?: string
   mqtt_inverter_power?: string
   mqtt_house_power?: string
   mqtt_grid_power?: string

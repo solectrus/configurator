@@ -445,11 +445,69 @@
       "elements": [
         {
           "type": "text",
+          "name": "mqtt_host",
+          "title": {
+            "de": "Lokale IP-Adresse oder Hostname",
+            "default": "Local IP address or host name"
+          },
+          "isRequired": true,
+          "placeholder": {
+            "de": "z.B. 192.168.178.44",
+            "default": "e.g. 192.168.178.44"
+          }
+        },
+        {
+          "type": "text",
+          "name": "mqtt_port",
+          "title": "Port",
+          "defaultValue": 1883,
+          "isRequired": true,
+          "inputType": "number"
+        },
+        {
+          "type": "boolean",
+          "name": "mqtt_ssl",
+          "title": "SSL",
+          "defaultValue": "false",
+          "isRequired": true
+        },
+        {
+          "type": "text",
+          "name": "mqtt_username",
+          "title": {
+            "de": "Benutzername (optional)",
+            "default": "Username (optional)"
+          }
+        },
+        {
+          "type": "text",
+          "name": "mqtt_password",
+          "title": {
+            "de": "Passwort (optional)",
+            "default": "Password (optional)"
+          }
+        }
+      ],
+      "visibleIf": "{battery_vendor} = 'other' or {wallbox_vendor} = 'other' or {heatpump_access} = 'mqtt' or {devices} = ['inverter']",
+      "title": {
+        "de": "Zugriff auf MTT-Broker",
+        "default": "Access to Shelly energy monitor"
+      },
+      "description": {
+        "de": "Aufgrund deiner Vorauswahl wird ein externer MQTT-Broker (z.B. ioBroker)  benötigt, dessen Installation und Konfiguration hier nicht behandelt wird. Gebe hier die Zugangsdaten zu diesem Server an.\n",
+        "default": "Based on your preselection, an external MQTT broker (e.g. ioBroker) is required, but its installation and configuration is not covered here. Enter the credentials for this server here."
+      }
+    },
+    {
+      "name": "p_mqtt_topics",
+      "elements": [
+        {
+          "type": "text",
           "name": "mqtt_inverter_power",
           "visibleIf": "{devices} contains 'inverter'",
           "title": {
             "de": "Erzeugung",
-            "default": "Invertert power"
+            "default": "Inverter power"
           },
           "description": "in Watt",
           "placeholder": {
@@ -659,8 +717,8 @@
         "de": "MQTT-Topics"
       },
       "description": {
-        "de": "Aufgrund deiner Vorauswahl wird ein externer MQTT-Broker (z.B. ioBroker)  benötigt, dessen Installation und Konfiguration hier nicht behandelt wird. \n\nLege hier nun jeweils fest, über welches Topic ein Messwert gefunden werden kann.",
-        "default": "Based on your preselection, an external MQTT broker (e.g. ioBroker) is required, the installation and configuration of which is not covered here. Now specify here which topic can be used to find a measured value."
+        "de": "Lege hier nun jeweils fest, über welches Topic ein Messwert gefunden werden kann.",
+        "default": "Now specify here which topic to use to find a measured value."
       }
     },
     {
