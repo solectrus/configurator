@@ -59,5 +59,10 @@ export const useSurveyStore = defineStore('survey', {
       this.survey.clear(true, true)
       this.setAnswers(null)
     },
+
+    back() {
+      this.survey.clear(false, true)
+      this.finished = false
+    },
   },
 })

@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`App > can mount with content available 1`] = `
+exports[`App > can mount when finished 1`] = `
 <div
   data-v-app=""
 >
@@ -25,6 +25,34 @@ exports[`App > can mount with content available 1`] = `
         class="no-scrollbar lg:overflow-y-scroll"
         data-v-7a7a37b1=""
       />
+    </main>
+  </div>
+  
+</div>
+`;
+
+exports[`App > can mount with content available 1`] = `
+<div
+  data-v-app=""
+>
+  
+  <div
+    class="background-image"
+    data-v-7a7a37b1=""
+  />
+  <div
+    class="flex h-screen w-screen flex-col"
+    data-v-7a7a37b1=""
+  >
+    <main
+      class="flex-1 justify-center lg:flex lg:gap-10 lg:overflow-hidden"
+      data-v-7a7a37b1=""
+    >
+      <the-survey-stub
+        class="no-scrollbar max-w-2xl flex-1 lg:overflow-y-scroll"
+        data-v-7a7a37b1=""
+      />
+      <!--v-if-->
     </main>
   </div>
   

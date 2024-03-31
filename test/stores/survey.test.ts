@@ -44,4 +44,15 @@ describe('useSurveyStore', () => {
     expect(store.answers).toBeNull()
     expect(store.finished).toBe(false)
   })
+
+  it('can go back', () => {
+    const store = useSurveyStore()
+    store.initSurvey()
+    store.setAnswers({ installation_date: '2021-01-01' })
+    store.back()
+
+    expect(store.survey.currentPageNo).toBe(0)
+    expect(store.answers).toEqual({ installation_date: '2021-01-01' })
+    expect(store.finished).toBe(false)
+  })
 })

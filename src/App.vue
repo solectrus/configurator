@@ -13,7 +13,7 @@ const store = useSurveyStore()
   <div class="flex h-screen w-screen flex-col">
     <main class="flex-1 justify-center lg:flex lg:gap-10 lg:overflow-hidden">
       <TheSurvey class="no-scrollbar max-w-2xl flex-1 lg:overflow-y-scroll" />
-      <TheOutput class="no-scrollbar lg:overflow-y-scroll" v-if="store.contentAvailable" />
+      <TheOutput class="no-scrollbar lg:overflow-y-scroll" v-if="store.finished" />
     </main>
   </div>
 </template>

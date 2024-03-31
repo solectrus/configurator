@@ -8,7 +8,7 @@ const store = useSurveyStore()
 <template>
   <div
     class="flex transform flex-col gap-10 transition-transform duration-500"
-    :class="{ 'scale-0': !store.contentAvailable, 'flex-1': store.contentAvailable }"
+    :class="{ 'scale-0': !store.finished, 'flex-1': store.finished }"
   >
     <CodeContainer
       language="yaml"

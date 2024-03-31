@@ -21,6 +21,14 @@ describe('App', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
+  it('can mount when finished', () => {
+    store.survey.doComplete()
+    expect(store.finished).toBe(true)
+
+    const wrapper = shallowMount(App)
+    expect(wrapper.element).toMatchSnapshot()
+  })
+
   it('can mount without content available', () => {
     expect(store.contentAvailable).toBe(false)
 
