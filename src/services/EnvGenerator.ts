@@ -188,6 +188,7 @@ export class EnvGenerator {
           SENEC_PASSWORD: undefined,
           SENEC_SYSTEM_ID: undefined,
           SENEC_INTERVAL: this.answers.senec_interval,
+          SENEC_IGNORE: this.senec_ignore,
         })
       else if (
         this.answers.battery_vendor === 'senec4' ||
@@ -202,8 +203,19 @@ export class EnvGenerator {
           SENEC_PASSWORD: this.answers.senec_password,
           SENEC_SYSTEM_ID: this.answers.senec_system_id,
           SENEC_INTERVAL: this.answers.senec_interval_cloud,
+          SENEC_IGNORE: this.senec_ignore,
         })
     }
+  }
+
+  private get senec_ignore() {
+    const result = []
+
+    if (this.answers.devices?.includes('wallbox') && this.answers.wallbox_vendor === 'other') {
+      result.push('wallbox_charge_power')
+    }
+
+    return result.join(',')
   }
 
   private buildShellyCollectorVariables(): string | undefined {
