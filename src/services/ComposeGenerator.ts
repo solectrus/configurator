@@ -25,6 +25,10 @@ type DockerService = {
   labels?: string[]
   healthcheck?: {
     test: string
+    interval: string
+    timeout: string
+    retries: number
+    start_period: string
   }
 }
 
