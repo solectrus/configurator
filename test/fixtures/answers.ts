@@ -57,7 +57,7 @@ export const testCases: [string, Answers][] = [
       aws_bucket: 'my-bucket',
       mqtt_host: 'my-mqtt-broker.local',
       mqtt_port: 1883,
-      mqtt_ssl: false,
+      mqtt_ssl: true,
       mqtt_username: 'my-mqtt-username',
       mqtt_password: 'my-mqtt-password',
       mqtt_inverter_power: 'foo/0/inverter',
