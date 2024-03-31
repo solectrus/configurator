@@ -61,27 +61,27 @@ export class SensorBuilder {
 
   private sensorsInverterSenec() {
     return {
-      INVERTER_POWER: 'SENEC:inverter_power',
-      HOUSE_POWER: 'SENEC:house_power',
-      GRID_IMPORT_POWER: 'SENEC:grid_power_plus',
-      GRID_EXPORT_POWER: 'SENEC:grid_power_minus',
-      CASE_TEMP: 'SENEC:case_temp',
-      SYSTEM_STATUS: 'SENEC:current_state',
-      SYSTEM_STATUS_OK: 'SENEC:current_state_ok',
-      GRID_EXPORT_LIMIT: 'SENEC:power_ratio',
+      INVERTER_POWER: 'senec:inverter_power',
+      HOUSE_POWER: 'senec:house_power',
+      GRID_IMPORT_POWER: 'senec:grid_power_plus',
+      GRID_EXPORT_POWER: 'senec:grid_power_minus',
+      CASE_TEMP: 'senec:case_temp',
+      SYSTEM_STATUS: 'senec:current_state',
+      SYSTEM_STATUS_OK: 'senec:current_state_ok',
+      GRID_EXPORT_LIMIT: 'senec:power_ratio',
     }
   }
 
   private sensorsInverterOther() {
     return {
-      INVERTER_POWER: 'PV:inverter_power',
-      HOUSE_POWER: 'PV:house_power',
-      GRID_IMPORT_POWER: 'PV:grid_import_power',
-      GRID_EXPORT_POWER: 'PV:grid_export_power',
-      CASE_TEMP: 'PV:case_temp',
-      SYSTEM_STATUS: 'PV:system_status',
-      SYSTEM_STATUS_OK: 'PV:system_status_ok',
-      GRID_EXPORT_LIMIT: 'PV:grid_export_limit',
+      INVERTER_POWER: 'pv:inverter_power',
+      HOUSE_POWER: 'pv:house_power',
+      GRID_IMPORT_POWER: 'pv:grid_import_power',
+      GRID_EXPORT_POWER: 'pv:grid_export_power',
+      CASE_TEMP: 'pv:case_temp',
+      SYSTEM_STATUS: 'pv:system_status',
+      SYSTEM_STATUS_OK: 'pv:system_status_ok',
+      GRID_EXPORT_LIMIT: 'pv:grid_export_limit',
     }
   }
 
@@ -94,39 +94,39 @@ export class SensorBuilder {
 
   private sensorsBatterySenec() {
     return {
-      BATTERY_CHARGING_POWER: 'SENEC:bat_power_plus',
-      BATTERY_DISCHARGING_POWER: 'SENEC:bat_power_minus',
-      BATTERY_SOC: 'SENEC:bat_fuel_charge',
+      BATTERY_CHARGING_POWER: 'senec:bat_power_plus',
+      BATTERY_DISCHARGING_POWER: 'senec:bat_power_minus',
+      BATTERY_SOC: 'senec:bat_fuel_charge',
     }
   }
 
   private sensorsBatteryOther() {
     return {
-      BATTERY_CHARGING_POWER: 'PV:battery_charging_power',
-      BATTERY_DISCHARGING_POWER: 'PV:battery_discharging_power',
-      BATTERY_SOC: 'PV:battery_soc',
+      BATTERY_CHARGING_POWER: 'pv:battery_charging_power',
+      BATTERY_DISCHARGING_POWER: 'pv:battery_discharging_power',
+      BATTERY_SOC: 'pv:battery_soc',
     }
   }
 
   private sensorsWallboxSenec() {
     return {
-      WALLBOX_POWER: 'SENEC:wallbox_charge_power',
+      WALLBOX_POWER: 'senec:wallbox_charge_power',
     }
   }
 
   private sensorsWallboxOther() {
     return {
-      WALLBOX_POWER: 'PV:wallbox_power',
+      WALLBOX_POWER: 'pv:wallbox_power',
     }
   }
 
   private sensorsForecast() {
     return {
-      INVERTER_POWER_FORECAST: 'FORECAST:watt',
+      INVERTER_POWER_FORECAST: 'forecast:watt',
     }
   }
 
   private sensorsHeatpump() {
-    return { HEATPUMP_POWER: 'HEATPUMP:power' }
+    return { HEATPUMP_POWER: 'heatpump:power' }
   }
 }
