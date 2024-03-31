@@ -274,7 +274,11 @@
             "de": "Lokale IP-Adresse oder Hostname",
             "default": "Local IP address or host name"
           },
-          "isRequired": true
+          "isRequired": true,
+          "placeholder": {
+            "de": "z.B. 192.168.178.42",
+            "default": "e.g. 192.168.178.42"
+          }
         },
         {
           "type": "text",
@@ -357,7 +361,8 @@
             "default": "This is the address you use to log in to mein-senec.de or the SENEC app"
           },
           "isRequired": true,
-          "inputType": "email"
+          "inputType": "email",
+          "autocomplete": "email"
         },
         {
           "type": "text",
@@ -376,7 +381,7 @@
             "default": "System id"
           },
           "description": {
-            "de": "Leer lassen, falls nicht bekannt oder wenn du nur einen Speicher hast, der auch noch nie ausgetauscht wurde.",
+            "de": "Leer lassen, falls nicht bekannt oder du nur einen Speicher hast, der auch noch nie ausgetauscht wurde.",
             "default": "Leave empty if not known or if you only have one battery that has never been replaced."
           }
         },
@@ -412,6 +417,10 @@
           "title": {
             "de": "Lokale IP-Adresse oder Hostname",
             "default": "Local IP address or host name"
+          },
+          "placeholder": {
+            "de": "z.B. 192.168.178.43",
+            "default": "e.g. 192.168.178.43"
           }
         },
         {
@@ -444,8 +453,8 @@
           },
           "description": "in Watt",
           "placeholder": {
-            "default": "a/topic/looks/like/this",
-            "de": "ein/topic/sieht/so/aus"
+            "default": "e.g. myhome/inverter/power",
+            "de": "z.B. myhome/inverter/power"
           }
         },
         {
@@ -457,8 +466,8 @@
           },
           "description": "in Watt",
           "placeholder": {
-            "default": "a/topic/looks/like/this",
-            "de": "ein/topic/sieht/so/aus"
+            "default": "e.g. myhome/energy/house_power",
+            "de": "z.B. myhome/energy/house_power"
           }
         },
         {
@@ -470,8 +479,8 @@
           },
           "description": "in Watt",
           "placeholder": {
-            "default": "a/topic/looks/like/this",
-            "de": "ein/topic/sieht/so/aus"
+            "default": "e.g. myhome/grid/power",
+            "de": "z.B. myhome/grid/power"
           }
         },
         {
@@ -509,8 +518,8 @@
           },
           "description": "in %",
           "placeholder": {
-            "default": "a/topic/looks/like/this",
-            "de": "ein/topic/sieht/so/aus"
+            "default": "e.g. myhome/grid/power_ratio",
+            "de": "z.B. myhome/grid/power_ratio"
           }
         },
         {
@@ -523,8 +532,8 @@
           },
           "description": "in Watt",
           "placeholder": {
-            "default": "a/topic/looks/like/this",
-            "de": "ein/topic/sieht/so/aus"
+            "default": "e.g. myhome/battery/0/power",
+            "de": "z.B. myhome/battery/0/power"
           }
         },
         {
@@ -563,8 +572,8 @@
           },
           "description": "in %",
           "placeholder": {
-            "default": "a/topic/looks/like/this",
-            "de": "ein/topic/sieht/so/aus"
+            "default": "e.g. myhome/battery/0/soc",
+            "de": "z.B. myhome/battery/0/soc"
           }
         },
         {
@@ -577,8 +586,8 @@
           },
           "description": "in Watt",
           "placeholder": {
-            "default": "a/topic/looks/like/this",
-            "de": "ein/topic/sieht/so/aus"
+            "default": "e.g. myhome/wallbox/0/power",
+            "de": "z.B. myhome/wallbox/0/power"
           }
         },
         {
@@ -591,8 +600,8 @@
           },
           "description": "in Watt",
           "placeholder": {
-            "default": "a/topic/looks/like/this",
-            "de": "ein/topic/sieht/so/aus"
+            "default": "e.g. myhome/heatpump/power",
+            "de": "z.B. myhome/heatpump/power"
           }
         },
         {
@@ -600,13 +609,13 @@
           "name": "mqtt_case_temp",
           "visibleIf": "{devices} contains 'inverter'",
           "title": {
-            "de": "Gehäusetemperatur",
+            "de": "Geräte- oder Gehäusetemperatur",
             "default": "Case temperatur"
           },
           "description": "in °C",
           "placeholder": {
-            "default": "a/topic/looks/like/this",
-            "de": "ein/topic/sieht/so/aus"
+            "default": "e.g. myhome/inverter/case_temp",
+            "de": "z.B. myhome/inverter/case_temp"
           }
         },
         {
@@ -622,8 +631,8 @@
             "default": "as Text"
           },
           "placeholder": {
-            "default": "a/topic/looks/like/this",
-            "de": "ein/topic/sieht/so/aus"
+            "default": "e.g. myhome/inverter/system_state",
+            "de": "z.B. myhome/inverter/system_state"
           }
         },
         {
@@ -639,8 +648,8 @@
             "default": "as Boolean"
           },
           "placeholder": {
-            "default": "a/topic/looks/like/this",
-            "de": "ein/topic/sieht/so/aus"
+            "default": "e.g. myhome/inverter/system_state_ok",
+            "de": "z.B. myhome/inverter/system_state_ok"
           }
         }
       ],
