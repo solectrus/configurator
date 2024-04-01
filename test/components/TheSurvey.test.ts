@@ -15,7 +15,7 @@ describe('TheSurvey', () => {
   it('renders properly', async () => {
     const wrapper = mount(TheSurvey)
 
-    expect(wrapper.text()).toContain('Konfigurator')
+    expect(wrapper.text()).toContain('Configurator')
     expect(wrapper.find('button[name="restart"]').exists()).toBe(false)
   })
 
