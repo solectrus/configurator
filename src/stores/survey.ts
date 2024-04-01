@@ -35,7 +35,10 @@ export const useSurveyStore = defineStore('survey', {
     initSurvey() {
       survey = new Model(surveyJson)
       survey.applyTheme(BorderlessLight)
-      survey.locale = 'de'
+
+      const preferredLanguages = navigator.languages.map((lang) => lang.substring(0, 2))
+      survey.locale = preferredLanguages.find((lang) => lang === 'en' || lang === 'de') ?? 'en'
+
       survey.onValueChanged.add((sender) => this.setAnswers(sender.data))
       survey.onComplete.add(() => (this.finished = true))
       this.setAnswers(null)

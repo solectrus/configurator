@@ -2,9 +2,23 @@ import { createPinia, setActivePinia } from 'pinia'
 import { useSurveyStore } from '@/stores/survey'
 import type { Answers } from '@/types/answers'
 
+function setLanguages(languages: string[]) {
+  Object.defineProperty(navigator, 'languages', {
+    value: languages,
+    configurable: true,
+  })
+}
+
 describe('useSurveyStore', () => {
+  let originalLanguages: PropertyDescriptor | undefined
+
   beforeEach(() => {
     setActivePinia(createPinia())
+    originalLanguages = Object.getOwnPropertyDescriptor(navigator, 'languages')
+  })
+
+  afterEach(() => {
+    if (originalLanguages) Object.defineProperty(navigator, 'languages', originalLanguages)
   })
 
   it('can initializes the store', () => {
@@ -20,7 +34,33 @@ describe('useSurveyStore', () => {
     store.initSurvey()
 
     expect(store.survey).toBeDefined()
+  })
+
+  it('can choose DE as language', () => {
+    setLanguages(['de-DE', 'en-US'])
+
+    const store = useSurveyStore()
+    store.initSurvey()
+
     expect(store.survey.locale).toBe('de')
+  })
+
+  it('can choose EN as language', () => {
+    setLanguages(['en-US', 'de-DE'])
+
+    const store = useSurveyStore()
+    store.initSurvey()
+
+    expect(store.survey.locale).toBe('')
+  })
+
+  it('can choose EN as fallback language', () => {
+    setLanguages(['fr-FR', 'es-ES'])
+
+    const store = useSurveyStore()
+    store.initSurvey()
+
+    expect(store.survey.locale).toBe('') // default is 'en'
   })
 
   it('can set answers', () => {
