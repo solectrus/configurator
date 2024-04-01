@@ -293,7 +293,7 @@ export class EnvGenerator {
     Object.entries(replacements).forEach(([key, value]) => {
       const regex = new RegExp(`^${key}=.*$`, 'gm')
       if (value) {
-        if (result.match(regex)) {
+        if (RegExp(regex).exec(result)) {
           // Replace existing line
           result = result.replace(regex, `${key}=${value}`)
         } else {
@@ -310,7 +310,7 @@ export class EnvGenerator {
   }
 
   private generateSecretKeyBase(seed?: string, length = 128) {
-    let seedInt = this.stringToSeed(seed || '')
+    let seedInt = this.stringToSeed(seed ?? '')
 
     return Array.from({ length: length / 2 }, () => {
       seedInt = (seedInt * 9_301 + 49_297) % 233_280
