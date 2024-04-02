@@ -71,7 +71,6 @@ describe('useSurveyStore', () => {
 
     expect(store.answers).toStrictEqual(newAnswers)
     expect(store.finished).toBe(false)
-    expect(store.contentAvailable).toBe(true)
   })
 
   it('can restart the survey', () => {

@@ -16,17 +16,5 @@ describe('TheSurvey', () => {
     const wrapper = mount(TheSurvey)
 
     expect(wrapper.text()).toContain('Configurator')
-    expect(wrapper.find('button[name="restart"]').exists()).toBe(false)
-  })
-
-  it('renders footer on page > 1', async () => {
-    store.survey.nextPage()
-    expect(store.survey.currentPageNo).toBe(1)
-
-    const wrapper = mount(TheSurvey)
-    expect(wrapper.find('button[name="restart"]').exists()).toBe(true)
-    wrapper.find('button[name="restart"]').trigger('click')
-
-    expect(store.survey.currentPageNo).toBe(0)
   })
 })

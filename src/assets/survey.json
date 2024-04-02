@@ -1,6 +1,9 @@
 {
   "locale": "de",
-  "title": "SOLECTRUS Configurator",
+  "title": {
+    "default": "Configurator",
+    "de": "Konfigurator"
+  },
   "description": {
     "de": "In einfachen Schritten zur Docker-Konfiguration",
     "default": "Docker configuration in simple steps"

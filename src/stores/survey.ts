@@ -36,7 +36,6 @@ export const useSurveyStore = defineStore('survey', {
   },
 
   getters: {
-    contentAvailable: (state): boolean => Boolean(state.composeFile && state.envFile),
     survey: (): Model => survey,
   },
 

@@ -16,7 +16,7 @@ const setActiveTab = (index: number) => {
 </script>
 
 <template>
-  <div class="relative">
+  <div class="flex flex-col">
     <nav class="sticky top-0 z-10 flex gap-5 bg-slate-700/90 p-4 text-sm text-gray-400">
       <button
         v-for="(tab, index) in tabs"

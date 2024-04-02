@@ -11,14 +11,14 @@ defineProps<CodeContainerProps>()
 </script>
 
 <template>
-  <article class="text-sm">
-    <div class="fixed right-5 top-20">
-      <CopyButton :text="code" v-if="code" />
+  <div v-if="code" class="sticky right-0 top-16">
+    <div class="absolute right-4 top-4">
+      <CopyButton :text="code" />
     </div>
+  </div>
 
-    <highlightjs :language="language" :code="code" v-if="code" />
-
-    <div v-else class="flex-1 bg-gray-800"></div>
+  <article v-if="code" class="text-sm">
+    <highlightjs :language="language" :code="code" />
   </article>
 </template>
 
