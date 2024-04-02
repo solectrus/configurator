@@ -205,7 +205,7 @@
                 "de": "Cloud: Alle Komponenten auf einem Cloud-Server",
                 "default": "Cloud: All components on a cloud server"
               },
-              "visibleIf": "{battery_vendor} = 'senec4' and {devices} notcontains 'heatpump' and {wallbox_vendor} <> 'other'"
+              "visibleIf": "{battery_vendor} anyof ['senec4', 'senec3'] and {devices} notcontains 'heatpump' and {wallbox_vendor} <> 'other'"
             },
             {
               "value": "distributed",

@@ -77,7 +77,7 @@ describe('useSurveyStore', () => {
 
     const question = survey.getQuestionByName('installation_type')
     const choices = question.visibleChoices.map((c: { id: string }) => c.id)
-    expect(choices).toEqual(['local', 'distributed'])
+    expect(choices).toEqual(['local', 'cloud', 'distributed'])
   })
 
   it('offers installation_type question (senec4)', () => {
