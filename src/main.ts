@@ -9,6 +9,7 @@ import { surveyPlugin } from 'survey-vue3-ui'
 
 // Highlight.js
 import hljs from 'highlight.js/lib/core'
+import markdown from 'highlight.js/lib/languages/markdown'
 import yaml from 'highlight.js/lib/languages/yaml'
 import env from 'highlight.js/lib/languages/properties'
 import hljsVuePlugin from '@highlightjs/vue-plugin'
@@ -17,6 +18,7 @@ import hljsVuePlugin from '@highlightjs/vue-plugin'
 import './styles/app.css'
 
 // Register languages for Highlight.js
+hljs.registerLanguage('md', markdown)
 hljs.registerLanguage('yaml', yaml)
 hljs.registerLanguage('env', env)
 

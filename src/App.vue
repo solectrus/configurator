@@ -5,6 +5,10 @@ import TheOutput from '@/components/TheOutput.vue'
 import { useSurveyStore } from '@/stores/survey'
 
 const store = useSurveyStore()
+
+// store.survey.setValue('devices', ['inverter'])
+// store.survey.setValue('installation_type', 'cloud')
+// store.survey.doComplete()
 </script>
 
 <template>

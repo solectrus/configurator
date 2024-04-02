@@ -274,6 +274,7 @@
           "isRequired": true
         }
       ],
+      "visibleIf": "{installation_type} = 'local' or {distributed_choice} = 'local'",
       "title": {
         "de": "Deine Linux-Maschine",
         "default": "Your Linux machine"

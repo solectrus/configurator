@@ -1,22 +1,26 @@
 <script setup lang="ts">
 import { useSurveyStore } from '@/stores/survey'
 import CodeContainer from '@/components/CodeContainer.vue'
+import MarkdownContainer from '@/components/MarkdownContainer.vue'
+import TabsComponent from '@/components/TabsComponent.vue'
 
 const store = useSurveyStore()
 </script>
 
 <template>
-  <div
-    class="flex transform flex-col gap-10 transition-transform duration-500"
-    :class="{ 'scale-0': !store.finished, 'flex-1': store.finished }"
-  >
-    <CodeContainer
-      language="yaml"
-      :code="store.composeFile"
-      filename="compose.yml"
-      class="flex-1"
-    />
+  <div :class="{ 'scale-0': !store.finished, 'flex-1': store.finished }">
+    <TabsComponent :tabs="['README.md', 'compose.yml', '.env']">
+      <template #tab-0>
+        <MarkdownContainer :markdown="store.readmeFile" filename="README.md" />
+      </template>
 
-    <CodeContainer language="env" :code="store.envFile" filename=".env" class="flex-1" />
+      <template #tab-1>
+        <CodeContainer language="yaml" :code="store.composeFile" filename="compose.yml" />
+      </template>
+
+      <template #tab-2>
+        <CodeContainer language="env" :code="store.envFile" filename=".env" />
+      </template>
+    </TabsComponent>
   </div>
 </template>
