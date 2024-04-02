@@ -40,7 +40,7 @@ export class EnvGenerator {
   private buildDashboardVariables(): string | undefined {
     if (this.compose.services['dashboard']) {
       return this.replaceEnvValues(dashboardVariables, {
-        APP_HOST: 'myapp.local',
+        APP_HOST: this.answers.app_host,
         ADMIN_PASSWORD: this.answers.admin_password,
         SECRET_KEY_BASE: this.generateSecretKeyBase(this.answers.admin_password),
         INSTALLATION_DATE: this.answers.installation_date,

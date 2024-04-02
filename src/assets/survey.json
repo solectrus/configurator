@@ -262,6 +262,28 @@
       }
     },
     {
+      "name": "p_machine",
+      "elements": [
+        {
+          "type": "text",
+          "name": "app_host",
+          "title": {
+            "de": "IP-Adresse",
+            "default": "IP address"
+          },
+          "isRequired": true
+        }
+      ],
+      "title": {
+        "de": "Deine Linux-Maschine",
+        "default": "Your Linux machine"
+      },
+      "description": {
+        "de": "Der Linux-Host, auf dem die Installation erfolgen soll",
+        "default": "The Linux host on which the installation is to take place"
+      }
+    },
+    {
       "name": "p_senec3",
       "elements": [
         {

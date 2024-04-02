@@ -6,6 +6,7 @@ export const testCases: [string, Answers][] = [
     {
       devices: ['inverter', 'battery', 'wallbox', 'heatpump'],
       installation_type: 'local',
+      app_host: '192.168.108.42',
       battery_vendor: 'senec3',
       wallbox_vendor: 'senec',
       heatpump_access: 'shelly',
@@ -36,6 +37,7 @@ export const testCases: [string, Answers][] = [
     {
       devices: ['inverter', 'battery', 'wallbox', 'heatpump'],
       installation_type: 'local',
+      app_host: '192.168.108.42',
       battery_vendor: 'other',
       wallbox_vendor: 'other',
       heatpump_access: 'mqtt',
@@ -119,6 +121,7 @@ export const testCases: [string, Answers][] = [
     {
       devices: ['inverter', 'battery'],
       installation_type: 'local',
+      app_host: '192.168.108.42',
       battery_vendor: 'other',
       mqtt_host: 'my-mqtt-broker.local',
       mqtt_port: 1883,
@@ -143,6 +146,7 @@ export const testCases: [string, Answers][] = [
     {
       devices: ['inverter', 'battery'],
       installation_type: 'local',
+      app_host: '192.168.108.42',
       battery_vendor: 'senec3',
       senec_host: '1.2.3.4',
       senec_language: 'it',
@@ -156,6 +160,7 @@ export const testCases: [string, Answers][] = [
     {
       devices: ['inverter', 'battery', 'wallbox'],
       installation_type: 'distributed',
+      app_host: '192.168.108.42',
       distributed_choice: 'local',
       battery_vendor: 'senec3',
       wallbox_vendor: 'other',
@@ -182,6 +187,7 @@ export const testCases: [string, Answers][] = [
       devices: ['inverter', 'battery'],
       installation_type: 'distributed',
       distributed_choice: 'cloud',
+      app_host: '42.42.42.42',
       battery_vendor: 'senec3',
       installation_date: '2021-01-04',
       admin_password: 'admin-password',
@@ -192,6 +198,7 @@ export const testCases: [string, Answers][] = [
     {
       devices: ['inverter', 'battery'],
       installation_type: 'cloud',
+      app_host: '42.42.42.42',
       battery_vendor: 'senec3',
       senec_username: 'peter@gmx.de',
       senec_password: 'mysecret',
@@ -206,6 +213,7 @@ export const testCases: [string, Answers][] = [
     {
       devices: ['inverter', 'battery'],
       installation_type: 'cloud',
+      app_host: '42.42.42.42',
       battery_vendor: 'senec4',
       senec_username: 'peter@gmx.de',
       senec_password: 'mysecret',
@@ -220,6 +228,7 @@ export const testCases: [string, Answers][] = [
     {
       devices: ['inverter', 'battery'],
       installation_type: 'cloud',
+      app_host: 'solectrus.example.com',
       battery_vendor: 'senec4',
       senec_username: 'peter@gmx.de',
       senec_password: 'mysecret',
@@ -237,6 +246,7 @@ export const testCases: [string, Answers][] = [
       devices: ['inverter', 'battery'],
       installation_type: 'cloud',
       battery_vendor: 'senec4',
+      app_host: '42.42.42.42',
     },
   ],
   [
@@ -251,6 +261,7 @@ export const testCases: [string, Answers][] = [
     {
       devices: ['inverter'],
       installation_type: 'local',
+      app_host: '192.168.108.42',
       mqtt_host: 'my-mqtt-broker.local',
       mqtt_port: 1883,
       mqtt_ssl: false,
