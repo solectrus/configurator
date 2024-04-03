@@ -213,7 +213,7 @@
             {
               "value": "distributed",
               "text": {
-                "de": "Verteilt: Lokale Messwerterfassung, Server in der Cloud",
+                "de": "Verteilt: Messwerterfassung lokal, Server in der Cloud",
                 "default": "Distributed: Local measurement, server in the cloud"
               },
               "visibleIf": "{battery_vendor} anyof ['other', 'senec3'] or {wallbox_vendor} = 'other' or {devices} contains 'heatpump' or {devices} = ['inverter']"
@@ -223,7 +223,11 @@
       ],
       "title": {
         "de": "Betriebsart",
-        "default": "SOLECTRUS operating mode"
+        "default": "Operating mode"
+      },
+      "description": {
+        "de": "Wo genau soll SOLECTRUS laufen?",
+        "default": "Where exactly should SOLECTRUS run?"
       }
     },
     {
@@ -279,12 +283,12 @@
       ],
       "visibleIf": "{installation_type} = 'local' or {distributed_choice} = 'local'",
       "title": {
-        "de": "Deine Linux-Maschine",
+        "de": "Dein Linux-Gerät",
         "default": "Your Linux machine"
       },
       "description": {
         "de": "Der Linux-Host, auf dem die Installation erfolgen soll",
-        "default": "The Linux host on which the installation is to take place"
+        "default": "The Linux host to be used for installation."
       }
     },
     {
@@ -513,12 +517,12 @@
       ],
       "visibleIf": "{battery_vendor} = 'other' or {wallbox_vendor} = 'other' or {heatpump_access} = 'mqtt' or {devices} = ['inverter']",
       "title": {
-        "de": "Zugriff auf MTT-Broker",
-        "default": "Access to Shelly energy monitor"
+        "de": "Zugriff auf MQTT-Broker",
+        "default": "Access to MQTT broker"
       },
       "description": {
-        "de": "Aufgrund deiner Vorauswahl wird ein externer MQTT-Broker (z.B. ioBroker)  benötigt, dessen Installation und Konfiguration hier nicht behandelt wird. Gebe hier die Zugangsdaten zu diesem Server an.\n",
-        "default": "Based on your preselection, an external MQTT broker (e.g. ioBroker) is required, but its installation and configuration is not covered here. Enter the credentials for this server here."
+        "de": "Aufgrund deiner Vorauswahl wird ein externer MQTT-Broker (z.B. ioBroker) benötigt, dessen Installation und Konfiguration hier nicht behandelt wird. Gib die Zugangsdaten zu diesem Server an.",
+        "default": "Based on your preselection, an external MQTT broker (e.g. ioBroker) is required, but its installation and configuration is not covered here. Enter the credentials for this server."
       }
     },
     {
@@ -740,8 +744,8 @@
         "de": "MQTT-Topics"
       },
       "description": {
-        "de": "Lege hier nun jeweils fest, über welches Topic ein Messwert gefunden werden kann.",
-        "default": "Now specify here which topic to use to find a measured value."
+        "de": "Lege nun jeweils fest, über welches Topic ein Messwert gefunden werden kann.",
+        "default": "Now specify which topic to use to find a measured value."
       }
     },
     {
