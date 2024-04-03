@@ -43,16 +43,12 @@ Ok, now you have everything in place to start the Docker containers in the backg
 docker compose up -d
 ```
 
+This command will download the Docker images and start the containers. This might take a while, depending on your internet connection and the performance of your machine. A little Raspberry will take a few minutes for the first start.
+
 Check if all containers are running fine with the following command:
 
 ```console
 docker compose ps
-```
-
-In case of errors, you can check the logs of the containers:
-
-```console
-docker compose logs -n 100 -f
 ```
 
 ## Open the app in your browser

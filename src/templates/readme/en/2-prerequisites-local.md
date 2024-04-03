@@ -34,7 +34,9 @@ $ docker compose version
 Docker Compose version v2.25.0
 ```
 
-If you don't have Docker installed, follow the [official instructions](https://docs.docker.com/engine/install/debian/) to install.
+An older version might work as well. Some OS like Synology DSM only support older Docker versions. In most cases, this is fine.
+
+If you don't have Docker installed, please follow the [official instructions](https://docs.docker.com/engine/install/debian/) to install.
 
 Don't forget to add your user to the `docker` group, so you don't need to use `sudo` for every Docker command.
 
@@ -43,6 +45,6 @@ sudo groupadd docker
 sudo usermod -aG docker $USER
 ```
 
-Log out and log back in so that your group membership is re-evaluated.
+**Important:** Log out and log back in so that your group membership is re-evaluated.
 
 You can read more about this [post-installation steps](https://docs.docker.com/engine/install/linux-postinstall/) in the official Docker documentation.

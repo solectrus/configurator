@@ -18,6 +18,7 @@ export class ReadmeGenerator {
     }
 
     result.push(await this.installation())
+    result.push(await this.final())
 
     return result.join('\n')
   }
@@ -52,6 +53,12 @@ export class ReadmeGenerator {
     return this.replacePlaceholders(raw, {
       url,
     })
+  }
+
+  private async final() {
+    const raw = await this.loadMarkdown('4-final')
+
+    return this.replacePlaceholders(raw, {})
   }
 
   private async loadMarkdown(fileName: string): Promise<string> {

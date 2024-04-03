@@ -1,6 +1,8 @@
 # Installation guide
 
-This guide demonstrates how to run all components of SOLECTRUS
+This guide helps you to run all components of SOLECTRUS.
+
+Beside having a Linux machine with a 64bit OS and Kernel v4 or higher, you need to have **Docker** installed and running. The following steps will guide you through the installation process.
 
 ## Prerequisites
 
@@ -38,7 +40,9 @@ $ docker compose version
 Docker Compose version v2.25.0
 ```
 
-If you don't have Docker installed, follow the [official instructions](https://docs.docker.com/engine/install/debian/) to install.
+An older version might work as well. Some OS like Synology DSM only support older Docker versions. In most cases, this is fine.
+
+If you don't have Docker installed, please follow the [official instructions](https://docs.docker.com/engine/install/debian/) to install.
 
 Don't forget to add your user to the `docker` group, so you don't need to use `sudo` for every Docker command.
 
@@ -47,7 +51,7 @@ sudo groupadd docker
 sudo usermod -aG docker $USER
 ```
 
-Log out and log back in so that your group membership is re-evaluated.
+**Important:** Log out and log back in so that your group membership is re-evaluated.
 
 You can read more about this [post-installation steps](https://docs.docker.com/engine/install/linux-postinstall/) in the official Docker documentation.
 
@@ -96,20 +100,41 @@ Ok, now you have everything in place to start the Docker containers in the backg
 docker compose up -d
 ```
 
+This command will download the Docker images and start the containers. This might take a while, depending on your internet connection and the performance of your machine. A little Raspberry will take a few minutes for the first start.
+
 Check if all containers are running fine with the following command:
 
 ```console
 docker compose ps
 ```
 
-In case of errors, you can check the logs of the containers:
+## Open the app in your browser
+
+That's it! You can now open the SOLECTRUS app in your browser by navigating to this URL:
+
+[http://192.168.108.42:3000](http://192.168.108.42:3000)
+
+## Final thoughts
+
+In the browser you should login as Admin with you chosen password. Login is required to edit settings like energy prices.
+
+SOLECTRUS requires you to register your installation. There is yellow banner on the top of the page, which will guide you through the registration process.
+
+SOLECTRUS contains an auto-update feature by using [WatchTower](https://containrrr.dev/watchtower/). It will automatically update all Docker images referenced in the `compose.yml` file and restart the containers if necessary. An update check is performed every 24 hours. Other Docker containers on the same machine are **not touched** by WatchTower.
+
+If you want to update the Docker images manually, you can run the following command:
+
+```console
+docker compose pull
+docker compose up -d
+```
+
+If something goes wrong, you should check the logs of the containers:
 
 ```console
 docker compose logs -n 100 -f
 ```
 
-## Open the app in your browser
+In case of any question, please check out the [forum at GitHub Discussions](https://github.com/orgs/solectrus/discussions). In case of a bug, please open an issue at GitHub in the [SOLECTRUS repository](https://github.com/solectrus/solectrus/issues).
 
-That's it! You can now open the SOLECTRUS app in your browser by navigating to this URL:
-
-[http://[ip]:3000](http://[ip]:3000)
+To support the development of SOLECTRUS, please consider [donating](https://ko-fi.com/ledermann) or [become a sponsor on GitHub](https://github.com/sponsors/solectrus).
