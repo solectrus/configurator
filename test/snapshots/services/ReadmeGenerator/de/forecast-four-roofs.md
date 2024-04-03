@@ -74,23 +74,13 @@ Both are individually generated for you by the Configurator. You can find them i
 
 ### Environment variables (.env)
 
-First, copy your personal `.env` file to the clipboard. Then, paste it into a new file on your Linux machine:
+First, copy your personal `.env` file to the clipboard. Then, run `cat > .env` on your Linux machine, paste the clipboard by pressing `Ctrl+V` and lastly save it by pressing `Ctrl+D`.
 
-```console
-nano .env
-```
-
-When the editor opens, paste the configuration file into. Save and exit the editor by pressing `Ctrl+S` and `Ctrl+X`.
+This seems to be bit tricky, but it's the easiest way to copy the content from clipboard to a file on your Linux machine. If you have a better way (e.g. via text editor), feel free to use it.
 
 ### Docker Compose configuration (compose.yml)
 
-Do the same for the `compose.yml` file:
-
-```console
-nano compose.yml
-```
-
-Again, when the editor opens, paste the configuration file into. Save and exit the editor by pressing `Ctrl+S` and `Ctrl+X`.
+Do the same for the `compose.yml` file: Run `cat > compose.yml`, paste the content and save it by pressing `Ctrl+D`.
 
 ## Start the Docker containers
 
