@@ -1,4 +1,3 @@
-version: '3.7'
 services:
   forecast-collector:
     image: ghcr.io/solectrus/forecast-collector:latest

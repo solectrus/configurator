@@ -33,7 +33,6 @@ type DockerService = {
 }
 
 export type DockerCompose = {
-  version: string
   services: Record<string, DockerService>
 }
 
@@ -42,7 +41,6 @@ export class ComposeGenerator {
 
   constructor(private answers: Answers) {
     this.compose = {
-      version: '3.7',
       services: {},
     }
   }
