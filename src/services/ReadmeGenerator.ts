@@ -30,9 +30,16 @@ export class ReadmeGenerator {
   }
 
   private async prerequisitesLocal() {
-    const raw = await this.loadMarkdown('2-prerequisites-local')
+    const filename = {
+      raspberry: '2-prerequisites-raspberry',
+      synology: '2-prerequisites-synology',
+      other: '2-prerequisites-local',
+    }[this.answers.linux_machine!]
 
-    return this.replacePlaceholders(raw, {})
+    if (filename) {
+      const raw = await this.loadMarkdown(filename)
+      return this.replacePlaceholders(raw, {})
+    } else return ''
   }
 
   private async prerequisitesCloud() {
@@ -44,11 +51,14 @@ export class ReadmeGenerator {
   private async installation() {
     const raw = await this.loadMarkdown('3-installation')
 
-    const url = this.answers.app_domain
-      ? `https://${this.answers.app_domain}`
-      : this.answers.app_host
-        ? `http://${this.answers.app_host}:3000`
-        : 'http://[ip]:3000'
+    let url
+    if (this.answers.app_domain) {
+      url = `https://${this.answers.app_domain}`
+    } else if (this.answers.app_host) {
+      url = `http://${this.answers.app_host}:3000`
+    } else {
+      url = 'http://[ip]:3000'
+    }
 
     return this.replacePlaceholders(raw, {
       url,

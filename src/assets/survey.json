@@ -272,6 +272,33 @@
       "name": "p_machine",
       "elements": [
         {
+          "type": "radiogroup",
+          "name": "linux_machine",
+          "visibleIf": "{installation_type} = 'local' or {distributed_choice} = 'local'",
+          "title": {
+            "de": "Auf welchem Gerät soll die Installation erfolgen?",
+            "default": "On which device should the installation take place?"
+          },
+          "isRequired": true,
+          "choices": [
+            {
+              "value": "raspberry",
+              "text": "Raspberry Pi"
+            },
+            {
+              "value": "synology",
+              "text": "Synology NAS"
+            },
+            {
+              "value": "other",
+              "text": {
+                "de": "Anderer Linux-Server (physisch oder virtuell)",
+                "default": "Other Linux server (physical or virtual)"
+              }
+            }
+          ]
+        },
+        {
           "type": "text",
           "name": "app_host",
           "title": {

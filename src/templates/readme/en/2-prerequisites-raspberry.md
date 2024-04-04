@@ -1,8 +1,8 @@
 ## Prerequisites
 
-Beside having a Linux machine with a 64bit OS and Kernel v4 or higher, you need to have **Docker** installed and running. The following steps will guide you through the installation process.
+Beside having a Raspberry Pi with a 64bit OS and Kernel v4 or higher, you need to have **Docker** installed and running. The following steps will guide you through the installation process.
 
-Now let's get started and log in to your Linux computer via SSH.
+Now let's get started and log in to your Raspi via SSH.
 
 ### Check your OS
 
@@ -10,17 +10,17 @@ First, ensure you have a 64bit OS with Kernel v4 or higher. Check your OS and ar
 
 ```console
 $ uname -a
-Linux MyUbuntu 5.4.0-174-generic #193-Ubuntu SMP Thu Mar 7 14:29:28 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux
+Linux MyRaspi 6.1.21-v8+ #1642 SMP PREEMPT Mon Apr  3 17:24:16 BST 2023 aarch64 GNU/Linux
 
 $ dpkg --print-architecture
-amd64
+arm64
 ```
 
 The kernel is `v6`, which is the latest and greatest - `v4` or `v5` will work as well.
 
-The architecture is `amd64` which means you are running a 64bit OS. `arm64` is another common architecture for 64bit OS.
+The architecture is `arm64` which means you are running a 64bit OS. If you are running a 32bit OS, you need to upgrade. If the architecture is `armhf`, you are running a 64bit Kernel with 32bit userland, which will **not** work.'
 
-If you are running a 32bit OS, you need to upgrade. If the architecture is `armhf`, you are running a 64bit Kernel with 32bit userland, which will **not** work.'
+The easiest way to setup a brand new OS is to use the [Raspberry Pi Imager](https://www.raspberrypi.com/software/) and install Raspberry Pi OS Lite (Debian Bookworm, 64bit) on a SD card.
 
 ### Prepare Docker
 
@@ -34,9 +34,7 @@ $ docker compose version
 Docker Compose version v2.25.0
 ```
 
-An older version might work as well.
-
-If you don't have Docker installed, please follow the [official instructions](https://docs.docker.com/engine/install/debian/) to install.
+An older version might work as well. If you don't have Docker installed, please follow the [official instructions](https://docs.docker.com/engine/install/debian/) to install.
 
 Don't forget to add your user to the `docker` group, so you don't need to use `sudo` for every Docker command.
 

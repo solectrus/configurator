@@ -6,6 +6,7 @@ export const testCases: [string, Answers][] = [
     {
       devices: ['inverter', 'battery', 'wallbox', 'heatpump'],
       installation_type: 'local',
+      linux_machine: 'other',
       app_host: '192.168.108.42',
       battery_vendor: 'senec3',
       wallbox_vendor: 'senec',
@@ -37,6 +38,7 @@ export const testCases: [string, Answers][] = [
     {
       devices: ['inverter', 'battery', 'wallbox', 'heatpump'],
       installation_type: 'local',
+      linux_machine: 'raspberry',
       app_host: '192.168.108.42',
       battery_vendor: 'other',
       wallbox_vendor: 'other',
@@ -80,6 +82,7 @@ export const testCases: [string, Answers][] = [
   [
     'forecast-three-roofs',
     {
+      linux_machine: 'other',
       forecast: true,
       forecast_roofs: '3',
       forecast_latitude: 11.1,
@@ -98,6 +101,7 @@ export const testCases: [string, Answers][] = [
   [
     'forecast-four-roofs',
     {
+      linux_machine: 'other',
       forecast: true,
       forecast_roofs: '4',
       forecast_latitude: 11.1,
@@ -121,6 +125,7 @@ export const testCases: [string, Answers][] = [
     {
       devices: ['inverter', 'battery'],
       installation_type: 'local',
+      linux_machine: 'other',
       app_host: '192.168.108.42',
       battery_vendor: 'other',
       mqtt_host: 'my-mqtt-broker.local',
@@ -146,6 +151,7 @@ export const testCases: [string, Answers][] = [
     {
       devices: ['inverter', 'battery'],
       installation_type: 'local',
+      linux_machine: 'other',
       app_host: '192.168.108.42',
       battery_vendor: 'senec3',
       senec_host: '1.2.3.4',
@@ -160,6 +166,7 @@ export const testCases: [string, Answers][] = [
     {
       devices: ['inverter', 'battery', 'wallbox'],
       installation_type: 'distributed',
+      linux_machine: 'other',
       app_host: '192.168.108.42',
       distributed_choice: 'local',
       battery_vendor: 'senec3',
@@ -254,6 +261,7 @@ export const testCases: [string, Answers][] = [
     {
       devices: [],
       installation_type: 'local',
+      linux_machine: 'other',
     },
   ],
   [
@@ -261,6 +269,7 @@ export const testCases: [string, Answers][] = [
     {
       devices: ['inverter'],
       installation_type: 'local',
+      linux_machine: 'synology',
       app_host: '192.168.108.42',
       mqtt_host: 'my-mqtt-broker.local',
       mqtt_port: 1883,

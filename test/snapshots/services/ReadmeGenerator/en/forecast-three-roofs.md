@@ -1,32 +1,30 @@
 # Installation guide
 
-This guide helps you to run all components of SOLECTRUS.
-
-Beside having a Linux machine with a 64bit OS and Kernel v4 or higher, you need to have **Docker** installed and running. The following steps will guide you through the installation process.
+This is your personal guide to install SOLECTRUS on your machine, generated based on your answers to the questions.
 
 ## Prerequisites
 
-Log into your Linux machine via SSH.
+Beside having a Linux machine with a 64bit OS and Kernel v4 or higher, you need to have **Docker** installed and running. The following steps will guide you through the installation process.
+
+Now let's get started and log in to your Linux computer via SSH.
 
 ### Check your OS
 
-Ensure you have a 64bit OS with Kernel v4 or higher
-
-Check your OS and architecture, which should look like this:
+First, ensure you have a 64bit OS with Kernel v4 or higher. Check your OS and architecture, which should look like this:
 
 ```console
 $ uname -a
-Linux raspberrypi 6.1.21-v8+ #1642 SMP PREEMPT Mon Apr  3 17:24:16 BST 2023 aarch64 GNU/Linux
+Linux MyUbuntu 5.4.0-174-generic #193-Ubuntu SMP Thu Mar 7 14:29:28 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux
 
 $ dpkg --print-architecture
-arm64
+amd64
 ```
 
 The kernel is `v6`, which is the latest and greatest - `v4` or `v5` will work as well.
 
-The architecture is `arm64` which means you are running a 64bit OS. If you are running a 32bit OS, you need to upgrade. If the architecture is `armhf`, you are running a 64bit Kernel with 32bit userland, which will **not** work.'
+The architecture is `amd64` which means you are running a 64bit OS. `arm64` is another common architecture for 64bit OS.
 
-If you have a Raspberry Pi: The easiest way to setup a brand new OS is to use the [Raspberry Pi Imager](https://www.raspberrypi.com/software/) and install Raspberry Pi OS Lite (Debian Bookworm, 64bit) on a SD card.
+If you are running a 32bit OS, you need to upgrade. If the architecture is `armhf`, you are running a 64bit Kernel with 32bit userland, which will **not** work.'
 
 ### Prepare Docker
 
@@ -40,7 +38,7 @@ $ docker compose version
 Docker Compose version v2.25.0
 ```
 
-An older version might work as well. Some OS like Synology DSM only support older Docker versions. In most cases, this is fine.
+An older version might work as well.
 
 If you don't have Docker installed, please follow the [official instructions](https://docs.docker.com/engine/install/debian/) to install.
 
@@ -57,10 +55,10 @@ You can read more about this [post-installation steps](https://docs.docker.com/e
 
 ## Create folders for configuration and data storage
 
-Choose a folder where you want to store the configuration and Docker volumes. This guide assumes you have a folder `/home/$USER/solectrus` which is used for Docker volumes. You can create this folder with the required subfolders with the following commands:
+Choose a folder where you want to store the configuration and Docker volumes. This guide assumes you have a folder `/~/solectrus` which is located in the home folder of the current user. You can create this folder with the required subfolders with the following commands:
 
 ```console
-cd /home/$USER
+cd ~
 mkdir -p solectrus
 cd solectrus
 mkdir redis postgresql influxdb
@@ -70,17 +68,29 @@ mkdir redis postgresql influxdb
 
 There are two configuration files, `.env` and `compose.yml`, that you need to create. The `.env` file contains the environment variables for the Docker containers, and the `compose.yml` file contains the Docker Compose configuration.
 
-Both are individually generated for you by the Configurator. You can find them in the tabs beside. Copy both files to your Linux machine via the clipboard. The following steps will use the `nano` editor to create the files, because this editor is pre-installed on most Linux distributions. But you can use any editor you like (which supports clipboard pasting).
+Both are individually generated for you by the Configurator. You can find them in the tabs beside. Copy both files to your Linux machine via the clipboard.
 
 ### Environment variables (.env)
 
-First, copy your personal `.env` file to the clipboard. Then, run `cat > .env` on your Linux machine, paste the clipboard by pressing `Ctrl+V` and lastly save it by pressing `Ctrl+D`.
+First, copy your personal `.env` file to the clipboard. Then, run this command on your Linux machine:
+
+```console
+ cat > .env
+```
+
+Now paste the clipboard by pressing `Ctrl+V` and lastly save it by pressing `Ctrl+D`.
 
 This seems to be bit tricky, but it's the easiest way to copy the content from clipboard to a file on your Linux machine. If you have a better way (e.g. via text editor), feel free to use it.
 
 ### Docker Compose configuration (compose.yml)
 
-Do the same for the `compose.yml` file: Run `cat > compose.yml`, paste the content and save it by pressing `Ctrl+D`.
+Do the same for the `compose.yml` file: Copy the file content to the clipboard and run this command:
+
+```
+cat > compose.yml
+```
+
+Then, paste the content and save it by pressing `Ctrl+D`.
 
 ## Start the Docker containers
 
@@ -90,7 +100,7 @@ Ok, now you have everything in place to start the Docker containers in the backg
 docker compose up -d
 ```
 
-This command will download the Docker images and start the containers. This might take a while, depending on your internet connection and the performance of your machine. A little Raspberry will take a few minutes for the first start.
+This command will download the Docker images and start the containers. This might take a while, depending on your internet connection and the performance of your machine. It can take a few minutes for the first start.
 
 Check if all containers are running fine with the following command:
 

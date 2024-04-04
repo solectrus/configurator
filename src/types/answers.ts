@@ -10,6 +10,7 @@ export interface Answers {
   wallbox_vendor?: 'senec' | 'other'
   installation_type?: 'local' | 'cloud' | 'distributed'
   distributed_choice?: 'local' | 'cloud'
+  linux_machine?: 'raspberry' | 'synology' | 'other'
   app_host?: string
   senec_host?: string
   senec_interval?: number

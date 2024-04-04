@@ -1,32 +1,32 @@
 # Installation guide
 
-This guide helps you to run all components of SOLECTRUS.
-
-Beside having a Linux machine with a 64bit OS and Kernel v4 or higher, you need to have **Docker** installed and running. The following steps will guide you through the installation process.
+This is your personal guide to install SOLECTRUS on your machine, generated based on your answers to the questions.
 
 ## Prerequisites
 
-Log into your Linux machine via SSH.
+There are lots of different Synology NAS devices, and they all have different hardware and software. This guide is tested on a Synology NAS DS220+, but should work on some other models as well.
+
+A CPU with at least 2 cores is recommended, as well as a RAM upgrade to more than 2GB. A Linux Kernel `v4` or higher is required, some older Synology devices don't work because they are on Kernel `v3` and cannot be updated.
+
+Beside this, you need to have **Docker** installed and running. No other software is required.
+
+The following steps will guide you through the installation process. Now let's get started and log in to your Linux computer via SSH.
 
 ### Check your OS
 
-Ensure you have a 64bit OS with Kernel v4 or higher
-
-Check your OS and architecture, which should look like this:
+First, ensure you have a 64bit OS with Kernel `v4` or higher. Check your OS and architecture, which should look like this:
 
 ```console
 $ uname -a
-Linux raspberrypi 6.1.21-v8+ #1642 SMP PREEMPT Mon Apr  3 17:24:16 BST 2023 aarch64 GNU/Linux
+Linux MySyno 4.4.302+ #69057 SMP Mon Nov 13 14:19:30 CST 2023 x86_64 GNU/Linux synology_geminilake_220+
 
 $ dpkg --print-architecture
-arm64
+amd64
 ```
 
-The kernel is `v6`, which is the latest and greatest - `v4` or `v5` will work as well.
+The kernel is `v4`, which is the minium required. Newer versions like `v5` or `v6` will work as well. Older versions like `v3` will **not** work. Sadly, Synology does not provide a way to upgrade the kernel.
 
-The architecture is `arm64` which means you are running a 64bit OS. If you are running a 32bit OS, you need to upgrade. If the architecture is `armhf`, you are running a 64bit Kernel with 32bit userland, which will **not** work.'
-
-If you have a Raspberry Pi: The easiest way to setup a brand new OS is to use the [Raspberry Pi Imager](https://www.raspberrypi.com/software/) and install Raspberry Pi OS Lite (Debian Bookworm, 64bit) on a SD card.
+The architecture is `amd64` which means you are running a 64bit OS. If you are running a 32bit OS, you need to upgrade first - if possible.
 
 ### Prepare Docker
 
@@ -34,33 +34,32 @@ Ensure Docker is installed and running. First, check your Docker version:
 
 ```console
 $ docker --version
-Docker version 26.0.0, build 2ae903e
+Docker version 20.10.23, build 876964a
 
-$ docker compose version
-Docker Compose version v2.25.0
+$ docker-compose version
+Docker Compose version v2.9.0-6413-g38f6acd
 ```
 
-An older version might work as well. Some OS like Synology DSM only support older Docker versions. In most cases, this is fine.
+If you don't have Docker installed, please install the [Container Manager](https://www.synology.com/dsm/packages/ContainerManager) via the Synology Package Center.
 
-If you don't have Docker installed, please follow the [official instructions](https://docs.docker.com/engine/install/debian/) to install.
+Note that the Docker version on Synology is a little older than the official Docker version. In most cases, this is fine. However, it is important to know that the command `compose` therefore requires a hyphen between `docker` and `compose`. In the following commands, you must therefore replace `docker compose` with `docker-compose`.
 
-Don't forget to add your user to the `docker` group, so you don't need to use `sudo` for every Docker command.
+To ensure Docker can run without sudo, create a docker group and add yourself to it:
 
 ```console
-sudo groupadd docker
-sudo usermod -aG docker $USER
+sudo synogroup --add docker
+sudo chown root:docker /var/run/docker.sock
+sudo synogroup --member docker $USER
 ```
 
-**Important:** Log out and log back in so that your group membership is re-evaluated.
-
-You can read more about this [post-installation steps](https://docs.docker.com/engine/install/linux-postinstall/) in the official Docker documentation.
+(adopted from the [post-installation steps](https://docs.docker.com/engine/install/linux-postinstall/) in the official Docker documentation).
 
 ## Create folders for configuration and data storage
 
-Choose a folder where you want to store the configuration and Docker volumes. This guide assumes you have a folder `/home/$USER/solectrus` which is used for Docker volumes. You can create this folder with the required subfolders with the following commands:
+Choose a folder where you want to store the configuration and Docker volumes. This guide assumes you have a folder `/~/solectrus` which is located in the home folder of the current user. You can create this folder with the required subfolders with the following commands:
 
 ```console
-cd /home/$USER
+cd ~
 mkdir -p solectrus
 cd solectrus
 mkdir redis postgresql influxdb
@@ -70,17 +69,29 @@ mkdir redis postgresql influxdb
 
 There are two configuration files, `.env` and `compose.yml`, that you need to create. The `.env` file contains the environment variables for the Docker containers, and the `compose.yml` file contains the Docker Compose configuration.
 
-Both are individually generated for you by the Configurator. You can find them in the tabs beside. Copy both files to your Linux machine via the clipboard. The following steps will use the `nano` editor to create the files, because this editor is pre-installed on most Linux distributions. But you can use any editor you like (which supports clipboard pasting).
+Both are individually generated for you by the Configurator. You can find them in the tabs beside. Copy both files to your Linux machine via the clipboard.
 
 ### Environment variables (.env)
 
-First, copy your personal `.env` file to the clipboard. Then, run `cat > .env` on your Linux machine, paste the clipboard by pressing `Ctrl+V` and lastly save it by pressing `Ctrl+D`.
+First, copy your personal `.env` file to the clipboard. Then, run this command on your Linux machine:
+
+```console
+ cat > .env
+```
+
+Now paste the clipboard by pressing `Ctrl+V` and lastly save it by pressing `Ctrl+D`.
 
 This seems to be bit tricky, but it's the easiest way to copy the content from clipboard to a file on your Linux machine. If you have a better way (e.g. via text editor), feel free to use it.
 
 ### Docker Compose configuration (compose.yml)
 
-Do the same for the `compose.yml` file: Run `cat > compose.yml`, paste the content and save it by pressing `Ctrl+D`.
+Do the same for the `compose.yml` file: Copy the file content to the clipboard and run this command:
+
+```
+cat > compose.yml
+```
+
+Then, paste the content and save it by pressing `Ctrl+D`.
 
 ## Start the Docker containers
 
@@ -90,7 +101,7 @@ Ok, now you have everything in place to start the Docker containers in the backg
 docker compose up -d
 ```
 
-This command will download the Docker images and start the containers. This might take a while, depending on your internet connection and the performance of your machine. A little Raspberry will take a few minutes for the first start.
+This command will download the Docker images and start the containers. This might take a while, depending on your internet connection and the performance of your machine. It can take a few minutes for the first start.
 
 Check if all containers are running fine with the following command:
 
