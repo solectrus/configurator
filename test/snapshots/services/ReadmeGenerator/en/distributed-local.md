@@ -1,6 +1,6 @@
 # Installation guide
 
-This is your personal guide to install SOLECTRUS on your machine, generated based on your answers to the questions.
+This is your personal guide to install the local part of SOLECTRUS on your machine, generated based on your answers to the questions.
 
 ## Prerequisites
 

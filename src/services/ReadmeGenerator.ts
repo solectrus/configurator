@@ -25,8 +25,17 @@ export class ReadmeGenerator {
 
   private async introduction() {
     const raw = await this.loadMarkdown('1-introduction')
+    const placeholders = await this.loadPlaceholders()
 
-    return this.replacePlaceholders(raw, {})
+    let part
+    if (this.answers.installation_type === 'distributed')
+      if (this.answers.distributed_choice === 'cloud') part = placeholders.part_remote
+      else part = placeholders.part_local
+    else part = placeholders.part_global
+
+    return this.replacePlaceholders(raw, {
+      part,
+    })
   }
 
   private async prerequisitesLocal() {
@@ -78,6 +87,17 @@ export class ReadmeGenerator {
     } catch (error) {
       // Fallback to English
       const fallbackModule = await import(`@/templates/readme/en/${fileName}.md?raw`)
+      return fallbackModule.default
+    }
+  }
+
+  private async loadPlaceholders(): Promise<any> {
+    try {
+      const module = await import(`@/templates/readme/${this.language}/placeholders.json`)
+      return module.default
+    } catch (error) {
+      // Fallback to English
+      const fallbackModule = await import('@/templates/readme/en/placeholders.json')
       return fallbackModule.default
     }
   }

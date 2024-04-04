@@ -1,0 +1,5 @@
+{
+  "part_remote": "the remote part of SOLECTRUS on your cloud server",
+  "part_local": "the local part of SOLECTRUS on your machine",
+  "part_global": "SOLECTRUS on your machine"
+}
