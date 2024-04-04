@@ -1,6 +1,6 @@
 services:
   senec-collector:
-    image: ghcr.io/solectrus/senec-collector:latest
+    image: ghcr.io/solectrus/senec-collector:develop
     environment:
       - SENEC_ADAPTER
       - SENEC_HOST
@@ -24,7 +24,7 @@ services:
     labels:
       - com.centurylinklabs.watchtower.scope=solectrus
   shelly-collector:
-    image: ghcr.io/solectrus/shelly-collector:latest
+    image: ghcr.io/solectrus/shelly-collector:develop
     environment:
       - SHELLY_HOST
       - SHELLY_INTERVAL
@@ -43,7 +43,7 @@ services:
     labels:
       - com.centurylinklabs.watchtower.scope=solectrus
   mqtt-collector:
-    image: ghcr.io/solectrus/mqtt-collector:latest
+    image: ghcr.io/solectrus/mqtt-collector:develop
     environment:
       - MQTT_HOST
       - MQTT_PORT

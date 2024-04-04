@@ -1,4 +1,4 @@
-image: ghcr.io/solectrus/shelly-collector:latest
+image: ghcr.io/solectrus/shelly-collector:develop
 environment:
   - SHELLY_HOST
   - SHELLY_INTERVAL

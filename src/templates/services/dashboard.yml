@@ -1,4 +1,4 @@
-image: ghcr.io/solectrus/solectrus:latest
+image: ghcr.io/solectrus/solectrus:next
 depends_on:
   postgresql:
     condition: service_healthy
