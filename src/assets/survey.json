@@ -278,7 +278,17 @@
             "de": "IP-Adresse",
             "default": "IP address"
           },
-          "isRequired": true
+          "isRequired": true,
+          "validators": [
+            {
+              "type": "expression",
+              "text": {
+                "de": "IP-Adresse schon anderweitig benutzt!",
+                "default": "IP address already used elsewhere!"
+              },
+              "expression": "{app_host} != {shelly_host} and {app_host} != {senec_host}"
+            }
+          ]
         }
       ],
       "visibleIf": "{installation_type} = 'local' or {distributed_choice} = 'local'",
@@ -302,6 +312,16 @@
             "default": "Local IP address or host name"
           },
           "isRequired": true,
+          "validators": [
+            {
+              "type": "expression",
+              "text": {
+                "de": "IP-Adresse schon anderweitig benutzt!",
+                "default": "IP address already used elsewhere!"
+              },
+              "expression": "{senec_host} != {app_host} and {senec_host} != {shelly_host} and {senec_host} != {mqtt_host}"
+            }
+          ],
           "placeholder": {
             "de": "z.B. 192.168.178.42",
             "default": "e.g. 192.168.178.42"
@@ -445,6 +465,16 @@
             "de": "Lokale IP-Adresse oder Hostname",
             "default": "Local IP address or host name"
           },
+          "validators": [
+            {
+              "type": "expression",
+              "text": {
+                "de": "IP-Adresse schon anderweitig benutzt!",
+                "default": "IP address already used elsewhere!"
+              },
+              "expression": "{shelly_host} != {senec_host} and {shelly_host} != {mqtt_host} and {shelly_host} != {app_host}"
+            }
+          ],
           "placeholder": {
             "de": "z.B. 192.168.178.43",
             "default": "e.g. 192.168.178.43"
@@ -478,6 +508,16 @@
             "default": "Local IP address or host name"
           },
           "isRequired": true,
+          "validators": [
+            {
+              "type": "expression",
+              "text": {
+                "de": "IP-Adresse schon anderweitig benutzt!",
+                "default": "IP address already used elsewhere!"
+              },
+              "expression": "{mqtt_host} != {senec_host} and {mqtt_host} != {shelly_host}"
+            }
+          ],
           "placeholder": {
             "de": "z.B. 192.168.178.44",
             "default": "e.g. 192.168.178.44"
@@ -807,6 +847,7 @@
             "de": "Wieviele Flächen mit Solarmodulen gibt es bei dir?",
             "default": "How many planes do you have with solar modules?"
           },
+          "isRequired": true,
           "choices": ["1", "2", "3", "4"]
         }
       ],
