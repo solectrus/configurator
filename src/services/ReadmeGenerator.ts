@@ -58,7 +58,12 @@ export class ReadmeGenerator {
   }
 
   private async installation() {
-    const raw = await this.loadMarkdown('3-installation')
+    const filename =
+      this.answers.installation_type === 'distributed' &&
+      this.answers.distributed_choice === 'local'
+        ? '3-installation-distributed-local'
+        : '3-installation'
+    const raw = await this.loadMarkdown(filename)
 
     let url
     if (this.answers.app_domain) {

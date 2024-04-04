@@ -53,17 +53,6 @@ sudo usermod -aG docker $USER
 
 You can read more about this [post-installation steps](https://docs.docker.com/engine/install/linux-postinstall/) in the official Docker documentation.
 
-## Create folders for configuration and data storage
-
-Choose a folder where you want to store the configuration and Docker volumes. This guide assumes you have a folder `/~/solectrus` which is located in the home folder of the current user. You can create this folder with the required subfolders with the following commands:
-
-```console
-cd ~
-mkdir -p solectrus
-cd solectrus
-mkdir redis postgresql influxdb
-```
-
 ## Add configuration files
 
 There are two configuration files, `.env` and `compose.yml`, that you need to create. The `.env` file contains the environment variables for the Docker containers, and the `compose.yml` file contains the Docker Compose configuration.
@@ -110,9 +99,7 @@ docker compose ps
 
 ## Open the app in your browser
 
-That's it! You can now open the SOLECTRUS app in your browser by navigating to this URL:
-
-[http://192.168.108.42:3000](http://192.168.108.42:3000)
+That's it. Your local installation is now up and running and pushes data to your cloud installation. You can now open the SOLECTRUS app in your browser by navigating to your cloud installation URL.
 
 ## Final thoughts
 
