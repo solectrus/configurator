@@ -303,8 +303,8 @@
           "name": "app_host",
           "visibleIf": "{installation_type} = 'local'",
           "title": {
-            "de": "IP-Adresse",
-            "default": "IP address"
+            "de": "IP-Adresse oder Host name",
+            "default": "IP address or host name"
           },
           "isRequired": true,
           "validators": [
