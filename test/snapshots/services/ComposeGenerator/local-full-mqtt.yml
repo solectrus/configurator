@@ -131,7 +131,7 @@ services:
     labels:
       - com.centurylinklabs.watchtower.scope=solectrus
   mqtt-collector:
-    image: ghcr.io/solectrus/mqtt-collector:develop
+    image: ghcr.io/solectrus/mqtt-collector:pr-137
     environment:
       - MQTT_HOST
       - MQTT_PORT
