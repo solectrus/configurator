@@ -63,7 +63,6 @@ exports[`App > can mount when finished 1`] = `
             stroke-linejoin="round"
           />
         </svg>
-         Neustart 
       </button>
       <button
         class="inline-flex items-center gap-2 space-x-2 rounded p-2 text-sm text-slate-300 hover:text-red-400"
@@ -86,7 +85,6 @@ exports[`App > can mount when finished 1`] = `
             stroke-linejoin="round"
           />
         </svg>
-         Löschen 
       </button>
     </nav>
     <div
