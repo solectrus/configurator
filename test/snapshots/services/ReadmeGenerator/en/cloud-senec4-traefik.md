@@ -4,12 +4,14 @@ This is your personal guide to install SOLECTRUS on your machine, generated base
 
 ## Prerequisites
 
+This guide assumes you have a cloud server running Linux. If you don't have one, Hetzner Cloud is a good choice and it is used in this guide. Hetzner is a German cloud provider with a good price-performance ratio. But of course, you can use any other cloud provider with SSH access as well.
+
 ### Order your server at Hetzner
 
 First, sign up on Hetzner:
 [https://hetzner.cloud/?ref=NggV8HU9FqCz](https://hetzner.cloud/?ref=NggV8HU9FqCz)
 
-(This ia referral link, it will give you a discount of €20 - and me too)
+This ia referral link, it will give you a discount of €20.
 
 Then order your server:
 

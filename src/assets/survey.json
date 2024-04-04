@@ -241,22 +241,22 @@
             "default": "Which part of the installation do you want to tackle now?"
           },
           "description": {
-            "de": "Es sind zwei Installationen erforderlich. Welchen Teil erledigen wir jetzt?",
-            "default": "Two installations are required. Which part do we do now?"
+            "de": "Es sind zwei Installationen erforderlich, in der angegebenen Reihenfolge. Welchen Teil erledigen wir jetzt?",
+            "default": "Two installations are required, in the order shown.Which part do we do now?"
           },
           "choices": [
             {
-              "value": "local",
+              "value": "cloud",
               "text": {
-                "de": "Die lokale Installation auf Raspberry Pi, NAS etc.",
-                "default": "The local installation on Raspberry Pi, NAS etc."
+                "de": "1. Die Installation auf dem Cloud-Server",
+                "default": "1. The installation on the cloud server"
               }
             },
             {
-              "value": "cloud",
+              "value": "local",
               "text": {
-                "de": "Die Installation auf dem Cloud-Server",
-                "default": "The installation on the cloud server"
+                "de": "2. Die lokale Installation auf Raspberry Pi, NAS etc.",
+                "default": "2. The local installation on Raspberry Pi, NAS etc."
               }
             }
           ]
