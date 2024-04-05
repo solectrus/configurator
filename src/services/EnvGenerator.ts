@@ -68,11 +68,19 @@ export class EnvGenerator {
   private get influx_exclude_from_house_power() {
     const result = []
 
-    if (this.answers.devices?.includes('heatpump')) {
+    if (
+      this.answers.devices?.includes('heatpump') &&
+      (this.answers.heatpump_access === 'shelly' ||
+        this.answers.heatpump_exclude_from_house_power === 'yes')
+    ) {
       result.push('HEATPUMP_POWER')
     }
 
-    if (this.answers.devices?.includes('wallbox') && this.answers.wallbox_vendor === 'other') {
+    if (
+      this.answers.devices?.includes('wallbox') &&
+      this.answers.wallbox_vendor === 'other' &&
+      this.answers.wallbox_exclude_from_house_power === 'yes'
+    ) {
       result.push('WALLBOX_POWER')
     }
 

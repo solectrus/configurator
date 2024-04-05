@@ -40,6 +40,8 @@ export interface Answers {
   mqtt_system_status_ok?: string
   mqtt_grid_export_limit?: string
   mqtt_heatpump_power?: string
+  wallbox_exclude_from_house_power?: string
+  heatpump_exclude_from_house_power?: string
   forecast?: boolean
   forecast_latitude?: number
   forecast_longitude?: number

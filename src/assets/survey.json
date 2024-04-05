@@ -744,6 +744,30 @@
           }
         },
         {
+          "type": "radiogroup",
+          "name": "wallbox_exclude_from_house_power",
+          "visibleIf": "{devices} contains 'wallbox' and {battery_vendor} = 'other'",
+          "title": {
+            "de": "Wallbox im Hausverbrauch enthalten?"
+          },
+          "choices": [
+            {
+              "value": "yes",
+              "text": {
+                "de": "Der Verbrauch der Wallbox ist im Hausverbrauch enthalten und soll herausgerechnet werden",
+                "default": "The consumption of the wallbox is included in the house consumption and should be excluded"
+              }
+            },
+            {
+              "value": "no",
+              "text": {
+                "de": "Der Verbrauch der Wallbox ist nicht im Hausverbrauch enthalten",
+                "default": "The consumption of the wallbox is not included in the household consumption"
+              }
+            }
+          ]
+        },
+        {
           "type": "text",
           "name": "mqtt_heatpump_power",
           "visibleIf": "{devices} contains 'heatpump'",
@@ -756,6 +780,30 @@
             "default": "e.g. myhome/heatpump/power",
             "de": "z.B. myhome/heatpump/power"
           }
+        },
+        {
+          "type": "radiogroup",
+          "name": "heatpump_exclude_from_house_power",
+          "visibleIf": "{devices} contains 'heatpump'",
+          "title": {
+            "de": "Wärmepumpe im Hausverbrauch enthalten?"
+          },
+          "choices": [
+            {
+              "value": "yes",
+              "text": {
+                "de": "Der Verbrauch der Wärmepumpe ist im Hausverbrauch enthalten und soll herausgerechnet werden",
+                "default": "The consumption of the heat pump is included in the house consumption and should be excluded"
+              }
+            },
+            {
+              "value": "no",
+              "text": {
+                "de": "Der Verbrauch der Wärmepumpe ist nicht im Hausverbrauch enthalten",
+                "default": "The consumption of the heat pump is not included in the house consumption"
+              }
+            }
+          ]
         },
         {
           "type": "text",
