@@ -672,13 +672,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/markdown-it@npm:^13.0.7":
-  version: 13.0.7
-  resolution: "@types/markdown-it@npm:13.0.7"
+"@types/markdown-it@npm:^14.0.0":
+  version: 14.0.0
+  resolution: "@types/markdown-it@npm:14.0.0"
   dependencies:
     "@types/linkify-it": "npm:*"
     "@types/mdurl": "npm:*"
-  checksum: 10c0/8a0fda0eb518ca2b25fcb5da32398930729270e9095cd4f7f3e379098b9d0f9e6336974becf2f36e69bbdbdc57818fef731149988c9e98e9f3f47501fefd9d39
+  checksum: 10c0/c37633088b3dbd1d6928cbe35a1246fb0d32842dd93f723797eaac0701300e0fa5ff34840d8d7dd1a1ab4f4e932bfd9aadb32e2dcdfd77a73b8fdc45b443f4a3
   languageName: node
   linkType: hard
 
@@ -690,11 +690,11 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*":
-  version: 20.12.4
-  resolution: "@types/node@npm:20.12.4"
+  version: 20.12.5
+  resolution: "@types/node@npm:20.12.5"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: 10c0/9b142fcd839a48c348d6b9acfc753dfa4b3fb1f3e23ed67e8952bee9b2dfdaffdddfbcf0e4701557b88631591a5f9968433910027532ef847759f8682e27ffe7
+  checksum: 10c0/2da65516fba98f0417620e42bddbe53e144d4782d69cd37f99df2537c6850b9cfbdb8a017f02c61e9a074bcac84f9f3f221b250474ac8c6b95d507a47e8d53f9
   languageName: node
   linkType: hard
 
@@ -1723,9 +1723,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.4.668":
-  version: 1.4.728
-  resolution: "electron-to-chromium@npm:1.4.728"
-  checksum: 10c0/c1de9df997d84a7e41f2228a4a570ff8470c976c23b0c5701309624da59a9b81d930b8c73d35b4092181bde75a7833ffad70a8507558d4e8c3990b42058673f8
+  version: 1.4.729
+  resolution: "electron-to-chromium@npm:1.4.729"
+  checksum: 10c0/9f093b873a5e02da5fd5db5a1038c3a3f84bd43ff6d0e894280848717e5892953cc814a4ddf1de2acbfa9af4fe356c714f036f39b82d52bc6c8c3aed6e97fbde
   languageName: node
   linkType: hard
 
@@ -4108,7 +4108,7 @@ __metadata:
     "@tsconfig/node20": "npm:^20.1.4"
     "@types/js-yaml": "npm:^4.0.9"
     "@types/jsdom": "npm:^21.1.6"
-    "@types/markdown-it": "npm:^13.0.7"
+    "@types/markdown-it": "npm:^14.0.0"
     "@vitejs/plugin-vue": "npm:^5.0.4"
     "@vitest/coverage-v8": "npm:^1.4.0"
     "@vitest/ui": "npm:^1.4.0"
