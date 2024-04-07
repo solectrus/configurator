@@ -6,7 +6,7 @@ command:
   - '--entrypoints.websecure.address=:443'
   - '--entrypoints.influxdb.address=:8086'
   - '--certificatesresolvers.myresolver.acme.tlschallenge=true'
-  - '--certificatesresolvers.myresolver.acme.email=${LETSENCRPT_EMAIL}'
+  - '--certificatesresolvers.myresolver.acme.email=${LETSENCRYPT_EMAIL}'
   - '--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json'
 ports:
   - '80:80'
