@@ -1,8 +1,16 @@
 # Installation Guide
 
-This is your personalized guide for installing SOLECTRUS on your machine, created based on your answers. The key elements are the two files `compose.yml` and `.env` located in the tabs next to this one. They contain all the information you need for installing and running SOLECTRUS.
+This is your personalized guide for installing SOLECTRUS on your machine, created individually based on your answers. It consists of three parts:
 
-**WARNING:** The configurator is under heavy development and involves installing beta versions of Docker images. The guide is currently available in English, with the final version to be available in German as well. Please report any issues you encounter!
+- The `README.md` file, which you are currently reading
+- The `compose.yml` file, which contains the services that are started in Docker containers
+- The `.env` file, which contains the environment variables for the Docker containers
+
+You can switch between them using the links above. The `compose.yml` and `.env` can be copied to the clipboard. You will need this later.
+
+**PLEASE NOTE:** The Configurator is under heavy development and involves installing beta versions of Docker images. The guide is currently available in English, with the final version to be available in German as well. Please report any issues you encounter via GitHub at [https://github.com/solectrus/hosting/issues](https://github.com/solectrus/hosting/issues).
+
+Now read on to do the installation on your Linux machine.
 
 ## Prerequisites
 
@@ -58,7 +66,9 @@ sudo synogroup --member docker $USER
 
 ## Create folders for configuration and data storage
 
-Choose a folder where you want to store the configuration and Docker volumes. This guide assumes you have a folder `/~/solectrus` which is located in the home folder of the current user. You can create this folder with the required subfolders with the following commands:
+SOLECTRUS needs a folder to store the configuration files and Docker volumes for the databases. This folder needs to be created on your Linux machine before you start the Docker containers. We choose `~/solectrus` as the base folder for this purpose.
+
+First, create this folder and the required subfolders with the following commands:
 
 ```console
 cd ~
@@ -69,31 +79,47 @@ mkdir redis postgresql influxdb
 
 ## Add configuration files
 
-There are two configuration files, `.env` and `compose.yml`, that you need to create. The `.env` file contains the environment variables for the Docker containers, and the `compose.yml` file contains the Docker Compose configuration.
+The configuration of SOLECTRUS consists of two files: `compose.yml` and `.env`. the `compose.yml` file contains the services that are started in Docker containers. The `.env` file contains the environment variables for the Docker containers.
 
-Both are individually generated for you by the Configurator. You can find them in the tabs beside. Copy both files to your Linux machine via the clipboard.
+Both files are created for you based on your answers. You can find them under the links above. They must be copied to your Linux machine, which is described in the following sections.
 
-### Environment variables (.env)
+### Copy compose.yml to your machine
 
-First, copy your personal `.env` file to the clipboard. Then, run this command on your Linux machine:
-
-```console
- cat > .env
-```
-
-Now paste the clipboard by pressing `Ctrl+V` and lastly save it by pressing `Ctrl+D`.
-
-This may seem a little tricky, but it is the easiest way to copy the contents of the clipboard to a file on your Linux computer without having to rely on any tools. If you know a better way (e.g. via a text editor), feel free to use it.
-
-### Docker Compose configuration (compose.yml)
-
-Do the same for the `compose.yml` file: Copy the file content to the clipboard and run this command:
+First, copy your personal `compose.yml` file to the clipboard by pressing the clipboard button. Then, run this command on your Linux machine:
 
 ```
 cat > compose.yml
 ```
 
-Then, paste the content and save it by pressing `Ctrl+D`.
+You will see a new empty line in the terminal with a cursor. Now, paste the content from clipboard by pressing `Ctrl+V` and save it by pressing `Ctrl+D`.
+
+This may seem a little tricky, but it is the easiest way to copy the contents of the clipboard to a file on your Linux computer without having to rely on any tools. If you know a better way (e.g. via a text editor), feel free to use it.
+
+### Copy .env to your machine
+
+Do the same for the `.env` file: Copy the file content to the clipboard and run this command:
+
+```console
+ cat > .env
+```
+
+Then again, paste the clipboard with `Strg+V` and save it by pressing `Ctrl+D`.
+
+Check if the files are created correctly by running the following command:
+
+```console
+$ ls -la
+```
+
+You should see the following output:
+
+```console
+total 24
+drwxr-xr-x 2 root root 4096 Apr  7 09:42 ./
+drwx------ 5 root root 4096 Apr  7 09:42 ../
+-rw-r--r-- 1 root root 6018 Apr  7 09:42 compose.yml
+-rw-r--r-- 1 root root 6032 Apr  7 09:42 .env
+```
 
 ## Start the Docker containers
 

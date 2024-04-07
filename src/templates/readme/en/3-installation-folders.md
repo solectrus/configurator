@@ -1,6 +1,8 @@
 ## Create folders for configuration and data storage
 
-Choose a folder where you want to store the configuration and Docker volumes. This guide assumes you have a folder `/~/solectrus` which is located in the home folder of the current user. You can create this folder with the required subfolders with the following commands:
+SOLECTRUS needs a folder to store the configuration files and Docker volumes for the databases. This folder needs to be created on your Linux machine before you start the Docker containers. We choose `~/solectrus` as the base folder for this purpose.
+
+First, create this folder and the required subfolders with the following commands:
 
 ```console
 cd ~
