@@ -266,7 +266,6 @@ export const testCases: [string, Answers][] = [
     {
       devices: ['inverter', 'battery'],
       installation_type: 'cloud',
-      app_host: 'solectrus.example.com',
       battery_vendor: 'senec4',
       senec_username: 'peter@gmx.de',
       senec_password: 'mysecret',
