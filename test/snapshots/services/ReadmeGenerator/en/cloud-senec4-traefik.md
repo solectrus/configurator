@@ -37,6 +37,18 @@ ssh root@<your-ip-address>
 
 If you used an SSH key, you will be logged in directly. Otherwise, Hetzner sends you an email with the password. Use it to log in and follow the steps to change the password immediately.
 
+## Setup your domain
+
+You have chosen the domain `solectrus.my-website.de`. Ensure that this domain points to the IP address you got from Hetzner. this requires a DNS entry. Add an `A` record with this IP address to your DNS configuration at your domain registrar. Please note that it can take a while until the DNS changes are propagated.
+
+To check whether this step was successful, use tools such as `dig` or `ping` to check that the name resolution works. Example:
+
+```console
+ping solectrus.my-website.de
+```
+
+Don’t continue until the domain points to the correct IP address.
+
 ## Create folders for configuration and data storage
 
 Choose a folder where you want to store the configuration and Docker volumes. This guide assumes you have a folder `/~/solectrus` which is located in the home folder of the current user. You can create this folder with the required subfolders with the following commands:

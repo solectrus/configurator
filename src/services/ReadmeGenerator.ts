@@ -13,6 +13,10 @@ export class ReadmeGenerator {
 
     if (this.answers.installation_type === 'cloud' || this.answers.distributed_choice === 'cloud') {
       result.push(await this.prerequisitesCloud())
+
+      if (this.answers.traefik && this.answers.app_domain) {
+        result.push(await this.prerequisitesDomain())
+      }
     } else {
       result.push(await this.prerequisitesLocal())
     }
@@ -57,16 +61,28 @@ export class ReadmeGenerator {
     return this.replacePlaceholders(raw, {})
   }
 
+  private async prerequisitesDomain() {
+    const raw = await this.loadMarkdown('2-prerequisites-domain')
+
+    return this.replacePlaceholders(raw, {
+      domain: this.answers.app_domain,
+    })
+  }
+
   private async installation() {
-    const filename =
+    let filename
+    let url
+
+    if (
       this.answers.installation_type === 'distributed' &&
       this.answers.distributed_choice === 'local'
-        ? '3-installation-distributed-local'
-        : '3-installation'
-    const raw = await this.loadMarkdown(filename)
+    ) {
+      filename = '3-installation-distributed-local'
+    } else {
+      filename = '3-installation'
+    }
 
-    let url
-    if (this.answers.app_domain) {
+    if (this.answers.traefik && this.answers.app_domain) {
       url = `https://${this.answers.app_domain}`
     } else if (this.answers.app_host) {
       url = `http://${this.answers.app_host}:3000`
@@ -74,6 +90,7 @@ export class ReadmeGenerator {
       url = 'http://[ip]:3000'
     }
 
+    const raw = await this.loadMarkdown(filename)
     return this.replacePlaceholders(raw, {
       url,
     })
