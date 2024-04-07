@@ -471,10 +471,10 @@
             "de": "in Sekunden",
             "default": "In seconds"
           },
-          "defaultValue": 60,
+          "defaultValueExpression": "iif({battery_vendor} = 'senec4', 60, 300)",
           "isRequired": true,
           "inputType": "number",
-          "min": 30
+          "minValueExpression": "iif({battery_vendor} = 'senec4', 60, 300)"
         }
       ],
       "visibleIf": "{battery_vendor} = 'senec4' or {installation_type} = 'cloud' and {battery_vendor} = 'senec3'",
