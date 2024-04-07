@@ -108,7 +108,7 @@ Check if all containers are running fine with the following command:
 docker compose ps
 ```
 
-That's it!
+That's it. You have successfully installed SOLECTRUS on your machine!
 
 ## Open the app in your browser
 

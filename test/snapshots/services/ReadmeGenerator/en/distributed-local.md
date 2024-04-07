@@ -99,7 +99,7 @@ Check if all containers are running fine with the following command:
 docker compose ps
 ```
 
-That's it! Your local installation is now up and running and pushes data to your cloud installation.
+That's it. Your local installation is now up and running and pushes data to your cloud installation.
 
 ## Open the app in your browser
 

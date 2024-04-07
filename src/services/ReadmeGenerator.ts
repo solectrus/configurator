@@ -21,7 +21,15 @@ export class ReadmeGenerator {
       result.push(await this.prerequisitesLocal())
     }
 
+    if (
+      this.answers.installation_type !== 'distributed' ||
+      this.answers.distributed_choice === 'cloud'
+    ) {
+      result.push(await this.installationFolders())
+    }
+
     result.push(await this.installation())
+    result.push(await this.summary())
     result.push(await this.browserOpen())
     result.push(await this.final())
 
@@ -70,19 +78,18 @@ export class ReadmeGenerator {
     })
   }
 
+  private async installationFolders() {
+    let folders = 'redis postgresql influxdb'
+    if (this.answers.traefik) folders += ' traefik'
+
+    const raw = await this.loadMarkdown('3-installation-folders')
+    return this.replacePlaceholders(raw, {
+      folders,
+    })
+  }
+
   private async installation() {
-    let filename
     let url
-
-    if (
-      this.answers.installation_type === 'distributed' &&
-      this.answers.distributed_choice === 'local'
-    ) {
-      filename = '3-installation-distributed-local'
-    } else {
-      filename = '3-installation'
-    }
-
     if (this.answers.traefik && this.answers.app_domain) {
       url = `https://${this.answers.app_domain}`
     } else if (this.answers.app_host) {
@@ -94,7 +101,7 @@ export class ReadmeGenerator {
     let folders = 'redis postgresql influxdb'
     if (this.answers.traefik) folders += ' traefik'
 
-    const raw = await this.loadMarkdown(filename)
+    const raw = await this.loadMarkdown('3-installation')
     return this.replacePlaceholders(raw, {
       url,
       folders,
@@ -139,8 +146,24 @@ export class ReadmeGenerator {
     })
   }
 
+  private async summary() {
+    let filename
+
+    if (
+      this.answers.installation_type === 'distributed' &&
+      this.answers.distributed_choice === 'local'
+    ) {
+      filename = '4-summary-distributed-local'
+    } else {
+      filename = '4-summary'
+    }
+
+    const raw = await this.loadMarkdown(filename)
+    return this.replacePlaceholders(raw, {})
+  }
+
   private async final() {
-    const raw = await this.loadMarkdown('4-final')
+    const raw = await this.loadMarkdown('5-final')
 
     return this.replacePlaceholders(raw, {})
   }

@@ -1,14 +1,3 @@
-## Create folders for configuration and data storage
-
-Choose a folder where you want to store the configuration and Docker volumes. This guide assumes you have a folder `/~/solectrus` which is located in the home folder of the current user. You can create this folder with the required subfolders with the following commands:
-
-```console
-cd ~
-mkdir -p solectrus
-cd solectrus
-mkdir %{folders}
-```
-
 ## Add configuration files
 
 There are two configuration files, `.env` and `compose.yml`, that you need to create. The `.env` file contains the environment variables for the Docker containers, and the `compose.yml` file contains the Docker Compose configuration.
@@ -52,5 +41,3 @@ Check if all containers are running fine with the following command:
 ```console
 docker compose ps
 ```
-
-That's it!
