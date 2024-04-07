@@ -13,7 +13,7 @@ defineProps<CodeContainerProps>()
 <template>
   <div v-if="code" class="sticky right-0 top-16">
     <div class="absolute right-4 top-4">
-      <CopyButton :text="code" />
+      <CopyButton :text="code" :filename="filename" />
     </div>
   </div>
 

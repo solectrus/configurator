@@ -82,7 +82,7 @@ Both files are created for you based on your answers. You can find them under th
 
 ### Copy compose.yml to your machine
 
-First, copy your personal `compose.yml` file to the clipboard by pressing the clipboard button. Then, run this command on your Linux machine:
+First, copy your personal `compose.yml` file to the clipboard by pressing the "Copy" button. Then, run this command on your Linux machine:
 
 ```
 cat > compose.yml
@@ -92,6 +92,8 @@ You will see a new empty line in the terminal with a cursor. Now, paste the cont
 
 This may seem a little tricky, but it is the easiest way to copy the contents of the clipboard to a file on your Linux computer without having to rely on any tools. If you know a better way (e.g. via a text editor), feel free to use it.
 
+Alternatively, you can use the "Download" button. This allows you to download the file so that it can then be uploaded to your Linux machine via `scp` or another file transfer method.
+
 ### Copy .env to your machine
 
 Do the same for the `.env` file: Copy the file content to the clipboard and run this command:
@@ -100,7 +102,7 @@ Do the same for the `.env` file: Copy the file content to the clipboard and run 
  cat > .env
 ```
 
-Then again, paste the clipboard with `Strg+V` and save it by pressing `Ctrl+D`.
+Then again, paste the clipboard with `Ctrl+V` and save it by pressing `Ctrl+D`.
 
 Check if the files are created correctly by running the following command:
 
