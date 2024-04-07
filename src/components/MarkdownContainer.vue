@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import CopyButton from '@/components/CopyButton.vue'
 import VueMarkdown from 'vue-markdown-render'
 
 interface MarkdownContainerProps {
@@ -10,6 +11,12 @@ defineProps<MarkdownContainerProps>()
 </script>
 
 <template>
+  <div v-if="markdown" class="sticky right-0 top-16">
+    <div class="absolute right-4 top-4">
+      <CopyButton :text="markdown" :filename="filename" />
+    </div>
+  </div>
+
   <article class="text-sm">
     <vue-markdown
       v-if="markdown"
