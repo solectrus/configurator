@@ -99,9 +99,11 @@ Check if all containers are running fine with the following command:
 docker compose ps
 ```
 
+That's it! Your local installation is now up and running and pushes data to your cloud installation.
+
 ## Open the app in your browser
 
-That's it. Your local installation is now up and running and pushes data to your cloud installation. You can now open the SOLECTRUS app in your browser by navigating to your cloud installation URL.
+You can now open the SOLECTRUS app in your browser by navigating to your cloud installation URL.
 
 ## Final thoughts
 

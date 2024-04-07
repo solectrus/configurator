@@ -113,6 +113,8 @@ export const testCases: [string, Answers][] = [
   [
     'forecast-three-roofs',
     {
+      devices: ['inverter'],
+      installation_type: 'local',
       linux_machine: 'other',
       forecast: true,
       forecast_roofs: '3',
@@ -132,6 +134,8 @@ export const testCases: [string, Answers][] = [
   [
     'forecast-four-roofs',
     {
+      devices: ['inverter'],
+      installation_type: 'local',
       linux_machine: 'other',
       forecast: true,
       forecast_roofs: '4',
@@ -198,7 +202,6 @@ export const testCases: [string, Answers][] = [
       devices: ['inverter', 'battery', 'wallbox'],
       installation_type: 'distributed',
       linux_machine: 'other',
-      app_host: '192.168.108.42',
       distributed_choice: 'local',
       battery_vendor: 'senec3',
       wallbox_vendor: 'other',

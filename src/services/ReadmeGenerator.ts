@@ -22,6 +22,7 @@ export class ReadmeGenerator {
     }
 
     result.push(await this.installation())
+    result.push(await this.browserOpen())
     result.push(await this.final())
 
     return result.join('\n')
@@ -97,6 +98,44 @@ export class ReadmeGenerator {
     return this.replacePlaceholders(raw, {
       url,
       folders,
+    })
+  }
+
+  private async browserOpen() {
+    let filename
+    let url
+    let influx_url
+
+    if (
+      (this.answers.installation_type === 'distributed' &&
+        this.answers.distributed_choice === 'cloud') ||
+      this.answers.installation_type === 'cloud'
+    ) {
+      filename = '3-installation-open-cloud'
+    } else if (
+      this.answers.installation_type === 'distributed' &&
+      this.answers.distributed_choice === 'local'
+    ) {
+      filename = '3-installation-open-distributed-local'
+    } else {
+      filename = '3-installation-open-local'
+    }
+
+    if (this.answers.traefik && this.answers.app_domain) {
+      url = `https://${this.answers.app_domain}`
+      influx_url = `https://${this.answers.app_domain}:8086`
+    } else if (this.answers.app_host) {
+      url = `http://${this.answers.app_host}:3000`
+      influx_url = `http://${this.answers.app_host}:8086`
+    } else {
+      url = 'http://[ip]:3000'
+      influx_url = null
+    }
+
+    const raw = await this.loadMarkdown(filename)
+    return this.replacePlaceholders(raw, {
+      url,
+      influx_url,
     })
   }
 

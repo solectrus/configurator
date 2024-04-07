@@ -82,7 +82,7 @@ First, copy your personal `.env` file to the clipboard. Then, run this command o
 
 Now paste the clipboard by pressing `Ctrl+V` and lastly save it by pressing `Ctrl+D`.
 
-This seems to be bit tricky, but it's the easiest way to copy the content from clipboard to a file on your Linux machine. If you have a better way (e.g. via text editor), feel free to use it.
+This may seem a little tricky, but it is the easiest way to copy the contents of the clipboard to a file on your Linux computer without having to rely on any tools. If you know a better way (e.g. via a text editor), feel free to use it.
 
 ### Docker Compose configuration (compose.yml)
 
@@ -110,9 +110,11 @@ Check if all containers are running fine with the following command:
 docker compose ps
 ```
 
+That's it!
+
 ## Open the app in your browser
 
-That's it! You can now open the SOLECTRUS app in your browser by navigating to this URL:
+You can now open the SOLECTRUS app in your browser by navigating to this URL:
 
 [http://[ip]:3000](http://[ip]:3000)
 
