@@ -6,7 +6,7 @@ Choose a folder where you want to store the configuration and Docker volumes. Th
 cd ~
 mkdir -p solectrus
 cd solectrus
-mkdir redis postgresql influxdb
+mkdir %{folders}
 ```
 
 ## Add configuration files

@@ -39,7 +39,7 @@ If you used an SSH key, you will be logged in directly. Otherwise, Hetzner sends
 
 ## Setup your domain
 
-You have chosen the domain `solectrus.my-website.de`. Ensure that this domain points to the IP address you got from Hetzner. this requires a DNS entry. Add an `A` record with this IP address to your DNS configuration at your domain registrar. Please note that it can take a while until the DNS changes are propagated.
+You have chosen the domain `solectrus.my-website.de`. Ensure that this domain points to the IP address you got from Hetzner, which requires a DNS entry. Go to your domain registrar and add an `A` record with the IP address you got from Hetzner. Please note that it can take a while until the DNS changes are propagated.
 
 To check whether this step was successful, use tools such as `dig` or `ping` to check that the name resolution works. Example:
 
@@ -57,7 +57,7 @@ Choose a folder where you want to store the configuration and Docker volumes. Th
 cd ~
 mkdir -p solectrus
 cd solectrus
-mkdir redis postgresql influxdb
+mkdir redis postgresql influxdb traefik
 ```
 
 ## Add configuration files

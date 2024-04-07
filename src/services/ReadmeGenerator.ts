@@ -90,9 +90,13 @@ export class ReadmeGenerator {
       url = 'http://[ip]:3000'
     }
 
+    let folders = 'redis postgresql influxdb'
+    if (this.answers.traefik) folders += ' traefik'
+
     const raw = await this.loadMarkdown(filename)
     return this.replacePlaceholders(raw, {
       url,
+      folders,
     })
   }
 
