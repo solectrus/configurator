@@ -41,6 +41,7 @@ export class EnvGenerator {
     if (this.compose.services['dashboard']) {
       return this.replaceEnvValues(dashboardVariables, {
         APP_HOST: this.answers.app_host,
+        FORCE_SSL: this.answers.traefik ? 'true' : 'false',
         ADMIN_PASSWORD: this.answers.admin_password,
         SECRET_KEY_BASE: this.generateSecretKeyBase(this.answers.admin_password),
         INSTALLATION_DATE: this.answers.installation_date,
