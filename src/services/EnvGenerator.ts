@@ -6,6 +6,7 @@ import { SensorBuilder } from './sensorBuilder'
 import dashboardVariables from '@/templates/variables/dashboard.env?raw'
 import forecastCollectorVariables from '@/templates/variables/forecast-collector.env?raw'
 import influxdbVariables from '@/templates/variables/influxdb.env?raw'
+import influxdbClientVariables from '@/templates/variables/influxdb-client.env?raw'
 import senecCollectorVariables from '@/templates/variables/senec-collector.env?raw'
 import mqttCollectorVariables from '@/templates/variables/mqtt-collector.env?raw'
 import shellyCollectorVariables from '@/templates/variables/shelly-collector.env?raw'
@@ -179,7 +180,14 @@ export class EnvGenerator {
   private buildInfluxdbVariables(): string | undefined {
     if (this.compose.services['influxdb']) {
       return this.replaceEnvValues(influxdbVariables, {})
-    }
+    } else if (
+      this.answers.installation_type === 'distributed' &&
+      this.answers.distributed_choice === 'local'
+    )
+      return this.replaceEnvValues(influxdbClientVariables, {
+        INFLUX_HOST: this.answers.influx_host,
+        INFLUX_SCHEMA: this.answers.influx_schema,
+      })
   }
 
   private buildSenecCollectorVariables(): string | undefined {

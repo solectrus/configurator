@@ -330,6 +330,39 @@
       }
     },
     {
+      "name": "p_influxdb_client",
+      "elements": [
+        {
+          "type": "text",
+          "name": "influx_host",
+          "title": {
+            "de": "IP-Adresse oder Hostname des Cloud-Servers",
+            "default": "IP address or host name of the cloud server"
+          },
+          "isRequired": true
+        },
+        {
+          "type": "radiogroup",
+          "name": "influx_schema",
+          "title": {
+            "de": "Protokoll",
+            "default": "Protocol"
+          },
+          "isRequired": true,
+          "choices": ["http", "https"]
+        }
+      ],
+      "visibleIf": "{installation_type} = 'distributed' and {distributed_choice} = 'local'",
+      "title": {
+        "de": "Zugriff auf InfluxDB",
+        "default": "Access to InfluxDB"
+      },
+      "description": {
+        "de": "Wie ist der Cloud-Server aus der ersten Installation erreichbar?",
+        "default": "How is the cloud server from the first installation accessible?"
+      }
+    },
+    {
       "name": "p_senec3",
       "elements": [
         {
@@ -347,7 +380,7 @@
                 "de": "IP-Adresse schon anderweitig benutzt!",
                 "default": "IP address already used elsewhere!"
               },
-              "expression": "{senec_host} != {app_host} and {senec_host} != {shelly_host} and {senec_host} != {mqtt_host}"
+              "expression": "{senec_host} != {app_host} and {senec_host} != {shelly_host} and {senec_host} != {mqtt_host} and {senec_host} != {influx_host}"
             }
           ],
           "placeholder": {
@@ -748,7 +781,8 @@
           "name": "wallbox_exclude_from_house_power",
           "visibleIf": "{devices} contains 'wallbox' and {battery_vendor} = 'other'",
           "title": {
-            "de": "Wallbox im Hausverbrauch enthalten?"
+            "de": "Wallbox im Hausverbrauch enthalten?",
+            "default": "Wallbox included in household consumption?"
           },
           "choices": [
             {
@@ -786,7 +820,8 @@
           "name": "heatpump_exclude_from_house_power",
           "visibleIf": "{devices} contains 'heatpump'",
           "title": {
-            "de": "Wärmepumpe im Hausverbrauch enthalten?"
+            "de": "Wärmepumpe im Hausverbrauch enthalten?",
+            "default": "Heat pump included in household consumption?"
           },
           "choices": [
             {

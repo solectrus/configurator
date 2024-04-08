@@ -202,6 +202,8 @@ export const testCases: [string, Answers][] = [
       devices: ['inverter', 'battery', 'wallbox'],
       installation_type: 'distributed',
       linux_machine: 'other',
+      influx_host: 'solectrus.my-website.de',
+      influx_schema: 'https',
       distributed_choice: 'local',
       battery_vendor: 'senec3',
       wallbox_vendor: 'other',

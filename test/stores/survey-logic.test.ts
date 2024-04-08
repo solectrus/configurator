@@ -120,4 +120,15 @@ describe('useSurveyStore', () => {
     const choices = question.visibleChoices.map((c: { id: string }) => c.id)
     expect(choices).toEqual(['local', 'cloud'])
   })
+
+  it('offers influx_host question when local part of distributed installation', () => {
+    survey.setValue('devices', ['inverter', 'battery'])
+    survey.setValue('installation_type', 'distributed')
+    survey.setValue('distributed_choice', 'local')
+
+    expect(survey.getPageByName('p_influxdb_client').isVisible).toBe(true)
+
+    expect(survey.getQuestionByName('influx_host').isVisible).toBe(true)
+    expect(survey.getQuestionByName('influx_schema').isVisible).toBe(true)
+  })
 })

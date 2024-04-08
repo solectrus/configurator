@@ -11,6 +11,8 @@ export interface Answers {
   installation_type?: 'local' | 'cloud' | 'distributed'
   distributed_choice?: 'local' | 'cloud'
   linux_machine?: 'raspberry' | 'synology' | 'other'
+  influx_host?: string
+  influx_schema?: 'https' | 'http'
   app_host?: string
   senec_host?: string
   senec_interval?: number
