@@ -20,7 +20,7 @@
     "js-yaml": "^4.1.0",
     "pinia": "^2.1.7",
     "plausible-tracker": "^0.3.8",
-    "survey-vue3-ui": "^1.9.137",
+    "survey-vue3-ui": "^1.9.138",
     "vue": "^3.4.21",
     "vue-markdown-render": "^2.1.1"
   },
