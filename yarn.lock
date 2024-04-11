@@ -591,10 +591,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rushstack/eslint-patch@npm:^1.10.1":
-  version: 1.10.1
-  resolution: "@rushstack/eslint-patch@npm:1.10.1"
-  checksum: 10c0/db96bfdf83ededcd70de41876bfe7ecb2450b93e4c5e46bc0f2bc9dd0e0ea60e8bc5fc0d1d3b6addf902e640ea78855ed77b6c883d0d0d104269492141232995
+"@rushstack/eslint-patch@npm:^1.10.2":
+  version: 1.10.2
+  resolution: "@rushstack/eslint-patch@npm:1.10.2"
+  checksum: 10c0/3712b8994bfed0968d4c4f21ff10bf5f2abb47f47d65d4e616de4311d2f372f2528b03b1d4e0dcaa7392f8626ccdf114e753db4f790e92436fc5a4e52195d181
   languageName: node
   linkType: hard
 
@@ -1723,9 +1723,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.4.668":
-  version: 1.4.731
-  resolution: "electron-to-chromium@npm:1.4.731"
-  checksum: 10c0/2947e90533f5eae077bc74b34514849d32712ae4ca1188a66e3a237938cf90634c3ab1ff4079ddab1d4946d0b5ba64e5c56d38b7373edd8f3558c108b71d72fd
+  version: 1.4.733
+  resolution: "electron-to-chromium@npm:1.4.733"
+  checksum: 10c0/729e79256748102180a74d997efafb8377f100a8e087aef99175ec6ee298aa715fa41f6a869af906adaefb7fcba43f898c42f721c9ea8980c13744d2ef7ea1b2
   languageName: node
   linkType: hard
 
@@ -4094,7 +4094,7 @@ __metadata:
   dependencies:
     "@highlightjs/vue-plugin": "npm:2.1.0"
     "@modyfi/vite-plugin-yaml": "npm:^1.1.0"
-    "@rushstack/eslint-patch": "npm:^1.10.1"
+    "@rushstack/eslint-patch": "npm:^1.10.2"
     "@tailwindcss/typography": "npm:^0.5.12"
     "@tsconfig/node20": "npm:^20.1.4"
     "@types/js-yaml": "npm:^4.0.9"
@@ -4123,7 +4123,7 @@ __metadata:
     rollup-plugin-gzip: "npm:^3.1.2"
     survey-vue3-ui: "npm:^1.9.138"
     tailwindcss: "npm:^3.4.3"
-    typescript: "npm:^5.4.4"
+    typescript: "npm:^5.4.5"
     vite: "npm:^5.2.8"
     vitest: "npm:^1.4.0"
     vue: "npm:^3.4.21"
@@ -4502,23 +4502,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^5.4.4":
-  version: 5.4.4
-  resolution: "typescript@npm:5.4.4"
+"typescript@npm:^5.4.5":
+  version: 5.4.5
+  resolution: "typescript@npm:5.4.5"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 10c0/4d8de0291204ed61ca97ad0cba2ce064e09c4988ca1c451c787e4653ba76296ba35177a52694e8a00cf4ef899d0ee83338663b926d8b7d55167ff0ba81549999
+  checksum: 10c0/2954022ada340fd3d6a9e2b8e534f65d57c92d5f3989a263754a78aba549f7e6529acc1921913560a4b816c46dce7df4a4d29f9f11a3dc0d4213bb76d043251e
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A^5.4.4#optional!builtin<compat/typescript>":
-  version: 5.4.4
-  resolution: "typescript@patch:typescript@npm%3A5.4.4#optional!builtin<compat/typescript>::version=5.4.4&hash=5adc0c"
+"typescript@patch:typescript@npm%3A^5.4.5#optional!builtin<compat/typescript>":
+  version: 5.4.5
+  resolution: "typescript@patch:typescript@npm%3A5.4.5#optional!builtin<compat/typescript>::version=5.4.5&hash=5adc0c"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 10c0/1fa41b9964a9ff0ed913b339c90b46031b2d2da3cb1a192af516610733f7f1d5f7f9754a8e22b9ac7076d3d8aedd2c4f84db3f113bad060eac3a95962443a1bf
+  checksum: 10c0/db2ad2a16ca829f50427eeb1da155e7a45e598eec7b086d8b4e8ba44e5a235f758e606d681c66992230d3fc3b8995865e5fd0b22a2c95486d0b3200f83072ec9
   languageName: node
   linkType: hard
 
