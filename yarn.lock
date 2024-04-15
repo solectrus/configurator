@@ -665,13 +665,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/markdown-it@npm:^14.0.0":
-  version: 14.0.0
-  resolution: "@types/markdown-it@npm:14.0.0"
+"@types/markdown-it@npm:^14.0.1":
+  version: 14.0.1
+  resolution: "@types/markdown-it@npm:14.0.1"
   dependencies:
     "@types/linkify-it": "npm:*"
     "@types/mdurl": "npm:*"
-  checksum: 10c0/c37633088b3dbd1d6928cbe35a1246fb0d32842dd93f723797eaac0701300e0fa5ff34840d8d7dd1a1ab4f4e932bfd9aadb32e2dcdfd77a73b8fdc45b443f4a3
+  checksum: 10c0/d1f9fde06f6511d4518040fac296d14f2b3c42e00bb955545ef0db4e7063208f60ff7fc766305f66b539de4393f027dcdc83db53f5c0672ffd97c04409437b2c
   languageName: node
   linkType: hard
 
@@ -1416,9 +1416,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.30001587, caniuse-lite@npm:^1.0.30001599":
-  version: 1.0.30001609
-  resolution: "caniuse-lite@npm:1.0.30001609"
-  checksum: 10c0/a7631f6c9a741c7cb16100e115572f70e3d28622af9749891b7285d392113fcb8683ba2ded29e2e9d8e9fa215139d06d2bf15151b0b83df3bbfbbf2b495b74e5
+  version: 1.0.30001610
+  resolution: "caniuse-lite@npm:1.0.30001610"
+  checksum: 10c0/015956a0bf2e3e233da3dc00c5632bbb4d416bcd6ced2f839e33e45b197a856234f97cb046e7427b83d7e3a3d6df314dfab1c86eb9d970970e00ad85a50b4933
   languageName: node
   linkType: hard
 
@@ -1890,9 +1890,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-vue@npm:^9.24.1":
-  version: 9.24.1
-  resolution: "eslint-plugin-vue@npm:9.24.1"
+"eslint-plugin-vue@npm:^9.25.0":
+  version: 9.25.0
+  resolution: "eslint-plugin-vue@npm:9.25.0"
   dependencies:
     "@eslint-community/eslint-utils": "npm:^4.4.0"
     globals: "npm:^13.24.0"
@@ -1904,7 +1904,7 @@ __metadata:
     xml-name-validator: "npm:^4.0.0"
   peerDependencies:
     eslint: ^6.2.0 || ^7.0.0 || ^8.0.0 || ^9.0.0
-  checksum: 10c0/a20f2004f3e4993d5abce4da94f05c8927a0f61d2179cfc78dc3ea0e597f9dfecddf33fae3ba24f9ead44ea22d7c7c79e622c75e188e524e8d62491a4a6e4d3b
+  checksum: 10c0/43332208612ed2b8afb50280ca6bb79cd381b99bb9173c2d250f94fd2fe14b3e22454f0ec0928d2dfbdfd50553949f3f8ef04f190e57be96d1f0411bca551a15
   languageName: node
   linkType: hard
 
@@ -4084,7 +4084,7 @@ __metadata:
     "@tsconfig/node20": "npm:^20.1.4"
     "@types/js-yaml": "npm:^4.0.9"
     "@types/jsdom": "npm:^21.1.6"
-    "@types/markdown-it": "npm:^14.0.0"
+    "@types/markdown-it": "npm:^14.0.1"
     "@vitejs/plugin-vue": "npm:^5.0.4"
     "@vitest/coverage-v8": "npm:^1.5.0"
     "@vitest/ui": "npm:^1.5.0"
@@ -4094,7 +4094,7 @@ __metadata:
     "@vue/tsconfig": "npm:^0.5.1"
     autoprefixer: "npm:^10.4.19"
     eslint: "npm:^8.57.0"
-    eslint-plugin-vue: "npm:^9.24.1"
+    eslint-plugin-vue: "npm:^9.25.0"
     highlight.js: "npm:^11.9.0"
     js-yaml: "npm:^4.1.0"
     jsdom: "npm:^24.0.0"
@@ -4370,9 +4370,9 @@ __metadata:
   linkType: hard
 
 "tinybench@npm:^2.5.1":
-  version: 2.6.0
-  resolution: "tinybench@npm:2.6.0"
-  checksum: 10c0/60ea35699bf8bac9bc8cf279fa5877ab5b335b4673dcd07bf0fbbab9d7953a02c0ccded374677213eaa13aa147f54eb75d3230139ddbeec3875829ebe73db310
+  version: 2.7.0
+  resolution: "tinybench@npm:2.7.0"
+  checksum: 10c0/1963312e9ff7b8d79a89f3d62241a7f774cb752a08fe611f4860d15fb47d20b43ae6c2876c8bdb4e18e2a70116e7c1e13db3cf4cf5759e145c78f0d50d59f976
   languageName: node
   linkType: hard
 
