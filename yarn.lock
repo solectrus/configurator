@@ -1549,6 +1549,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"confbox@npm:^0.1.7":
+  version: 0.1.7
+  resolution: "confbox@npm:0.1.7"
+  checksum: 10c0/18b40c2f652196a833f3f1a5db2326a8a579cd14eacabfe637e4fc8cb9b68d7cf296139a38c5e7c688ce5041bf46f9adce05932d43fde44cf7e012840b5da111
+  languageName: node
+  linkType: hard
+
 "config-chain@npm:^1.1.13":
   version: 1.1.13
   resolution: "config-chain@npm:1.1.13"
@@ -1715,9 +1722,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.4.668":
-  version: 1.4.740
-  resolution: "electron-to-chromium@npm:1.4.740"
-  checksum: 10c0/34c539dae7f1b4b3f59c4900cd0eba45ae59bd0c3a460e8eb5aa78fdd0303215bdb29d8927d340f7b7594c4c4ea942a320d499622b4aa5922d0d89a872f63ec0
+  version: 1.4.744
+  resolution: "electron-to-chromium@npm:1.4.744"
+  checksum: 10c0/48711f84ef7b60ef5990543163250c293752aa59133dc5d66577a3287c361182c7c68d79c74c3e97939dab47fb753b0d2f810cc3f17f05552ed774a94328e6a0
   languageName: node
   linkType: hard
 
@@ -2761,13 +2768,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jsonc-parser@npm:^3.2.0":
-  version: 3.2.1
-  resolution: "jsonc-parser@npm:3.2.1"
-  checksum: 10c0/ada66dec143d7f9cb0e2d0d29c69e9ce40d20f3a4cb96b0c6efb745025ac7f9ba647d7ac0990d0adfc37a2d2ae084a12009a9c833dbdbeadf648879a99b9df89
-  languageName: node
-  linkType: hard
-
 "keyv@npm:^4.5.3":
   version: 4.5.4
   resolution: "keyv@npm:4.5.4"
@@ -3133,7 +3133,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mlly@npm:^1.2.0, mlly@npm:^1.4.2":
+"mlly@npm:^1.4.2, mlly@npm:^1.6.1":
   version: 1.6.1
   resolution: "mlly@npm:1.6.1"
   dependencies:
@@ -3463,7 +3463,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pathe@npm:^1.1.0, pathe@npm:^1.1.1, pathe@npm:^1.1.2":
+"pathe@npm:^1.1.1, pathe@npm:^1.1.2":
   version: 1.1.2
   resolution: "pathe@npm:1.1.2"
   checksum: 10c0/64ee0a4e587fb0f208d9777a6c56e4f9050039268faaaaecd50e959ef01bf847b7872785c36483fa5cdcdbdfdb31fef2ff222684d4fc21c330ab60395c681897
@@ -3534,13 +3534,13 @@ __metadata:
   linkType: hard
 
 "pkg-types@npm:^1.0.3":
-  version: 1.0.3
-  resolution: "pkg-types@npm:1.0.3"
+  version: 1.1.0
+  resolution: "pkg-types@npm:1.1.0"
   dependencies:
-    jsonc-parser: "npm:^3.2.0"
-    mlly: "npm:^1.2.0"
-    pathe: "npm:^1.1.0"
-  checksum: 10c0/7f692ff2005f51b8721381caf9bdbc7f5461506ba19c34f8631660a215c8de5e6dca268f23a319dd180b8f7c47a0dc6efea14b376c485ff99e98d810b8f786c4
+    confbox: "npm:^0.1.7"
+    mlly: "npm:^1.6.1"
+    pathe: "npm:^1.1.2"
+  checksum: 10c0/b350da13d2dab7dc2fa9d65a08a2038d841d8d8c94bf3878dd911a522e20da50d6662bab510fa329e363e403892374b3b847ebf7b3e10011805cdefb00f228fd
   languageName: node
   linkType: hard
 
