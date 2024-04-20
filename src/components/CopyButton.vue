@@ -41,7 +41,7 @@ const downloadAsFile = () => {
       Copied!
     </div>
 
-    <button v-else @click="copyTextToClipboard" class="text-slate-300" title="Copy to clipboard">
+    <button v-else class="text-slate-300" title="Copy to clipboard" @click="copyTextToClipboard">
       <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
         <path
           stroke-linecap="round"
@@ -51,7 +51,7 @@ const downloadAsFile = () => {
       </svg>
     </button>
 
-    <button @click="downloadAsFile" class="text-slate-300" title="Download as file">
+    <button class="text-slate-300" title="Download as file" @click="downloadAsFile">
       <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
         <path
           stroke-linecap="round"

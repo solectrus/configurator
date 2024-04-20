@@ -11,7 +11,7 @@
     "coverage": "vitest --ui --coverage.enabled=true",
     "build-only": "vite build",
     "tsc": "vue-tsc --build --force",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "lint": "eslint . --fix",
     "format": "prettier --write src/"
   },
   "dependencies": {
@@ -26,7 +26,6 @@
   },
   "devDependencies": {
     "@modyfi/vite-plugin-yaml": "^1.1.0",
-    "@rushstack/eslint-patch": "^1.10.2",
     "@tailwindcss/typography": "^0.5.12",
     "@tsconfig/node20": "^20.1.4",
     "@types/js-yaml": "^4.0.9",
@@ -40,7 +39,7 @@
     "@vue/test-utils": "^2.4.5",
     "@vue/tsconfig": "^0.5.1",
     "autoprefixer": "^10.4.19",
-    "eslint": "^8.57.0",
+    "eslint": "^9.1.0",
     "eslint-plugin-vue": "^9.25.0",
     "jsdom": "^24.0.0",
     "npm-run-all2": "^6.1.2",

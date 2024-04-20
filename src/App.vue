@@ -31,9 +31,9 @@ const store = useSurveyStore()
     </svg>
 
     <main class="flex-1 justify-center lg:flex lg:gap-10">
-      <TheSurvey class="no-scrollbar max-w-2xl flex-1" v-if="!store.finished" />
+      <TheSurvey v-if="!store.finished" class="no-scrollbar max-w-2xl flex-1" />
 
-      <TheOutput class="no-scrollbar max-w-4xl flex-1" v-if="store.finished" />
+      <TheOutput v-if="store.finished" class="no-scrollbar max-w-4xl flex-1" />
     </main>
 
     <nav class="flex justify-between gap-5 p-5 lg:fixed lg:bottom-0 lg:right-0">
