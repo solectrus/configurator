@@ -1,4 +1,4 @@
-image: ghcr.io/solectrus/senec-collector:develop
+image: ghcr.io/solectrus/senec-collector:latest
 environment:
   - SENEC_ADAPTER
   - SENEC_HOST
