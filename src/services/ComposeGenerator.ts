@@ -20,7 +20,7 @@ type DockerService = {
   environment?: string[]
   ports?: string[]
   volumes?: string[]
-  links: string[]
+  links?: string[]
   depends_on?: Record<string, { condition: string }>
   labels?: string[]
   healthcheck?: {
