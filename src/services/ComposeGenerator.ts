@@ -2,18 +2,31 @@ import type { Answers } from '@/types/answers'
 import yaml from 'js-yaml'
 import { MqttMapper } from './mqttMapper'
 
-import dashboardService from '@/templates/services/dashboard.yml'
-import influxdbService from '@/templates/services/influxdb.yml'
-import postgresqlService from '@/templates/services/postgresql.yml'
-import redisService from '@/templates/services/redis.yml'
-import senecCollectorService from '@/templates/services/senec-collector.yml'
-import mqttCollectorService from '@/templates/services/mqtt-collector.yml'
-import forecastCollectorService from '@/templates/services/forecast-collector.yml'
-import shellyCollectorService from '@/templates/services/shelly-collector.yml'
-import watchtowerService from '@/templates/services/watchtower.yml'
-import postgresqlBackupService from '@/templates/services/postgresql-backup.yml'
-import influxdbBackupService from '@/templates/services/influxdb-backup.yml'
-import traefikService from '@/templates/services/traefik.yml'
+import dashboardServiceFile from '@/templates/services/dashboard.yml?raw'
+import influxdbServiceFile from '@/templates/services/influxdb.yml?raw'
+import postgresqlServiceFile from '@/templates/services/postgresql.yml?raw'
+import redisServiceFile from '@/templates/services/redis.yml?raw'
+import senecCollectorServiceFile from '@/templates/services/senec-collector.yml?raw'
+import mqttCollectorServiceFile from '@/templates/services/mqtt-collector.yml?raw'
+import forecastCollectorServiceFile from '@/templates/services/forecast-collector.yml?raw'
+import shellyCollectorServiceFile from '@/templates/services/shelly-collector.yml?raw'
+import watchtowerServiceFile from '@/templates/services/watchtower.yml?raw'
+import postgresqlBackupServiceFile from '@/templates/services/postgresql-backup.yml?raw'
+import influxdbBackupServiceFile from '@/templates/services/influxdb-backup.yml?raw'
+import traefikServiceFile from '@/templates/services/traefik.yml?raw'
+
+const dashboardService = yaml.load(dashboardServiceFile) as DockerService
+const influxdbService = yaml.load(influxdbServiceFile) as DockerService
+const postgresqlService = yaml.load(postgresqlServiceFile) as DockerService
+const redisService = yaml.load(redisServiceFile) as DockerService
+const senecCollectorService = yaml.load(senecCollectorServiceFile) as DockerService
+const mqttCollectorService = yaml.load(mqttCollectorServiceFile) as DockerService
+const forecastCollectorService = yaml.load(forecastCollectorServiceFile) as DockerService
+const shellyCollectorService = yaml.load(shellyCollectorServiceFile) as DockerService
+const watchtowerService = yaml.load(watchtowerServiceFile) as DockerService
+const postgresqlBackupService = yaml.load(postgresqlBackupServiceFile) as DockerService
+const influxdbBackupService = yaml.load(influxdbBackupServiceFile) as DockerService
+const traefikService = yaml.load(traefikServiceFile) as DockerService
 
 type DockerService = {
   image: string
@@ -116,6 +129,7 @@ export class ComposeGenerator {
 
       // Add variable names
       const varNames = Object.keys(this.mqttMapper.variables())
+      service.environment ||= []
       service.environment.push(...varNames)
 
       this.addService('mqtt-collector', service)
