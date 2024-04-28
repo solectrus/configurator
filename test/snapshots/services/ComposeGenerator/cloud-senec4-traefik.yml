@@ -173,18 +173,18 @@ services:
   traefik:
     image: traefik:v2.11
     command:
-      - '--providers.docker=true'
-      - '--providers.docker.exposedbydefault=false'
-      - '--entrypoints.web.address=:80'
-      - '--entrypoints.websecure.address=:443'
-      - '--entrypoints.influxdb.address=:8086'
-      - '--certificatesresolvers.myresolver.acme.tlschallenge=true'
-      - '--certificatesresolvers.myresolver.acme.email=${LETSENCRYPT_EMAIL}'
-      - '--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json'
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - --entrypoints.web.address=:80
+      - --entrypoints.websecure.address=:443
+      - --entrypoints.influxdb.address=:8086
+      - --certificatesresolvers.myresolver.acme.tlschallenge=true
+      - --certificatesresolvers.myresolver.acme.email=${LETSENCRYPT_EMAIL}
+      - --certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json
     ports:
-      - '80:80'
-      - '443:443'
-      - '8086:8086'
+      - 80:80
+      - 443:443
+      - 8086:8086
     volumes:
       - ${TRAEFIK_VOLUME_PATH}:/letsencrypt
       - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -195,7 +195,7 @@ services:
     image: containrrr/watchtower
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    command: '--scope solectrus --cleanup'
+    command: --scope solectrus --cleanup
     restart: unless-stopped
     logging:
       options:

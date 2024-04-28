@@ -1,5 +1,5 @@
 import type { Answers } from '@/types/answers'
-import yaml from 'js-yaml'
+import YAML from 'yaml'
 import { MqttMapper } from './mqttMapper'
 
 import dashboardServiceFile from '@/templates/services/dashboard.yml?raw'
@@ -15,18 +15,18 @@ import postgresqlBackupServiceFile from '@/templates/services/postgresql-backup.
 import influxdbBackupServiceFile from '@/templates/services/influxdb-backup.yml?raw'
 import traefikServiceFile from '@/templates/services/traefik.yml?raw'
 
-const dashboardService = yaml.load(dashboardServiceFile) as DockerService
-const influxdbService = yaml.load(influxdbServiceFile) as DockerService
-const postgresqlService = yaml.load(postgresqlServiceFile) as DockerService
-const redisService = yaml.load(redisServiceFile) as DockerService
-const senecCollectorService = yaml.load(senecCollectorServiceFile) as DockerService
-const mqttCollectorService = yaml.load(mqttCollectorServiceFile) as DockerService
-const forecastCollectorService = yaml.load(forecastCollectorServiceFile) as DockerService
-const shellyCollectorService = yaml.load(shellyCollectorServiceFile) as DockerService
-const watchtowerService = yaml.load(watchtowerServiceFile) as DockerService
-const postgresqlBackupService = yaml.load(postgresqlBackupServiceFile) as DockerService
-const influxdbBackupService = yaml.load(influxdbBackupServiceFile) as DockerService
-const traefikService = yaml.load(traefikServiceFile) as DockerService
+const dashboardService = YAML.parse(dashboardServiceFile) as DockerService
+const influxdbService = YAML.parse(influxdbServiceFile) as DockerService
+const postgresqlService = YAML.parse(postgresqlServiceFile) as DockerService
+const redisService = YAML.parse(redisServiceFile) as DockerService
+const senecCollectorService = YAML.parse(senecCollectorServiceFile) as DockerService
+const mqttCollectorService = YAML.parse(mqttCollectorServiceFile) as DockerService
+const forecastCollectorService = YAML.parse(forecastCollectorServiceFile) as DockerService
+const shellyCollectorService = YAML.parse(shellyCollectorServiceFile) as DockerService
+const watchtowerService = YAML.parse(watchtowerServiceFile) as DockerService
+const postgresqlBackupService = YAML.parse(postgresqlBackupServiceFile) as DockerService
+const influxdbBackupService = YAML.parse(influxdbBackupServiceFile) as DockerService
+const traefikService = YAML.parse(traefikServiceFile) as DockerService
 
 type DockerService = {
   image: string
@@ -66,7 +66,10 @@ export class ComposeGenerator {
     this.configureWatchtower()
 
     const text = Object.keys(this.compose.services).length
-      ? yaml.dump(this.compose, { lineWidth: -1 })
+      ? YAML.stringify(this.compose, {
+          singleQuote: true,
+          lineWidth: 0,
+        })
       : ''
 
     return {

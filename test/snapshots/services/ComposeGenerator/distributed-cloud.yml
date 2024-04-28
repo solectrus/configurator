@@ -13,7 +13,7 @@ services:
       - influxdb
       - redis
     ports:
-      - '3000:3000'
+      - 3000:3000
     environment:
       - APP_HOST
       - FORCE_SSL
@@ -88,7 +88,7 @@ services:
         max-size: 10m
         max-file: '3'
     ports:
-      - '8086:8086'
+      - 8086:8086
     labels:
       - com.centurylinklabs.watchtower.scope=solectrus
   postgresql:
@@ -136,7 +136,7 @@ services:
     image: containrrr/watchtower
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    command: '--scope solectrus --cleanup'
+    command: --scope solectrus --cleanup
     restart: unless-stopped
     logging:
       options:
