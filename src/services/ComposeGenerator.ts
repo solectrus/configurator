@@ -131,6 +131,7 @@ export class ComposeGenerator {
 
     if (this.answers.battery_vendor === 'other') return true
     if (this.answers.wallbox_vendor === 'other') return true
+    if (this.answers.heatpump_access === 'mqtt') return true
     if (this.answers.devices?.length === 1 && this.answers.devices.includes('inverter')) return true
 
     return false
