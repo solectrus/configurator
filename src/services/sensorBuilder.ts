@@ -61,14 +61,14 @@ export class SensorBuilder {
 
   private sensorsInverterSenec() {
     return {
-      INVERTER_POWER: 'senec:inverter_power',
-      HOUSE_POWER: 'senec:house_power',
-      GRID_IMPORT_POWER: 'senec:grid_power_plus',
-      GRID_EXPORT_POWER: 'senec:grid_power_minus',
-      CASE_TEMP: 'senec:case_temp',
-      SYSTEM_STATUS: 'senec:current_state',
-      SYSTEM_STATUS_OK: 'senec:current_state_ok',
-      GRID_EXPORT_LIMIT: 'senec:power_ratio',
+      INVERTER_POWER: 'SENEC:inverter_power',
+      HOUSE_POWER: 'SENEC:house_power',
+      GRID_IMPORT_POWER: 'SENEC:grid_power_plus',
+      GRID_EXPORT_POWER: 'SENEC:grid_power_minus',
+      CASE_TEMP: 'SENEC:case_temp',
+      SYSTEM_STATUS: 'SENEC:current_state',
+      SYSTEM_STATUS_OK: 'SENEC:current_state_ok',
+      GRID_EXPORT_LIMIT: 'SENEC:power_ratio',
     }
   }
 
@@ -94,9 +94,9 @@ export class SensorBuilder {
 
   private sensorsBatterySenec() {
     return {
-      BATTERY_CHARGING_POWER: 'senec:bat_power_plus',
-      BATTERY_DISCHARGING_POWER: 'senec:bat_power_minus',
-      BATTERY_SOC: 'senec:bat_fuel_charge',
+      BATTERY_CHARGING_POWER: 'SENEC:bat_power_plus',
+      BATTERY_DISCHARGING_POWER: 'SENEC:bat_power_minus',
+      BATTERY_SOC: 'SENEC:bat_fuel_charge',
     }
   }
 
@@ -110,7 +110,7 @@ export class SensorBuilder {
 
   private sensorsWallboxSenec() {
     return {
-      WALLBOX_POWER: 'senec:wallbox_charge_power',
+      WALLBOX_POWER: 'SENEC:wallbox_charge_power',
     }
   }
 
