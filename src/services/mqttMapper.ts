@@ -175,7 +175,7 @@ export class MqttMapper {
       return {
         topic: this.answers.mqtt_heatpump_power,
         ...this.sensorBuilder.splittedSensor('HEATPUMP_POWER'),
-        type: 'float',
+        type: 'integer',
       }
   }
 
