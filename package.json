@@ -20,7 +20,7 @@
     "pinia": "^2.1.7",
     "plausible-tracker": "^0.3.8",
     "survey-vue3-ui": "^1.10.1",
-    "vue": "^3.4.25",
+    "vue": "^3.4.26",
     "vue-markdown-render": "^2.1.1",
     "yaml": "^2.4.2"
   },
@@ -51,7 +51,7 @@
     "typescript": "^5.4.5",
     "vite": "^5.2.10",
     "vitest": "^1.5.2",
-    "vue-tsc": "^2.0.14"
+    "vue-tsc": "^2.0.15"
   },
   "packageManager": "yarn@4.1.1"
 }
