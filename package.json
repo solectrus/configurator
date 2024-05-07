@@ -20,7 +20,7 @@
     "pinia": "^2.1.7",
     "plausible-tracker": "^0.3.8",
     "survey-vue3-ui": "^1.10.2",
-    "vue": "^3.4.26",
+    "vue": "^3.4.27",
     "vue-markdown-render": "^2.1.1",
     "yaml": "^2.4.2"
   },
@@ -35,7 +35,7 @@
     "@vitest/ui": "^1.6.0",
     "@vue/eslint-config-prettier": "^9.0.0",
     "@vue/eslint-config-typescript": "^13.0.0",
-    "@vue/test-utils": "^2.4.5",
+    "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.5.1",
     "autoprefixer": "^10.4.19",
     "eslint": "^9.2.0",
