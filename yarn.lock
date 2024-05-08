@@ -421,11 +421,11 @@ __metadata:
   linkType: hard
 
 "@npmcli/fs@npm:^3.1.0":
-  version: 3.1.0
-  resolution: "@npmcli/fs@npm:3.1.0"
+  version: 3.1.1
+  resolution: "@npmcli/fs@npm:3.1.1"
   dependencies:
     semver: "npm:^7.3.5"
-  checksum: 10c0/162b4a0b8705cd6f5c2470b851d1dc6cd228c86d2170e1769d738c1fbb69a87160901411c3c035331e9e99db72f1f1099a8b734bf1637cc32b9a5be1660e4e1e
+  checksum: 10c0/c37a5b4842bfdece3d14dfdb054f73fe15ed2d3da61b34ff76629fb5b1731647c49166fd2a8bf8b56fcfa51200382385ea8909a3cbecdad612310c114d3f6c99
   languageName: node
   linkType: hard
 
@@ -1670,9 +1670,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.4.668":
-  version: 1.4.757
-  resolution: "electron-to-chromium@npm:1.4.757"
-  checksum: 10c0/77fddf3870ff66280f4b639c409ff0a82661ba50e6519b571bb79325e6ea2c4fef645bcf65dcc1ced8b6151cc78083af8b781877247e62986ce39dee1d642cfe
+  version: 1.4.758
+  resolution: "electron-to-chromium@npm:1.4.758"
+  checksum: 10c0/60151ca87bfdf50ee8fc47df4db32f62f33c972259856bc308134bf278d21af62842d9f9f1e1f397df6bb82925e83745f6d3a4ecda00813d14c2156f0e681d3f
   languageName: node
   linkType: hard
 
@@ -2858,15 +2858,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lru-cache@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "lru-cache@npm:6.0.0"
-  dependencies:
-    yallist: "npm:^4.0.0"
-  checksum: 10c0/cb53e582785c48187d7a188d3379c181b5ca2a9c78d2bce3e7dee36f32761d1c42983da3fe12b55cb74e1779fa94cdc2e5367c028a9b35317184ede0c07a30a9
-  languageName: node
-  linkType: hard
-
 "magic-string@npm:^0.30.10, magic-string@npm:^0.30.5":
   version: 0.30.10
   resolution: "magic-string@npm:0.30.10"
@@ -3965,13 +3956,11 @@ __metadata:
   linkType: hard
 
 "semver@npm:^7.3.5, semver@npm:^7.3.6, semver@npm:^7.5.3, semver@npm:^7.5.4, semver@npm:^7.6.0":
-  version: 7.6.0
-  resolution: "semver@npm:7.6.0"
-  dependencies:
-    lru-cache: "npm:^6.0.0"
+  version: 7.6.1
+  resolution: "semver@npm:7.6.1"
   bin:
     semver: bin/semver.js
-  checksum: 10c0/fbfe717094ace0aa8d6332d7ef5ce727259815bd8d8815700853f4faf23aacbd7192522f0dc5af6df52ef4fa85a355ebd2f5d39f554bd028200d6cf481ab9b53
+  checksum: 10c0/fd28315954ffc80204df0cb5c62355160ebf54059f5ffe386e9903162ddf687ed14004c30f6e5347fa695fc77bafa242798af8d351f1d260207f007cfbeccb82
   languageName: node
   linkType: hard
 
@@ -4088,7 +4077,8 @@ __metadata:
     prettier-plugin-tailwindcss: "npm:^0.5.14"
     rollup: "npm:^4.17.2"
     rollup-plugin-gzip: "npm:^3.1.2"
-    survey-vue3-ui: "npm:^1.10.2"
+    survey-core: "npm:^1.10.3"
+    survey-vue3-ui: "npm:^1.10.3"
     tailwindcss: "npm:^3.4.3"
     typescript: "npm:^5.4.5"
     vite: "npm:^5.2.11"
@@ -4234,21 +4224,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"survey-core@npm:*":
-  version: 1.10.2
-  resolution: "survey-core@npm:1.10.2"
-  checksum: 10c0/71b5866740f0145f192ab01160f0c76e21933f9d77df1cd0468eba2d4291fe01c8ee9db5f03ca35440c04997e49bc3f98acf90e3fc3707cd34151270cc7d5576
+"survey-core@npm:^1.10.3":
+  version: 1.10.3
+  resolution: "survey-core@npm:1.10.3"
+  checksum: 10c0/f3497462a2f825221484b8c35b3e8cca01e2689320eff3ee62d8a7f9bf8e54ecb278c3b4921d2c9877edfe8e7844492e2deb5db5ec024ec36f07359dbfd7ed29
   languageName: node
   linkType: hard
 
-"survey-vue3-ui@npm:^1.10.2":
-  version: 1.10.2
-  resolution: "survey-vue3-ui@npm:1.10.2"
-  dependencies:
-    survey-core: "npm:*"
+"survey-vue3-ui@npm:^1.10.3":
+  version: 1.10.3
+  resolution: "survey-vue3-ui@npm:1.10.3"
   peerDependencies:
+    survey-core: 1.10.3
     vue: ^3.2.41
-  checksum: 10c0/373eb93d53ed5ffe680bf9b7b5705fa9648160bb0d18a201f4400d6dbf524f89ff325b84dd5fd9f464c9c38d48be232feff43539c794954cc3a9308efbda6da7
+  checksum: 10c0/3321c93d61e8639f89d2d15ca1241ede49f2d6c2eb068b5bc4506cea01e59a40d77dbb23413380baaf0e1f592528e29f90ededd28eeaa32a9f6f3b8849c6ad47
   languageName: node
   linkType: hard
 
