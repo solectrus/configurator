@@ -72,7 +72,7 @@ First, copy your personal `compose.yml` file to the clipboard by pressing the "C
 cat > compose.yml
 ```
 
-You will see a new empty line in the terminal with a cursor. Now, paste the content from clipboard by pressing `Ctrl+V` and save it by pressing `Ctrl+D`.
+You will see a new empty line in the terminal with a cursor. Now, paste the content from clipboard by pressing `Ctrl+V` (on macOS: `Cmd+V`) and save it by pressing `Ctrl+D`.
 
 This may seem a little tricky, but it is the easiest way to copy the contents of the clipboard to a file on your Linux computer without having to rely on any tools. If you know a better way (e.g. via a text editor), feel free to use it.
 
@@ -86,7 +86,7 @@ Do the same for the `.env` file: Copy the file content to the clipboard and run 
  cat > .env
 ```
 
-Then again, paste the clipboard with `Ctrl+V` and save it by pressing `Ctrl+D`.
+Then again, paste the clipboard with `Ctrl+V` (on macOS: `Cmd+V`) and save it by pressing `Ctrl+D`.
 
 Check if the files are created correctly by running the following command:
 
