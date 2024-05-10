@@ -34,7 +34,9 @@ $ docker compose version
 Docker Compose version v2.27.0
 ```
 
-An older version might work as well. If you don't have Docker installed, please follow the [official instructions](https://docs.docker.com/engine/install/debian/) to install.
+An older version might work as well.
+
+If you don't have Docker installed, please follow the [official instructions](https://docs.docker.com/engine/install/debian/) to install.
 
 Don't forget to add your user to the `docker` group, so you don't need to use `sudo` for every Docker command.
 
