@@ -24,7 +24,7 @@ First, ensure you have a 64bit OS with Kernel v4 or higher. Check your OS and ar
 
 ```console
 $ uname -a
-Linux MyUbuntu 5.4.0-174-generic #193-Ubuntu SMP Thu Mar 7 14:29:28 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux
+Linux MyUbuntu 6.8.0-31-generic #31-Ubuntu SMP PREEMPT_DYNAMIC Sat Apr 20 00:40:06 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux
 
 $ dpkg --print-architecture
 amd64
@@ -34,7 +34,7 @@ The kernel is `v6`, which is the latest and greatest - `v4` or `v5` will work as
 
 The architecture is `amd64` which means you are running a 64bit OS. `arm64` is another common architecture for 64bit OS.
 
-If you are running a 32bit OS, you need to upgrade. If the architecture is `armhf`, you are running a 64bit Kernel with 32bit userland, which will **not** work.'
+If you are running a 32bit OS, you need to upgrade. If the architecture is `armhf`, you are running a 64bit Kernel with 32bit userland, which will **not** work.
 
 ### Prepare Docker
 
@@ -42,15 +42,15 @@ Ensure Docker is installed and running. First, check your Docker version:
 
 ```console
 $ docker --version
-Docker version 26.0.0, build 2ae903e
+Docker version 26.1.2, build 211e74b
 
 $ docker compose version
-Docker Compose version v2.25.0
+Docker Compose version v2.27.0
 ```
 
 An older version might work as well.
 
-If you don't have Docker installed, please follow the [official instructions](https://docs.docker.com/engine/install/debian/) to install.
+If you don't have Docker installed, please follow the [official instructions](https://docs.docker.com/engine/install/) to install.
 
 Don't forget to add your user to the `docker` group, so you don't need to use `sudo` for every Docker command.
 
