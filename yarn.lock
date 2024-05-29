@@ -1361,9 +1361,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.30001587, caniuse-lite@npm:^1.0.30001599":
-  version: 1.0.30001623
-  resolution: "caniuse-lite@npm:1.0.30001623"
-  checksum: 10c0/bf4fdae0cc9ec9282741e2c2dd3d35d853049ad69b33115cc39ee2d74fcbe03319aec27932b3480b626a4524e715c5b148c60d4d29ddd709db9008505ccf1a85
+  version: 1.0.30001624
+  resolution: "caniuse-lite@npm:1.0.30001624"
+  checksum: 10c0/534fe35cacee745c08689a6a045ee1a9ca525b38f707746088b768bee06c71df5f13875787389648a134d82848d33a375e56590dde3cc86033d0350c2838f978
   languageName: node
   linkType: hard
 
@@ -4065,11 +4065,11 @@ __metadata:
     prettier-plugin-tailwindcss: "npm:^0.5.14"
     rollup: "npm:^4.18.0"
     rollup-plugin-gzip: "npm:^3.1.2"
-    survey-core: "npm:^1.10.5"
-    survey-vue3-ui: "npm:^1.10.5"
+    survey-core: "npm:^1.10.6"
+    survey-vue3-ui: "npm:^1.10.6"
     tailwindcss: "npm:^3.4.3"
     typescript: "npm:^5.4.5"
-    vite: "npm:^5.2.11"
+    vite: "npm:^5.2.12"
     vitest: "npm:^1.6.0"
     vue: "npm:^3.4.27"
     vue-markdown-render: "npm:^2.2.1"
@@ -4212,20 +4212,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"survey-core@npm:^1.10.5":
-  version: 1.10.5
-  resolution: "survey-core@npm:1.10.5"
-  checksum: 10c0/73df571aec4b79097d7b5c37c138ef265bd26474a92361095a6f288a6da8ae5718178ad90d2f43602946d8c398236c16e6b34e136d49f5b3cf0ac9f10d84c4b9
+"survey-core@npm:^1.10.6":
+  version: 1.10.6
+  resolution: "survey-core@npm:1.10.6"
+  checksum: 10c0/8cdc566ad5b1db767bbc3c024fd9c4244f1e783ba0db9b8a770125274d4da1b549db260b11f3cac567da597739721ae05188c2d4762fd61918a3b3a765630a5c
   languageName: node
   linkType: hard
 
-"survey-vue3-ui@npm:^1.10.5":
-  version: 1.10.5
-  resolution: "survey-vue3-ui@npm:1.10.5"
+"survey-vue3-ui@npm:^1.10.6":
+  version: 1.10.6
+  resolution: "survey-vue3-ui@npm:1.10.6"
   peerDependencies:
-    survey-core: 1.10.5
+    survey-core: 1.10.6
     vue: ^3.2.41
-  checksum: 10c0/6b992b5a06b5bdf80ff019b0e4d45b33ba616304a5a9e8e16aae4f316868d9599f165709ff170f60851ffe066dcbcac6b8413c0fa5b90d598746eaf6522c4105
+  checksum: 10c0/54474fc51db16fdaf1dc57fb4526843cb88278240fe421d7c79e53698a7580a3fc7ce5bc901a55c9013e2bc34ecfc4ad754a4279c9c5e12533f987db824b2f80
   languageName: node
   linkType: hard
 
@@ -4561,9 +4561,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^5.0.0, vite@npm:^5.2.11":
-  version: 5.2.11
-  resolution: "vite@npm:5.2.11"
+"vite@npm:^5.0.0, vite@npm:^5.2.12":
+  version: 5.2.12
+  resolution: "vite@npm:5.2.12"
   dependencies:
     esbuild: "npm:^0.20.1"
     fsevents: "npm:~2.3.3"
@@ -4597,7 +4597,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: 10c0/664b8d68e4f5152ae16bd2041af1bbaf11c43630ac461835bc31ff7d019913b33e465386e09f66dc1037d7aeefbb06939e0173787c063319bc2bd30c3b9ad8e4
+  checksum: 10c0/f03fdfc320adea3397df3e327029fd875f8220779f679ab183a3a994e8788b4ce531fee28f830361fb274f3cf08ed9adb9429496ecefdc3faf535b38da7ea8b1
   languageName: node
   linkType: hard
 
