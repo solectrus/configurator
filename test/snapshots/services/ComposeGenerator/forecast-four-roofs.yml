@@ -1,6 +1,6 @@
 services:
   dashboard:
-    image: ghcr.io/solectrus/solectrus:next
+    image: ghcr.io/solectrus/solectrus:develop
     depends_on:
       postgresql:
         condition: service_healthy
