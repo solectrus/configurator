@@ -21,7 +21,7 @@
     "plausible-tracker": "^0.3.9",
     "survey-core": "^1.11.2",
     "survey-vue3-ui": "^1.11.2",
-    "vue": "^3.4.28",
+    "vue": "^3.4.29",
     "vue-markdown-render": "^2.2.1",
     "yaml": "^2.4.5"
   },
@@ -39,7 +39,7 @@
     "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.5.1",
     "autoprefixer": "^10.4.19",
-    "eslint": "^9.4.0",
+    "eslint": "^9.5.0",
     "eslint-plugin-vue": "^9.26.0",
     "jsdom": "^24.1.0",
     "npm-run-all2": "^6.2.0",
