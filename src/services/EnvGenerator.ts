@@ -162,19 +162,56 @@ export class EnvGenerator {
   }
 
   private buildForecastCollectorVariables(): string | undefined {
-    if (this.compose.services['forecast-collector']) {
-      return this.replaceEnvValues(forecastCollectorVariables, {
-        FORECAST_LATITUDE: this.answers.forecast_latitude,
-        FORECAST_LONGITUDE: this.answers.forecast_longitude,
-        FORECAST_CONFIGURATIONS:
-          this.forecastRoofCount() > 1 ? this.forecastRoofCount() : undefined,
-        ...this.forecastRoof1(),
-        ...this.forecastRoof2(),
-        ...this.forecastRoof3(),
-        ...this.forecastRoof4(),
-        FORECAST_INTERVAL: 900 * this.forecastRoofCount(),
-      })
-    }
+    if (this.compose.services['forecast-collector'])
+      if (this.answers.forecast === 'forecast_forecast_solar')
+        return this.buildForecastCollectorVariablesForecastSolar()
+      else if (this.answers.forecast === 'forecast_solcast')
+        return this.buildForecastCollectorVariablesSolcast()
+  }
+
+  private buildForecastCollectorVariablesForecastSolar(): string {
+    return this.replaceEnvValues(forecastCollectorVariables, {
+      FORECAST_PROVIDER: 'forecast.solar',
+      FORECAST_LATITUDE: this.answers.forecast_latitude,
+      FORECAST_LONGITUDE: this.answers.forecast_longitude,
+      FORECAST_CONFIGURATIONS: this.forecastRoofCount(),
+      ...this.forecastRoof1(),
+      ...this.forecastRoof2(),
+      ...this.forecastRoof3(),
+      ...this.forecastRoof4(),
+      FORECAST_INTERVAL: 900 * this.forecastRoofCount(),
+      SOLCAST_APIKEY: undefined,
+      SOLCAST_0_SITE: undefined,
+      SOLCAST_1_SITE: undefined,
+    })
+  }
+
+  private buildForecastCollectorVariablesSolcast(): string {
+    return this.replaceEnvValues(forecastCollectorVariables, {
+      FORECAST_PROVIDER: 'solcast',
+      FORECAST_CONFIGURATIONS: this.forecastRoofCount(),
+      FORECAST_INTERVAL: 8640 * this.forecastRoofCount(),
+      SOLCAST_APIKEY: this.answers.forecast_solcast_api_key,
+      SOLCAST_0_SITE: this.answers.forecast_solcast_id1,
+      SOLCAST_1_SITE: this.answers.forecast_solcast_id2,
+      FORECAST_LATITUDE: undefined,
+      FORECAST_LONGITUDE: undefined,
+      FORECAST_KWP: undefined,
+      FORECAST_AZIMUTH: undefined,
+      FORECAST_DECLINATION: undefined,
+      FORECAST_0_DECLINATION: undefined,
+      FORECAST_0_AZIMUTH: undefined,
+      FORECAST_0_KWP: undefined,
+      FORECAST_1_DECLINATION: undefined,
+      FORECAST_1_AZIMUTH: undefined,
+      FORECAST_1_KWP: undefined,
+      FORECAST_2_DECLINATION: undefined,
+      FORECAST_2_AZIMUTH: undefined,
+      FORECAST_2_KWP: undefined,
+      FORECAST_3_DECLINATION: undefined,
+      FORECAST_3_AZIMUTH: undefined,
+      FORECAST_3_KWP: undefined,
+    })
   }
 
   private buildInfluxdbVariables(): string | undefined {

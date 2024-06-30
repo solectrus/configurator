@@ -68,10 +68,13 @@ describe('useSurveyStore', () => {
     expect(survey.getPageByName('p_mqtt').isVisible).toBe(false)
   })
 
-  it('offers forecast questions', () => {
-    survey.setValue('forecast', true)
-
+  it('offers forecast questions (forecast.solar)', () => {
     expect(survey.getPageByName('p_forecast').isVisible).toBe(true)
+    expect(survey.getPageByName('p_forecast_forecast_solar').isVisible).toBe(false)
+    expect(survey.getPageByName('p_forecast_solcast').isVisible).toBe(false)
+
+    survey.setValue('forecast', 'forecast_forecast_solar')
+
     expect(survey.getQuestionByName('forecast_roofs').isVisible).toBe(true)
     expect(survey.getQuestionByName('forecast_latitude').isVisible).toBe(true)
     expect(survey.getQuestionByName('forecast_longitude').isVisible).toBe(true)
@@ -81,6 +84,8 @@ describe('useSurveyStore', () => {
     expect(survey.getQuestionByName('forecast_kwp1').isVisible).toBe(false)
 
     survey.setValue('forecast_roofs', '1')
+    expect(survey.getPageByName('p_forecast_forecast_solar').isVisible).toBe(true)
+    expect(survey.getPageByName('p_forecast_solcast').isVisible).toBe(false)
 
     expect(survey.getQuestionByName('forecast_azimuth1').isVisible).toBe(true)
     expect(survey.getQuestionByName('forecast_declination1').isVisible).toBe(true)
@@ -97,6 +102,30 @@ describe('useSurveyStore', () => {
     expect(survey.getQuestionByName('forecast_azimuth4').isVisible).toBe(false)
     expect(survey.getQuestionByName('forecast_declination4').isVisible).toBe(false)
     expect(survey.getQuestionByName('forecast_kwp4').isVisible).toBe(false)
+  })
+
+  it('offers forecast questions (solcast)', () => {
+    expect(survey.getPageByName('p_forecast').isVisible).toBe(true)
+    expect(survey.getPageByName('p_forecast_forecast_solar').isVisible).toBe(false)
+    expect(survey.getPageByName('p_forecast_solcast').isVisible).toBe(false)
+
+    survey.setValue('forecast', 'forecast_solcast')
+    expect(survey.getPageByName('p_forecast_forecast_solar').isVisible).toBe(false)
+    expect(survey.getPageByName('p_forecast_solcast').isVisible).toBe(true)
+
+    expect(survey.getQuestionByName('forecast_roofs').isVisible).toBe(true)
+
+    survey.setValue('forecast_roofs', '1')
+
+    expect(survey.getQuestionByName('forecast_solcast_api_key').isVisible).toBe(true)
+    expect(survey.getQuestionByName('forecast_solcast_id1').isVisible).toBe(true)
+    expect(survey.getQuestionByName('forecast_solcast_id2').isVisible).toBe(false)
+
+    survey.setValue('forecast_roofs', '2')
+
+    expect(survey.getQuestionByName('forecast_solcast_api_key').isVisible).toBe(true)
+    expect(survey.getQuestionByName('forecast_solcast_id1').isVisible).toBe(true)
+    expect(survey.getQuestionByName('forecast_solcast_id2').isVisible).toBe(true)
   })
 
   it('offers installation_type question (senec3)', () => {

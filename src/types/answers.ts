@@ -44,7 +44,7 @@ export interface Answers {
   mqtt_heatpump_power?: string
   wallbox_exclude_from_house_power?: string
   heatpump_exclude_from_house_power?: string
-  forecast?: boolean
+  forecast?: 'forecast_forecast_solar' | 'forecast_solcast' | 'forecast_none'
   forecast_latitude?: number
   forecast_longitude?: number
   forecast_roofs?: '1' | '2' | '3' | '4'
@@ -60,6 +60,9 @@ export interface Answers {
   forecast_azimuth4?: number
   forecast_declination4?: number
   forecast_kwp4?: number
+  forecast_solcast_api_key?: string
+  forecast_solcast_id1?: string
+  forecast_solcast_id2?: string
   backup?: boolean
   aws_access_key_id?: string
   aws_secret_access_key?: string

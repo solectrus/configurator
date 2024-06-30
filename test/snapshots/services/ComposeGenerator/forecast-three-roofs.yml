@@ -159,6 +159,7 @@ services:
   forecast-collector:
     image: ghcr.io/solectrus/forecast-collector:develop
     environment:
+      - FORECAST_PROVIDER
       - FORECAST_LATITUDE
       - FORECAST_LONGITUDE
       - FORECAST_DECLINATION
@@ -202,6 +203,14 @@ services:
       - INFLUX_ORG
       - INFLUX_BUCKET
       - INFLUX_MEASUREMENT=${FORECAST_INFLUX_MEASUREMENT}
+      - FORECAST_DAMPING_MORNING
+      - FORECAST_DAMPING_EVENING
+      - FORECAST_HORIZON
+      - FORECAST_INVERTER
+      - SOLCAST_APIKEY
+      - SOLCAST_SITE
+      - SOLCAST_0_SITE
+      - SOLCAST_1_SITE
     restart: unless-stopped
     logging:
       options:

@@ -903,7 +903,7 @@
       "name": "p_forecast",
       "elements": [
         {
-          "type": "boolean",
+          "type": "radiogroup",
           "name": "forecast",
           "visibleIf": "{distributed_choice} <> 'local'",
           "title": {
@@ -911,15 +911,38 @@
             "default": "Would you like a forecast of the PV yield?"
           },
           "description": {
-            "de": "Die Prognose erfolgt kostenfrei für deinen Standort über forecast.solar",
-            "default": "The forecast is provided free of charge for your location via forecast.solar"
+            "de": "Die Prognose erfolgt kostenfrei individuell für deinen Standort",
+            "default": "The forecast is provided free of charge for your location"
           },
-          "isRequired": true
+          "isRequired": true,
+          "choices": [
+            {
+              "value": "forecast_forecast_solar",
+              "text": {
+                "de": "Ja, mit forecast.solar",
+                "default": "Yes, with forecast.solar"
+              }
+            },
+            {
+              "value": "forecast_solcast",
+              "text": {
+                "de": "Ja, mit solcast.com",
+                "default": "Yes, with solcast.com"
+              }
+            },
+            {
+              "value": "forecast_none",
+              "text": {
+                "de": "Nein",
+                "default": "No"
+              }
+            }
+          ]
         },
         {
           "type": "text",
           "name": "forecast_latitude",
-          "visibleIf": "{forecast} = true",
+          "visibleIf": "{forecast} = 'forecast_forecast_solar'",
           "title": {
             "default": "Latitude",
             "de": "Breitengrad"
@@ -936,7 +959,7 @@
         {
           "type": "text",
           "name": "forecast_longitude",
-          "visibleIf": "{forecast} = true",
+          "visibleIf": "{forecast} = 'forecast_forecast_solar'",
           "title": {
             "default": "Longitude",
             "de": "Längengrad"
@@ -953,13 +976,24 @@
         {
           "type": "radiogroup",
           "name": "forecast_roofs",
-          "visibleIf": "{forecast} = true",
+          "visibleIf": "{forecast} anyof ['forecast_forecast_solar', 'forecast_solcast']",
           "title": {
             "de": "Wieviele Flächen mit Solarmodulen gibt es bei dir?",
             "default": "How many planes do you have with solar modules?"
           },
           "isRequired": true,
-          "choices": ["1", "2", "3", "4"]
+          "choices": [
+            "1",
+            "2",
+            {
+              "value": "3",
+              "visibleIf": "{forecast} = 'forecast_forecast_solar'"
+            },
+            {
+              "value": "4",
+              "visibleIf": "{forecast} = 'forecast_forecast_solar'"
+            }
+          ]
         }
       ],
       "visibleIf": "{devices} contains 'inverter'",
@@ -969,7 +1003,7 @@
       }
     },
     {
-      "name": "p_forecast_roof1",
+      "name": "p_forecast_forecast_solar",
       "elements": [
         {
           "type": "text",
@@ -1160,14 +1194,84 @@
           "min": 0
         }
       ],
-      "visibleIf": "{forecast} = true",
+      "visibleIf": "{forecast} = 'forecast_forecast_solar'",
       "title": {
-        "default": "Location of the PV system",
-        "de": "Ertragsvorhersage: Dachflächen"
+        "default": "Yield forecast from forecast.solar",
+        "de": "Ertragsvorhersage von forecast.solar"
       },
       "description": {
         "de": "Einstellungen für jede einzelne Dachfläche",
-        "default": "Required for the yield forecast"
+        "default": "Settings for each individual roof surface"
+      }
+    },
+    {
+      "name": "p_forecast_solcast",
+      "elements": [
+        {
+          "type": "text",
+          "name": "forecast_solcast_api_key",
+          "title": {
+            "de": "API-Key bei Solcast",
+            "default": "API key at Solcast"
+          },
+          "description": {
+            "de": "Kostenfrei besorgen bei https://toolkit.solcast.com.au/",
+            "default": "Get it for free at https://toolkit.solcast.com.au/"
+          },
+          "isRequired": true
+        },
+        {
+          "type": "text",
+          "name": "forecast_solcast_id1",
+          "visibleIf": "{forecast_roofs} anyof [1, 2, 3, 4]",
+          "title": {
+            "default": "ID of the 1st roof",
+            "de": "ID der 1. Dachfläche "
+          },
+          "description": {
+            "default": "Resource ID at Solcast",
+            "de": "Resourcen-ID bei Solcast"
+          },
+          "isRequired": true,
+          "maskType": "pattern",
+          "maskSettings": {
+            "saveMaskedValue": true,
+            "pattern": "####-####-####-####"
+          }
+        },
+        {
+          "type": "text",
+          "name": "forecast_solcast_id2",
+          "visibleIf": "{forecast_roofs} anyof [2, 3, 4]",
+          "title": {
+            "default": "ID of the 2nd roof area ",
+            "de": "ID der 2. Dachfläche "
+          },
+          "description": {
+            "default": "Resource ID at Solcast",
+            "de": "Resourcen-ID bei Solcast"
+          },
+          "isRequired": true,
+          "validators": [
+            {
+              "type": "expression"
+            }
+          ],
+          "maskType": "pattern",
+          "maskSettings": {
+            "saveMaskedValue": true,
+            "pattern": "####-####-####-####"
+          }
+        }
+      ],
+      "visibleIf": "{forecast} = 'forecast_solcast'",
+      "title": {
+        "default": "Yield forecast from Solcast",
+        "de": "Ertragsvorhersage von Solcast"
+      },
+      "description": {
+        "de": "API-Zugriff",
+        "default": "API access"
       }
     },
     {

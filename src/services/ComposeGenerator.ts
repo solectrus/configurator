@@ -138,7 +138,10 @@ export class ComposeGenerator {
       this.addService('mqtt-collector', service)
     }
 
-    if (this.answers.forecast === true) {
+    if (
+      this.answers.forecast == 'forecast_forecast_solar' ||
+      this.answers.forecast == 'forecast_solcast'
+    ) {
       this.addService('forecast-collector', forecastCollectorService)
     }
   }
