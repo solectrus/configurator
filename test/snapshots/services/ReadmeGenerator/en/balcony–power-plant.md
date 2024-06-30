@@ -68,13 +68,15 @@ sudo synogroup --member docker $USER
 
 SOLECTRUS needs a folder to store the configuration files and Docker volumes for the databases. This folder needs to be created on your Linux machine before you start the Docker containers. We choose `~/solectrus` as the base folder for this purpose.
 
-First, create this folder and the required subfolders with the following commands:
+First, create the required folders with the following commands:
 
 ```console
 cd ~
 mkdir -p solectrus
 cd solectrus
-mkdir redis postgresql influxdb
+
+# Create folders for Docker volumes
+mkdir -p /volume1/docker/solectrus/redis /volume1/docker/solectrus/postgresql /volume1/docker/solectrus/influxdb
 ```
 
 ## Add configuration files

@@ -179,7 +179,12 @@ export class EnvGenerator {
 
   private buildInfluxdbVariables(): string | undefined {
     if (this.compose.services['influxdb']) {
-      return this.replaceEnvValues(influxdbVariables, {})
+      return this.replaceEnvValues(influxdbVariables, {
+        INFLUX_VOLUME_PATH:
+          this.answers.linux_machine === 'synology'
+            ? '/volume1/docker/solectrus/influxdb'
+            : './influxdb',
+      })
     } else if (
       this.answers.installation_type === 'distributed' &&
       this.answers.distributed_choice === 'local'
@@ -267,13 +272,21 @@ export class EnvGenerator {
 
   private buildPostgresqlVariables(): string | undefined {
     if (this.compose.services['postgresql']) {
-      return this.replaceEnvValues(postgresqlVariables, {})
+      return this.replaceEnvValues(postgresqlVariables, {
+        DB_VOLUME_PATH:
+          this.answers.linux_machine === 'synology'
+            ? '/volume1/docker/solectrus/postgresql'
+            : './postgresql',
+      })
     }
   }
 
   private buildRedisVariables(): string | undefined {
     if (this.compose.services['redis']) {
-      return this.replaceEnvValues(redisVariables, {})
+      return this.replaceEnvValues(redisVariables, {
+        REDIS_VOLUME_PATH:
+          this.answers.linux_machine === 'synology' ? '/volume1/docker/solectrus/redis' : './redis',
+      })
     }
   }
 
