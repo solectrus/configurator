@@ -10,7 +10,7 @@ First, ensure you have a 64bit OS with Kernel v4 or higher. Check your OS and ar
 
 ```console
 $ uname -a
-Linux MyUbuntu 6.8.0-31-generic #31-Ubuntu SMP PREEMPT_DYNAMIC Sat Apr 20 00:40:06 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux
+Linux MyUbuntu 6.8.0-36-generic #36-Ubuntu SMP PREEMPT_DYNAMIC Mon Jun 10 10:49:14 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux
 
 $ dpkg --print-architecture
 amd64
@@ -28,10 +28,10 @@ Ensure Docker is installed and running. First, check your Docker version:
 
 ```console
 $ docker --version
-Docker version 26.1.2, build 211e74b
+Docker version 27.0.2, build 912c1dd
 
 $ docker compose version
-Docker Compose version v2.27.0
+Docker Compose version v2.28.1
 ```
 
 An older version might work as well.
