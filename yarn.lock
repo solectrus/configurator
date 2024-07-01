@@ -884,30 +884,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@volar/language-core@npm:2.4.0-alpha.2, @volar/language-core@npm:~2.4.0-alpha.2":
-  version: 2.4.0-alpha.2
-  resolution: "@volar/language-core@npm:2.4.0-alpha.2"
+"@volar/language-core@npm:2.4.0-alpha.5, @volar/language-core@npm:~2.4.0-alpha.2":
+  version: 2.4.0-alpha.5
+  resolution: "@volar/language-core@npm:2.4.0-alpha.5"
   dependencies:
-    "@volar/source-map": "npm:2.4.0-alpha.2"
-  checksum: 10c0/8ff778371380873d44918f45c812d9d4aa6a54880555cb490395ebec375098e8a524b87885f68817f7978039e2139be90fd8fe32de7455c974853aee6a10c1f6
+    "@volar/source-map": "npm:2.4.0-alpha.5"
+  checksum: 10c0/7e7f451812941a75eb8c3ec2969d3f61e2296d934e1d98e8e8221b5df87d0ada993d518f1831e901628c5ee44d1a0aeb215046d0e620102fac12170c0326664c
   languageName: node
   linkType: hard
 
-"@volar/source-map@npm:2.4.0-alpha.2":
-  version: 2.4.0-alpha.2
-  resolution: "@volar/source-map@npm:2.4.0-alpha.2"
-  checksum: 10c0/d7692ef94a28ec34ce3feb7bb1eec87d5fcef1002bb8d9256e956ec3f4ffbdf8fbdf8ec8fe90fbfe3ef1607cc4faa48fc099fa2d856bd13ca07d53067b62c469
+"@volar/source-map@npm:2.4.0-alpha.5":
+  version: 2.4.0-alpha.5
+  resolution: "@volar/source-map@npm:2.4.0-alpha.5"
+  checksum: 10c0/e7c5675565ecf70578ddfe39405e272d63cbef11bba03aa082081935998c579412afec540e54979d0ea7fc7da1d00f966b920c052acc4d994f7fa1ca2581f93f
   languageName: node
   linkType: hard
 
 "@volar/typescript@npm:~2.4.0-alpha.2":
-  version: 2.4.0-alpha.2
-  resolution: "@volar/typescript@npm:2.4.0-alpha.2"
+  version: 2.4.0-alpha.5
+  resolution: "@volar/typescript@npm:2.4.0-alpha.5"
   dependencies:
-    "@volar/language-core": "npm:2.4.0-alpha.2"
+    "@volar/language-core": "npm:2.4.0-alpha.5"
     path-browserify: "npm:^1.0.1"
     vscode-uri: "npm:^3.0.8"
-  checksum: 10c0/aa9576b6cb30cd9d363b3a5301f6c0d19e6c559d777bc0556f3717a32ad86bf4a3b7db9a625cdd375139294c44b8835c3671bdee5ebd951393ed282931f8a371
+  checksum: 10c0/473ee76abf6449190f48f7350ac061595072a365e4b12e327209ce771c5a8b1e71c7ef3cdbab047e3dda13e7004332f4e74f86273bd6af2d4031e68586018328
   languageName: node
   linkType: hard
 
@@ -1364,9 +1364,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.30001599, caniuse-lite@npm:^1.0.30001629":
-  version: 1.0.30001638
-  resolution: "caniuse-lite@npm:1.0.30001638"
-  checksum: 10c0/33019e0c53ed73f1e728b6f313efed2d7a25710dfa2ad3924d2be9939df10d0991556ac87523d3177d472c246654c9216f03e5532717ed97df58014728c3e798
+  version: 1.0.30001639
+  resolution: "caniuse-lite@npm:1.0.30001639"
+  checksum: 10c0/3f56ce3d516a4fba959ad10ed6ecb15c6329233fc01f9f2714234a2ca91f408296d708a366ece510ca6566f71cb80d20d4c019441a1451ac1456e0128c8de78a
   languageName: node
   linkType: hard
 
