@@ -1,7 +1,7 @@
 FROM nginx:stable-alpine
 
 LABEL maintainer="georg@ledermann.dev"
-LABEL org.opencontainers.image.description="SOLECTRUS Configurator"
+LABEL org.opencontainers.image.copyright="Copyright (c) 2024 Georg Ledermann. All right reserved."
 
 # Copy built assets from 'dist' to the serve directory
 COPY dist /usr/share/nginx/html

@@ -32,12 +32,17 @@ jobs:
 
       - uses: docker/build-push-action@v6
         with:
-          push: true
+          push: ${{ github.event_name == 'push' }}
           provenance: false
           tags: ghcr.io/solectrus/configurator:latest
           context: .
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          labels: |
+            org.opencontainers.image.title=${{ github.event.repository.name }}
+            org.opencontainers.image.description=${{ github.event.repository.description }}
+            org.opencontainers.image.url=${{ github.event.repository.html_url }}
+            org.opencontainers.image.revision=${{ github.sha }}
 
       - name: Deploy
         env:
