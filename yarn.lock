@@ -884,30 +884,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@volar/language-core@npm:2.4.0-alpha.12, @volar/language-core@npm:~2.4.0-alpha.2":
-  version: 2.4.0-alpha.12
-  resolution: "@volar/language-core@npm:2.4.0-alpha.12"
+"@volar/language-core@npm:2.4.0-alpha.13, @volar/language-core@npm:~2.4.0-alpha.2":
+  version: 2.4.0-alpha.13
+  resolution: "@volar/language-core@npm:2.4.0-alpha.13"
   dependencies:
-    "@volar/source-map": "npm:2.4.0-alpha.12"
-  checksum: 10c0/b34381e27d30ee0f17a40c0f413e7566218380231f14d9337d2bff229ae0c3cafb3cb6d96766063fc585cd62bbb1f78e343c1ce2822e857fd9fe0494167d8b2a
+    "@volar/source-map": "npm:2.4.0-alpha.13"
+  checksum: 10c0/571fa7b7c79340c13eaca17eec6caab4108b4f362a9c8603988dd9fc4e8746163cc88420dd6156e6182d2cd35749ce2ad00d229296e69ec0865a8a59e6783b2a
   languageName: node
   linkType: hard
 
-"@volar/source-map@npm:2.4.0-alpha.12":
-  version: 2.4.0-alpha.12
-  resolution: "@volar/source-map@npm:2.4.0-alpha.12"
-  checksum: 10c0/350a75bf7769102887fdf49b93a0f17012dc9a5020bdcf0777d3c3b8e9891d0d4e0bd8afbb2bb616b77cc8e505bd2a1d1d9c035259e110459e6009eee8fb243f
+"@volar/source-map@npm:2.4.0-alpha.13":
+  version: 2.4.0-alpha.13
+  resolution: "@volar/source-map@npm:2.4.0-alpha.13"
+  checksum: 10c0/3de01ef11502ce53fa1e3e15010993b9f594017326f1fec8fc2ce9cd85f4006a9132abd19bed4cd551452b7dc7d5760ac1225b9b7105c3bdad4b6e9fa7a3239c
   languageName: node
   linkType: hard
 
 "@volar/typescript@npm:~2.4.0-alpha.2":
-  version: 2.4.0-alpha.12
-  resolution: "@volar/typescript@npm:2.4.0-alpha.12"
+  version: 2.4.0-alpha.13
+  resolution: "@volar/typescript@npm:2.4.0-alpha.13"
   dependencies:
-    "@volar/language-core": "npm:2.4.0-alpha.12"
+    "@volar/language-core": "npm:2.4.0-alpha.13"
     path-browserify: "npm:^1.0.1"
     vscode-uri: "npm:^3.0.8"
-  checksum: 10c0/88c22f86d3328ea6f639f029e2cd8561126b38e7ae62738e2c389a6bccf043c7c9fc24ab0c279d9d2096845a08ef683bf2c2ad28baeda3f96728fb593f3ab22d
+  checksum: 10c0/81c921d8c12d1874348de19323fa4ef66b54903af332caa63aeff3d57f1f9e5f80a743285049c5d6b448d4159bd92d78ef4ad6e2e5b8779beb22245a1f6788a6
   languageName: node
   linkType: hard
 
@@ -1113,11 +1113,11 @@ __metadata:
   linkType: hard
 
 "acorn@npm:^8.11.0, acorn@npm:^8.11.3, acorn@npm:^8.12.0, acorn@npm:^8.9.0":
-  version: 8.12.0
-  resolution: "acorn@npm:8.12.0"
+  version: 8.12.1
+  resolution: "acorn@npm:8.12.1"
   bin:
     acorn: bin/acorn
-  checksum: 10c0/a19f9dead009d3b430fa3c253710b47778cdaace15b316de6de93a68c355507bc1072a9956372b6c990cbeeb167d4a929249d0faeb8ae4bb6911d68d53299549
+  checksum: 10c0/51fb26cd678f914e13287e886da2d7021f8c2bc0ccc95e03d3e0447ee278dd3b40b9c57dc222acd5881adcf26f3edc40901a4953403232129e3876793cd17386
   languageName: node
   linkType: hard
 
@@ -3214,9 +3214,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"npm-run-all2@npm:^6.2.0":
-  version: 6.2.0
-  resolution: "npm-run-all2@npm:6.2.0"
+"npm-run-all2@npm:^6.2.2":
+  version: 6.2.2
+  resolution: "npm-run-all2@npm:6.2.2"
   dependencies:
     ansi-styles: "npm:^6.2.1"
     cross-spawn: "npm:^7.0.3"
@@ -3230,7 +3230,7 @@ __metadata:
     npm-run-all2: bin/npm-run-all/index.js
     run-p: bin/run-p/index.js
     run-s: bin/run-s/index.js
-  checksum: 10c0/e6baa257d0cf5fd5ca1c3aa15e0d8b278af9c5f335baffe273b0faf0556ec6175f39b00a9bb59e702dab2988b62b275b739ce8379f86b5c927d367ab5eca0b28
+  checksum: 10c0/b32984a1fb6b495415258f88f87269b4049c19a73a1d6e2b13e0dd36dd311a5a4d945c9fd1cc356eb10811febaa03cf1c85d04dc43decd4ab1d590b625918440
   languageName: node
   linkType: hard
 
@@ -4068,7 +4068,7 @@ __metadata:
     eslint-plugin-vue: "npm:^9.27.0"
     highlight.js: "npm:^11.9.0"
     jsdom: "npm:^24.1.0"
-    npm-run-all2: "npm:^6.2.0"
+    npm-run-all2: "npm:^6.2.2"
     pinia: "npm:^2.1.7"
     plausible-tracker: "npm:^0.3.9"
     postcss: "npm:^8.4.39"
@@ -4876,8 +4876,8 @@ __metadata:
   linkType: hard
 
 "ws@npm:^8.17.0":
-  version: 8.17.1
-  resolution: "ws@npm:8.17.1"
+  version: 8.18.0
+  resolution: "ws@npm:8.18.0"
   peerDependencies:
     bufferutil: ^4.0.1
     utf-8-validate: ">=5.0.2"
@@ -4886,7 +4886,7 @@ __metadata:
       optional: true
     utf-8-validate:
       optional: true
-  checksum: 10c0/f4a49064afae4500be772abdc2211c8518f39e1c959640457dcee15d4488628620625c783902a52af2dd02f68558da2868fd06e6fd0e67ebcd09e6881b1b5bfe
+  checksum: 10c0/25eb33aff17edcb90721ed6b0eb250976328533ad3cd1a28a274bd263682e7296a6591ff1436d6cbc50fa67463158b062f9d1122013b361cec99a05f84680e06
   languageName: node
   linkType: hard
 
