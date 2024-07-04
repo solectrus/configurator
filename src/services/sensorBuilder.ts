@@ -46,7 +46,11 @@ export class SensorBuilder {
     if (this.answers.devices?.includes('heatpump'))
       result = { ...result, ...this.sensorsHeatpump() }
 
-    if (this.answers.forecast) result = { ...result, ...this.sensorsForecast() }
+    if (
+      this.answers.forecast == 'forecast_forecast_solar' ||
+      this.answers.forecast == 'forecast_solcast'
+    )
+      result = { ...result, ...this.sensorsForecast() }
 
     return result
   }
