@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,7 +18,31 @@ jobs:
 
       - run: yarn install
 
+      - run: yarn tsc
+
       - run: yarn vitest run
+
+      - name: Install Nginx
+        run: sudo apt-get update && sudo apt-get install -y nginx
+
+      - name: Copy Nginx config to default location
+        run: sudo cp -r ./_nginx /etc/nginx
+
+      - name: Test Nginx configuration
+        run: sudo nginx -t
+
+  build:
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          cache: yarn
+
+      - run: yarn install
 
       - run: yarn build
 
