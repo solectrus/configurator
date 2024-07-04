@@ -79,13 +79,15 @@ export class SensorBuilder {
   private sensorsInverterOther() {
     return {
       INVERTER_POWER: 'pv:inverter_power',
-      HOUSE_POWER: 'pv:house_power',
-      GRID_IMPORT_POWER: 'pv:grid_import_power',
-      GRID_EXPORT_POWER: 'pv:grid_export_power',
-      CASE_TEMP: 'pv:case_temp',
-      SYSTEM_STATUS: 'pv:system_status',
-      SYSTEM_STATUS_OK: 'pv:system_status_ok',
-      GRID_EXPORT_LIMIT: 'pv:grid_export_limit',
+      ...(this.answers.mqtt_house_power && { HOUSE_POWER: 'pv:house_power' }),
+      ...(this.answers.mqtt_grid_power && {
+        GRID_IMPORT_POWER: 'pv:grid_import_power',
+        GRID_EXPORT_POWER: 'pv:grid_export_power',
+      }),
+      ...(this.answers.mqtt_case_temp && { CASE_TEMP: 'pv:case_temp' }),
+      ...(this.answers.mqtt_system_status && { SYSTEM_STATUS: 'pv:system_status' }),
+      ...(this.answers.mqtt_system_status_ok && { SYSTEM_STATUS_OK: 'pv:system_status_ok' }),
+      ...(this.answers.mqtt_grid_export_limit && { GRID_EXPORT_LIMIT: 'pv:grid_export_limit' }),
     }
   }
 
