@@ -884,30 +884,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@volar/language-core@npm:2.4.0-alpha.13, @volar/language-core@npm:~2.4.0-alpha.2":
-  version: 2.4.0-alpha.13
-  resolution: "@volar/language-core@npm:2.4.0-alpha.13"
+"@volar/language-core@npm:2.4.0-alpha.14, @volar/language-core@npm:~2.4.0-alpha.2":
+  version: 2.4.0-alpha.14
+  resolution: "@volar/language-core@npm:2.4.0-alpha.14"
   dependencies:
-    "@volar/source-map": "npm:2.4.0-alpha.13"
-  checksum: 10c0/571fa7b7c79340c13eaca17eec6caab4108b4f362a9c8603988dd9fc4e8746163cc88420dd6156e6182d2cd35749ce2ad00d229296e69ec0865a8a59e6783b2a
+    "@volar/source-map": "npm:2.4.0-alpha.14"
+  checksum: 10c0/f2ecb4bd3d486f37af30a1a728311ea4c68c96836f5b1119b6aec55d5b8508f8203c0a3de9f4c2a0a83ca0fc2cc78da5911ca64f53d510f3235ee7020b2f66ff
   languageName: node
   linkType: hard
 
-"@volar/source-map@npm:2.4.0-alpha.13":
-  version: 2.4.0-alpha.13
-  resolution: "@volar/source-map@npm:2.4.0-alpha.13"
-  checksum: 10c0/3de01ef11502ce53fa1e3e15010993b9f594017326f1fec8fc2ce9cd85f4006a9132abd19bed4cd551452b7dc7d5760ac1225b9b7105c3bdad4b6e9fa7a3239c
+"@volar/source-map@npm:2.4.0-alpha.14":
+  version: 2.4.0-alpha.14
+  resolution: "@volar/source-map@npm:2.4.0-alpha.14"
+  checksum: 10c0/951d2ca1b135770dffade1f05d1d5dc08adfd4a55633d8db6aeb3367dd30d30f86a15dc50852922a2ace3e2e0ca04e9ac254539b6ecc2ecaadd3909ff12795cc
   languageName: node
   linkType: hard
 
 "@volar/typescript@npm:~2.4.0-alpha.2":
-  version: 2.4.0-alpha.13
-  resolution: "@volar/typescript@npm:2.4.0-alpha.13"
+  version: 2.4.0-alpha.14
+  resolution: "@volar/typescript@npm:2.4.0-alpha.14"
   dependencies:
-    "@volar/language-core": "npm:2.4.0-alpha.13"
+    "@volar/language-core": "npm:2.4.0-alpha.14"
     path-browserify: "npm:^1.0.1"
     vscode-uri: "npm:^3.0.8"
-  checksum: 10c0/81c921d8c12d1874348de19323fa4ef66b54903af332caa63aeff3d57f1f9e5f80a743285049c5d6b448d4159bd92d78ef4ad6e2e5b8779beb22245a1f6788a6
+  checksum: 10c0/53f39cac617e4a82cc085da98b5a812e70b62c74b7befd9f5d003f7f5e6fb086beed91d16072c27800044dfc423c145292b2e21815b0e7bf48c1c8f73030fdb2
   languageName: node
   linkType: hard
 
