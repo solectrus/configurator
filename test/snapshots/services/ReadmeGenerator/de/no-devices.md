@@ -1,26 +1,26 @@
-# Installation Guide
+# Installationsanleitung
 
-This is your personalized guide for installing SOLECTRUS on your machine, created individually based on your answers. It consists of three parts:
+Dies ist dein persönlicher Leitfaden zur Installation von SOLECTRUS auf deinem Rechner, basierend auf deinen Antworten. Er besteht aus drei Teilen:
 
-- The `README.md` file, which you are currently reading
-- The `compose.yml` file, which contains the services that are started in Docker containers
-- The `.env` file, which contains the environment variables for the Docker containers
+- Die `README.md` Datei, die du gerade liest
+- Die `compose.yml` Datei, mit der die Dienste definiert werden, die in Docker-Containern laufen sollen
+- Die `.env` Datei, die die Umgebungsvariablen für die Docker-Container enthält
 
-You can switch between them using the links above. The `compose.yml` and `.env` can be copied to the clipboard. You will need this later.
+Du kannst zwischen diesen Teilen über die obigen Links wechseln. Die `compose.yml` und `.env` Dateien können in die Zwischenablage kopiert werden. Das wirst du später brauchen.
 
-**PLEASE NOTE:** The Configurator is under heavy development and involves installing beta versions of Docker images. The guide is currently available in English, with the final version to be available in German as well. Please report any issues you encounter via GitHub at [https://github.com/solectrus/hosting/issues](https://github.com/solectrus/hosting/issues).
+**BITTE BEACHTEN:** Der Konfigurator ist in intensiver Entwicklung und beinhaltet die Installation von Beta-Versionen der Docker-Images. Bitte melde alle Probleme, die du über GitHub unter [https://github.com/solectrus/hosting/issues](https://github.com/solectrus/hosting/issues) findest.
 
-Now read on to do the installation on your Linux machine.
+Lies jetzt weiter, um die Installation auf deinem Linux-Rechner durchzuführen.
 
-## Prerequisites
+## Voraussetzungen
 
-Beside having a Linux machine with a 64bit OS and Kernel v4 or higher, you need to have **Docker** installed and running. The following steps will guide you through the installation process.
+Neben einer Linux-Maschine mit einem 64-Bit-Betriebssystem und Kernel v4 oder höher, musst du **Docker** installiert und in Betrieb haben. Die folgenden Schritte führen dich durch den Installationsprozess.
 
-Now let's get started and log in to your Linux computer via SSH.
+Los geht's! Melde dich nun per SSH auf deinem Linux-Rechner an.
 
-### Check your OS
+### Überprüfe dein Betriebssystem
 
-First, ensure you have a 64bit OS with Kernel v4 or higher. Check your OS and architecture, which should look like this:
+Stelle zuerst sicher, dass du ein 64-Bit-Betriebssystem mit Kernel v4 oder höher hast. Überprüfe dein Betriebssystem und die Architektur, die wie folgt aussehen sollten:
 
 ```console
 $ uname -a
@@ -30,15 +30,15 @@ $ dpkg --print-architecture
 amd64
 ```
 
-The kernel is `v6`, which is the latest and greatest - `v4` or `v5` will work as well.
+Der Kernel ist `v6` und somit optimal - `v4` oder `v5` funktionieren aber auch.
 
-The architecture is `amd64` which means you are running a 64bit OS. `arm64` is another common architecture for 64bit OS.
+Die Architektur ist `amd64`, was bedeutet, dass du ein 64-Bit-Betriebssystem hast. `arm64` wäre eine weitere gängige Architektur für 64-Bit-Betriebssysteme.
 
-If you are running a 32bit OS, you need to upgrade. If the architecture is `armhf`, you are running a 64bit Kernel with 32bit userland, which will **not** work.
+Falls du ein 32-Bit-Betriebssystem hast, musst du hier stoppen und prüfen, wie du ein Upgrade durchführen kannst. Wenn die Architektur `armhf` ist, läuft bei dir ein 64-Bit-Kernel mit 32-Bit-Userland, was **nicht** funktionieren wird.
 
-### Prepare Docker
+### Bereite Docker vor
 
-Ensure Docker is installed and running. First, check your Docker version:
+Stelle sicher, dass Docker installiert und in Betrieb ist. Überprüfe zuerst deine Docker-Version:
 
 ```console
 $ docker --version
@@ -48,73 +48,75 @@ $ docker compose version
 Docker Compose version v2.28.1
 ```
 
-An older version might work as well.
+Eine ältere Version könnte auch funktionieren.
 
-If you don't have Docker installed, please follow the [official instructions](https://docs.docker.com/engine/install/) to install.
+Falls du Docker noch nicht installiert hast, folge bitte den [offiziellen Anweisungen](https://docs.docker.com/engine/install/) zur Installation.
 
-Don't forget to add your user to the `docker` group, so you don't need to use `sudo` for every Docker command.
+Vergiss nicht, deinen Benutzer zur `docker` Gruppe hinzuzufügen, damit du nicht für jeden Docker-Befehl `sudo` verwenden musst.
 
 ```console
 sudo groupadd docker
 sudo usermod -aG docker $USER
 ```
 
-**Important:** Log out and log back in so that your group membership is re-evaluated.
+**Wichtig:** Melde dich ab und wieder an, damit deine Gruppenmitgliedschaft neu bewertet wird.
 
-You can read more about this [post-installation steps](https://docs.docker.com/engine/install/linux-postinstall/) in the official Docker documentation.
+Weitere Informationen findest du in den [post-installation steps](https://docs.docker.com/engine/install/linux-postinstall/) der offiziellen Docker-Dokumentation.
 
-## Create folders for configuration and data storage
+## Erstelle Ordner für Konfigurations- und Datenspeicherung
 
-SOLECTRUS needs a folder to store the configuration files and Docker volumes for the databases. This folder needs to be created on your Linux machine before you start the Docker containers. We choose `~/solectrus` as the base folder for this purpose.
+SOLECTRUS benötigt einen Ordner, um die Konfigurationsdateien und Docker-Volumes für die Datenbanken zu speichern. Dieser Ordner muss auf deinem Linux-Rechner erstellt werden, bevor du die Docker-Container startest. Wir wählen `~/solectrus` als Basisordner für diesen Zweck.
 
-First, create the required folders with the following commands:
+Erstelle zuerst die benötigten Ordner mit den folgenden Befehlen:
 
 ```console
 cd ~
 mkdir -p solectrus
 cd solectrus
 
-# Create folders for Docker volumes
+# Erstelle Ordner für Docker-Volumes
 mkdir redis postgresql influxdb
 ```
 
-## Add configuration files
+Passe den letzten Befehl entsprechend an, um die spezifischen Unterordner zu erstellen, die du für die Docker-Volumes benötigst.
 
-The configuration of SOLECTRUS consists of two files: `compose.yml` and `.env`. the `compose.yml` file contains the services that are started in Docker containers. The `.env` file contains the environment variables for the Docker containers.
+## Füge Konfigurationsdateien hinzu
 
-Both files are created for you based on your answers. You can find them under the links above. They must be copied to your Linux machine, which is described in the following sections.
+Die Konfiguration von SOLECTRUS besteht aus zwei Dateien: `compose.yml` und `.env`. Die `compose.yml` Datei enthält die Dienste, die in Docker-Containern gestartet werden. Die `.env` Datei enthält die Umgebungsvariablen für die Docker-Container.
 
-### Copy compose.yml to your machine
+Beide Dateien wurden basierend auf deinen Antworten für dich erstellt. Du findest sie über die obigen Links. Sie müssen auf deinen Linux-Rechner kopiert werden, wie in den folgenden Abschnitten beschrieben.
 
-First, copy your personal `compose.yml` file to the clipboard by pressing the "Copy" button. Then, run this command on your Linux machine:
+### Kopiere compose.yml auf deinen Rechner
 
-```
+Kopiere zuerst deine persönliche `compose.yml` Datei in die Zwischenablage, indem du die "Kopieren"-Schaltfläche drückst. Führe dann diesen Befehl auf deinem Linux-Rechner aus:
+
+```console
 cat > compose.yml
 ```
 
-You will see a new empty line in the terminal with a cursor. Now, paste the content from clipboard by pressing `Ctrl+V` (on macOS: `Cmd+V`) and save it by pressing `Ctrl+D`.
+Du wirst eine neue leere Zeile im Terminal mit einem Cursor sehen. Jetzt füge den Inhalt aus der Zwischenablage mit `Strg+V` (auf macOS: `Cmd+V`) ein und speichere ihn, indem du `Strg+D` drückst.
 
-This may seem a little tricky, but it is the easiest way to copy the contents of the clipboard to a file on your Linux computer without having to rely on any tools. If you know a better way (e.g. via a text editor), feel free to use it.
+Das mag etwas knifflig erscheinen, aber es ist der einfachste Weg, den Inhalt der Zwischenablage in eine Datei auf deinem Linux-Rechner zu kopieren, ohne auf zusätzliche Werkzeuge angewiesen zu sein. Wenn du eine bessere Methode kennst (z. B. über einen Texteditor), kannst du diese gerne verwenden.
 
-Alternatively, you can use the "Download" button. This allows you to download the file so that it can then be uploaded to your Linux machine via `scp` or another file transfer method.
+Alternativ kannst du die "Download"-Schaltfläche verwenden. Dadurch kannst du die Datei herunterladen und dann über `scp` oder eine andere Dateiübertragungsmethode auf deinen Linux-Rechner hochladen.
 
-### Copy .env to your machine
+### Kopiere .env auf deinen Rechner
 
-Do the same for the `.env` file: Copy the file content to the clipboard and run this command:
-
-```console
- cat > .env
-```
-
-Then again, paste the clipboard with `Ctrl+V` (on macOS: `Cmd+V`) and save it by pressing `Ctrl+D`.
-
-Check if the files are created correctly by running the following command:
+Mache dasselbe für die `.env` Datei: Kopiere den Dateiinhalte in die Zwischenablage und führe diesen Befehl aus:
 
 ```console
-$ ls -la
+cat > .env
 ```
 
-You should see the following output:
+Füge dann erneut die Zwischenablage mit `Strg+V` (auf macOS: `Cmd+V`) ein und speichere sie, indem du `Strg+D` drückst.
+
+Überprüfe, ob die Dateien korrekt erstellt wurden, indem du den folgenden Befehl ausführst:
+
+```console
+ls -la
+```
+
+Du solltest die folgende Ausgabe sehen:
 
 ```console
 total 24
@@ -124,51 +126,53 @@ drwx------ 5 root root 4096 Apr  7 09:42 ../
 -rw-r--r-- 1 root root 6032 Apr  7 09:42 .env
 ```
 
-## Start the Docker containers
+## Starte die Docker-Container
 
-Ok, now you have everything in place to start the Docker containers in the background. Run the following command in the folder where you saved the `.env` and `compose.yml` files:
+Ok, jetzt hast du alles, um die Docker-Container im Hintergrund zu starten. Führe den folgenden Befehl in dem Ordner aus, in dem du die `.env` und `compose.yml` Dateien gespeichert hast:
 
 ```console
 docker compose up -d
 ```
 
-This command will download the Docker images and start the containers. This might take a while, depending on your internet connection and the performance of your machine. It can take a few minutes for the first start.
+Dieser Befehl lädt die Docker-Images herunter und startet die Container. Dies kann eine Weile dauern, abhängig von deiner Internetverbindung und der Leistung deines Rechners. Der erste Start kann einige Minuten dauern.
 
-Check if all containers are running fine with the following command:
+Überprüfe, ob alle Container ordnungsgemäß laufen, indem du den folgenden Befehl ausführst:
 
 ```console
 docker compose ps
 ```
 
-That's it. You have successfully installed SOLECTRUS on your machine!
+Das war's. Du hast SOLECTRUS erfolgreich auf deinem Rechner installiert!
 
-## Open the app in your browser
+## Öffne die App in deinem Browser
 
-You can now open the SOLECTRUS app in your browser by navigating to this URL:
+Du kannst jetzt die SOLECTRUS-App in deinem Browser öffnen, indem du zu dieser URL navigierst:
 
 [http://[ip]:3000](http://[ip]:3000)
 
-## Final thoughts
+## Abschluss
 
-In the browser you should login as Admin with you chosen password. Login is required to edit settings like energy prices.
+Im Browser solltest du dich als Admin mit deinem gewählten Passwort einloggen. Ein Login ist erforderlich, um Einstellungen wie Energiepreise zu bearbeiten.
 
-SOLECTRUS requires you to register your installation. There is yellow banner on the top of the page, which will guide you through the registration process.
+SOLECTRUS erfordert die Registrierung deiner Installation. Es gibt ein gelbes Banner oben auf der Seite, das dich durch den Registrierungsprozess führt.
 
-SOLECTRUS contains an auto-update feature by using [WatchTower](https://containrrr.dev/watchtower/). It will automatically update all Docker images referenced in the `compose.yml` file and restart the containers if necessary. An update check is performed every 24 hours. Other Docker containers on the same machine are **not touched** by WatchTower.
+SOLECTRUS enthält eine Auto-Update-Funktion durch die Verwendung von [WatchTower](https://containrrr.dev/watchtower/). Es aktualisiert automatisch alle Docker-Images, die in der `compose.yml` Datei referenziert werden, und startet die Container bei Bedarf neu. Ein Update-Check wird alle 24 Stunden durchgeführt. Andere Docker-Container auf derselben Maschine werden von WatchTower **nicht** berührt.
 
-If you want to update the Docker images manually, you can run the following command:
+Wenn du die Docker-Images manuell aktualisieren möchtest, kannst du den folgenden Befehl ausführen:
 
 ```console
 docker compose pull
 docker compose up -d
 ```
 
-If something goes wrong, you should check the logs of the containers:
+Falls etwas schiefgeht, solltest du die Logs der Container überprüfen:
 
 ```console
 docker compose logs -n 100 -f
 ```
 
-In case of any question, please check out the [forum at GitHub Discussions](https://github.com/orgs/solectrus/discussions). In case of a bug, please open an issue at GitHub in the [SOLECTRUS repository](https://github.com/solectrus/solectrus/issues).
+Bei Fragen schau dir bitte das [Forum bei GitHub Discussions](https://github.com/orgs/solectrus/discussions) an. Bei einem Fehler öffne bitte ein Issue im [SOLECTRUS Repository](https://github.com/solectrus/solectrus/issues) auf GitHub.
 
-To support the development of SOLECTRUS, please consider [donating](https://ko-fi.com/ledermann) or [become a sponsor on GitHub](https://github.com/sponsors/solectrus).
+## Unterstützung
+
+Um die Entwicklung von SOLECTRUS zu unterstützen, überlege bitte, [eine Spende zu machen](https://ko-fi.com/ledermann) oder [Sponsor auf GitHub zu werden](https://github.com/sponsors/solectrus).

@@ -8,7 +8,7 @@ This is your personalized guide for installing the remote part of SOLECTRUS on y
 
 You can switch between them using the links above. The `compose.yml` and `.env` can be copied to the clipboard. You will need this later.
 
-**PLEASE NOTE:** The Configurator is under heavy development and involves installing beta versions of Docker images. The guide is currently available in English, with the final version to be available in German as well. Please report any issues you encounter via GitHub at [https://github.com/solectrus/hosting/issues](https://github.com/solectrus/hosting/issues).
+**PLEASE NOTE:** The Configurator is under heavy development and involves installing beta versions of Docker images. Please report any issues you encounter via GitHub at [https://github.com/solectrus/hosting/issues](https://github.com/solectrus/hosting/issues).
 
 Now read on to do the installation on your Linux machine.
 
