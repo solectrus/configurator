@@ -79,7 +79,10 @@ export class ReadmeGenerator {
   }
 
   private async installationFolders() {
-    let folders = this.answers.linux_machine === 'synology' ? '-p /volume1/docker/solectrus/redis /volume1/docker/solectrus/postgresql /volume1/docker/solectrus/influxdb' : 'redis postgresql influxdb';
+    let folders =
+      this.answers.linux_machine === 'synology'
+        ? '-p /volume1/docker/solectrus/redis /volume1/docker/solectrus/postgresql /volume1/docker/solectrus/influxdb'
+        : 'redis postgresql influxdb'
 
     if (this.answers.traefik) folders += ' traefik'
 
