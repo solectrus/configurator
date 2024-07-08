@@ -173,25 +173,13 @@ export class ReadmeGenerator {
   }
 
   private async loadMarkdown(fileName: string): Promise<string> {
-    try {
-      const module = await import(`@/templates/readme/${this.language}/${fileName}.md?raw`)
-      return module.default
-    } catch (error) {
-      // Fallback to English
-      const fallbackModule = await import(`@/templates/readme/en/${fileName}.md?raw`)
-      return fallbackModule.default
-    }
+    const module = await import(`@/templates/readme/${this.language}/${fileName}.md?raw`)
+    return module.default
   }
 
   private async loadPlaceholders(): Promise<any> {
-    try {
-      const module = await import(`@/templates/readme/${this.language}/placeholders.json`)
-      return module.default
-    } catch (error) {
-      // Fallback to English
-      const fallbackModule = await import('@/templates/readme/en/placeholders.json')
-      return fallbackModule.default
-    }
+    const module = await import(`@/templates/readme/${this.language}/placeholders.json`)
+    return module.default
   }
 
   private replacePlaceholders(markdown: string, vars: any): string {
