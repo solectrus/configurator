@@ -88,7 +88,7 @@ exports[`App > can mount when finished 1`] = `
       </button>
     </nav>
     <div
-      class="p-5 text-center lg:fixed lg:bottom-0 lg:left-0"
+      class="flex items-center justify-between p-5"
       data-v-7a7a37b1=""
     >
       <a
@@ -98,6 +98,12 @@ exports[`App > can mount when finished 1`] = `
       >
          solectrus.de 
       </a>
+      <div
+        class="text-xs text-indigo-300"
+        data-v-7a7a37b1=""
+      >
+        Unknown build date
+      </div>
     </div>
   </div>
   
@@ -150,7 +156,7 @@ exports[`App > can mount when not finished 1`] = `
       <!--v-if-->
     </nav>
     <div
-      class="p-5 text-center lg:fixed lg:bottom-0 lg:left-0"
+      class="flex items-center justify-between p-5"
       data-v-7a7a37b1=""
     >
       <a
@@ -160,6 +166,12 @@ exports[`App > can mount when not finished 1`] = `
       >
          solectrus.de 
       </a>
+      <div
+        class="text-xs text-indigo-300"
+        data-v-7a7a37b1=""
+      >
+        Unknown build date
+      </div>
     </div>
   </div>
   

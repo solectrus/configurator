@@ -14,6 +14,17 @@ if (navigator.language.startsWith('de')) {
   if (metaDescription)
     metaDescription.setAttribute('content', 'In einfachen Schritten zur Docker-Konfiguration')
 }
+
+const buildDate = import.meta.env.VITE_BUILD_DATE
+  ? new Date(import.meta.env.VITE_BUILD_DATE).toLocaleString(undefined, {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      timeZoneName: 'short',
+    })
+  : 'Unknown build date'
 </script>
 
 <template>
@@ -86,10 +97,14 @@ if (navigator.language.startsWith('de')) {
       </button>
     </nav>
 
-    <div class="p-5 text-center lg:fixed lg:bottom-0 lg:left-0">
+    <div class="flex items-center justify-between p-5">
       <a href="https://solectrus.de" class="p-2 text-slate-300 underline underline-offset-2">
         solectrus.de
       </a>
+
+      <div class="text-xs text-indigo-300">
+        {{ buildDate }}
+      </div>
     </div>
   </div>
 </template>
