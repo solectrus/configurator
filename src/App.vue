@@ -5,11 +5,6 @@ import TheOutput from '@/components/TheOutput.vue'
 import { useSurveyStore } from '@/stores/survey'
 
 const store = useSurveyStore()
-
-// store.survey.setValue('devices', ['inverter', 'battery'])
-// store.survey.setValue('installation_type', 'local')
-// store.survey.setValue('battery_vendor', 'other')
-// store.survey.doComplete()
 </script>
 
 <template>
