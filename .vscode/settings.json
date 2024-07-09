@@ -1,9 +1,29 @@
 {
-  "files.watcherExclude": {
-    "**/.yarn": true
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+
+  "editor.wordWrap": "wordWrapColumn",
+  "editor.wordWrapColumn": 100,
+
+  "[nginx]": {
+    "editor.defaultFormatter": "ahmadalli.vscode-nginx-conf"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
+  "files.trimTrailingWhitespace": true,
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/dist": true,
+    "**/.yarn": true
+  },
+  "files.exclude": {},
+  "files.associations": {},
+
   "search.exclude": {
+    "**/dist": true,
     "**/.yarn": true,
     "**/node_modules": true
   },
