@@ -5,6 +5,15 @@ import TheOutput from '@/components/TheOutput.vue'
 import { useSurveyStore } from '@/stores/survey'
 
 const store = useSurveyStore()
+
+// Set HTML lang attribute and meta description based on the user's language
+if (navigator.language.startsWith('de')) {
+  document.documentElement.lang = 'de'
+
+  const metaDescription = document.querySelector('meta[name="description"]')
+  if (metaDescription)
+    metaDescription.setAttribute('content', 'In einfachen Schritten zur Docker-Konfiguration')
+}
 </script>
 
 <template>
