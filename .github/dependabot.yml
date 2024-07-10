@@ -15,6 +15,19 @@ updates:
     versioning-strategy: auto
     labels:
       - 'dependencies'
+    groups:
+      survey:
+        patterns:
+          - 'survey-*'
+      vitest:
+        patterns:
+          - '@vitest*'
+      typescript:
+        patterns:
+          - 'typescript'
+          - 'vue-tsc'
+          - '@tsconfig*'
+          - '@vue/tsconfig'
 
   - package-ecosystem: 'github-actions'
     directory: '/'
