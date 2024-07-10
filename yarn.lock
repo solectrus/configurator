@@ -3957,7 +3957,7 @@ __metadata:
     prettier-plugin-tailwindcss: "npm:^0.6.5"
     rollup: "npm:^4.18.1"
     rollup-plugin-gzip: "npm:^3.1.2"
-    survey-core: "npm:^1.11.5"
+    survey-core: "npm:^1.11.6"
     survey-vue3-ui: "npm:^1.11.5"
     tailwindcss: "npm:^3.4.4"
     typescript: "npm:^5.5.3"
@@ -4104,10 +4104,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"survey-core@npm:^1.11.5":
-  version: 1.11.5
-  resolution: "survey-core@npm:1.11.5"
-  checksum: 10c0/180df67afe2b3eccfaa2d15fe69553d5eaa01e821997a9504157bf4ec72cafaff2613be98ade5e37ff07279b863b1b6e57a1abdcac9eadac9d9b2dba4d62915a
+"survey-core@npm:^1.11.6":
+  version: 1.11.6
+  resolution: "survey-core@npm:1.11.6"
+  checksum: 10c0/ae8245acf3e63f7f38895d41f59078fb7851813e6d33b440a94ab4abaaf807c03db575d02e1e56ecdf458ac1796a781112955a118db0d2255dbfc74c410a7459
   languageName: node
   linkType: hard
 
