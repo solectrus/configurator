@@ -3958,7 +3958,7 @@ __metadata:
     rollup: "npm:^4.18.1"
     rollup-plugin-gzip: "npm:^3.1.2"
     survey-core: "npm:^1.11.6"
-    survey-vue3-ui: "npm:^1.11.5"
+    survey-vue3-ui: "npm:^1.11.6"
     tailwindcss: "npm:^3.4.4"
     typescript: "npm:^5.5.3"
     vite: "npm:^5.3.3"
@@ -4111,13 +4111,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"survey-vue3-ui@npm:^1.11.5":
-  version: 1.11.5
-  resolution: "survey-vue3-ui@npm:1.11.5"
+"survey-vue3-ui@npm:^1.11.6":
+  version: 1.11.6
+  resolution: "survey-vue3-ui@npm:1.11.6"
   peerDependencies:
-    survey-core: 1.11.5
+    survey-core: 1.11.6
     vue: ^3.2.41
-  checksum: 10c0/81e54ae7ba1091fba5e3d36b20f980fb05731902a744ce72173d808256c0ecc5f990949508be8da9799f9c8a8c2532821fabf1af09fdb451c4328b113caa826f
+  checksum: 10c0/543df38b42ff6e8083537d56cab6c1c9b53afde3623b620678a63689daa10a76ed2fdc52f078456814116da02ac210c88cccf5d1439794dd4f97beca54a03d65
   languageName: node
   linkType: hard
 
