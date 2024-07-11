@@ -15,6 +15,7 @@ services:
     ports:
       - 3000:3000
     environment:
+      - TZ
       - APP_HOST
       - FORCE_SSL
       - SECRET_KEY_BASE
@@ -66,6 +67,7 @@ services:
     volumes:
       - ${INFLUX_VOLUME_PATH}:/var/lib/influxdb2
     environment:
+      - TZ
       - DOCKER_INFLUXDB_INIT_MODE=setup
       - DOCKER_INFLUXDB_INIT_USERNAME=${INFLUX_USERNAME}
       - DOCKER_INFLUXDB_INIT_PASSWORD=${INFLUX_PASSWORD}
@@ -92,6 +94,7 @@ services:
   postgresql:
     image: postgres:16-alpine
     environment:
+      - TZ
       - POSTGRES_PASSWORD
     volumes:
       - ${DB_VOLUME_PATH}:/var/lib/postgresql/data
@@ -112,6 +115,8 @@ services:
       - com.centurylinklabs.watchtower.scope=solectrus
   redis:
     image: redis:7-alpine
+    environment:
+      - TZ
     volumes:
       - ${REDIS_VOLUME_PATH}:/data
     restart: unless-stopped
@@ -133,6 +138,7 @@ services:
   senec-collector:
     image: ghcr.io/solectrus/senec-collector:latest
     environment:
+      - TZ
       - SENEC_ADAPTER
       - SENEC_HOST
       - SENEC_SCHEMA
@@ -162,6 +168,7 @@ services:
   shelly-collector:
     image: ghcr.io/solectrus/shelly-collector:develop
     environment:
+      - TZ
       - SHELLY_HOST
       - SHELLY_INTERVAL
       - INFLUX_HOST
@@ -186,6 +193,7 @@ services:
   forecast-collector:
     image: ghcr.io/solectrus/forecast-collector:develop
     environment:
+      - TZ
       - FORECAST_PROVIDER
       - FORECAST_LATITUDE
       - FORECAST_LONGITUDE
@@ -253,6 +261,7 @@ services:
   postgresql-backup:
     image: eeshugerman/postgres-backup-s3:16
     environment:
+      - TZ
       - POSTGRES_DATABASE=solectrus_production
       - POSTGRES_HOST=postgresql
       - POSTGRES_PASSWORD
@@ -271,6 +280,7 @@ services:
   influxdb-backup:
     image: ghcr.io/solectrus/influxdb2-s3-backup:latest
     environment:
+      - TZ
       - INFLUXDB_HOST=influxdb
       - INFLUXDB_ORG=${INFLUX_ORG}
       - INFLUXDB_TOKEN=${INFLUX_ADMIN_TOKEN}
@@ -288,6 +298,8 @@ services:
       - com.centurylinklabs.watchtower.scope=solectrus
   watchtower:
     image: containrrr/watchtower
+    environment:
+      - TZ
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     command: --scope solectrus --cleanup

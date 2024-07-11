@@ -13,6 +13,7 @@ services:
       - influxdb
       - redis
     environment:
+      - TZ
       - APP_HOST
       - FORCE_SSL
       - SECRET_KEY_BASE
@@ -72,6 +73,7 @@ services:
     volumes:
       - ${INFLUX_VOLUME_PATH}:/var/lib/influxdb2
     environment:
+      - TZ
       - DOCKER_INFLUXDB_INIT_MODE=setup
       - DOCKER_INFLUXDB_INIT_USERNAME=${INFLUX_USERNAME}
       - DOCKER_INFLUXDB_INIT_PASSWORD=${INFLUX_PASSWORD}
@@ -103,6 +105,7 @@ services:
   postgresql:
     image: postgres:16-alpine
     environment:
+      - TZ
       - POSTGRES_PASSWORD
     volumes:
       - ${DB_VOLUME_PATH}:/var/lib/postgresql/data
@@ -123,6 +126,8 @@ services:
       - com.centurylinklabs.watchtower.scope=solectrus
   redis:
     image: redis:7-alpine
+    environment:
+      - TZ
     volumes:
       - ${REDIS_VOLUME_PATH}:/data
     restart: unless-stopped
@@ -144,6 +149,7 @@ services:
   senec-collector:
     image: ghcr.io/solectrus/senec-collector:latest
     environment:
+      - TZ
       - SENEC_ADAPTER
       - SENEC_HOST
       - SENEC_SCHEMA
@@ -172,6 +178,8 @@ services:
       - com.centurylinklabs.watchtower.scope=solectrus
   traefik:
     image: traefik:v2.11
+    environment:
+      - TZ
     command:
       - --providers.docker=true
       - --providers.docker.exposedbydefault=false
@@ -193,6 +201,8 @@ services:
       - com.centurylinklabs.watchtower.scope=solectrus
   watchtower:
     image: containrrr/watchtower
+    environment:
+      - TZ
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     command: --scope solectrus --cleanup

@@ -1,4 +1,6 @@
 image: containrrr/watchtower
+environment:
+  - TZ
 volumes:
   - /var/run/docker.sock:/var/run/docker.sock
 command: --scope solectrus --cleanup

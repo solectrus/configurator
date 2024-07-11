@@ -1,5 +1,6 @@
 image: ghcr.io/solectrus/forecast-collector:develop
 environment:
+  - TZ
   - FORECAST_PROVIDER
   - FORECAST_LATITUDE
   - FORECAST_LONGITUDE

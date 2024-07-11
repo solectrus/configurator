@@ -1,5 +1,6 @@
 image: ghcr.io/solectrus/mqtt-collector:develop
 environment:
+  - TZ
   - MQTT_HOST
   - MQTT_PORT
   - MQTT_SSL

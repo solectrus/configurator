@@ -1,4 +1,6 @@
 image: redis:7-alpine
+environment:
+  - TZ
 volumes:
   - ${REDIS_VOLUME_PATH}:/data
 restart: unless-stopped

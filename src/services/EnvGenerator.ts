@@ -3,6 +3,7 @@ import type { DockerCompose } from '@/services/ComposeGenerator'
 import { MqttMapper } from './mqttMapper'
 import { SensorBuilder } from './sensorBuilder'
 
+import genericVariables from '@/templates/variables/generic.env?raw'
 import dashboardVariables from '@/templates/variables/dashboard.env?raw'
 import forecastCollectorVariables from '@/templates/variables/forecast-collector.env?raw'
 import influxdbVariables from '@/templates/variables/influxdb.env?raw'
@@ -23,6 +24,7 @@ export class EnvGenerator {
 
   public build(): string {
     return [
+      this.buildGenericVariables(),
       this.buildDashboardVariables(),
       this.buildSenecCollectorVariables(),
       this.buildShellyCollectorVariables(),
@@ -36,6 +38,13 @@ export class EnvGenerator {
     ]
       .filter(Boolean)
       .join('\n')
+  }
+
+  private buildGenericVariables(): string | undefined {
+    if (Object.keys(this.compose.services).length > 0)
+      return this.replaceEnvValues(genericVariables, {
+        TZ: 'Europe/Berlin',
+      })
   }
 
   private buildDashboardVariables(): string | undefined {

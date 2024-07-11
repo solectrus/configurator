@@ -13,6 +13,7 @@ links:
 ports:
   - 3000:3000
 environment:
+  - TZ
   - APP_HOST
   - FORCE_SSL
   - SECRET_KEY_BASE

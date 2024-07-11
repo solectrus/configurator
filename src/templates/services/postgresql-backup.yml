@@ -1,5 +1,6 @@
 image: eeshugerman/postgres-backup-s3:16
 environment:
+  - TZ
   - POSTGRES_DATABASE=solectrus_production
   - POSTGRES_HOST=postgresql
   - POSTGRES_PASSWORD

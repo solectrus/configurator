@@ -1,5 +1,6 @@
 image: ghcr.io/solectrus/shelly-collector:develop
 environment:
+  - TZ
   - SHELLY_HOST
   - SHELLY_INTERVAL
   - INFLUX_HOST

@@ -1,4 +1,6 @@
 image: traefik:v2.11
+environment:
+  - TZ
 command:
   - '--providers.docker=true'
   - '--providers.docker.exposedbydefault=false'

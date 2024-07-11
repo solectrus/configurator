@@ -2,6 +2,7 @@ image: influxdb:2.7-alpine
 volumes:
   - ${INFLUX_VOLUME_PATH}:/var/lib/influxdb2
 environment:
+  - TZ
   - DOCKER_INFLUXDB_INIT_MODE=setup
   - DOCKER_INFLUXDB_INIT_USERNAME=${INFLUX_USERNAME}
   - DOCKER_INFLUXDB_INIT_PASSWORD=${INFLUX_PASSWORD}
