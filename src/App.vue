@@ -45,13 +45,13 @@ const buildDate = import.meta.env.VITE_BUILD_DATE
       />
     </svg>
 
-    <main class="flex-1 justify-center lg:flex lg:gap-10">
+    <main class="flex-1 lg:flex lg:justify-center lg:gap-10">
       <TheSurvey v-if="!store.finished" class="no-scrollbar max-w-2xl flex-1" />
 
       <TheOutput v-if="store.finished" class="no-scrollbar max-w-4xl flex-1" />
     </main>
 
-    <nav class="flex justify-between gap-5 p-5 lg:fixed lg:bottom-0 lg:right-0">
+    <nav class="flex justify-between gap-5 p-5 lg:fixed lg:bottom-12 lg:right-0">
       <button
         v-if="store.finished || store.survey.currentPageNo > 0"
         type="button"
