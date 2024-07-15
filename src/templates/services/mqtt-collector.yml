@@ -1,4 +1,4 @@
-image: ghcr.io/solectrus/mqtt-collector:develop
+image: ghcr.io/solectrus/mqtt-collector:latest
 environment:
   - TZ
   - MQTT_HOST

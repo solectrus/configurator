@@ -1,4 +1,4 @@
-image: ghcr.io/solectrus/forecast-collector:develop
+image: ghcr.io/solectrus/forecast-collector:latest
 environment:
   - TZ
   - FORECAST_PROVIDER

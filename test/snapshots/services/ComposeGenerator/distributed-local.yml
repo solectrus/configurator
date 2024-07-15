@@ -25,7 +25,7 @@ services:
     labels:
       - com.centurylinklabs.watchtower.scope=solectrus
   shelly-collector:
-    image: ghcr.io/solectrus/shelly-collector:develop
+    image: ghcr.io/solectrus/shelly-collector:latest
     environment:
       - TZ
       - SHELLY_HOST
@@ -45,7 +45,7 @@ services:
     labels:
       - com.centurylinklabs.watchtower.scope=solectrus
   mqtt-collector:
-    image: ghcr.io/solectrus/mqtt-collector:develop
+    image: ghcr.io/solectrus/mqtt-collector:latest
     environment:
       - TZ
       - MQTT_HOST
