@@ -8,7 +8,7 @@ This is your personalized guide for installing SOLECTRUS on your machine, create
 
 You can switch between them using the links above. The `compose.yml` and `.env` can be copied to the clipboard. You will need this later.
 
-**PLEASE NOTE:** The Configurator is under heavy development and involves installing beta versions of Docker images. Please report any issues you encounter via GitHub at [https://github.com/solectrus/hosting/issues](https://github.com/solectrus/hosting/issues).
+**PLEASE NOTE:** This configurator is still quite new. Please report any issues on GitHub at [https://github.com/solectrus/configurator/issues](https://github.com/solectrus/configurator/issues).
 
 Now read on to do the installation on your Linux machine.
 
