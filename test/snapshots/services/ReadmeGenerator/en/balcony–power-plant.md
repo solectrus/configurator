@@ -85,6 +85,8 @@ The configuration of SOLECTRUS consists of two files: `compose.yml` and `.env`. 
 
 Both files are created for you based on your answers. You can find them under the links above. They must be copied to your Linux machine, which is described in the following sections.
 
+The following steps explain how to copy these files to your Linux computer using the clipboard. Alternatively, you can use other methods such as `scp` or any other file transfer method. The important thing is that the files arrive on your Linux computer and are named `.env` and `compose.yml`. Please note that `.env` starts with a dot, which may cause the file to be considered as _hidden_ and thus not displayed by default, depending on your operating system.
+
 ### Copy compose.yml to your machine
 
 First, copy your personal `compose.yml` file to the clipboard by pressing the "Copy" button. Then, run this command on your Linux machine:
