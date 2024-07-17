@@ -765,7 +765,7 @@
         {
           "type": "text",
           "name": "mqtt_wallbox_power",
-          "visibleIf": "{devices} contains 'wallbox' and {battery_vendor} = 'other'",
+          "visibleIf": "{devices} contains 'wallbox' and {wallbox_vendor} = 'other'",
           "title": {
             "de": "Wallbox",
             "default": "Wallbox power"
@@ -779,7 +779,7 @@
         {
           "type": "radiogroup",
           "name": "wallbox_exclude_from_house_power",
-          "visibleIf": "{devices} contains 'wallbox' and {battery_vendor} = 'other'",
+          "visibleIf": "{devices} contains 'wallbox' and {wallbox_vendor} = 'other'",
           "title": {
             "de": "Wallbox im Hausverbrauch enthalten?",
             "default": "Wallbox included in household consumption?"

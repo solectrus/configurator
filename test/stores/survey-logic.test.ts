@@ -47,6 +47,18 @@ describe('useSurveyStore', () => {
     expect(survey.getQuestionByName('mqtt_inverter_power').isVisible).toBe(true)
   })
 
+  it('offers MQTT questions (SENEC + wallbox via MQTT)', () => {
+    survey.setValue('devices', ['inverter', 'battery', 'wallbox'])
+    survey.setValue('installation_type', 'local')
+    survey.setValue('battery_vendor', 'senec3')
+    survey.setValue('wallbox_vendor', 'other')
+
+    expect(survey.getPageByName('p_mqtt').isVisible).toBe(true)
+    expect(survey.getQuestionByName('mqtt_inverter_power').isVisible).toBe(true)
+    expect(survey.getQuestionByName('mqtt_battery_power').isVisible).toBe(true)
+    expect(survey.getQuestionByName('mqtt_wallbox_power').isVisible).toBe(true)
+  })
+
   it('does not offers MQTT questions (1)', () => {
     survey.setValue('devices', ['inverter', 'battery', 'wallbox', 'heatpump'])
     survey.setValue('installation_type', 'cloud')
