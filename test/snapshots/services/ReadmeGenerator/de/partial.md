@@ -161,4 +161,4 @@ Bei Fragen schau dir bitte das [Forum bei GitHub Discussions](https://github.com
 
 ## Unterstützung
 
-Um die Entwicklung von SOLECTRUS zu unterstützen, überlege bitte, [eine Spende zu machen](https://ko-fi.com/ledermann) oder [Sponsor auf GitHub zu werden](https://github.com/sponsors/solectrus).
+Um die Entwicklung von SOLECTRUS zu unterstützen, überlege bitte, [eine Spende zu tätigen](https://ko-fi.com/ledermann) oder [Sponsor auf GitHub zu werden](https://github.com/sponsors/solectrus).
