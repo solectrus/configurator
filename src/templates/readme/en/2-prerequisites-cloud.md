@@ -16,7 +16,7 @@ Then order your server:
 - Select `Add server`
   - `Location`: Select a location near you
   - `Image`: Select `Apps`, then `Docker CE`
-  - `Type`: The smallest machine is enough, so select `Arm64` architecture and then `CAX11`
+  - `Type`: The smallest machine is enough, so select `Shared vCPU` with `x86` architecture and then `CX22` **or** `Arm64` architecture and then `CAX11` (both have 2 vCPUs, 4 GB RAM, 40 GB SSD)
   - `Networking`: Select `Public IPv4`
   - `SSH-Key`: If you already have an SSH key, you can add it here to avoid struggling with SSH password. Otherwise, leave it blank to use a password which will be generated for you
 - Order (for `€4,51` per month)

@@ -30,7 +30,7 @@ Dann bestelle deinen Server:
 - Wähle `Server hinzufügen`
   - `Standort`: Wähle einen Standort in deiner Nähe
   - `Image`: Wähle `Apps`, dann `Docker CE`
-  - `Typ`: Die kleinste Maschine reicht aus, also wähle `Arm64` Architektur und dann `CAX11`
+  - `Typ`: Die kleinste Maschine reicht aus, also wähle `Shared vCPU` mit `x86`-Architektur und dann `CX22` **oder** `Arm64`-Architektur und dann `CAX11` (beide bieten 2 vCPUs, 4 GB RAM, 40 GB SSD)
   - `Netzwerk`: Wähle `Public IPv4`
   - `SSH-Schlüssel`: Falls du bereits einen SSH-Schlüssel hast, kannst du ihn hier hinzufügen, um Probleme mit dem SSH-Passwort zu vermeiden. Andernfalls lass das Feld leer, um ein Passwort zu verwenden, das für dich generiert wird
 - Bestelle (für `4,51 €` pro Monat)
