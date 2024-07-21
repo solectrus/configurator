@@ -326,6 +326,24 @@
               "expression": "{app_host} != {shelly_host} and {app_host} != {senec_host}"
             }
           ]
+        },
+        {
+          "type": "text",
+          "name": "app_port",
+          "visibleIf": "{installation_type} = 'local'",
+          "title": {
+            "de": "Gewünschter Port",
+            "default": "Desired port"
+          },
+          "description": {
+            "de": "Normalerweise 3000, bei Konflikten mit anderen Anwendungen auf diesem Gerät kann ein beliebiger anderer, noch freier Port verwendet werden, z.B. 3001.",
+            "default": "Default is 3000. Ff there are conflicts with other applications on this device, any other free port can be used, e.g. 3001."
+          },
+          "defaultValue": "3000",
+          "isRequired": true,
+          "inputType": "number",
+          "min": 1024,
+          "max": 65535
         }
       ]
     },

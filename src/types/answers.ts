@@ -14,6 +14,7 @@ export interface Answers {
   influx_host?: string
   influx_schema?: 'https' | 'http'
   app_host?: string
+  app_port?: number
   senec_host?: string
   senec_interval?: number
   senec_schema?: 'https' | 'http'

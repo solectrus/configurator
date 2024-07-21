@@ -150,7 +150,7 @@ Das war's. Du hast SOLECTRUS erfolgreich auf deinem Rechner installiert!
 
 Du kannst jetzt die SOLECTRUS-App in deinem Browser öffnen, indem du zu dieser URL navigierst:
 
-[http://192.168.108.42:3000](http://192.168.108.42:3000)
+[http://192.168.108.42:3001](http://192.168.108.42:3001)
 
 ## Abschluss
 

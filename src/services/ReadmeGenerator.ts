@@ -97,9 +97,9 @@ export class ReadmeGenerator {
     if (this.answers.traefik && this.answers.app_domain) {
       url = `https://${this.answers.app_domain}`
     } else if (this.answers.app_host) {
-      url = `http://${this.answers.app_host}:3000`
+      url = `http://${this.answers.app_host}:${this.answers.app_port ?? 3000}`
     } else {
-      url = 'http://[ip]:3000'
+      url = `http://[ip]:${this.answers.app_port ?? 3000}`
     }
 
     let folders = 'redis postgresql influxdb'
@@ -136,10 +136,10 @@ export class ReadmeGenerator {
       url = `https://${this.answers.app_domain}`
       influx_url = `https://${this.answers.app_domain}:8086`
     } else if (this.answers.app_host) {
-      url = `http://${this.answers.app_host}:3000`
+      url = `http://${this.answers.app_host}:${this.answers.app_port ?? 3000}`
       influx_url = `http://${this.answers.app_host}:8086`
     } else {
-      url = 'http://[ip]:3000'
+      url = `http://[ip]:${this.answers.app_port ?? 3000}`
       influx_url = null
     }
 
