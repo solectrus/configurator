@@ -14,6 +14,10 @@
   "pages": [
     {
       "name": "p_devices",
+      "title": {
+        "de": "Deine Photovoltaik-Anlage",
+        "default": "Your photovoltaic system"
+      },
       "elements": [
         {
           "type": "checkbox",
@@ -62,14 +66,14 @@
             }
           ]
         }
-      ],
-      "title": {
-        "de": "Deine Photovoltaik-Anlage",
-        "default": "Your photovoltaic system"
-      }
+      ]
     },
     {
       "name": "p_battery",
+      "title": {
+        "de": "Stromspeicher",
+        "default": "Battery vendor"
+      },
       "elements": [
         {
           "type": "radiogroup",
@@ -106,14 +110,14 @@
             "default": "Other"
           }
         }
-      ],
-      "title": {
-        "de": "Stromspeicher",
-        "default": "Battery vendor"
-      }
+      ]
     },
     {
       "name": "p_heatpump",
+      "title": {
+        "de": "Wärmepumpe",
+        "default": "Integration of heat pump"
+      },
       "elements": [
         {
           "type": "radiogroup",
@@ -141,14 +145,14 @@
             }
           ]
         }
-      ],
-      "title": {
-        "de": "Wärmepumpe",
-        "default": "Integration of heat pump"
-      }
+      ]
     },
     {
       "name": "p_wallbox",
+      "title": {
+        "de": "Wallbox",
+        "default": "Vendor Wallbox"
+      },
       "elements": [
         {
           "type": "radiogroup",
@@ -177,14 +181,18 @@
             }
           ]
         }
-      ],
-      "title": {
-        "de": "Wallbox",
-        "default": "Vendor Wallbox"
-      }
+      ]
     },
     {
       "name": "p_mode",
+      "title": {
+        "de": "Betriebsart",
+        "default": "Operating mode"
+      },
+      "description": {
+        "de": "Wo genau soll SOLECTRUS laufen?",
+        "default": "Where exactly should SOLECTRUS run?"
+      },
       "elements": [
         {
           "type": "radiogroup",
@@ -220,18 +228,15 @@
             }
           ]
         }
-      ],
-      "title": {
-        "de": "Betriebsart",
-        "default": "Operating mode"
-      },
-      "description": {
-        "de": "Wo genau soll SOLECTRUS laufen?",
-        "default": "Where exactly should SOLECTRUS run?"
-      }
+      ]
     },
     {
       "name": "p_distributed_installation",
+      "visibleIf": "{installation_type} = 'distributed'",
+      "title": {
+        "de": "Verteilte Installation",
+        "default": "Distributed installation"
+      },
       "elements": [
         {
           "type": "radiogroup",
@@ -261,15 +266,19 @@
             }
           ]
         }
-      ],
-      "visibleIf": "{installation_type} = 'distributed'",
-      "title": {
-        "de": "Verteilte Installation",
-        "default": "Distributed installation"
-      }
+      ]
     },
     {
       "name": "p_machine",
+      "visibleIf": "{installation_type} = 'local' or {distributed_choice} = 'local'",
+      "title": {
+        "de": "Dein Linux-Gerät",
+        "default": "Your Linux machine"
+      },
+      "description": {
+        "de": "Der Linux-Host, auf dem die Installation erfolgen soll",
+        "default": "The Linux host to be used for installation."
+      },
       "elements": [
         {
           "type": "radiogroup",
@@ -318,19 +327,19 @@
             }
           ]
         }
-      ],
-      "visibleIf": "{installation_type} = 'local' or {distributed_choice} = 'local'",
-      "title": {
-        "de": "Dein Linux-Gerät",
-        "default": "Your Linux machine"
-      },
-      "description": {
-        "de": "Der Linux-Host, auf dem die Installation erfolgen soll",
-        "default": "The Linux host to be used for installation."
-      }
+      ]
     },
     {
       "name": "p_influxdb_client",
+      "visibleIf": "{installation_type} = 'distributed' and {distributed_choice} = 'local'",
+      "title": {
+        "de": "Zugriff auf InfluxDB",
+        "default": "Access to InfluxDB"
+      },
+      "description": {
+        "de": "Wie ist der Cloud-Server aus der ersten Installation erreichbar?",
+        "default": "How is the cloud server from the first installation accessible?"
+      },
       "elements": [
         {
           "type": "text",
@@ -351,19 +360,15 @@
           "isRequired": true,
           "choices": ["http", "https"]
         }
-      ],
-      "visibleIf": "{installation_type} = 'distributed' and {distributed_choice} = 'local'",
-      "title": {
-        "de": "Zugriff auf InfluxDB",
-        "default": "Access to InfluxDB"
-      },
-      "description": {
-        "de": "Wie ist der Cloud-Server aus der ersten Installation erreichbar?",
-        "default": "How is the cloud server from the first installation accessible?"
-      }
+      ]
     },
     {
       "name": "p_senec3",
+      "visibleIf": "{battery_vendor} = 'senec3' and {distributed_choice} <> 'cloud' and {installation_type} <> 'cloud'",
+      "title": {
+        "de": "Direktzugriff auf SENEC-Stromspeicher",
+        "default": "Access to your SENEC battery"
+      },
       "elements": [
         {
           "type": "text",
@@ -447,15 +452,15 @@
             }
           ]
         }
-      ],
-      "visibleIf": "{battery_vendor} = 'senec3' and {distributed_choice} <> 'cloud' and {installation_type} <> 'cloud'",
-      "title": {
-        "de": "Direktzugriff auf SENEC-Stromspeicher",
-        "default": "Access to your SENEC battery"
-      }
+      ]
     },
     {
       "name": "p_senec4",
+      "visibleIf": "{battery_vendor} = 'senec4' or {installation_type} = 'cloud' and {battery_vendor} = 'senec3'",
+      "title": {
+        "de": "Zugangsdaten für SENEC",
+        "default": "Credentials for SENEC"
+      },
       "elements": [
         {
           "type": "text",
@@ -509,15 +514,15 @@
           "inputType": "number",
           "minValueExpression": "iif({battery_vendor} = 'senec4', 60, 300)"
         }
-      ],
-      "visibleIf": "{battery_vendor} = 'senec4' or {installation_type} = 'cloud' and {battery_vendor} = 'senec3'",
-      "title": {
-        "de": "Zugangsdaten für SENEC",
-        "default": "Credentials for SENEC"
-      }
+      ]
     },
     {
       "name": "p_shelly",
+      "visibleIf": "(({heatpump_access} = 'shelly') and ({distributed_choice} != 'cloud')) and ({installation_type} != 'cloud')",
+      "title": {
+        "de": "Zugriff auf Shelly-Stromzähler",
+        "default": "Access to Shelly energy monitor"
+      },
       "elements": [
         {
           "type": "text",
@@ -551,15 +556,19 @@
           "defaultValue": 5,
           "inputType": "number"
         }
-      ],
-      "visibleIf": "(({heatpump_access} = 'shelly') and ({distributed_choice} != 'cloud')) and ({installation_type} != 'cloud')",
-      "title": {
-        "de": "Zugriff auf Shelly-Stromzähler",
-        "default": "Access to Shelly energy monitor"
-      }
+      ]
     },
     {
       "name": "p_mqtt",
+      "visibleIf": "({battery_vendor} = 'other' or {wallbox_vendor} = 'other' or {heatpump_access} = 'mqtt' or {devices} = ['inverter']) and ({installation_type} = 'local' or {distributed_choice} = 'local')",
+      "title": {
+        "de": "Zugriff auf MQTT-Broker",
+        "default": "Access to MQTT broker"
+      },
+      "description": {
+        "de": "Aufgrund deiner Vorauswahl wird ein externer MQTT-Broker (z.B. ioBroker) benötigt, dessen Installation und Konfiguration hier nicht behandelt wird. Gib die Zugangsdaten zu diesem Server an.",
+        "default": "Based on your preselection, an external MQTT broker (e.g. ioBroker) is required, but its installation and configuration is not covered here. Enter the credentials for this server."
+      },
       "elements": [
         {
           "type": "text",
@@ -615,19 +624,19 @@
             "default": "Password (optional)"
           }
         }
-      ],
-      "visibleIf": "({battery_vendor} = 'other' or {wallbox_vendor} = 'other' or {heatpump_access} = 'mqtt' or {devices} = ['inverter']) and ({installation_type} = 'local' or {distributed_choice} = 'local')",
-      "title": {
-        "de": "Zugriff auf MQTT-Broker",
-        "default": "Access to MQTT broker"
-      },
-      "description": {
-        "de": "Aufgrund deiner Vorauswahl wird ein externer MQTT-Broker (z.B. ioBroker) benötigt, dessen Installation und Konfiguration hier nicht behandelt wird. Gib die Zugangsdaten zu diesem Server an.",
-        "default": "Based on your preselection, an external MQTT broker (e.g. ioBroker) is required, but its installation and configuration is not covered here. Enter the credentials for this server."
-      }
+      ]
     },
     {
       "name": "p_mqtt_topics",
+      "visibleIf": "({battery_vendor} = 'other' or {wallbox_vendor} = 'other' or {heatpump_access} = 'mqtt' or {devices} = ['inverter']) and ({installation_type} = 'local' or {distributed_choice} = 'local')",
+      "title": {
+        "default": "MQTT topics",
+        "de": "MQTT-Topics"
+      },
+      "description": {
+        "de": "Lege nun jeweils fest, über welches Topic ein Messwert gefunden werden kann.",
+        "default": "Now specify which topic to use to find a measured value."
+      },
       "elements": [
         {
           "type": "text",
@@ -888,19 +897,15 @@
             "de": "z.B. myhome/inverter/system_state_ok"
           }
         }
-      ],
-      "visibleIf": "({battery_vendor} = 'other' or {wallbox_vendor} = 'other' or {heatpump_access} = 'mqtt' or {devices} = ['inverter']) and ({installation_type} = 'local' or {distributed_choice} = 'local')",
-      "title": {
-        "default": "MQTT topics",
-        "de": "MQTT-Topics"
-      },
-      "description": {
-        "de": "Lege nun jeweils fest, über welches Topic ein Messwert gefunden werden kann.",
-        "default": "Now specify which topic to use to find a measured value."
-      }
+      ]
     },
     {
       "name": "p_forecast",
+      "visibleIf": "{devices} contains 'inverter'",
+      "title": {
+        "de": "Ertragsvorhersage",
+        "default": "Yield forecast"
+      },
       "elements": [
         {
           "type": "radiogroup",
@@ -995,15 +1000,19 @@
             }
           ]
         }
-      ],
-      "visibleIf": "{devices} contains 'inverter'",
-      "title": {
-        "de": "Ertragsvorhersage",
-        "default": "Yield forecast"
-      }
+      ]
     },
     {
       "name": "p_forecast_forecast_solar",
+      "visibleIf": "{forecast} = 'forecast_forecast_solar'",
+      "title": {
+        "default": "Yield forecast from forecast.solar",
+        "de": "Ertragsvorhersage von forecast.solar"
+      },
+      "description": {
+        "de": "Einstellungen für jede einzelne Dachfläche",
+        "default": "Settings for each individual roof surface"
+      },
       "elements": [
         {
           "type": "text",
@@ -1193,19 +1202,19 @@
           "inputType": "number",
           "min": 0
         }
-      ],
-      "visibleIf": "{forecast} = 'forecast_forecast_solar'",
-      "title": {
-        "default": "Yield forecast from forecast.solar",
-        "de": "Ertragsvorhersage von forecast.solar"
-      },
-      "description": {
-        "de": "Einstellungen für jede einzelne Dachfläche",
-        "default": "Settings for each individual roof surface"
-      }
+      ]
     },
     {
       "name": "p_forecast_solcast",
+      "visibleIf": "{forecast} = 'forecast_solcast'",
+      "title": {
+        "default": "Yield forecast from Solcast",
+        "de": "Ertragsvorhersage von Solcast"
+      },
+      "description": {
+        "de": "API-Zugriff",
+        "default": "API access"
+      },
       "elements": [
         {
           "type": "text",
@@ -1263,19 +1272,14 @@
             "pattern": "####-####-####-####"
           }
         }
-      ],
-      "visibleIf": "{forecast} = 'forecast_solcast'",
-      "title": {
-        "default": "Yield forecast from Solcast",
-        "de": "Ertragsvorhersage von Solcast"
-      },
-      "description": {
-        "de": "API-Zugriff",
-        "default": "API access"
-      }
+      ]
     },
     {
       "name": "p_backup",
+      "title": {
+        "de": "Backup auf Amazon S3",
+        "default": "Backup to Amazon S3"
+      },
       "elements": [
         {
           "type": "boolean",
@@ -1315,14 +1319,15 @@
           "title": "Bucket",
           "isRequired": true
         }
-      ],
-      "title": {
-        "de": "Backup auf Amazon S3",
-        "default": "Backup to Amazon S3"
-      }
+      ]
     },
     {
       "name": "p_traefik",
+      "visibleIf": "{installation_type} = 'cloud' or {distributed_choice} = 'cloud'",
+      "title": {
+        "de": "Domain mit https",
+        "default": "Domain with https"
+      },
       "elements": [
         {
           "type": "boolean",
@@ -1351,15 +1356,12 @@
           },
           "isRequired": true
         }
-      ],
-      "visibleIf": "{installation_type} = 'cloud' or {distributed_choice} = 'cloud'",
-      "title": {
-        "de": "Domain mit https",
-        "default": "Domain with https"
-      }
+      ]
     },
     {
       "name": "p_dashboard",
+      "visibleIf": "{installation_type} anyof ['local', 'cloud'] or {distributed_choice} = 'cloud'",
+      "title": "Dashboard",
       "elements": [
         {
           "type": "text",
@@ -1389,9 +1391,7 @@
           },
           "isRequired": true
         }
-      ],
-      "visibleIf": "{installation_type} anyof ['local', 'cloud'] or {distributed_choice} = 'cloud'",
-      "title": "Dashboard"
+      ]
     }
   ],
   "showCompletedPage": false,
