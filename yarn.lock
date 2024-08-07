@@ -905,19 +905,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vue/compiler-core@npm:3.4.35":
-  version: 3.4.35
-  resolution: "@vue/compiler-core@npm:3.4.35"
-  dependencies:
-    "@babel/parser": "npm:^7.24.7"
-    "@vue/shared": "npm:3.4.35"
-    entities: "npm:^4.5.0"
-    estree-walker: "npm:^2.0.2"
-    source-map-js: "npm:^1.2.0"
-  checksum: 10c0/34fe4aaee292cda4e6fadeca6b85e0ca635c6b57aad47054e9764bc56a5dd7621c9ac9df1021b612f336d215add8e8f8674606074471ddac5ea36a759cf59e86
-  languageName: node
-  linkType: hard
-
 "@vue/compiler-core@npm:3.4.36":
   version: 3.4.36
   resolution: "@vue/compiler-core@npm:3.4.36"
@@ -931,23 +918,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vue/compiler-dom@npm:3.4.36":
+"@vue/compiler-dom@npm:3.4.36, @vue/compiler-dom@npm:^3.4.0":
   version: 3.4.36
   resolution: "@vue/compiler-dom@npm:3.4.36"
   dependencies:
     "@vue/compiler-core": "npm:3.4.36"
     "@vue/shared": "npm:3.4.36"
   checksum: 10c0/75ee9fa3ea44179aa08511611ba83687b1e98e99b3e2c9dfc9263ad2d19415749cf4425d936f58abb3c78f0b1c3db066b48f929312a078b77f7cc8a5d2cf41e9
-  languageName: node
-  linkType: hard
-
-"@vue/compiler-dom@npm:^3.4.0":
-  version: 3.4.35
-  resolution: "@vue/compiler-dom@npm:3.4.35"
-  dependencies:
-    "@vue/compiler-core": "npm:3.4.35"
-    "@vue/shared": "npm:3.4.35"
-  checksum: 10c0/e1470ae29a87d4be187a9030f0048df134d6c4672fa24522ce9c3476b9495e7818764512f1ae57b2dac1dee1a87374f68da65ce9e3a70a02f4c9f44f029d19ef
   languageName: node
   linkType: hard
 
@@ -1090,14 +1067,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vue/shared@npm:3.4.35, @vue/shared@npm:^3.4.0":
-  version: 3.4.35
-  resolution: "@vue/shared@npm:3.4.35"
-  checksum: 10c0/a3711abaf4e5be996112387f2304bf5d51d246c680d93eb8894430b37fe3f0edc9f72428ccbb3ed91656e947d3ac9bdcad41f5c6e51bd1121e222901dab8cb10
-  languageName: node
-  linkType: hard
-
-"@vue/shared@npm:3.4.36":
+"@vue/shared@npm:3.4.36, @vue/shared@npm:^3.4.0":
   version: 3.4.36
   resolution: "@vue/shared@npm:3.4.36"
   checksum: 10c0/57eb86ddc8933214de2bbc901ab12998c61e83adb438179ec1886b343958810017ace10a0d7aa634df7bfa1dd23232d3abadc164410ce4a346b946de1203da3b
@@ -1681,7 +1651,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"entities@npm:^4.4.0, entities@npm:^4.5.0":
+"entities@npm:^4.4.0":
   version: 4.5.0
   resolution: "entities@npm:4.5.0"
   checksum: 10c0/5b039739f7621f5d1ad996715e53d964035f75ad3b9a4d38c6b3804bb226e282ffeae2443624d8fdd9c47d8e926ae9ac009c54671243f0c3294c26af7cc85250
