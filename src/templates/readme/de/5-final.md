@@ -4,7 +4,7 @@ Im Browser solltest du dich als Admin mit deinem gewählten Passwort einloggen. 
 
 SOLECTRUS erfordert die Registrierung deiner Installation. Es gibt ein gelbes Banner oben auf der Seite, das dich durch den Registrierungsprozess führt.
 
-SOLECTRUS enthält eine Auto-Update-Funktion durch die Verwendung von [WatchTower](https://containrrr.dev/watchtower/). Es aktualisiert automatisch alle Docker-Images, die in der `compose.yml` Datei referenziert werden, und startet die Container bei Bedarf neu. Ein Update-Check wird alle 24 Stunden durchgeführt. Andere Docker-Container auf derselben Maschine werden von WatchTower **nicht** berührt.
+SOLECTRUS enthält eine Auto-Update-Funktion durch die Verwendung von [Watchtower](https://containrrr.dev/watchtower/). Es aktualisiert automatisch alle Docker-Images, die in der `compose.yml` Datei referenziert werden, und startet die Container bei Bedarf neu. Ein Update-Check wird alle 24 Stunden durchgeführt. Andere Docker-Container auf derselben Maschine werden von Watchtower **nicht** berührt.
 
 Wenn du die Docker-Images manuell aktualisieren möchtest, kannst du den folgenden Befehl ausführen:
 
