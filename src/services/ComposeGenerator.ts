@@ -10,6 +10,7 @@ import senecCollectorServiceFile from '@/templates/services/senec-collector.yml?
 import mqttCollectorServiceFile from '@/templates/services/mqtt-collector.yml?raw'
 import forecastCollectorServiceFile from '@/templates/services/forecast-collector.yml?raw'
 import shellyCollectorServiceFile from '@/templates/services/shelly-collector.yml?raw'
+import powerSplitterServiceFile from '@/templates/services/power-splitter.yml?raw'
 import watchtowerServiceFile from '@/templates/services/watchtower.yml?raw'
 import postgresqlBackupServiceFile from '@/templates/services/postgresql-backup.yml?raw'
 import influxdbBackupServiceFile from '@/templates/services/influxdb-backup.yml?raw'
@@ -23,6 +24,7 @@ const senecCollectorService = YAML.parse(senecCollectorServiceFile) as DockerSer
 const mqttCollectorService = YAML.parse(mqttCollectorServiceFile) as DockerService
 const forecastCollectorService = YAML.parse(forecastCollectorServiceFile) as DockerService
 const shellyCollectorService = YAML.parse(shellyCollectorServiceFile) as DockerService
+const powerSplitterService = YAML.parse(powerSplitterServiceFile) as DockerService
 const watchtowerService = YAML.parse(watchtowerServiceFile) as DockerService
 const postgresqlBackupService = YAML.parse(postgresqlBackupServiceFile) as DockerService
 const influxdbBackupService = YAML.parse(influxdbBackupServiceFile) as DockerService
@@ -146,6 +148,10 @@ export class ComposeGenerator {
     ) {
       this.addService('forecast-collector', forecastCollectorService)
     }
+
+    if (this.answers.devices?.length && this.answers.devices.includes('inverter'))
+      if (this.answers.installation_type === 'local' || this.answers.distributed_choice === 'cloud')
+        this.addService('power-splitter', powerSplitterService)
   }
 
   private mqttRequired() {
