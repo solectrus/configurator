@@ -28,7 +28,7 @@ Stelle sicher, dass Docker installiert und in Betrieb ist. Überprüfe zuerst de
 
 ```console
 $ docker --version
-Docker version 27.1.1, build 6312585
+Docker version 27.1.2, build d01f264
 
 $ docker compose version
 Docker Compose version v2.29.1
