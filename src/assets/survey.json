@@ -831,7 +831,7 @@
         {
           "type": "text",
           "name": "mqtt_heatpump_power",
-          "visibleIf": "{devices} contains 'heatpump'",
+          "visibleIf": "{devices} contains 'heatpump' and {heatpump_access} = 'mqtt'",
           "title": {
             "de": "Wärmepumpe",
             "default": "Heatpump"
@@ -845,7 +845,7 @@
         {
           "type": "radiogroup",
           "name": "heatpump_exclude_from_house_power",
-          "visibleIf": "{devices} contains 'heatpump'",
+          "visibleIf": "{devices} contains 'heatpump' and {heatpump_access} = 'mqtt'",
           "title": {
             "de": "Wärmepumpe im Hausverbrauch enthalten?",
             "default": "Heat pump included in household consumption?"

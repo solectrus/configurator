@@ -80,6 +80,18 @@ describe('useSurveyStore', () => {
     expect(survey.getPageByName('p_mqtt').isVisible).toBe(false)
   })
 
+  it('does not ask for mqtt_heatpump_power when Shelly', () => {
+    survey.setValue('devices', ['inverter', 'battery', 'wallbox', 'heatpump'])
+    survey.setValue('installation_type', 'local')
+    survey.setValue('battery_vendor', 'other')
+    survey.setValue('wallbox_vendor', 'other')
+    survey.setValue('heatpump_access', 'shelly')
+
+    expect(survey.getPageByName('p_mqtt').isVisible).toBe(true)
+    expect(survey.getQuestionByName('mqtt_heatpump_power').isVisible).toBe(false)
+    expect(survey.getQuestionByName('heatpump_exclude_from_house_power').isVisible).toBe(false)
+  })
+
   it('offers forecast questions (forecast.solar)', () => {
     expect(survey.getPageByName('p_forecast').isVisible).toBe(true)
     expect(survey.getPageByName('p_forecast_forecast_solar').isVisible).toBe(false)
