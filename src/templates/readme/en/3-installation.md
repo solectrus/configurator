@@ -1,17 +1,17 @@
 ## Add configuration files
 
-The configuration of SOLECTRUS consists of two files: `compose.yml` and `.env`. the `compose.yml` file contains the services that are started in Docker containers. The `.env` file contains the environment variables for the Docker containers.
+The configuration of SOLECTRUS consists of two files: `compose.yaml` and `.env`. the `compose.yaml` file contains the services that are started in Docker containers. The `.env` file contains the environment variables for the Docker containers.
 
 Both files are created for you based on your answers. You can find them under the links above. They must be copied to your Linux machine, which is described in the following sections.
 
-The following steps explain how to copy these files to your Linux computer using the clipboard. Alternatively, you can use other methods such as `scp` or any other file transfer method. The important thing is that the files arrive on your Linux computer and are named `.env` and `compose.yml`. Please note that `.env` starts with a dot, which may cause the file to be considered as _hidden_ and thus not displayed by default, depending on your operating system.
+The following steps explain how to copy these files to your Linux computer using the clipboard. Alternatively, you can use other methods such as `scp` or any other file transfer method. The important thing is that the files arrive on your Linux computer and are named `.env` and `compose.yaml`. Please note that `.env` starts with a dot, which may cause the file to be considered as _hidden_ and thus not displayed by default, depending on your operating system.
 
-### Copy compose.yml to your machine
+### Copy compose.yaml to your machine
 
-First, copy your personal `compose.yml` file to the clipboard by pressing the "Copy" button. Then, run this command on your Linux machine:
+First, copy your personal `compose.yaml` file to the clipboard by pressing the "Copy" button. Then, run this command on your Linux machine:
 
 ```
-cat > compose.yml
+cat > compose.yaml
 ```
 
 You will see a new empty line in the terminal with a cursor. Now, paste the content from clipboard by pressing `Ctrl+V` (on macOS: `Cmd+V`) and save it by pressing `Ctrl+D`.
@@ -42,13 +42,13 @@ You should see the following output:
 total 24
 drwxr-xr-x 2 root root 4096 Apr  7 09:42 ./
 drwx------ 5 root root 4096 Apr  7 09:42 ../
--rw-r--r-- 1 root root 6018 Apr  7 09:42 compose.yml
+-rw-r--r-- 1 root root 6018 Apr  7 09:42 compose.yaml
 -rw-r--r-- 1 root root 6032 Apr  7 09:42 .env
 ```
 
 ## Start the Docker containers
 
-Ok, now you have everything in place to start the Docker containers in the background. Run the following command in the folder where you saved the `.env` and `compose.yml` files:
+Ok, now you have everything in place to start the Docker containers in the background. Run the following command in the folder where you saved the `.env` and `compose.yaml` files:
 
 ```console
 docker compose up -d

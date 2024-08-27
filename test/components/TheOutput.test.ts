@@ -15,7 +15,7 @@ describe('TheOutput', () => {
   it('renders properly', async () => {
     const wrapper = shallowMount(TheOutput)
 
-    expect(wrapper.html()).toContain('compose.yml')
+    expect(wrapper.html()).toContain('compose.yaml')
     expect(wrapper.html()).toContain('.env')
   })
 })

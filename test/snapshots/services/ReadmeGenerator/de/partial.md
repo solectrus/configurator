@@ -3,10 +3,10 @@
 Dies ist dein persönlicher Leitfaden zur Installation von SOLECTRUS auf deinem Rechner, basierend auf deinen Antworten. Er besteht aus drei Teilen:
 
 - Die `README.md` Datei, die du gerade liest
-- Die `compose.yml` Datei, mit der die Dienste definiert werden, die in Docker-Containern laufen sollen
+- Die `compose.yaml` Datei, mit der die Dienste definiert werden, die in Docker-Containern laufen sollen
 - Die `.env` Datei, die die Umgebungsvariablen für die Docker-Container enthält
 
-Du kannst zwischen diesen Teilen über die obigen Links wechseln. Die `compose.yml` und `.env` Dateien können in die Zwischenablage kopiert werden. Das wirst du später brauchen.
+Du kannst zwischen diesen Teilen über die obigen Links wechseln. Die `compose.yaml` und `.env` Dateien können in die Zwischenablage kopiert werden. Das wirst du später brauchen.
 
 **BITTE BEACHTEN:** Dieser Konfigurator ist noch recht frisch. Bitte melde etwaige Probleme über GitHub unter [https://github.com/solectrus/configurator/issues](https://github.com/solectrus/configurator/issues).
 
@@ -64,18 +64,18 @@ Passe den letzten Befehl entsprechend an, um die spezifischen Unterordner zu ers
 
 ## Füge Konfigurationsdateien hinzu
 
-Die Konfiguration von SOLECTRUS besteht aus zwei Dateien: `compose.yml` und `.env`. Die `compose.yml` Datei enthält die Dienste, die in Docker-Containern gestartet werden. Die `.env` Datei enthält die Umgebungsvariablen für die Docker-Container.
+Die Konfiguration von SOLECTRUS besteht aus zwei Dateien: `compose.yaml` und `.env`. Die `compose.yaml` Datei enthält die Dienste, die in Docker-Containern gestartet werden. Die `.env` Datei enthält die Umgebungsvariablen für die Docker-Container.
 
 Beide Dateien wurden basierend auf deinen Antworten für dich erstellt. Du findest sie über die obigen Links. Sie müssen auf deinen Linux-Rechner kopiert werden, wie in den folgenden Abschnitten beschrieben.
 
-Die folgenden Schritte erklären, wie du die Dateien über die Zwischenablage auf deinen Linux-Rechner kopieren kannst. Alternativ kannst du auch andere Methoden wie `scp` oder ähnliches verwenden. Wichtig ist nur, dass die Dateien auf deinem Linux-Rechner ankommen und dort `.env` und `compose.yml` heißen. Beachte dabei, dass `.env` mit einem Punkt beginnt, was je nach Betriebssystem dazu führen kann, dass die Datei standardmäßig als _versteckt_ gilt und somit ausgeblendet wird.
+Die folgenden Schritte erklären, wie du die Dateien über die Zwischenablage auf deinen Linux-Rechner kopieren kannst. Alternativ kannst du auch andere Methoden wie `scp` oder ähnliches verwenden. Wichtig ist nur, dass die Dateien auf deinem Linux-Rechner ankommen und dort `.env` und `compose.yaml` heißen. Beachte dabei, dass `.env` mit einem Punkt beginnt, was je nach Betriebssystem dazu führen kann, dass die Datei standardmäßig als _versteckt_ gilt und somit ausgeblendet wird.
 
-### Kopiere compose.yml auf deinen Rechner
+### Kopiere compose.yaml auf deinen Rechner
 
-Kopiere zuerst deine persönliche `compose.yml` Datei in die Zwischenablage, indem du die "Kopieren"-Schaltfläche drückst. Führe dann diesen Befehl auf deinem Linux-Rechner aus:
+Kopiere zuerst deine persönliche `compose.yaml` Datei in die Zwischenablage, indem du die "Kopieren"-Schaltfläche drückst. Führe dann diesen Befehl auf deinem Linux-Rechner aus:
 
 ```console
-cat > compose.yml
+cat > compose.yaml
 ```
 
 Du wirst eine neue leere Zeile im Terminal mit einem Cursor sehen. Jetzt füge den Inhalt aus der Zwischenablage mit `Strg+V` (auf macOS: `Cmd+V`) ein und speichere ihn, indem du `Strg+D` drückst.
@@ -106,13 +106,13 @@ Du solltest die folgende Ausgabe sehen:
 total 24
 drwxr-xr-x 2 root root 4096 Apr  7 09:42 ./
 drwx------ 5 root root 4096 Apr  7 09:42 ../
--rw-r--r-- 1 root root 6018 Apr  7 09:42 compose.yml
+-rw-r--r-- 1 root root 6018 Apr  7 09:42 compose.yaml
 -rw-r--r-- 1 root root 6032 Apr  7 09:42 .env
 ```
 
 ## Starte die Docker-Container
 
-Ok, jetzt hast du alles, um die Docker-Container im Hintergrund zu starten. Führe den folgenden Befehl in dem Ordner aus, in dem du die `.env` und `compose.yml` Dateien gespeichert hast:
+Ok, jetzt hast du alles, um die Docker-Container im Hintergrund zu starten. Führe den folgenden Befehl in dem Ordner aus, in dem du die `.env` und `compose.yaml` Dateien gespeichert hast:
 
 ```console
 docker compose up -d
@@ -144,7 +144,7 @@ Im Browser solltest du dich als Admin mit deinem gewählten Passwort einloggen. 
 
 SOLECTRUS erfordert die Registrierung deiner Installation. Es gibt ein gelbes Banner oben auf der Seite, das dich durch den Registrierungsprozess führt.
 
-SOLECTRUS enthält eine Auto-Update-Funktion durch die Verwendung von [Watchtower](https://containrrr.dev/watchtower/). Es aktualisiert automatisch alle Docker-Images, die in der `compose.yml` Datei referenziert werden, und startet die Container bei Bedarf neu. Ein Update-Check wird alle 24 Stunden durchgeführt. Andere Docker-Container auf derselben Maschine werden von Watchtower **nicht** berührt.
+SOLECTRUS enthält eine Auto-Update-Funktion durch die Verwendung von [Watchtower](https://containrrr.dev/watchtower/). Es aktualisiert automatisch alle Docker-Images, die in der `compose.yaml` Datei referenziert werden, und startet die Container bei Bedarf neu. Ein Update-Check wird alle 24 Stunden durchgeführt. Andere Docker-Container auf derselben Maschine werden von Watchtower **nicht** berührt.
 
 Wenn du die Docker-Images manuell aktualisieren möchtest, kannst du den folgenden Befehl ausführen:
 

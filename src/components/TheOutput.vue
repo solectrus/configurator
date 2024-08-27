@@ -8,13 +8,13 @@ const store = useSurveyStore()
 </script>
 
 <template>
-  <TabsComponent :tabs="['README.md', 'compose.yml', '.env']">
+  <TabsComponent :tabs="['README.md', 'compose.yaml', '.env']">
     <template #tab-0>
       <MarkdownContainer :markdown="store.readmeFile" filename="README.md" />
     </template>
 
     <template #tab-1>
-      <CodeContainer language="yaml" :code="store.composeFile" filename="compose.yml" />
+      <CodeContainer language="yaml" :code="store.composeFile" filename="compose.yaml" />
     </template>
 
     <template #tab-2>

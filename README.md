@@ -3,7 +3,7 @@
 
 # SOLECTRUS Configurator
 
-This is a web application to interactively configure Docker for SOLECTRUS. It generates a `compose.yml` and `.env` file based on the answers to some questions. A `readme.md` file is also generated to guide the user through the installation process.
+This is a web application to interactively configure Docker for SOLECTRUS. It generates a `compose.yaml` and `.env` file based on the answers to some questions. A `readme.md` file is also generated to guide the user through the installation process.
 
 ## Project Setup
 
