@@ -11,6 +11,7 @@ import influxdbClientVariables from '@/templates/variables/influxdb-client.env?r
 import senecCollectorVariables from '@/templates/variables/senec-collector.env?raw'
 import mqttCollectorVariables from '@/templates/variables/mqtt-collector.env?raw'
 import shellyCollectorVariables from '@/templates/variables/shelly-collector.env?raw'
+import powerSplitterVariables from '@/templates/variables/power-splitter.env?raw'
 import postgresqlVariables from '@/templates/variables/postgresql.env?raw'
 import redisVariables from '@/templates/variables/redis.env?raw'
 import awsVariables from '@/templates/variables/aws.env?raw'
@@ -29,6 +30,7 @@ export class EnvGenerator {
       this.buildSenecCollectorVariables(),
       this.buildShellyCollectorVariables(),
       this.buildMQTTCollectorVariables(),
+      this.buildPowerSplitterVariables(),
       this.buildForecastCollectorVariables(),
       this.buildInfluxdbVariables(),
       this.buildPostgresqlVariables(),
@@ -305,6 +307,12 @@ export class EnvGenerator {
         MQTT_PASSWORD: this.answers.mqtt_password,
         ...this.mqttMappingVariables(),
       })
+    }
+  }
+
+  private buildPowerSplitterVariables(): string | undefined {
+    if (this.compose.services['power-splitter']) {
+      return powerSplitterVariables
     }
   }
 
