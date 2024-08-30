@@ -149,7 +149,11 @@ export class ComposeGenerator {
       this.addService('forecast-collector', forecastCollectorService)
     }
 
-    if (this.answers.devices?.length && this.answers.devices.includes('inverter'))
+    if (
+      this.answers.devices?.length &&
+      this.answers.devices.includes('inverter') &&
+      (this.answers.devices.includes('wallbox') || this.answers.devices.includes('heatpump'))
+    )
       if (this.answers.installation_type === 'local' || this.answers.distributed_choice === 'cloud')
         this.addService('power-splitter', powerSplitterService)
   }

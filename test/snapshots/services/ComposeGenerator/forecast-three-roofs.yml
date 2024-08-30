@@ -231,34 +231,6 @@ services:
       - influxdb
     labels:
       - com.centurylinklabs.watchtower.scope=solectrus
-  power-splitter:
-    image: ghcr.io/solectrus/power-splitter:latest
-    environment:
-      - TZ
-      - INFLUX_HOST
-      - INFLUX_SCHEMA
-      - INFLUX_PORT
-      - INFLUX_TOKEN=${INFLUX_ADMIN_TOKEN}
-      - INFLUX_ORG
-      - INFLUX_BUCKET
-      - INFLUX_SENSOR_HOUSE_POWER
-      - INFLUX_SENSOR_GRID_IMPORT_POWER
-      - INFLUX_SENSOR_WALLBOX_POWER
-      - INFLUX_SENSOR_HEATPUMP_POWER
-      - INFLUX_EXCLUDE_FROM_HOUSE_POWER
-      - REDIS_URL
-    logging:
-      options:
-        max-size: 10m
-        max-file: '3'
-    restart: unless-stopped
-    depends_on:
-      influxdb:
-        condition: service_healthy
-    links:
-      - influxdb
-    labels:
-      - com.centurylinklabs.watchtower.scope=solectrus
   watchtower:
     image: containrrr/watchtower
     environment:
