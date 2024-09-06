@@ -24,7 +24,7 @@ First, ensure you have a 64bit OS with Kernel v4 or higher. Check your OS and ar
 
 ```console
 $ uname -a
-Linux MyRaspi 6.6.31+rpt-rpi-v8 #1 SMP PREEMPT Debian 1:6.6.31-1+rpt1 (2024-05-29) aarch64 GNU/Linux
+Linux MyRaspi 6.6.47+rpt-rpi-v8 #1 SMP PREEMPT Debian 1:6.6.47-1+rpt1 (2024-09-02) aarch64 GNU/Linux
 
 $ dpkg --print-architecture
 arm64
@@ -42,10 +42,10 @@ Ensure Docker is installed and running. First, check your Docker version:
 
 ```console
 $ docker --version
-Docker version 27.1.2, build d01f264
+Docker version 27.2.0, build 3ab4256
 
 $ docker compose version
-Docker Compose version v2.29.1
+Docker Compose version v2.29.2
 ```
 
 An older version might work as well.
