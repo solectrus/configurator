@@ -887,30 +887,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@volar/language-core@npm:2.4.2, @volar/language-core@npm:~2.4.1":
-  version: 2.4.2
-  resolution: "@volar/language-core@npm:2.4.2"
+"@volar/language-core@npm:2.4.4, @volar/language-core@npm:~2.4.1":
+  version: 2.4.4
+  resolution: "@volar/language-core@npm:2.4.4"
   dependencies:
-    "@volar/source-map": "npm:2.4.2"
-  checksum: 10c0/ee6f06c0b8597f6667f2d7fa0c102bf9ca7c4eeba6d6fb6033721456dc741cfbb67da2a9962526b742424e8923f3a93068c2c9bf28559318ffd06ed7df3d9573
+    "@volar/source-map": "npm:2.4.4"
+  checksum: 10c0/455c088c7e6cd0583633300f8f3a6a2d78ee35b7cb15401516f4fde8cab41cbc5b55b5855f9627e2840d7af6fc4a74d175039bdde96b8c27e8f949441bc06670
   languageName: node
   linkType: hard
 
-"@volar/source-map@npm:2.4.2":
-  version: 2.4.2
-  resolution: "@volar/source-map@npm:2.4.2"
-  checksum: 10c0/94da26ad2f378495f7b2db273ba34d1bad33b2fb01423a93620de4ae1299ee0ad85b7bf7a925fea5ed80dd7f8cf3bbb88104af877ad0a310342aad46ea531689
+"@volar/source-map@npm:2.4.4":
+  version: 2.4.4
+  resolution: "@volar/source-map@npm:2.4.4"
+  checksum: 10c0/c5875ecb1961108e6c24d26add81355057517f2a874f64f1abc65fd0d90fb3b6feebd5a8305a76e0089948a124b2ec7d889ade51bade3341baf3e3b7e118c8e6
   languageName: node
   linkType: hard
 
 "@volar/typescript@npm:~2.4.1":
-  version: 2.4.2
-  resolution: "@volar/typescript@npm:2.4.2"
+  version: 2.4.4
+  resolution: "@volar/typescript@npm:2.4.4"
   dependencies:
-    "@volar/language-core": "npm:2.4.2"
+    "@volar/language-core": "npm:2.4.4"
     path-browserify: "npm:^1.0.1"
     vscode-uri: "npm:^3.0.8"
-  checksum: 10c0/1038a414b8eedc535daa1461dab7782443f5265ab095b536ec33073a47bcbb52a1c4055900e3c2d43071ea4ed28bca1fa655e994980e2c8c33395017b1ef75f4
+  checksum: 10c0/07d404aa7024ff8b8231b5c21460b990344beb2179dd772931811f3107a2ddd1ff9ba02446cb30c6699a9ea0868cf76af4027e3168f1761ba8a0013def9ebf96
   languageName: node
   linkType: hard
 
@@ -975,9 +975,9 @@ __metadata:
   linkType: hard
 
 "@vue/devtools-api@npm:^6.6.3":
-  version: 6.6.3
-  resolution: "@vue/devtools-api@npm:6.6.3"
-  checksum: 10c0/e9e712f687e901b1ecfcfb958a305db9729d37408677ea8d63189176406196c7c6d4e9580216de590ccbe68037f323c163293e917cfad3834d7f3299cd5a22bb
+  version: 6.6.4
+  resolution: "@vue/devtools-api@npm:6.6.4"
+  checksum: 10c0/0a993ae23618166e1bee5a7c14cebd8312752b93c143cbdd48fb2d0f7ade070d0e6baf757cd920d4681fef8f9acf29515162160f38cc7410f9a684d2df21b6de
   languageName: node
   linkType: hard
 
@@ -1164,9 +1164,9 @@ __metadata:
   linkType: hard
 
 "ansi-regex@npm:^6.0.1":
-  version: 6.0.1
-  resolution: "ansi-regex@npm:6.0.1"
-  checksum: 10c0/cbe16dbd2c6b2735d1df7976a7070dd277326434f0212f43abf6d87674095d247968209babdaad31bb00882fa68807256ba9be340eec2f1004de14ca75f52a08
+  version: 6.1.0
+  resolution: "ansi-regex@npm:6.1.0"
+  checksum: 10c0/a91daeddd54746338478eef88af3439a7edf30f8e23196e2d6ed182da9add559c601266dbef01c2efa46a958ad6f1f8b176799657616c702b5b02e799e7fd8dc
   languageName: node
   linkType: hard
 
@@ -1361,9 +1361,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.30001646":
-  version: 1.0.30001657
-  resolution: "caniuse-lite@npm:1.0.30001657"
-  checksum: 10c0/bf40189e41d0ae9bad59c8b4054ecda3a8603754ad85fc04999679a92e2bca506350573342c9397c14a8b877a50210a37e744d8fc06adf38d1af33686d41db69
+  version: 1.0.30001660
+  resolution: "caniuse-lite@npm:1.0.30001660"
+  checksum: 10c0/d28900b56c597176d515c3175ca75c454f2d30cb2c09a44d7bdb009bb0c4d8a2557905adb77642889bbe9feb85fbfe9d974c8b8e53521fb4b50ee16ab246104e
   languageName: node
   linkType: hard
 
@@ -1514,11 +1514,11 @@ __metadata:
   linkType: hard
 
 "cssstyle@npm:^4.0.1":
-  version: 4.0.1
-  resolution: "cssstyle@npm:4.0.1"
+  version: 4.1.0
+  resolution: "cssstyle@npm:4.1.0"
   dependencies:
-    rrweb-cssom: "npm:^0.6.0"
-  checksum: 10c0/cadf9a8b23e11f4c6d63f21291096a0b0be868bd4ab9c799daa2c5b18330e39e5281605f01da906e901b42f742df0f3b3645af6465e83377ff7d15a88ee432a0
+    rrweb-cssom: "npm:^0.7.1"
+  checksum: 10c0/05c6597e5d3e0ec6b15221f2c0ce9a0443a46cc50a6089a3ba9ee1ac27f83ff86a445a8f95435137dadd859f091fc61b6d342abaf396d3c910471b5b33cfcbfa
   languageName: node
   linkType: hard
 
@@ -1631,9 +1631,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.5.4":
-  version: 1.5.15
-  resolution: "electron-to-chromium@npm:1.5.15"
-  checksum: 10c0/b074c961cac4f1e2aa51acf87b8fb121eb707bf7a74b6f2ebddb2180a6b442562e3e608a48edd6d233baf70d05322ddd42930df26096f01796d3e8f95eabf264
+  version: 1.5.18
+  resolution: "electron-to-chromium@npm:1.5.18"
+  checksum: 10c0/2c553c4e7618e887398af0fb7ddd8055beb69d37a810ad73fcea0f3e9027f1fc879ef280151fb6bae8e5b961f5597452eafc1ae5a0adca5bd49211545a34afe7
   languageName: node
   linkType: hard
 
@@ -3772,13 +3772,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rrweb-cssom@npm:^0.6.0":
-  version: 0.6.0
-  resolution: "rrweb-cssom@npm:0.6.0"
-  checksum: 10c0/3d9d90d53c2349ea9c8509c2690df5a4ef930c9cf8242aeb9425d4046f09d712bb01047e00da0e1c1dab5db35740b3d78fd45c3e7272f75d3724a563f27c30a3
-  languageName: node
-  linkType: hard
-
 "rrweb-cssom@npm:^0.7.1":
   version: 0.7.1
   resolution: "rrweb-cssom@npm:0.7.1"
@@ -3947,9 +3940,9 @@ __metadata:
   linkType: soft
 
 "source-map-js@npm:^1.2.0":
-  version: 1.2.0
-  resolution: "source-map-js@npm:1.2.0"
-  checksum: 10c0/7e5f896ac10a3a50fe2898e5009c58ff0dc102dcb056ed27a354623a0ece8954d4b2649e1a1b2b52ef2e161d26f8859c7710350930751640e71e374fe2d321a4
+  version: 1.2.1
+  resolution: "source-map-js@npm:1.2.1"
+  checksum: 10c0/7bda1fc4c197e3c6ff17de1b8b2c20e60af81b63a52cb32ec5a5d67a20a7d42651e2cb34ebe93833c5a2a084377e17455854fee3e21e7925c64a51b6a52b0faf
   languageName: node
   linkType: hard
 
@@ -4210,9 +4203,9 @@ __metadata:
   linkType: hard
 
 "tinyspy@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "tinyspy@npm:3.0.0"
-  checksum: 10c0/eb0dec264aa5370efd3d29743825eb115ed7f1ef8a72a431e9a75d5c9e7d67e99d04b0d61d86b8cd70c79ec27863f241ad0317bc453f78762e0cbd76d2c332d0
+  version: 3.0.2
+  resolution: "tinyspy@npm:3.0.2"
+  checksum: 10c0/55ffad24e346622b59292e097c2ee30a63919d5acb7ceca87fc0d1c223090089890587b426e20054733f97a58f20af2c349fb7cc193697203868ab7ba00bcea0
   languageName: node
   linkType: hard
 
