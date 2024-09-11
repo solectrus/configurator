@@ -3926,8 +3926,8 @@ __metadata:
     prettier-plugin-tailwindcss: "npm:^0.6.6"
     rollup: "npm:^4.21.2"
     rollup-plugin-gzip: "npm:^4.0.1"
-    survey-core: "npm:^1.11.14"
-    survey-vue3-ui: "npm:^1.11.14"
+    survey-core: "npm:^1.12.1"
+    survey-vue3-ui: "npm:^1.12.1"
     tailwindcss: "npm:^3.4.10"
     typescript: "npm:^5.6.2"
     vite: "npm:^5.4.3"
@@ -4064,20 +4064,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"survey-core@npm:^1.11.14":
-  version: 1.11.14
-  resolution: "survey-core@npm:1.11.14"
-  checksum: 10c0/fcb8cda8190a1d240d30237cff2101206b875345d70985357bc0fe2ffa50cdc7c4a80466e647d2811522f28b1f8f5254d342458e695f497516a9df8ecd8befe9
+"survey-core@npm:^1.12.1":
+  version: 1.12.1
+  resolution: "survey-core@npm:1.12.1"
+  checksum: 10c0/0a68a83596d63178dcbda27c9f8923716d4fc6c01895f5c1831352e02ed105522dfdbda0b100c7b9a3a14bd50c6a4079959e7e150ae3c38d1b6087a84310245b
   languageName: node
   linkType: hard
 
-"survey-vue3-ui@npm:^1.11.14":
-  version: 1.11.14
-  resolution: "survey-vue3-ui@npm:1.11.14"
+"survey-vue3-ui@npm:^1.12.1":
+  version: 1.12.1
+  resolution: "survey-vue3-ui@npm:1.12.1"
   peerDependencies:
-    survey-core: 1.11.14
+    survey-core: 1.12.1
     vue: ^3.2.41
-  checksum: 10c0/4fa7341f27587c468b00b5acf2a234f713c3d5b1c084cadd1bf0065219219b6eed96b4fc2b0e3269996130afc7adceeb75532a5872ab797d19be13154d7d6283
+  checksum: 10c0/f8e7570ca392977669b64816e3d9934b0976f07abca1e84f2e4f6dac115361e78034a1427b5f0430eb2111fd24d638a394a69fd94d618a7199526f358f227673
   languageName: node
   linkType: hard
 
