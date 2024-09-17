@@ -937,19 +937,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vue/compiler-core@npm:3.5.5":
-  version: 3.5.5
-  resolution: "@vue/compiler-core@npm:3.5.5"
-  dependencies:
-    "@babel/parser": "npm:^7.25.3"
-    "@vue/shared": "npm:3.5.5"
-    entities: "npm:^4.5.0"
-    estree-walker: "npm:^2.0.2"
-    source-map-js: "npm:^1.2.0"
-  checksum: 10c0/cc6f8703ddc009989c94261751225bcf242d0fcd5703bf0dc159a3f6247a6ae41d97d03cae548c4331b7b46154296a870b66139422d5a3b12d8de34b32aa56a3
-  languageName: node
-  linkType: hard
-
 "@vue/compiler-core@npm:3.5.6":
   version: 3.5.6
   resolution: "@vue/compiler-core@npm:3.5.6"
@@ -963,23 +950,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vue/compiler-dom@npm:3.5.6":
+"@vue/compiler-dom@npm:3.5.6, @vue/compiler-dom@npm:^3.4.0":
   version: 3.5.6
   resolution: "@vue/compiler-dom@npm:3.5.6"
   dependencies:
     "@vue/compiler-core": "npm:3.5.6"
     "@vue/shared": "npm:3.5.6"
   checksum: 10c0/8c55a8c7a9cdb7f2c24667365855425884292c787d47c12d2ef52279ffcf92041105c9b3feb3d45fec7480e7c14939009033753e12d5298904c12eb6025551f9
-  languageName: node
-  linkType: hard
-
-"@vue/compiler-dom@npm:^3.4.0":
-  version: 3.5.5
-  resolution: "@vue/compiler-dom@npm:3.5.5"
-  dependencies:
-    "@vue/compiler-core": "npm:3.5.5"
-    "@vue/shared": "npm:3.5.5"
-  checksum: 10c0/ff207a83f38b788959a2cb8731493fd566fcfa2de9371d77d7878b06d94fd57983256bf4e857ef0fd44ecaca4ec8ba529fff1e6764115717a5e13be5f504ee93
   languageName: node
   linkType: hard
 
@@ -1122,14 +1099,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vue/shared@npm:3.5.5, @vue/shared@npm:^3.4.0":
-  version: 3.5.5
-  resolution: "@vue/shared@npm:3.5.5"
-  checksum: 10c0/729eff9c55a10d2facdc597d49960a2a15657450903e3a28c93adcf97c731d39dcd17fe5bcf585976289dfb9a92d89a08af8558cb779ef8b2bb8b6a8b2162830
-  languageName: node
-  linkType: hard
-
-"@vue/shared@npm:3.5.6":
+"@vue/shared@npm:3.5.6, @vue/shared@npm:^3.4.0":
   version: 3.5.6
   resolution: "@vue/shared@npm:3.5.6"
   checksum: 10c0/5dedd25000b748fb394fff8b9e501a422436a3c03fc38f6ee2078a80d4c787d17b727a991e3ac585ee14bbdf60f9165784b2de0f20046fcca902643c5becfb9b
@@ -1684,9 +1654,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.5.4":
-  version: 1.5.23
-  resolution: "electron-to-chromium@npm:1.5.23"
-  checksum: 10c0/a2f76d3ffae24635ff13597a7e4ddd73bd7ee2124e021d34a60faafc5a1afda567e6d26c0c84abc5c2d7622d9daf9bb25ed7dd2970019dcf4b9a28c02c13cab4
+  version: 1.5.24
+  resolution: "electron-to-chromium@npm:1.5.24"
+  checksum: 10c0/c20a6fc69145c0b470778ee0a952226d3480d611949bea00c9f8ed3bac0a205e5cd8ba76cfa99034d9ee717482741cf1c7e41eb151ccffc933e1eefe501d3bc7
   languageName: node
   linkType: hard
 
@@ -4410,50 +4380,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^5.0.0":
-  version: 5.4.5
-  resolution: "vite@npm:5.4.5"
-  dependencies:
-    esbuild: "npm:^0.21.3"
-    fsevents: "npm:~2.3.3"
-    postcss: "npm:^8.4.43"
-    rollup: "npm:^4.20.0"
-  peerDependencies:
-    "@types/node": ^18.0.0 || >=20.0.0
-    less: "*"
-    lightningcss: ^1.21.0
-    sass: "*"
-    sass-embedded: "*"
-    stylus: "*"
-    sugarss: "*"
-    terser: ^5.4.0
-  dependenciesMeta:
-    fsevents:
-      optional: true
-  peerDependenciesMeta:
-    "@types/node":
-      optional: true
-    less:
-      optional: true
-    lightningcss:
-      optional: true
-    sass:
-      optional: true
-    sass-embedded:
-      optional: true
-    stylus:
-      optional: true
-    sugarss:
-      optional: true
-    terser:
-      optional: true
-  bin:
-    vite: bin/vite.js
-  checksum: 10c0/89c6459452fc238cdf8e99681b30996af171c9c557af476f96408a18a639fb5a0a6ee2d2257e005b21dc284edceb604595c34920cd4a007ad18f7ebafb654c76
-  languageName: node
-  linkType: hard
-
-"vite@npm:^5.4.6":
+"vite@npm:^5.0.0, vite@npm:^5.4.6":
   version: 5.4.6
   resolution: "vite@npm:5.4.6"
   dependencies:
