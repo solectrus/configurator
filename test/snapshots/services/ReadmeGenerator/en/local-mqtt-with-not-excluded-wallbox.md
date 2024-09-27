@@ -42,10 +42,10 @@ Ensure Docker is installed and running. First, check your Docker version:
 
 ```console
 $ docker --version
-Docker version 27.2.0, build 3ab4256
+Docker version 27.3.1, build ce12230
 
 $ docker compose version
-Docker Compose version v2.29.2
+Docker Compose version v2.29.7
 ```
 
 An older version might work as well.
