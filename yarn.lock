@@ -1398,9 +1398,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.30001646, caniuse-lite@npm:^1.0.30001663":
-  version: 1.0.30001664
-  resolution: "caniuse-lite@npm:1.0.30001664"
-  checksum: 10c0/db2b431aba41a585191ab1e4d40da0ad349ff32400edac2a167bf6bf92dbf9c704eab03dc60fb89e882ce02478d61c3036b2b1bdce8edf9b2aabda5608bae05e
+  version: 1.0.30001666
+  resolution: "caniuse-lite@npm:1.0.30001666"
+  checksum: 10c0/2d49e9be676233c24717f12aad3d01b3e5f902b457fe1deefaa8d82e64786788a8f79381ae437c61b50e15c9aea8aeb59871b1d54cb4c28b9190d53d292e2339
   languageName: node
   linkType: hard
 
@@ -1668,9 +1668,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.5.28":
-  version: 1.5.29
-  resolution: "electron-to-chromium@npm:1.5.29"
-  checksum: 10c0/ae4849f1fe8d756d30c6f5f992803d8550a98b38a30aecc7d9776858cf229ad05b12cb9f7675f0a89330a077d16e28388cfe394fdd9d0828ffe860c8568c95c2
+  version: 1.5.31
+  resolution: "electron-to-chromium@npm:1.5.31"
+  checksum: 10c0/e8aecd88c4c6d50a9d459b4b222865b855bab8f1b52e82913804e18b7884f2887bd76c61b3aa08c2ccbdcda098dd8486443f75bf770f0138f21dd9e63548fca7
   languageName: node
   linkType: hard
 
@@ -2081,15 +2081,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fdir@npm:^6.3.0":
-  version: 6.3.0
-  resolution: "fdir@npm:6.3.0"
+"fdir@npm:^6.4.0":
+  version: 6.4.0
+  resolution: "fdir@npm:6.4.0"
   peerDependencies:
     picomatch: ^3 || ^4
   peerDependenciesMeta:
     picomatch:
       optional: true
-  checksum: 10c0/be91cd6ab2edbc6df457a69b79672ee9345996986821918ef01908ce9619b8cbecd9c6c13d4ca5d0aeb548b162050d68c599f45bb3fbff194a91e16f25e646b5
+  checksum: 10c0/9a03efa1335d78ea386b701799b08ad9e7e8da85d88567dc162cd28dd8e9486e8c269b3e95bfeb21dd6a5b14ebf69d230eb6e18f49d33fbda3cd97432f648c48
   languageName: node
   linkType: hard
 
@@ -4150,12 +4150,12 @@ __metadata:
   linkType: hard
 
 "tinyglobby@npm:^0.2.6":
-  version: 0.2.6
-  resolution: "tinyglobby@npm:0.2.6"
+  version: 0.2.9
+  resolution: "tinyglobby@npm:0.2.9"
   dependencies:
-    fdir: "npm:^6.3.0"
+    fdir: "npm:^6.4.0"
     picomatch: "npm:^4.0.2"
-  checksum: 10c0/d7b5eb4c5b9c341f961c1d3c30624f9a1e22b27b48a79a65b48120245a77c143827f75f5854628fef1a4bd4bc3cfaf06ce76497f3a574e3f933229c5e556e5fe
+  checksum: 10c0/f65f847afe70f56de069d4f1f9c3b0c1a76aaf2b0297656754734a83b9bac8e105b5534dfbea8599560476b88f7b747d0855370a957a07246d18b976addb87ec
   languageName: node
   linkType: hard
 
