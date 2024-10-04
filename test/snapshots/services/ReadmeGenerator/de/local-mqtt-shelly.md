@@ -24,7 +24,7 @@ Stelle zuerst sicher, dass du ein 64-Bit-Betriebssystem mit Kernel v4 oder höhe
 
 ```console
 $ uname -a
-Linux MyRaspi 6.6.47+rpt-rpi-v8 #1 SMP PREEMPT Debian 1:6.6.47-1+rpt1 (2024-09-02) aarch64 GNU/Linux
+Linux MyRaspi 6.6.51+rpt-rpi-v8 #1 SMP PREEMPT Debian 1:6.6.51-1+rpt2 (2024-10-01) aarch64 GNU/Linux
 
 $ dpkg --print-architecture
 arm64
