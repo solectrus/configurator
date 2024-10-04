@@ -28,7 +28,7 @@ const buildDate = import.meta.env.VITE_BUILD_DATE
 </script>
 
 <template>
-  <div class="background-image"></div>
+  <div class="background-image" />
 
   <div class="flex h-screen w-screen flex-col">
     <svg
