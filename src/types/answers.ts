@@ -37,7 +37,9 @@ export interface Answers {
   mqtt_battery_power?: string
   mqtt_battery_power_pos_neg?: 'pos_neg' | 'neg_pos'
   mqtt_battery_soc?: string
+  mqtt_car_battery_soc?: string
   mqtt_wallbox_power?: string
+  mqtt_wallbox_car_connected?: string
   mqtt_case_temp?: string
   mqtt_system_status?: string
   mqtt_system_status_ok?: string

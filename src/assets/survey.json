@@ -807,6 +807,23 @@
           }
         },
         {
+          "type": "text",
+          "name": "mqtt_wallbox_car_connected",
+          "visibleIf": "{devices} contains 'wallbox' and {wallbox_vendor} <> 'senec'",
+          "title": {
+            "de": "Wallbox: Auto verbunden",
+            "default": "Wallbox: Car connected"
+          },
+          "description": {
+            "default": "True/False, 0/1, \"Yes\"/\"No\" or \"True\"/\"False\"",
+            "de": "True/False, 0/1, \"Yes\"/\"No\" oder \"True\"/\"False\""
+          },
+          "placeholder": {
+            "default": "e.g. myhome/wallbox/0/car_connected",
+            "de": "z.B. myhome/wallbox/0/car_connected"
+          }
+        },
+        {
           "type": "radiogroup",
           "name": "wallbox_exclude_from_house_power",
           "visibleIf": "{devices} contains 'wallbox' and {wallbox_vendor} = 'other'",
@@ -830,6 +847,20 @@
               }
             }
           ]
+        },
+        {
+          "type": "text",
+          "name": "mqtt_car_battery_soc",
+          "visibleIf": "{devices} contains 'wallbox'",
+          "title": {
+            "de": "E-Auto: Batterie-Ladestand",
+            "default": "Car battery SOC"
+          },
+          "description": "in %",
+          "placeholder": {
+            "default": "e.g. mycar/battery/0/soc",
+            "de": "z.B. mycar/battery/0/soc"
+          }
         },
         {
           "type": "text",

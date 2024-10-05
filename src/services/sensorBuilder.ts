@@ -17,12 +17,14 @@ export class SensorBuilder {
       BATTERY_DISCHARGING_POWER: '',
       BATTERY_SOC: '',
       WALLBOX_POWER: '',
+      WALLBOX_CAR_CONNECTED: '',
       CASE_TEMP: '',
       SYSTEM_STATUS: '',
       SYSTEM_STATUS_OK: '',
       GRID_EXPORT_LIMIT: '',
       INVERTER_POWER_FORECAST: '',
       HEATPUMP_POWER: '',
+      CAR_BATTERY_SOC: '',
     }
 
     if (this.answers.devices?.includes('inverter'))
@@ -39,9 +41,9 @@ export class SensorBuilder {
 
     if (this.answers.devices?.includes('wallbox'))
       if (this.answers.wallbox_vendor === 'senec')
-        result = { ...result, ...this.sensorsWallboxSenec() }
+        result = { ...result, ...this.sensorsWallboxSenec(), ...this.sensorsCar() }
       else if (this.answers.wallbox_vendor === 'other')
-        result = { ...result, ...this.sensorsWallboxOther() }
+        result = { ...result, ...this.sensorsWallboxOther(), ...this.sensorsCar() }
 
     if (this.answers.devices?.includes('heatpump'))
       result = { ...result, ...this.sensorsHeatpump() }
@@ -117,12 +119,14 @@ export class SensorBuilder {
   private sensorsWallboxSenec() {
     return {
       WALLBOX_POWER: 'SENEC:wallbox_charge_power',
+      WALLBOX_CAR_CONNECTED: 'SENEC:ev_connected',
     }
   }
 
   private sensorsWallboxOther() {
     return {
       WALLBOX_POWER: 'pv:wallbox_power',
+      ...(this.answers.mqtt_wallbox_car_connected && { WALLBOX_CAR_CONNECTED: 'pv:car_connected' }),
     }
   }
 
@@ -134,5 +138,9 @@ export class SensorBuilder {
 
   private sensorsHeatpump() {
     return { HEATPUMP_POWER: 'heatpump:power' }
+  }
+
+  private sensorsCar() {
+    return { ...(this.answers.mqtt_car_battery_soc && { CAR_BATTERY_SOC: 'car:battery_soc' }) }
   }
 }

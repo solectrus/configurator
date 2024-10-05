@@ -26,10 +26,12 @@ export class MqttMapper {
       this.batteryPower(),
       this.batterySoc(),
       this.wallboxPower(),
+      this.wallboxCarConnected(),
       this.heatpumpPower(),
       this.caseTemp(),
       this.systemStatus(),
       this.systemStatusOk(),
+      this.carBatterySoc(),
     ].filter(Boolean) as Mappings
 
     return mappings
@@ -134,6 +136,15 @@ export class MqttMapper {
       }
   }
 
+  private carBatterySoc(): Mapping | undefined {
+    if (this.answers.mqtt_car_battery_soc)
+      return {
+        topic: this.answers.mqtt_car_battery_soc,
+        ...this.sensorBuilder.splittedSensor('CAR_BATTERY_SOC'),
+        type: 'float',
+      }
+  }
+
   private caseTemp(): Mapping | undefined {
     if (this.answers.mqtt_case_temp)
       return {
@@ -167,6 +178,15 @@ export class MqttMapper {
         topic: this.answers.mqtt_wallbox_power,
         ...this.sensorBuilder.splittedSensor('WALLBOX_POWER'),
         type: 'integer',
+      }
+  }
+
+  private wallboxCarConnected(): Mapping | undefined {
+    if (this.answers.mqtt_wallbox_car_connected)
+      return {
+        topic: this.answers.mqtt_wallbox_car_connected,
+        ...this.sensorBuilder.splittedSensor('WALLBOX_CAR_CONNECTED'),
+        type: 'string',
       }
   }
 
