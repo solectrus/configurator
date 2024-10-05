@@ -36,6 +36,14 @@
                 "default": "A solar inverter must be involved"
               },
               "expression": "{devices} contains 'inverter'"
+            },
+            {
+              "type": "expression",
+              "text": {
+                "de": "Für ein E-Auto wird eine Wallbox benötigt",
+                "default": "A wallbox is required for an electric car"
+              },
+              "expression": "{devices} contains 'wallbox' or {devices} notcontains 'car'"
             }
           ],
           "choices": [
@@ -56,6 +64,13 @@
             {
               "value": "wallbox",
               "text": "Wallbox"
+            },
+            {
+              "value": "car",
+              "text": {
+                "de": "E-Auto",
+                "default": "Electric car"
+              }
             },
             {
               "value": "heatpump",
@@ -578,7 +593,7 @@
     },
     {
       "name": "p_mqtt",
-      "visibleIf": "({battery_vendor} = 'other' or {wallbox_vendor} = 'other' or {heatpump_access} = 'mqtt' or {devices} = ['inverter']) and ({installation_type} = 'local' or {distributed_choice} = 'local')",
+      "visibleIf": "({battery_vendor} = 'other' or {wallbox_vendor} = 'other' or {heatpump_access} = 'mqtt' or {devices} = ['inverter'] or {devices} contains 'car') and ({installation_type} = 'local' or {distributed_choice} = 'local')",
       "title": {
         "de": "Zugriff auf MQTT-Broker",
         "default": "Access to MQTT broker"
@@ -646,7 +661,7 @@
     },
     {
       "name": "p_mqtt_topics",
-      "visibleIf": "({battery_vendor} = 'other' or {wallbox_vendor} = 'other' or {heatpump_access} = 'mqtt' or {devices} = ['inverter']) and ({installation_type} = 'local' or {distributed_choice} = 'local')",
+      "visibleIf": "({battery_vendor} = 'other' or {wallbox_vendor} = 'other' or {heatpump_access} = 'mqtt' or {devices} = ['inverter'] or {devices} contains 'car') and ({installation_type} = 'local' or {distributed_choice} = 'local')",
       "title": {
         "default": "MQTT topics",
         "de": "MQTT-Topics"
@@ -851,7 +866,7 @@
         {
           "type": "text",
           "name": "mqtt_car_battery_soc",
-          "visibleIf": "{devices} contains 'wallbox'",
+          "visibleIf": "{devices} contains 'car'",
           "title": {
             "de": "E-Auto: Batterie-Ladestand",
             "default": "Car battery SOC"
