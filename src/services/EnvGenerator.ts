@@ -19,8 +19,8 @@ import traefikVariables from '@/templates/variables/traefik.env?raw'
 
 export class EnvGenerator {
   constructor(
-    private compose: DockerCompose,
-    private answers: Answers,
+    private readonly compose: DockerCompose,
+    private readonly answers: Answers,
   ) {}
 
   public build(): string {

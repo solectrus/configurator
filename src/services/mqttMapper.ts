@@ -15,7 +15,7 @@ type Mapping = {
 type Mappings = Mapping[]
 
 export class MqttMapper {
-  constructor(private answers: Answers) {}
+  constructor(private readonly answers: Answers) {}
 
   public variables() {
     const mappings = [

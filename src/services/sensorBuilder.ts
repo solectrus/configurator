@@ -5,7 +5,7 @@ type Sensors = {
 }
 
 export class SensorBuilder {
-  constructor(private answers: Answers) {}
+  constructor(private readonly answers: Answers) {}
 
   public build(): Sensors {
     let result = {

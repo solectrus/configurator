@@ -2,8 +2,8 @@ import type { Answers } from '@/types/answers'
 
 export class ReadmeGenerator {
   constructor(
-    private answers: Answers,
-    private language: string,
+    private readonly answers: Answers,
+    private readonly language: string,
   ) {}
 
   async build(): Promise<string> {

@@ -52,9 +52,9 @@ export type DockerCompose = {
 }
 
 export class ComposeGenerator {
-  private compose: DockerCompose
+  private readonly compose: DockerCompose
 
-  constructor(private answers: Answers) {
+  constructor(private readonly answers: Answers) {
     this.compose = {
       services: {},
     }
