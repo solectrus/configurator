@@ -35,6 +35,6 @@ export default [
     },
   },
   {
-    ignores: ['dist/', 'node_modules/', '.yarn/'],
+    ignores: ['dist/', 'node_modules/', '.yarn/', 'coverage/'],
   },
 ]
