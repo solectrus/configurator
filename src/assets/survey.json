@@ -659,7 +659,7 @@
         {
           "type": "text",
           "name": "mqtt_inverter_power",
-          "visibleIf": "{devices} contains 'inverter'",
+          "visibleIf": "{devices} contains 'inverter' and {battery_vendor} <> 'senec3' and {battery_vendor} <> 'senec4'",
           "title": {
             "de": "Erzeugung",
             "default": "Inverter power"
@@ -673,6 +673,7 @@
         {
           "type": "text",
           "name": "mqtt_house_power",
+          "visibleIf": "{battery_vendor} <> 'senec3' and {battery_vendor} <> 'senec4'",
           "title": {
             "de": "Hausverbrauch",
             "default": "House power"
@@ -686,6 +687,7 @@
         {
           "type": "text",
           "name": "mqtt_grid_power",
+          "visibleIf": "{battery_vendor} <> 'senec3' and {battery_vendor} <> 'senec4'",
           "title": {
             "de": "Netzbezug / -einspeisung",
             "default": "Grid power import"
@@ -699,6 +701,7 @@
         {
           "type": "radiogroup",
           "name": "mqtt_grid_power_pos_neg",
+          "visibleIf": "{battery_vendor} <> 'senec3' and {battery_vendor} <> 'senec4'",
           "title": {
             "de": "Netz: Vorzeichenbehandlung",
             "default": "Grid: Sign handling"
@@ -724,7 +727,7 @@
         {
           "type": "text",
           "name": "mqtt_grid_export_limit",
-          "visibleIf": "{devices} contains 'inverter'",
+          "visibleIf": "{devices} contains 'inverter' and {battery_vendor} <> 'senec3' and {battery_vendor} <> 'senec4'",
           "title": {
             "de": "Einspeisebegrenzung",
             "default": "Grid export limit"
@@ -738,7 +741,7 @@
         {
           "type": "text",
           "name": "mqtt_battery_power",
-          "visibleIf": "{devices} contains 'battery'",
+          "visibleIf": "{devices} contains 'battery' and {battery_vendor} <> 'senec3' and {battery_vendor} <> 'senec4'",
           "title": {
             "de": "Batterie: Beladung / -entladung",
             "default": "Battery charging power"
@@ -752,7 +755,7 @@
         {
           "type": "radiogroup",
           "name": "mqtt_battery_power_pos_neg",
-          "visibleIf": "{devices} contains 'battery'",
+          "visibleIf": "{devices} contains 'battery' and {battery_vendor} <> 'senec3' and {battery_vendor} <> 'senec4'",
           "title": {
             "de": "Batterie: Vorzeichenbehandlung",
             "default": "Battery: Sign handling"
@@ -778,7 +781,7 @@
         {
           "type": "text",
           "name": "mqtt_battery_soc",
-          "visibleIf": "{devices} contains 'battery'",
+          "visibleIf": "{devices} contains 'battery' and {battery_vendor} <> 'senec3' and {battery_vendor} <> 'senec4'",
           "title": {
             "de": "Batterie-Ladestand",
             "default": "Battery SOC"
@@ -870,7 +873,7 @@
         {
           "type": "text",
           "name": "mqtt_case_temp",
-          "visibleIf": "{devices} contains 'inverter'",
+          "visibleIf": "{devices} contains 'inverter' and {battery_vendor} <> 'senec3' and {battery_vendor} <> 'senec4'",
           "title": {
             "de": "Geräte- oder Gehäusetemperatur",
             "default": "Case temperatur"
@@ -884,7 +887,7 @@
         {
           "type": "text",
           "name": "mqtt_system_status",
-          "visibleIf": "{devices} contains 'inverter'",
+          "visibleIf": "{devices} contains 'inverter' and {battery_vendor} <> 'senec3' and {battery_vendor} <> 'senec4'",
           "title": {
             "de": "Systemstatus",
             "default": "System status"
@@ -901,7 +904,7 @@
         {
           "type": "text",
           "name": "mqtt_system_status_ok",
-          "visibleIf": "{devices} contains 'inverter'",
+          "visibleIf": "{devices} contains 'inverter' and {battery_vendor} <> 'senec3' and {battery_vendor} <> 'senec4'",
           "title": {
             "de": "Systemstatus ist OK",
             "default": "System status is ok"

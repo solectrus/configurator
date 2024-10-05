@@ -54,8 +54,8 @@ describe('useSurveyStore', () => {
     survey.setValue('wallbox_vendor', 'other')
 
     expect(survey.getPageByName('p_mqtt').isVisible).toBe(true)
-    expect(survey.getQuestionByName('mqtt_inverter_power').isVisible).toBe(true)
-    expect(survey.getQuestionByName('mqtt_battery_power').isVisible).toBe(true)
+    expect(survey.getQuestionByName('mqtt_inverter_power').isVisible).toBe(false)
+    expect(survey.getQuestionByName('mqtt_battery_power').isVisible).toBe(false)
     expect(survey.getQuestionByName('mqtt_wallbox_power').isVisible).toBe(true)
   })
 
