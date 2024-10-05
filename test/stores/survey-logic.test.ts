@@ -69,7 +69,7 @@ describe('useSurveyStore', () => {
     expect(survey.getQuestionByName('mqtt_car_battery_soc').isVisible).toBe(true)
   })
 
-  it('does not offers MQTT questions (1)', () => {
+  it('does not ask for MQTT (1)', () => {
     survey.setValue('devices', ['inverter', 'battery', 'wallbox', 'heatpump'])
     survey.setValue('installation_type', 'cloud')
     survey.setValue('battery_vendor', 'other')
@@ -79,13 +79,23 @@ describe('useSurveyStore', () => {
     expect(survey.getPageByName('p_mqtt').isVisible).toBe(false)
   })
 
-  it('does not offers MQTT questions (2)', () => {
+  it('does not ask for MQTT (2)', () => {
     survey.setValue('devices', ['inverter', 'battery', 'wallbox', 'heatpump'])
     survey.setValue('installation_type', 'distributed')
     survey.setValue('distributed_choice', 'cloud')
     survey.setValue('battery_vendor', 'other')
     survey.setValue('wallbox_vendor', 'other')
     survey.setValue('heatpump_access', 'mqtt')
+
+    expect(survey.getPageByName('p_mqtt').isVisible).toBe(false)
+  })
+
+  it('does not ask for MQTT (3)', () => {
+    survey.setValue('devices', ['inverter', 'battery'])
+    survey.setValue('battery_vendor', 'senec3')
+    survey.setValue('installation_type', 'local')
+    survey.setValue('linux_machine', 'raspberry')
+    survey.setValue('senec_host', 'senec')
 
     expect(survey.getPageByName('p_mqtt').isVisible).toBe(false)
   })

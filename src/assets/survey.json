@@ -164,6 +164,7 @@
     },
     {
       "name": "p_wallbox",
+      "visibleIf": "{devices} contains 'wallbox' and {battery_vendor} anyof ['senec3', 'senec4']",
       "title": {
         "de": "Wallbox",
         "default": "Vendor Wallbox"
@@ -239,7 +240,7 @@
                 "de": "Verteilt: Messwerterfassung lokal, Server in der Cloud",
                 "default": "Distributed: Local measurement, server in the cloud"
               },
-              "visibleIf": "{battery_vendor} anyof ['other', 'senec3'] or {wallbox_vendor} = 'other' or {devices} contains 'heatpump' or {devices} = ['inverter']"
+              "visibleIf": "{battery_vendor} anyof ['other', 'senec3'] or ({devices} contains 'wallbox' and {wallbox_vendor} != 'senec') or {devices} contains 'heatpump' or {devices} = ['inverter']"
             }
           ]
         }
@@ -593,7 +594,7 @@
     },
     {
       "name": "p_mqtt",
-      "visibleIf": "({battery_vendor} = 'other' or {wallbox_vendor} = 'other' or {heatpump_access} = 'mqtt' or {devices} = ['inverter'] or {devices} contains 'car') and ({installation_type} = 'local' or {distributed_choice} = 'local')",
+      "visibleIf": "({battery_vendor} = 'other' or ({devices} contains 'wallbox' and {wallbox_vendor} != 'senec') or {heatpump_access} = 'mqtt' or {devices} = ['inverter'] or {devices} contains 'car') and ({installation_type} = 'local' or {distributed_choice} = 'local')",
       "title": {
         "de": "Zugriff auf MQTT-Broker",
         "default": "Access to MQTT broker"
@@ -661,7 +662,7 @@
     },
     {
       "name": "p_mqtt_topics",
-      "visibleIf": "({battery_vendor} = 'other' or {wallbox_vendor} = 'other' or {heatpump_access} = 'mqtt' or {devices} = ['inverter'] or {devices} contains 'car') and ({installation_type} = 'local' or {distributed_choice} = 'local')",
+      "visibleIf": "({battery_vendor} = 'other' or ({devices} contains 'wallbox' and {wallbox_vendor} != 'senec') or {heatpump_access} = 'mqtt' or {devices} = ['inverter'] or {devices} contains 'car') and ({installation_type} = 'local' or {distributed_choice} = 'local')",
       "title": {
         "default": "MQTT topics",
         "de": "MQTT-Topics"
@@ -810,7 +811,7 @@
         {
           "type": "text",
           "name": "mqtt_wallbox_power",
-          "visibleIf": "{devices} contains 'wallbox' and {wallbox_vendor} = 'other'",
+          "visibleIf": "{devices} contains 'wallbox' and {wallbox_vendor} != 'senec'",
           "title": {
             "de": "Wallbox",
             "default": "Wallbox power"
@@ -824,7 +825,7 @@
         {
           "type": "text",
           "name": "mqtt_wallbox_car_connected",
-          "visibleIf": "{devices} contains 'wallbox' and {wallbox_vendor} <> 'senec'",
+          "visibleIf": "{devices} contains 'wallbox' and {wallbox_vendor} != 'senec'",
           "title": {
             "de": "Wallbox: Auto verbunden",
             "default": "Wallbox: Car connected"
@@ -841,7 +842,7 @@
         {
           "type": "radiogroup",
           "name": "wallbox_exclude_from_house_power",
-          "visibleIf": "{devices} contains 'wallbox' and {wallbox_vendor} = 'other'",
+          "visibleIf": "{devices} contains 'wallbox' and {wallbox_vendor} != 'senec'",
           "title": {
             "de": "Wallbox im Hausverbrauch enthalten?",
             "default": "Wallbox included in household consumption?"
