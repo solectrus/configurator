@@ -10,6 +10,8 @@ services:
       - SENEC_LANGUAGE
       - SENEC_USERNAME
       - SENEC_PASSWORD
+      - SENEC_IGNORE
+      - SENEC_SYSTEM_ID
       - INFLUX_HOST
       - INFLUX_SCHEMA
       - INFLUX_PORT
