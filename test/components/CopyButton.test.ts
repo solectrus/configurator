@@ -53,7 +53,7 @@ describe('CopyButton', () => {
     global.Blob = vi.fn()
     global.URL = {
       createObjectURL: vi.fn(() => 'test-url'),
-    } as any
+    } as any // eslint-disable-line @typescript-eslint/no-explicit-any
 
     // Click the button
     await wrapper.find('button[title="Download as file"]').trigger('click')

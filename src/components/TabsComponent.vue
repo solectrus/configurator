@@ -29,6 +29,6 @@ const setActiveTab = (index: number) => {
       </button>
     </nav>
 
-    <slot :name="`tab-${activeTab}`"></slot>
+    <slot :name="`tab-${activeTab}`" />
   </div>
 </template>

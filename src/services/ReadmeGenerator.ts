@@ -177,11 +177,13 @@ export class ReadmeGenerator {
     return module.default
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private async loadPlaceholders(): Promise<any> {
     const module = await import(`@/templates/readme/${this.language}/placeholders.json`)
     return module.default
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private replacePlaceholders(markdown: string, vars: any): string {
     return markdown.replace(/%\{([^}]+)\}/g, (match, key) => {
       return vars[key]

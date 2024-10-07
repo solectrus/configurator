@@ -1,23 +1,18 @@
-import path from 'node:path'
-import { fileURLToPath } from 'node:url'
+import eslint from '@eslint/js'
+import tseslint from 'typescript-eslint'
 
-import { FlatCompat } from '@eslint/eslintrc'
+import pluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 import pluginVue from 'eslint-plugin-vue'
-import js from '@eslint/js'
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-})
+import vueTsEslintConfig from '@vue/eslint-config-typescript'
+import prettierConfig from '@vue/eslint-config-prettier'
 
 export default [
+  eslint.configs.recommended,
+  ...tseslint.configs.recommended,
+  pluginPrettierRecommended,
   ...pluginVue.configs['flat/recommended'],
-  js.configs.recommended,
-  ...compat.extends('plugin:vue/vue3-recommended'),
-  ...compat.extends('@vue/eslint-config-typescript'),
-  ...compat.extends('@vue/eslint-config-prettier/skip-formatting'),
+  ...vueTsEslintConfig(),
   {
     files: [
       '**/*.vue',
@@ -37,4 +32,5 @@ export default [
   {
     ignores: ['dist/', 'node_modules/', '.yarn/', 'coverage/'],
   },
+  prettierConfig,
 ]
