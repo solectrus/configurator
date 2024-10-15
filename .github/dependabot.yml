@@ -29,6 +29,12 @@ updates:
           - 'vue-tsc'
           - '@tsconfig*'
           - '@vue/tsconfig'
+      eslint:
+        patterns:
+          - 'eslint'
+          - 'eslint-*'
+          - '@vue/eslint-*'
+          - 'typescript-eslint'
 
   - package-ecosystem: 'github-actions'
     directory: '/'
