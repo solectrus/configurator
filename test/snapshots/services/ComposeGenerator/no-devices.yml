@@ -23,6 +23,7 @@ services:
       - INSTALLATION_DATE
       - ADMIN_PASSWORD
       - FRAME_ANCESTORS
+      - UI_THEME
       - CO2_EMISSION_FACTOR
       - DB_HOST=postgresql
       - DB_PASSWORD=${POSTGRES_PASSWORD}
