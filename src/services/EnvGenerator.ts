@@ -375,15 +375,16 @@ export class EnvGenerator {
     let result = envContent
 
     Object.entries(replacements).forEach(([key, value]) => {
-      const regex = new RegExp(`^${key}=.*$`, 'gm')
+      const regex = new RegExp(`^${key}=(.*)$`, 'gm')
       if (value) {
         // Replace existing line or add if not found
         result = RegExp(regex).exec(result)
           ? result.replace(regex, `${key}=${value}`)
           : `${result}${key}=${value}\n`
       } else {
-        // Comment out the line
-        result = result.replace(regex, `# $&`)
+        // Comment out the line, but only if the key has content
+        // This ensures that blank values are NOT commented out
+        result = result.replace(regex, (line, content) => (content ? `# ${line}` : line))
       }
     })
 
