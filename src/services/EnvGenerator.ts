@@ -377,13 +377,10 @@ export class EnvGenerator {
     Object.entries(replacements).forEach(([key, value]) => {
       const regex = new RegExp(`^${key}=.*$`, 'gm')
       if (value) {
-        if (RegExp(regex).exec(result)) {
-          // Replace existing line
-          result = result.replace(regex, `${key}=${value}`)
-        } else {
-          // Add new line
-          result += `${key}=${value}\n`
-        }
+        // Replace existing line or add if not found
+        result = RegExp(regex).exec(result)
+          ? result.replace(regex, `${key}=${value}`)
+          : `${result}${key}=${value}\n`
       } else {
         // Comment out the line
         result = result.replace(regex, `# $&`)
