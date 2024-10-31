@@ -205,7 +205,7 @@ services:
       - INFLUX_TOKEN=${INFLUX_TOKEN_WRITE}
       - INFLUX_ORG
       - INFLUX_BUCKET
-      - INFLUX_MEASUREMENT=${FORECAST_INFLUX_MEASUREMENT}
+      - INFLUX_MEASUREMENT=${INFLUX_MEASUREMENT_FORECAST}
     restart: unless-stopped
     logging:
       options:
