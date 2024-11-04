@@ -163,7 +163,7 @@ export class ComposeGenerator {
 
     return (
       this.answers.battery_vendor === 'other' ||
-      this.answers.wallbox_vendor === 'other' ||
+      (this.answers.devices?.includes('wallbox') && this.answers.wallbox_vendor !== 'senec') ||
       this.answers.heatpump_access === 'mqtt' ||
       this.answers.devices?.includes('car') ||
       (this.answers.devices?.length === 1 && this.answers.devices.includes('inverter'))

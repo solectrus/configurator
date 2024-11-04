@@ -43,13 +43,19 @@ export class SensorBuilder {
       }
 
     if (this.answers.devices?.includes('wallbox'))
-      if (this.answers.wallbox_vendor === 'senec')
-        result = { ...result, ...this.sensorsWallboxSenec(), ...this.sensorsCar() }
-      else if (this.answers.wallbox_vendor === 'other')
-        result = { ...result, ...this.sensorsWallboxOther(), ...this.sensorsCar() }
+      if (this.answers.wallbox_vendor === 'senec') {
+        result = { ...result, ...this.sensorsWallboxSenec() }
+      } else {
+        result = { ...result, ...this.sensorsWallboxOther() }
+      }
+
+    if (this.answers.devices?.includes('car')) {
+      result = { ...result, ...this.sensorsCar() }
+    }
 
     if (this.answers.devices?.includes('heatpump')) {
       result = { ...result, ...this.sensorsHeatpump() }
+    }
 
     if (
       this.answers.forecast == 'forecast_forecast_solar' ||

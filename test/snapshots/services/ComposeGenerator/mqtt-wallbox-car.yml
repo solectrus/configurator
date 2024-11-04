@@ -139,38 +139,6 @@ services:
         max-file: '3'
     labels:
       - com.centurylinklabs.watchtower.scope=solectrus
-  senec-collector:
-    image: ghcr.io/solectrus/senec-collector:latest
-    environment:
-      - TZ
-      - SENEC_ADAPTER
-      - SENEC_HOST
-      - SENEC_SCHEMA
-      - SENEC_INTERVAL
-      - SENEC_LANGUAGE
-      - SENEC_USERNAME
-      - SENEC_PASSWORD
-      - SENEC_IGNORE
-      - SENEC_SYSTEM_ID
-      - INFLUX_HOST
-      - INFLUX_SCHEMA
-      - INFLUX_PORT
-      - INFLUX_TOKEN=${INFLUX_TOKEN_WRITE}
-      - INFLUX_ORG
-      - INFLUX_BUCKET
-      - INFLUX_MEASUREMENT=${INFLUX_MEASUREMENT_SENEC}
-    restart: unless-stopped
-    logging:
-      options:
-        max-size: 10m
-        max-file: '3'
-    depends_on:
-      influxdb:
-        condition: service_healthy
-    links:
-      - influxdb
-    labels:
-      - com.centurylinklabs.watchtower.scope=solectrus
   mqtt-collector:
     image: ghcr.io/solectrus/mqtt-collector:latest
     environment:
@@ -195,9 +163,23 @@ services:
       - MAPPING_1_FIELD
       - MAPPING_1_TYPE
       - MAPPING_2_TOPIC
-      - MAPPING_2_MEASUREMENT
-      - MAPPING_2_FIELD
+      - MAPPING_2_MEASUREMENT_POSITIVE
+      - MAPPING_2_MEASUREMENT_NEGATIVE
+      - MAPPING_2_FIELD_POSITIVE
+      - MAPPING_2_FIELD_NEGATIVE
       - MAPPING_2_TYPE
+      - MAPPING_3_TOPIC
+      - MAPPING_3_MEASUREMENT
+      - MAPPING_3_FIELD
+      - MAPPING_3_TYPE
+      - MAPPING_4_TOPIC
+      - MAPPING_4_MEASUREMENT
+      - MAPPING_4_FIELD
+      - MAPPING_4_TYPE
+      - MAPPING_5_TOPIC
+      - MAPPING_5_MEASUREMENT
+      - MAPPING_5_FIELD
+      - MAPPING_5_TYPE
     restart: unless-stopped
     logging:
       options:

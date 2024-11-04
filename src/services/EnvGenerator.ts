@@ -91,7 +91,7 @@ export class EnvGenerator {
 
     if (
       this.answers.devices?.includes('wallbox') &&
-      this.answers.wallbox_vendor === 'other' &&
+      this.answers.wallbox_vendor !== 'senec' &&
       this.answers.wallbox_exclude_from_house_power === 'yes'
     ) {
       result.push('WALLBOX_POWER')
