@@ -810,6 +810,20 @@
         },
         {
           "type": "text",
+          "name": "mqtt_case_temp",
+          "visibleIf": "{devices} contains 'inverter' and {battery_vendor} <> 'senec3' and {battery_vendor} <> 'senec4'",
+          "title": {
+            "de": "Geräte- oder Gehäusetemperatur",
+            "default": "Case temperatur"
+          },
+          "description": "in °C",
+          "placeholder": {
+            "default": "e.g. myhome/inverter/case_temp",
+            "de": "z.B. myhome/inverter/case_temp"
+          }
+        },
+        {
+          "type": "text",
           "name": "mqtt_wallbox_power",
           "visibleIf": "{devices} contains 'wallbox' and {wallbox_vendor} != 'senec'",
           "title": {
@@ -820,23 +834,6 @@
           "placeholder": {
             "default": "e.g. myhome/wallbox/0/power",
             "de": "z.B. myhome/wallbox/0/power"
-          }
-        },
-        {
-          "type": "text",
-          "name": "mqtt_wallbox_car_connected",
-          "visibleIf": "{devices} contains 'wallbox' and {wallbox_vendor} != 'senec'",
-          "title": {
-            "de": "Wallbox: Auto verbunden",
-            "default": "Wallbox: Car connected"
-          },
-          "description": {
-            "default": "True/False, 0/1, \"Yes\"/\"No\" or \"True\"/\"False\"",
-            "de": "True/False, 0/1, \"Yes\"/\"No\" oder \"True\"/\"False\""
-          },
-          "placeholder": {
-            "default": "e.g. myhome/wallbox/0/car_connected",
-            "de": "z.B. myhome/wallbox/0/car_connected"
           }
         },
         {
@@ -863,6 +860,23 @@
               }
             }
           ]
+        },
+        {
+          "type": "text",
+          "name": "mqtt_wallbox_car_connected",
+          "visibleIf": "{devices} contains 'wallbox' and {wallbox_vendor} != 'senec'",
+          "title": {
+            "de": "Wallbox: Auto verbunden",
+            "default": "Wallbox: Car connected"
+          },
+          "description": {
+            "default": "True/False, 0/1, \"Yes\"/\"No\" or \"True\"/\"False\"",
+            "de": "True/False, 0/1, \"Yes\"/\"No\" oder \"True\"/\"False\""
+          },
+          "placeholder": {
+            "default": "e.g. myhome/wallbox/0/car_connected",
+            "de": "z.B. myhome/wallbox/0/car_connected"
+          }
         },
         {
           "type": "text",
@@ -916,20 +930,6 @@
               }
             }
           ]
-        },
-        {
-          "type": "text",
-          "name": "mqtt_case_temp",
-          "visibleIf": "{devices} contains 'inverter' and {battery_vendor} <> 'senec3' and {battery_vendor} <> 'senec4'",
-          "title": {
-            "de": "Geräte- oder Gehäusetemperatur",
-            "default": "Case temperatur"
-          },
-          "description": "in °C",
-          "placeholder": {
-            "default": "e.g. myhome/inverter/case_temp",
-            "de": "z.B. myhome/inverter/case_temp"
-          }
         },
         {
           "type": "text",
