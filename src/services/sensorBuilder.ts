@@ -28,16 +28,19 @@ export class SensorBuilder {
     }
 
     if (this.answers.devices?.includes('inverter'))
-      if (this.answers.battery_vendor === 'senec4' || this.answers.battery_vendor === 'senec3')
+      if (this.answers.battery_vendor === 'senec4' || this.answers.battery_vendor === 'senec3') {
         result = { ...result, ...this.sensorsInverterSenec() }
-      else result = { ...result, ...this.sensorsInverterOther() }
+      } else {
+        result = { ...result, ...this.sensorsInverterOther() }
+      }
     else result = { ...result, ...this.sensorsWithoutInverter() }
 
     if (this.answers.devices?.includes('battery'))
-      if (this.answers.battery_vendor === 'senec4' || this.answers.battery_vendor === 'senec3')
+      if (this.answers.battery_vendor === 'senec4' || this.answers.battery_vendor === 'senec3') {
         result = { ...result, ...this.sensorsBatterySenec() }
-      else if (this.answers.battery_vendor === 'other')
+      } else if (this.answers.battery_vendor === 'other') {
         result = { ...result, ...this.sensorsBatteryOther() }
+      }
 
     if (this.answers.devices?.includes('wallbox'))
       if (this.answers.wallbox_vendor === 'senec')
@@ -45,14 +48,15 @@ export class SensorBuilder {
       else if (this.answers.wallbox_vendor === 'other')
         result = { ...result, ...this.sensorsWallboxOther(), ...this.sensorsCar() }
 
-    if (this.answers.devices?.includes('heatpump'))
+    if (this.answers.devices?.includes('heatpump')) {
       result = { ...result, ...this.sensorsHeatpump() }
 
     if (
       this.answers.forecast == 'forecast_forecast_solar' ||
       this.answers.forecast == 'forecast_solcast'
-    )
+    ) {
       result = { ...result, ...this.sensorsForecast() }
+    }
 
     return result
   }
@@ -141,6 +145,8 @@ export class SensorBuilder {
   }
 
   private sensorsCar() {
-    return { ...(this.answers.mqtt_car_battery_soc && { CAR_BATTERY_SOC: 'car:battery_soc' }) }
+    return {
+      ...(this.answers.mqtt_car_battery_soc && { CAR_BATTERY_SOC: 'car:battery_soc' }),
+    }
   }
 }

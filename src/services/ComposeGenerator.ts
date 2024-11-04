@@ -161,13 +161,13 @@ export class ComposeGenerator {
   private mqttRequired() {
     if (this.answers.distributed_choice === 'cloud') return false
 
-    if (this.answers.battery_vendor === 'other') return true
-    if (this.answers.wallbox_vendor === 'other') return true
-    if (this.answers.heatpump_access === 'mqtt') return true
-    if (this.answers.devices?.includes('car')) return true
-    if (this.answers.devices?.length === 1 && this.answers.devices.includes('inverter')) return true
-
-    return false
+    return (
+      this.answers.battery_vendor === 'other' ||
+      this.answers.wallbox_vendor === 'other' ||
+      this.answers.heatpump_access === 'mqtt' ||
+      this.answers.devices?.includes('car') ||
+      (this.answers.devices?.length === 1 && this.answers.devices.includes('inverter'))
+    )
   }
 
   private configureWatchtower() {
