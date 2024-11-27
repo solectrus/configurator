@@ -13,7 +13,7 @@ describe('ReadmeGenerator', () => {
         readmeFile = readme
       })
 
-      expect(readmeFile).toMatchFileSnapshot(
+      await expect(readmeFile).toMatchFileSnapshot(
         `../snapshots/services/ReadmeGenerator/de/${expectedSnapshotFile}.md`,
       )
 
@@ -22,7 +22,7 @@ describe('ReadmeGenerator', () => {
         readmeFile = readme
       })
 
-      expect(readmeFile).toMatchFileSnapshot(
+      await expect(readmeFile).toMatchFileSnapshot(
         `../snapshots/services/ReadmeGenerator/en/${expectedSnapshotFile}.md`,
       )
     },

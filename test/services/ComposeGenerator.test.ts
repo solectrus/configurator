@@ -5,11 +5,11 @@ import { testCases } from '../fixtures/answers'
 describe('ComposeGenerator', () => {
   test.each(testCases)(
     '$# - correctly builds compose.yaml with different configurations for %s',
-    (expectedSnapshotFile, answers) => {
+    async (expectedSnapshotFile, answers) => {
       const service = new ComposeGenerator(answers)
       const result = service.build().text()
 
-      expect(result).toMatchFileSnapshot(
+      await expect(result).toMatchFileSnapshot(
         `../snapshots/services/ComposeGenerator/${expectedSnapshotFile}.yml`,
       )
     },
