@@ -35,4 +35,4 @@ yarn test
 yarn lint
 ```
 
-Copyright (c) 2024 by Georg Ledermann (georg@ledermann.dev)
+Copyright (c) 2024-2025 by Georg Ledermann (georg@ledermann.dev)
