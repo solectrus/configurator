@@ -23,7 +23,7 @@ export const testCases: [string, Answers][] = [
       forecast_latitude: 11.1,
       forecast_longitude: 22.2,
       forecast_declination1: 33.3,
-      forecast_azimuth1: 44.4,
+      forecast_azimuth1: 0,
       forecast_kwp1: 5.55,
       backup: true,
       installation_date: '2021-01-01',
