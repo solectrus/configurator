@@ -122,11 +122,14 @@ ls -la
 Du solltest die folgende Ausgabe sehen:
 
 ```console
-total 24
-drwxr-xr-x 2 root root 4096 Apr  7 09:42 ./
-drwx------ 5 root root 4096 Apr  7 09:42 ../
--rw-r--r-- 1 root root 6018 Apr  7 09:42 compose.yaml
--rw-r--r-- 1 root root 6032 Apr  7 09:42 .env
+total 40
+drwxr-xr-x 5 root root 4096 Jan  9 17:01 .
+drwx------ 7 root root 4096 Jan  9 16:59 ..
+-rw-r--r-- 1 root root 6816 Jan  9 17:01 compose.yaml
+-rw-r--r-- 1 root root 8428 Jan  9 17:01 .env
+drwxr-xr-x 2 root root 4096 Jan  9 16:59 influxdb
+drwxr-xr-x 2 root root 4096 Jan  9 16:59 postgresql
+drwxr-xr-x 2 root root 4096 Jan  9 16:59 redis
 ```
 
 ## Starte die Docker-Container
