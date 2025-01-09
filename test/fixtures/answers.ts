@@ -421,6 +421,22 @@ export const testCases: [string, Answers][] = [
     },
   ],
   [
+    'cloud-senec4-wallbox',
+    {
+      devices: ['inverter', 'battery', 'wallbox'],
+      installation_type: 'cloud',
+      app_host: '42.42.42.42',
+      battery_vendor: 'senec4',
+      wallbox_vendor: 'senec',
+      senec_username: 'peter@gmx.de',
+      senec_password: 'mysecret',
+      senec_system_id: '111',
+      senec_interval_cloud: 45,
+      installation_date: '2021-01-06',
+      admin_password: 'admin-password',
+    },
+  ],
+  [
     'cloud-senec4-traefik',
     {
       devices: ['inverter', 'battery'],

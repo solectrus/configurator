@@ -154,7 +154,11 @@ export class ComposeGenerator {
       this.answers.devices.includes('inverter') &&
       (this.answers.devices.includes('wallbox') || this.answers.devices.includes('heatpump'))
     )
-      if (this.answers.installation_type === 'local' || this.answers.distributed_choice === 'cloud')
+      if (
+        this.answers.installation_type === 'local' ||
+        this.answers.installation_type === 'cloud' ||
+        this.answers.distributed_choice === 'cloud'
+      )
         this.addService('power-splitter', powerSplitterService)
   }
 
