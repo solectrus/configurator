@@ -1517,9 +1517,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.30001646, caniuse-lite@npm:^1.0.30001688":
-  version: 1.0.30001692
-  resolution: "caniuse-lite@npm:1.0.30001692"
-  checksum: 10c0/fca5105561ea12f3de593f3b0f062af82f7d07519e8dbcb97f34e7fd23349bcef1b1622a9a6cd2164d98e3d2f20059ef7e271edae46567aef88caf4c16c7708a
+  version: 1.0.30001695
+  resolution: "caniuse-lite@npm:1.0.30001695"
+  checksum: 10c0/acf90a767051fdd8083711b3ff9f07a28149c55e394115d8f874f149aa4f130e6bc50cea1dd94fe03035b9ebbe13b64f446518a6d2e19f72650962bdff44b2c5
   languageName: node
   linkType: hard
 
@@ -2208,14 +2208,14 @@ __metadata:
   linkType: hard
 
 "fdir@npm:^6.4.2":
-  version: 6.4.2
-  resolution: "fdir@npm:6.4.2"
+  version: 6.4.3
+  resolution: "fdir@npm:6.4.3"
   peerDependencies:
     picomatch: ^3 || ^4
   peerDependenciesMeta:
     picomatch:
       optional: true
-  checksum: 10c0/34829886f34a3ca4170eca7c7180ec4de51a3abb4d380344063c0ae2e289b11d2ba8b724afee974598c83027fea363ff598caf2b51bc4e6b1e0d8b80cc530573
+  checksum: 10c0/d13c10120e9625adf21d8d80481586200759928c19405a816b77dd28eaeb80e7c59c5def3e2941508045eb06d34eb47fad865ccc8bf98e6ab988bb0ed160fb6f
   languageName: node
   linkType: hard
 
@@ -3352,9 +3352,9 @@ __metadata:
   linkType: hard
 
 "pathe@npm:^2.0.1":
-  version: 2.0.1
-  resolution: "pathe@npm:2.0.1"
-  checksum: 10c0/902139a0beddcdc4396f59bf94315a2a228f01666348cd0b4274d9d0aab31325c390a883a6707b9149a9ec39a7a6fe4846e7d11de83be9c596a33daa850a37ef
+  version: 2.0.2
+  resolution: "pathe@npm:2.0.2"
+  checksum: 10c0/21fce96ca9cebf037b075de8e5cc4ac6aa1009bce57946a72695f47ded84cf4b29f03bed721ea0f6e39b69eb1a0620bcee1f72eca46086765214a2965399b83a
   languageName: node
   linkType: hard
 
@@ -4245,21 +4245,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tldts-core@npm:^6.1.72":
-  version: 6.1.72
-  resolution: "tldts-core@npm:6.1.72"
-  checksum: 10c0/6cc0226c0b68264ee58f43aeb2165aae5ca058dd86ba83cc015c15494df6c9b9630553ae9d4d3bff5916f9952d4e4cc2b17853ee5aaebac978b21bf98d6f9b14
+"tldts-core@npm:^6.1.73":
+  version: 6.1.73
+  resolution: "tldts-core@npm:6.1.73"
+  checksum: 10c0/566d559922ddcbe750b259e23b349d2db916095951f50cfd7811af43043ebc3c022cc9c92ebde6933cf82ad792f71025759e08044c203fe63f6e14fa0e69e8de
   languageName: node
   linkType: hard
 
 "tldts@npm:^6.1.32":
-  version: 6.1.72
-  resolution: "tldts@npm:6.1.72"
+  version: 6.1.73
+  resolution: "tldts@npm:6.1.73"
   dependencies:
-    tldts-core: "npm:^6.1.72"
+    tldts-core: "npm:^6.1.73"
   bin:
     tldts: bin/cli.js
-  checksum: 10c0/013912d4c41ef92b250b3fe26f1bf3bdef528c1bf37cdb1df8678e5aac02f95c5d9280b2302ef61354c0eaafc83f66049c310ddde14ab65687e5b2ebdf66c91f
+  checksum: 10c0/d76e249d13b88311834ee04eafbcac9c2a058b9e0f5c6aaa071982e5fa4d30d07894adfae7cbd2135bbc3baa30bfbdacf09f8f1020697bc6f72137792dc79f69
   languageName: node
   linkType: hard
 
