@@ -21,7 +21,7 @@ const setActiveTab = (index: number) => {
       <button
         v-for="(tab, index) in tabs"
         :key="index"
-        class="rounded px-3 py-1 font-mono"
+        class="rounded-sm px-3 py-1 font-mono"
         :class="{ 'bg-gray-900/90 text-white': activeTab === index }"
         @click="setActiveTab(index)"
       >

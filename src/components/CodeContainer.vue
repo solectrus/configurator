@@ -11,8 +11,8 @@ defineProps<CodeContainerProps>()
 </script>
 
 <template>
-  <div v-if="code" class="sticky right-0 top-16">
-    <div class="absolute right-4 top-4">
+  <div v-if="code" class="sticky top-16 right-0">
+    <div class="absolute top-4 right-4">
       <CopyButton :text="code" :filename="filename" />
     </div>
   </div>
