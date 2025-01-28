@@ -107,7 +107,7 @@ services:
       - traefik.http.routers.influxdb-solectrus.tls=true
       - com.centurylinklabs.watchtower.scope=solectrus
   postgresql:
-    image: postgres:16-alpine
+    image: postgres:17-alpine
     environment:
       - TZ
       - POSTGRES_PASSWORD

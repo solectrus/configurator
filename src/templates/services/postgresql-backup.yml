@@ -1,4 +1,4 @@
-image: eeshugerman/postgres-backup-s3:16
+image: ghcr.io/solectrus/postgres-s3-backup:17
 environment:
   - TZ
   - POSTGRES_DATABASE=solectrus_production

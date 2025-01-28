@@ -96,7 +96,7 @@ services:
     labels:
       - com.centurylinklabs.watchtower.scope=solectrus
   postgresql:
-    image: postgres:16-alpine
+    image: postgres:17-alpine
     environment:
       - TZ
       - POSTGRES_PASSWORD
@@ -296,7 +296,7 @@ services:
     labels:
       - com.centurylinklabs.watchtower.scope=solectrus
   postgresql-backup:
-    image: eeshugerman/postgres-backup-s3:16
+    image: ghcr.io/solectrus/postgres-s3-backup:17
     environment:
       - TZ
       - POSTGRES_DATABASE=solectrus_production
