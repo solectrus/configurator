@@ -7,7 +7,7 @@ This guide assumes you have a cloud server running Linux. If you don't have one,
 First, sign up on Hetzner:
 [https://hetzner.cloud/?ref=NggV8HU9FqCz](https://hetzner.cloud/?ref=NggV8HU9FqCz)
 
-This is a referral link, it will give you (and me) a discount of €20.
+This is a referral link that will give you a credit of €20 (and a small commission for me).
 
 Then order your server:
 

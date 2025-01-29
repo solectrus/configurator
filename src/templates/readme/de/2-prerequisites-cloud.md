@@ -7,7 +7,7 @@ Diese Anleitung geht davon aus, dass du einen Cloud-Server mit Linux hast. Falls
 Zuerst registriere dich bei Hetzner:
 [https://hetzner.cloud/?ref=NggV8HU9FqCz](https://hetzner.cloud/?ref=NggV8HU9FqCz)
 
-Dies ist ein Empfehlungslink, der dir (und mir) einen Rabatt von 20 € gibt.
+Dies ist ein Empfehlungslink, der dir ein Guthaben von €20 einbringt (und mir eine kleine Provision).
 
 Dann bestelle deinen Server:
 
