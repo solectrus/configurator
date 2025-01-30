@@ -1999,18 +1999,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-tailwindcss@npm:^3.18.0":
-  version: 3.18.0
-  resolution: "eslint-plugin-tailwindcss@npm:3.18.0"
-  dependencies:
-    fast-glob: "npm:^3.2.5"
-    postcss: "npm:^8.4.4"
-  peerDependencies:
-    tailwindcss: ^3.4.0
-  checksum: 10c0/e4e782c55bea1937d0a247853c8539914f99d08351d70b33b279289674c85cbb5cbed2e5d3e35cc8b7fea62b1a5495c2e51ad3b98d07468e4af37497d23921b4
-  languageName: node
-  linkType: hard
-
 "eslint-plugin-vue@npm:^9.32.0":
   version: 9.32.0
   resolution: "eslint-plugin-vue@npm:9.32.0"
@@ -2210,7 +2198,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-glob@npm:^3.2.5, fast-glob@npm:^3.3.2, fast-glob@npm:^3.3.3":
+"fast-glob@npm:^3.3.2, fast-glob@npm:^3.3.3":
   version: 3.3.3
   resolution: "fast-glob@npm:3.3.3"
   dependencies:
@@ -3479,7 +3467,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.4.4, postcss@npm:^8.4.41, postcss@npm:^8.4.48, postcss@npm:^8.4.49":
+"postcss@npm:^8.4.41, postcss@npm:^8.4.48, postcss@npm:^8.4.49":
   version: 8.5.1
   resolution: "postcss@npm:8.5.1"
   dependencies:
@@ -3870,7 +3858,6 @@ __metadata:
     "@vue/test-utils": "npm:^2.4.6"
     "@vue/tsconfig": "npm:^0.7.0"
     eslint: "npm:^9.19.0"
-    eslint-plugin-tailwindcss: "npm:^3.18.0"
     eslint-plugin-vue: "npm:^9.32.0"
     highlight.js: "npm:^11.11.1"
     jsdom: "npm:^26.0.0"

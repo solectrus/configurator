@@ -40,7 +40,6 @@
     "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.7.0",
     "eslint": "^9.19.0",
-    "eslint-plugin-tailwindcss": "^3.18.0",
     "eslint-plugin-vue": "^9.32.0",
     "jsdom": "^26.0.0",
     "npm-run-all2": "^7.0.2",
