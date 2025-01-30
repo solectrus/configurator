@@ -837,7 +837,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tailwindcss/postcss@npm:^4.0.0":
+"@tailwindcss/postcss@npm:^4.0.1":
   version: 4.0.1
   resolution: "@tailwindcss/postcss@npm:4.0.1"
   dependencies:
@@ -3856,7 +3856,7 @@ __metadata:
   resolution: "solectrus-configurator@workspace:."
   dependencies:
     "@highlightjs/vue-plugin": "npm:2.1.0"
-    "@tailwindcss/postcss": "npm:^4.0.0"
+    "@tailwindcss/postcss": "npm:^4.0.1"
     "@tailwindcss/typography": "npm:^0.5.16"
     "@tsconfig/node20": "npm:^20.1.4"
     "@types/js-yaml": "npm:^4.0.9"
@@ -3883,7 +3883,7 @@ __metadata:
     rollup-plugin-gzip: "npm:^4.0.1"
     survey-core: "npm:^1.12.21"
     survey-vue3-ui: "npm:^1.12.21"
-    tailwindcss: "npm:^4.0.0"
+    tailwindcss: "npm:^4.0.1"
     typescript: "npm:^5.7.3"
     vite: "npm:^6.0.11"
     vitest: "npm:^3.0.4"
@@ -4021,7 +4021,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:4.0.1, tailwindcss@npm:^4.0.0":
+"tailwindcss@npm:4.0.1, tailwindcss@npm:^4.0.1":
   version: 4.0.1
   resolution: "tailwindcss@npm:4.0.1"
   checksum: 10c0/06a512f34a3eb89ad3de83952d6b4f00a8a07d9859145a7c60e6cb20dcaaed97a2b96e0a204823cb63d385575eb0380b26be124f02e73d729fd8a98ac4ed7087
