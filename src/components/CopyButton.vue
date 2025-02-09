@@ -32,8 +32,8 @@ const downloadAsFile = () => {
 </script>
 
 <template>
-  <div class="flex items-end gap-2 rounded bg-[#22272e] p-1">
-    <div v-if="copied" class="flex select-none items-end gap-2 font-sans text-sm text-green-300">
+  <div class="flex items-end gap-2 rounded-sm bg-[#22272e] p-1">
+    <div v-if="copied" class="flex items-end gap-2 font-sans text-sm text-green-300 select-none">
       <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
         <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
       </svg>

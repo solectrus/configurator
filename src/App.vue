@@ -51,12 +51,12 @@ const buildDate = import.meta.env.VITE_BUILD_DATE
       <TheOutput v-if="store.finished" class="no-scrollbar max-w-4xl flex-1" />
     </main>
 
-    <nav class="flex justify-between gap-5 p-5 lg:fixed lg:bottom-12 lg:right-0">
+    <nav class="flex justify-between gap-5 p-5 lg:fixed lg:right-0 lg:bottom-12">
       <button
         v-if="store.finished || store.survey.currentPageNo > 0"
         type="button"
         name="restart"
-        class="inline-flex items-center gap-2 space-x-2 rounded p-2 text-sm text-slate-300 hover:text-white"
+        class="inline-flex items-center gap-2 space-x-2 rounded-sm p-2 text-sm text-slate-300 hover:text-white"
         @click="store.back()"
       >
         <svg
@@ -78,7 +78,7 @@ const buildDate = import.meta.env.VITE_BUILD_DATE
         v-if="store.finished || store.survey.currentPageNo > 0"
         type="button"
         name="restart"
-        class="inline-flex items-center gap-2 space-x-2 rounded p-2 text-sm text-slate-300 hover:text-red-400"
+        class="inline-flex items-center gap-2 space-x-2 rounded-sm p-2 text-sm text-slate-300 hover:text-red-400"
         @click="store.restart()"
       >
         <svg

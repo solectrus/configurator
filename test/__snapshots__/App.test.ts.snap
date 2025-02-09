@@ -39,11 +39,11 @@ exports[`App > can mount when finished 1`] = `
       />
     </main>
     <nav
-      class="flex justify-between gap-5 p-5 lg:fixed lg:bottom-12 lg:right-0"
+      class="flex justify-between gap-5 p-5 lg:fixed lg:right-0 lg:bottom-12"
       data-v-7a7a37b1=""
     >
       <button
-        class="inline-flex items-center gap-2 space-x-2 rounded p-2 text-sm text-slate-300 hover:text-white"
+        class="inline-flex items-center gap-2 space-x-2 rounded-sm p-2 text-sm text-slate-300 hover:text-white"
         data-v-7a7a37b1=""
         name="restart"
         type="button"
@@ -65,7 +65,7 @@ exports[`App > can mount when finished 1`] = `
         </svg>
       </button>
       <button
-        class="inline-flex items-center gap-2 space-x-2 rounded p-2 text-sm text-slate-300 hover:text-red-400"
+        class="inline-flex items-center gap-2 space-x-2 rounded-sm p-2 text-sm text-slate-300 hover:text-red-400"
         data-v-7a7a37b1=""
         name="restart"
         type="button"
@@ -149,7 +149,7 @@ exports[`App > can mount when not finished 1`] = `
       <!--v-if-->
     </main>
     <nav
-      class="flex justify-between gap-5 p-5 lg:fixed lg:bottom-12 lg:right-0"
+      class="flex justify-between gap-5 p-5 lg:fixed lg:right-0 lg:bottom-12"
       data-v-7a7a37b1=""
     >
       <!--v-if-->
