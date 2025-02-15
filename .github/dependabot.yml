@@ -35,6 +35,10 @@ updates:
           - 'eslint-*'
           - '@vue/eslint-*'
           - 'typescript-eslint'
+      tailwindcss:
+        patterns:
+          - 'tailwindcss'
+          - '@tailwindcss/*'
 
   - package-ecosystem: 'github-actions'
     directory: '/'
