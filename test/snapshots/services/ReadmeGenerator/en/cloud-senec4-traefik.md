@@ -184,4 +184,6 @@ docker compose logs -n 100 -f
 
 In case of any question, please check out the [forum at GitHub Discussions](https://github.com/orgs/solectrus/discussions). In case of a bug, please open an issue at GitHub in the [SOLECTRUS repository](https://github.com/solectrus/solectrus/issues).
 
-To support the development of SOLECTRUS, please consider [donating](https://ko-fi.com/ledermann) or [become a sponsor on GitHub](https://github.com/sponsors/solectrus).
+## Sponsoring
+
+SOLECTRUS relies on financial support from its users. In return, sponsors gain access to exclusive features. You can find more information on the [sponsorship page](https://solectrus.de/sponsoring/).
