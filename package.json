@@ -53,5 +53,5 @@
     "vitest": "^3.0.7",
     "vue-tsc": "^2.2.8"
   },
-  "packageManager": "yarn@4.6.0"
+  "packageManager": "yarn@4.7.0"
 }
