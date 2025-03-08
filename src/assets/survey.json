@@ -1462,7 +1462,6 @@
       ]
     }
   ],
-  "showCompletedPage": false,
-  "showQuestionNumbers": "off",
+  "showCompletePage": false,
   "questionErrorLocation": "bottom"
 }
