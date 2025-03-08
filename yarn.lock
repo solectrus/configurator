@@ -4060,6 +4060,7 @@ __metadata:
     vite: "npm:^6.2.1"
     vitest: "npm:^3.0.8"
     vue: "npm:^3.5.13"
+    vue-eslint-parser: "npm:^10.1.1"
     vue-markdown-render: "npm:^2.2.1"
     vue-tsc: "npm:^2.2.8"
     yaml: "npm:^2.7.0"
