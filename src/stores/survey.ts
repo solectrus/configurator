@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { Model } from 'survey-core'
 import 'survey-core/i18n/german'
-import { BorderlessLight } from 'survey-core/themes/borderless-light'
+import { BorderlessLight } from 'survey-core/themes'
 
 import type { Answers } from '@/types/answers'
 
