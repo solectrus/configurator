@@ -27,7 +27,7 @@ export default defineConfig({
         gzipPlugin(),
         // Brotli compression as .br files
         gzipPlugin({
-          customCompression: (content) => brotliPromise(Buffer.from(content)),
+          customCompression: (content) => brotliPromise(Buffer.from(content as string)),
           fileName: '.br',
         }),
       ],
