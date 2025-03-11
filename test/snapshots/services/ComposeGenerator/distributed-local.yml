@@ -31,6 +31,9 @@ services:
     environment:
       - TZ
       - SHELLY_HOST
+      - SHELLY_CLOUD_SERVER
+      - SHELLY_AUTH_KEY
+      - SHELLY_DEVICE_ID
       - SHELLY_INTERVAL
       - INFLUX_HOST
       - INFLUX_SCHEMA
