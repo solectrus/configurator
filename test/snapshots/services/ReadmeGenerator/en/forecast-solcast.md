@@ -24,15 +24,15 @@ First, ensure you have a 64bit OS with Kernel v4 or higher. Check your OS and ar
 
 ```console
 $ uname -a
-Linux MyUbuntu 6.8.0-45-generic #45-Ubuntu SMP PREEMPT_DYNAMIC Fri Aug 30 12:02:04 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux
+Linux MyUbuntu 6.8.0-55-generic #57-Ubuntu SMP PREEMPT_DYNAMIC Wed Feb 12 23:42:21 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
 
 $ dpkg --print-architecture
 amd64
 ```
 
-The kernel is `v6`, which is the latest and greatest - `v4` or `v5` will work as well.
+The kernel is `v6` and therefore optimal - `v4` or `v5` will also work, possibly also `v3`.
 
-The architecture is `amd64` which means you are running a 64bit OS. `arm64` is another common architecture for 64bit OS.
+The architecture is 'amd64', which means that you have a 64-bit operating system. `arm64` would be another common architecture for 64-bit operating systems that also works.
 
 If you are running a 32bit OS, you need to upgrade. If the architecture is `armhf`, you are running a 64bit Kernel with 32bit userland, which will **not** work.
 

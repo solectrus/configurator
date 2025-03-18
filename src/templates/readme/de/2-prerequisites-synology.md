@@ -2,7 +2,7 @@
 
 Es gibt viele verschiedene Synology NAS-Geräte mit unterschiedlicher Hardware und Software. Diese Anleitung wurde auf einem Synology NAS DS220+ getestet, sollte aber auch auf einigen anderen Modellen funktionieren.
 
-Ein Prozessor mit mindestens 2 Kernen wird empfohlen, ebenso wie ein RAM-Upgrade auf mehr als 2GB. Ein Linux-Kernel `v4` oder höher ist erforderlich, einige ältere Synology-Geräte funktionieren nicht, da sie Kernel `v3` haben und nicht aktualisiert werden können.
+Ein Prozessor mit mindestens 2 Kernen wird empfohlen, ebenso wie ein RAM-Upgrade auf mehr als 2GB. Ein Linux-Kernel `v4` oder höher ist empfehlenswert, einige ältere Synology-Geräte funktionieren **möglicherweise** nicht, da sie Kernel `v3` haben und nicht aktualisiert werden können.
 
 Neben diesen Anforderungen muss **Docker** installiert und in Betrieb sein. Weitere Software ist nicht erforderlich.
 
@@ -14,13 +14,13 @@ Stelle zuerst sicher, dass du ein 64-Bit-Betriebssystem mit Kernel `v4` oder hö
 
 ```console
 $ uname -a
-Linux MySyno 4.4.302+ #69057 SMP Mon Nov 13 14:19:30 CST 2023 x86_64 GNU/Linux synology_geminilake_220+
+Linux MySyno 4.4.302+ #72806 SMP Thu Sep 5 13:44:44 CST 2024 x86_64 GNU/Linux synology_geminilake_220+
 
 $ dpkg --print-architecture
 amd64
 ```
 
-Der Kernel ist `v4`, was das Minimum ist. Neuere Versionen wie `v5` oder `v6` funktionieren auch. Ältere Versionen wie `v3` funktionieren **nicht**. Leider bietet Synology keine Möglichkeit, den Kernel zu aktualisieren.
+Der Kernel ist `v4`, was das empfohlene Minimum ist. Neuere Versionen wie `v5` oder `v6` funktionieren natürlich auch. Ältere Versionen wie `v3` funktionieren **möglicherweise** nicht. Leider bietet Synology keine Möglichkeit, den Kernel zu aktualisieren.
 
 Die Architektur ist `amd64`, was bedeutet, dass du ein 64-Bit-Betriebssystem hast. Falls du ein 32-Bit-Betriebssystem hast, musst du zuerst upgraden – falls möglich.
 
@@ -30,10 +30,10 @@ Stelle sicher, dass Docker installiert und in Betrieb ist. Überprüfe zuerst de
 
 ```console
 $ docker --version
-Docker version 20.10.23, build 876964a
+Docker version 24.0.2, build 610b8d0
 
 $ docker-compose version
-Docker Compose version v2.9.0-6413-g38f6acd
+Docker Compose version v2.20.1-6047-g6817716
 ```
 
 Falls du Docker nicht installiert hast, installiere den [Container Manager](https://www.synology.com/dsm/packages/ContainerManager) über das Synology-Paketzentrum.

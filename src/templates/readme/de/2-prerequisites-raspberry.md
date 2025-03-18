@@ -10,13 +10,13 @@ Stelle zuerst sicher, dass du ein 64-Bit-Betriebssystem mit Kernel v4 oder höhe
 
 ```console
 $ uname -a
-Linux MyRaspi 6.6.62+rpt-rpi-v8 #1 SMP PREEMPT Debian 1:6.6.62-1+rpt1 (2024-11-25) aarch64 GNU/Linux
+Linux MyRaspi 6.6.74+rpt-rpi-v8 #1 SMP PREEMPT Debian 1:6.6.74-1+rpt1 (2025-01-27) aarch64 GNU/Linux
 
 $ dpkg --print-architecture
 arm64
 ```
 
-Der Kernel ist `v6` und somit optimal - `v4` oder `v5` funktionieren aber auch.
+Der Kernel ist `v6` und somit optimal - `v4` oder `v5` funktionieren aber auch, eventuell auch `v3`.
 
 Die Architektur ist `arm64`, was bedeutet, dass du ein 64-Bit-Betriebssystem hast. Falls du ein 32-Bit-Betriebssystem hast, musst du upgraden. Wenn die Architektur `armhf` ist, läuft bei dir ein 64-Bit-Kernel mit 32-Bit-Userland, was **nicht** funktionieren wird.
 
@@ -28,10 +28,10 @@ Stelle sicher, dass Docker installiert und in Betrieb ist. Überprüfe zuerst de
 
 ```console
 $ docker --version
-Docker version 27.5.1, build 9f9e405
+Docker version 28.0.1, build 068a01e
 
 $ docker compose version
-Docker Compose version v2.32.4
+Docker Compose version v2.33.1
 ```
 
 Eine ältere Version könnte auch funktionieren.

@@ -10,15 +10,15 @@ Stelle zuerst sicher, dass du ein 64-Bit-Betriebssystem mit Kernel v4 oder höhe
 
 ```console
 $ uname -a
-Linux MyUbuntu 6.8.0-45-generic #45-Ubuntu SMP PREEMPT_DYNAMIC Fri Aug 30 12:02:04 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux
+Linux MyUbuntu 6.8.0-55-generic #57-Ubuntu SMP PREEMPT_DYNAMIC Wed Feb 12 23:42:21 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
 
 $ dpkg --print-architecture
 amd64
 ```
 
-Der Kernel ist `v6` und somit optimal - `v4` oder `v5` funktionieren aber auch.
+Der Kernel ist `v6` und somit optimal - `v4` oder `v5` funktionieren aber auch, möglicherweise auch `v3`.
 
-Die Architektur ist `amd64`, was bedeutet, dass du ein 64-Bit-Betriebssystem hast. `arm64` wäre eine weitere gängige Architektur für 64-Bit-Betriebssysteme.
+Die Architektur ist `amd64`, was bedeutet, dass du ein 64-Bit-Betriebssystem hast. `arm64` wäre eine weitere gängige Architektur für 64-Bit-Betriebssysteme, die ebenfalls funktioniert.
 
 Falls du ein 32-Bit-Betriebssystem hast, musst du hier stoppen und prüfen, wie du ein Upgrade durchführen kannst. Wenn die Architektur `armhf` ist, läuft bei dir ein 64-Bit-Kernel mit 32-Bit-Userland, was **nicht** funktionieren wird.
 
