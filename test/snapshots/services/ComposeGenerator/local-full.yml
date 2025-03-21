@@ -306,6 +306,11 @@ services:
     links:
       - postgresql
     restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: '3'
     labels:
       - com.centurylinklabs.watchtower.scope=solectrus
   influxdb-backup:
@@ -325,6 +330,11 @@ services:
     restart: unless-stopped
     links:
       - influxdb
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: '3'
     labels:
       - com.centurylinklabs.watchtower.scope=solectrus
   watchtower:
