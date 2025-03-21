@@ -19,6 +19,7 @@ environment:
   - INFLUX_MEASUREMENT=${INFLUX_MEASUREMENT_SENEC}
 restart: unless-stopped
 logging:
+  driver: json-file
   options:
     max-size: '10m'
     max-file: '3'

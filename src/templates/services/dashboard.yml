@@ -57,6 +57,7 @@ healthcheck:
   start_period: 10s
 restart: unless-stopped
 logging:
+  driver: json-file
   options:
     max-size: '10m'
     max-file: '3'

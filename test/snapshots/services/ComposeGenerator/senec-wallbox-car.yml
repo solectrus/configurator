@@ -61,6 +61,7 @@ services:
       start_period: 10s
     restart: unless-stopped
     logging:
+      driver: json-file
       options:
         max-size: 10m
         max-file: '3'
@@ -90,6 +91,7 @@ services:
       retries: 5
       start_period: 30s
     logging:
+      driver: json-file
       options:
         max-size: 10m
         max-file: '3'
@@ -112,6 +114,7 @@ services:
       retries: 5
       start_period: 60s
     logging:
+      driver: json-file
       options:
         max-size: 10m
         max-file: '3'
@@ -134,6 +137,7 @@ services:
       retries: 5
       start_period: 60s
     logging:
+      driver: json-file
       options:
         max-size: 10m
         max-file: '3'
@@ -161,6 +165,7 @@ services:
       - INFLUX_MEASUREMENT=${INFLUX_MEASUREMENT_SENEC}
     restart: unless-stopped
     logging:
+      driver: json-file
       options:
         max-size: 10m
         max-file: '3'
@@ -192,6 +197,7 @@ services:
       - MAPPING_0_TYPE
     restart: unless-stopped
     logging:
+      driver: json-file
       options:
         max-size: 10m
         max-file: '3'
@@ -221,6 +227,7 @@ services:
       - REDIS_URL
       - POWER_SPLITTER_INTERVAL
     logging:
+      driver: json-file
       options:
         max-size: 10m
         max-file: '3'
@@ -241,6 +248,7 @@ services:
     command: --scope solectrus --cleanup
     restart: unless-stopped
     logging:
+      driver: json-file
       options:
         max-size: 10m
         max-file: '3'

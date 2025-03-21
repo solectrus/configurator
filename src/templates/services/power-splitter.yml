@@ -16,6 +16,7 @@ environment:
   - REDIS_URL
   - POWER_SPLITTER_INTERVAL
 logging:
+  driver: json-file
   options:
     max-size: '10m'
     max-file: '3'
