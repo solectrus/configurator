@@ -12,8 +12,9 @@ environment:
   - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
   - CRON=0 2 * * *
 restart: unless-stopped
-links:
-  - influxdb
+depends_on:
+  influxdb:
+    condition: service_healthy
 logging:
   driver: json-file
   options:

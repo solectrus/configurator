@@ -11,8 +11,9 @@ environment:
   - S3_BUCKET=${AWS_BUCKET}
   - S3_PREFIX=postgres_backup
   - SCHEDULE=@daily
-links:
-  - postgresql
+depends_on:
+  postgresql:
+    condition: service_healthy
 restart: unless-stopped
 logging:
   driver: json-file

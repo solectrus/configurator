@@ -8,10 +8,6 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
-    links:
-      - postgresql
-      - influxdb
-      - redis
     ports:
       - 3000:3000
     environment:

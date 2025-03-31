@@ -8,10 +8,6 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
-    links:
-      - postgresql
-      - influxdb
-      - redis
     ports:
       - 3001:3000
     environment:
@@ -317,8 +313,9 @@ services:
       - S3_BUCKET=${AWS_BUCKET}
       - S3_PREFIX=postgres_backup
       - SCHEDULE=@daily
-    links:
-      - postgresql
+    depends_on:
+      postgresql:
+        condition: service_healthy
     restart: unless-stopped
     logging:
       driver: json-file
@@ -342,8 +339,9 @@ services:
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - CRON=0 2 * * *
     restart: unless-stopped
-    links:
-      - influxdb
+    depends_on:
+      influxdb:
+        condition: service_healthy
     logging:
       driver: json-file
       options:
