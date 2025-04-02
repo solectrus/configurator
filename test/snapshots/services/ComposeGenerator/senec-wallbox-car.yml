@@ -250,3 +250,4 @@ services:
         max-file: '3'
     labels:
       - com.centurylinklabs.watchtower.scope=solectrus
+

@@ -24,7 +24,7 @@ export class EnvGenerator {
   ) {}
 
   public build(): string {
-    return [
+    const sections = [
       this.buildGenericVariables(),
       this.buildDashboardVariables(),
       this.buildSenecCollectorVariables(),
@@ -40,6 +40,9 @@ export class EnvGenerator {
     ]
       .filter(Boolean)
       .join('\n')
+
+    // Add a trailing newline if there are any sections
+    return sections ? `${sections}\n` : ''
   }
 
   private buildGenericVariables(): string | undefined {

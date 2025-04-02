@@ -71,7 +71,7 @@ export class ComposeGenerator {
       ? YAML.stringify(this.compose, {
           singleQuote: true,
           lineWidth: 0,
-        })
+        }) + '\n'
       : ''
 
     return {
