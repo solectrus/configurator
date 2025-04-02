@@ -33,7 +33,7 @@ describe('EnvGenerator internals', () => {
     ['simple string', 'abc', 'abc'],
     ['string with space', 'abc def', '"abc def"'],
     ['string with quotes', 'a"b', '"a\\"b"'],
-    ['string with dollar', 'abc$def', '"abc$def"'],
+    ['string with dollar', 'abc$def', '"abc$$def"'],
     ['string with equal sign', 'abc=def', '"abc=def"'],
     ['string with hash', 'abc#def', '"abc#def"'],
     ['string with backslash', 'abc\\def', '"abc\\def"'],

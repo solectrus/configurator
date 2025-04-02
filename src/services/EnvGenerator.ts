@@ -397,11 +397,20 @@ export class EnvGenerator {
   }
 
   private formatEnvValue(value: string | number): string {
-    // Convert the value to a string (with quotes if necessary)
+    // Convert the value to a string (escaped and with quotes if necessary)
     const strValue = String(value)
-    return typeof value === 'string' && this.needsQuotes(strValue)
-      ? `"${strValue.replace(/"/g, '\\"')}"`
-      : strValue
+
+    if (this.needsQuotes(strValue)) {
+      return (
+        '"' + // Add quotes
+        strValue
+          .replace(/\$/g, '$$$$') // Escape $ to avoid variable expansion
+          .replace(/"/g, '\\"') + // Escape " to avoid breaking the string
+        '"'
+      )
+    }
+
+    return strValue
   }
 
   private needsQuotes(value: string): boolean {
