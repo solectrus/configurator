@@ -25,3 +25,23 @@ describe('EnvGenerator', () => {
     expect(result).toEqual('')
   })
 })
+
+describe('EnvGenerator internals', () => {
+  const env = new EnvGenerator({ services: {} }, {})
+
+  test.each([
+    ['simple string', 'abc', 'abc'],
+    ['string with space', 'abc def', '"abc def"'],
+    ['string with quotes', 'a"b', '"a\\"b"'],
+    ['string with dollar', 'abc$def', '"abc$def"'],
+    ['string with equal sign', 'abc=def', '"abc=def"'],
+    ['string with hash', 'abc#def', '"abc#def"'],
+    ['string with backslash', 'abc\\def', '"abc\\def"'],
+    ['multiline string', 'line1\nline2', '"line1\nline2"'],
+    ['numeric value', 1234, '1234'],
+  ])('%s → %p', (_desc, input, expected) => {
+    // @ts-expect-error accessing private method for test
+    const result = env.formatEnvValue(input)
+    expect(result).toBe(expected)
+  })
+})

@@ -384,14 +384,29 @@ export class EnvGenerator {
         // This ensures that blank values are NOT commented out
         result = result.replace(regex, (line, content) => (content ? `# ${line}` : line))
       } else {
+        const formattedValue = this.formatEnvValue(value)
+
         // Replace existing line or add if not found
         result = regex.test(result)
-          ? result.replace(regex, `${key}=${value}`)
-          : `${result}${key}=${value}\n`
+          ? result.replace(regex, `${key}=${formattedValue}`)
+          : `${result}${key}=${formattedValue}\n`
       }
     })
 
     return result
+  }
+
+  private formatEnvValue(value: string | number): string {
+    // Convert the value to a string (with quotes if necessary)
+    const strValue = String(value)
+    return typeof value === 'string' && this.needsQuotes(strValue)
+      ? `"${strValue.replace(/"/g, '\\"')}"`
+      : strValue
+  }
+
+  private needsQuotes(value: string): boolean {
+    // Whitespace, Quotes, #, =, \, $, Linebreak
+    return /[\s"'#=\\$]/.test(value) || value.includes('\n')
   }
 
   private generateSecretKeyBase(seed?: string, length = 128) {
