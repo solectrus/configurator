@@ -404,8 +404,11 @@ export class EnvGenerator {
       return (
         '"' + // Add quotes
         strValue
-          .replace(/\$/g, '$$$$') // Escape $ to avoid variable expansion
-          .replace(/"/g, '\\"') + // Escape " to avoid breaking the string
+          // Escape $ to avoid variable expansion,
+          // Eight $ are needed because Highlight.js does an additional replacement
+          .replace(/\$/g, '$$$$$$$$')
+          // Escape " to avoid breaking the string
+          .replace(/"/g, '\\"') +
         '"'
       )
     }
