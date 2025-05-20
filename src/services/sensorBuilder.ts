@@ -23,6 +23,11 @@ export class SensorBuilder {
   private getInitialSensors(): Sensors {
     return {
       INVERTER_POWER: '',
+      INVERTER_POWER_1: '',
+      INVERTER_POWER_2: '',
+      INVERTER_POWER_3: '',
+      INVERTER_POWER_4: '',
+      INVERTER_POWER_5: '',
       HOUSE_POWER: '',
       GRID_IMPORT_POWER: '',
       GRID_EXPORT_POWER: '',
@@ -108,7 +113,7 @@ export class SensorBuilder {
   }
 
   private sensorsInverterSenec() {
-    return {
+    const result: Sensors = {
       INVERTER_POWER: 'SENEC:inverter_power',
       HOUSE_POWER: 'SENEC:house_power',
       GRID_IMPORT_POWER: 'SENEC:grid_power_plus',
@@ -118,6 +123,18 @@ export class SensorBuilder {
       SYSTEM_STATUS_OK: 'SENEC:current_state_ok',
       GRID_EXPORT_LIMIT: 'SENEC:power_ratio',
     }
+
+    if (
+      this.answers.battery_vendor === 'senec3' &&
+      (this.answers.installation_type === 'local' || this.answers.distributed_choice === 'local')
+    ) {
+      // For SENEC 3 with local installation there are sensors for three MPP trackers available
+      result.INVERTER_POWER_1 = 'SENEC:mpp1_power'
+      result.INVERTER_POWER_2 = 'SENEC:mpp2_power'
+      result.INVERTER_POWER_3 = 'SENEC:mpp3_power'
+    }
+
+    return result
   }
 
   private sensorsInverterOther() {
