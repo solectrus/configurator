@@ -8,7 +8,20 @@ export class SensorBuilder {
   constructor(private readonly answers: Answers) {}
 
   public build(): Sensors {
-    let result = {
+    let result = this.getInitialSensors()
+
+    result = this.mergeInverterSensors(result)
+    result = this.mergeBatterySensors(result)
+    result = this.mergeWallboxSensors(result)
+    result = this.mergeCarSensors(result)
+    result = this.mergeHeatpumpSensors(result)
+    result = this.mergeForecastSensors(result)
+
+    return result
+  }
+
+  private getInitialSensors(): Sensors {
+    return {
       INVERTER_POWER: '',
       HOUSE_POWER: '',
       GRID_IMPORT_POWER: '',
@@ -26,44 +39,63 @@ export class SensorBuilder {
       HEATPUMP_POWER: '',
       CAR_BATTERY_SOC: '',
     }
+  }
 
-    if (this.answers.devices?.includes('inverter'))
+  private mergeInverterSensors(result: Sensors): Sensors {
+    if (this.answers.devices?.includes('inverter')) {
       if (this.answers.battery_vendor === 'senec4' || this.answers.battery_vendor === 'senec3') {
-        result = { ...result, ...this.sensorsInverterSenec() }
+        return { ...result, ...this.sensorsInverterSenec() }
       } else {
-        result = { ...result, ...this.sensorsInverterOther() }
+        return { ...result, ...this.sensorsInverterOther() }
       }
-    else result = { ...result, ...this.sensorsWithoutInverter() }
+    } else {
+      return { ...result, ...this.sensorsWithoutInverter() }
+    }
+  }
 
-    if (this.answers.devices?.includes('battery'))
+  private mergeBatterySensors(result: Sensors): Sensors {
+    if (this.answers.devices?.includes('battery')) {
       if (this.answers.battery_vendor === 'senec4' || this.answers.battery_vendor === 'senec3') {
-        result = { ...result, ...this.sensorsBatterySenec() }
+        return { ...result, ...this.sensorsBatterySenec() }
       } else if (this.answers.battery_vendor === 'other') {
-        result = { ...result, ...this.sensorsBatteryOther() }
+        return { ...result, ...this.sensorsBatteryOther() }
       }
+    }
+    return result
+  }
 
-    if (this.answers.devices?.includes('wallbox'))
+  private mergeWallboxSensors(result: Sensors): Sensors {
+    if (this.answers.devices?.includes('wallbox')) {
       if (this.answers.wallbox_vendor === 'senec') {
-        result = { ...result, ...this.sensorsWallboxSenec() }
+        return { ...result, ...this.sensorsWallboxSenec() }
       } else {
-        result = { ...result, ...this.sensorsWallboxOther() }
+        return { ...result, ...this.sensorsWallboxOther() }
       }
+    }
+    return result
+  }
 
+  private mergeCarSensors(result: Sensors): Sensors {
     if (this.answers.devices?.includes('car')) {
-      result = { ...result, ...this.sensorsCar() }
+      return { ...result, ...this.sensorsCar() }
     }
+    return result
+  }
 
+  private mergeHeatpumpSensors(result: Sensors): Sensors {
     if (this.answers.devices?.includes('heatpump')) {
-      result = { ...result, ...this.sensorsHeatpump() }
+      return { ...result, ...this.sensorsHeatpump() }
     }
+    return result
+  }
 
+  private mergeForecastSensors(result: Sensors): Sensors {
     if (
       this.answers.forecast == 'forecast_forecast_solar' ||
       this.answers.forecast == 'forecast_solcast'
     ) {
-      result = { ...result, ...this.sensorsForecast() }
+      return { ...result, ...this.sensorsForecast() }
     }
-
     return result
   }
 
