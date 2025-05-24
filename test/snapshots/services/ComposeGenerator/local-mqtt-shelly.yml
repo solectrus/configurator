@@ -249,6 +249,7 @@ services:
     image: ghcr.io/solectrus/power-splitter:latest
     environment:
       - TZ
+      - INSTALLATION_DATE
       - INFLUX_HOST
       - INFLUX_SCHEMA
       - INFLUX_PORT
