@@ -21,7 +21,7 @@
     "plausible-tracker": "^0.3.9",
     "survey-core": "^2.1.0",
     "survey-vue3-ui": "^2.1.0",
-    "vue": "^3.5.15",
+    "vue": "^3.5.16",
     "vue-markdown-render": "^2.2.1",
     "yaml": "^2.8.0"
   },
