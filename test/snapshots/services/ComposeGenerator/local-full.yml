@@ -206,6 +206,7 @@ services:
       - SHELLY_AUTH_KEY
       - SHELLY_DEVICE_ID
       - SHELLY_INTERVAL
+      - SHELLY_INVERT_POWER
       - INFLUX_HOST
       - INFLUX_SCHEMA
       - INFLUX_PORT
