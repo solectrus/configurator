@@ -3790,12 +3790,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rollup-plugin-gzip@npm:^4.0.1":
-  version: 4.0.1
-  resolution: "rollup-plugin-gzip@npm:4.0.1"
+"rollup-plugin-gzip@npm:^4.1.1":
+  version: 4.1.1
+  resolution: "rollup-plugin-gzip@npm:4.1.1"
   peerDependencies:
     rollup: ">=2.0.0"
-  checksum: 10c0/c4e375ddfbe1934acfae6ffdf36d05cb430ba22763669cb08f048e88f67bd0677abde3bb09905263d8c8fc8760b04700e2eecba263cda76a985a33d0776e8084
+  checksum: 10c0/0ad79a6eb84bb8d88db15a184ca661f44aa6fb3412c98d6a97f1dec365db37945a84c3a2d0bf709ae605ae305a40a0021b2e6d5494c537b029759f3695d9ac96
   languageName: node
   linkType: hard
 
@@ -4019,7 +4019,7 @@ __metadata:
     prettier: "npm:^3.5.3"
     prettier-plugin-tailwindcss: "npm:^0.6.12"
     rollup: "npm:^4.43.0"
-    rollup-plugin-gzip: "npm:^4.0.1"
+    rollup-plugin-gzip: "npm:^4.1.1"
     survey-core: "npm:^2.2.0"
     survey-vue3-ui: "npm:^2.2.0"
     tailwindcss: "npm:^4.1.10"
