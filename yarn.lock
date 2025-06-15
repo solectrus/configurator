@@ -942,10 +942,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tsconfig/node20@npm:^20.1.6":
-  version: 20.1.6
-  resolution: "@tsconfig/node20@npm:20.1.6"
-  checksum: 10c0/736bca8c405222e78f77da068bf705b398e3afb3f2ec3c1d2a8792505283863bef8cca5646358fcbabd3b07c6fbbf0b1acdf09aa182254fe60eb519827737f09
+"@tsconfig/node22@npm:^22.0.2":
+  version: 22.0.2
+  resolution: "@tsconfig/node22@npm:22.0.2"
+  checksum: 10c0/c75e6b9ea86ec2a384adefac0e2f16a6c08202ae5cf6c8c745944396a6931ffb38e742809491c1882d1868c2af1c33744193701779674bfb1e05f6a130045a18
   languageName: node
   linkType: hard
 
@@ -3998,7 +3998,7 @@ __metadata:
     "@highlightjs/vue-plugin": "npm:2.1.0"
     "@tailwindcss/typography": "npm:^0.5.16"
     "@tailwindcss/vite": "npm:^4.1.10"
-    "@tsconfig/node20": "npm:^20.1.6"
+    "@tsconfig/node22": "npm:^22.0.2"
     "@types/js-yaml": "npm:^4.0.9"
     "@types/jsdom": "npm:^21.1.7"
     "@types/markdown-it": "npm:^14.1.2"
