@@ -127,7 +127,6 @@ services:
       - traefik.http.routers.influxdb-solectrus.rule=Host(`${APP_DOMAIN}`)
       - traefik.http.routers.influxdb-solectrus.entrypoints=influxdb
       - traefik.http.routers.influxdb-solectrus.tls.certresolver=myresolver
-      - traefik.http.routers.influxdb-solectrus.tls=true
       - com.centurylinklabs.watchtower.scope=solectrus
   postgresql:
     image: postgres:17-alpine
@@ -209,7 +208,7 @@ services:
     labels:
       - com.centurylinklabs.watchtower.scope=solectrus
   traefik:
-    image: traefik:v2.11
+    image: traefik:v3.4
     environment:
       - TZ
     command:

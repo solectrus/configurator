@@ -221,7 +221,6 @@ export class ComposeGenerator {
         'traefik.http.routers.influxdb-solectrus.rule=Host(`${APP_DOMAIN}`)',
         'traefik.http.routers.influxdb-solectrus.entrypoints=influxdb',
         'traefik.http.routers.influxdb-solectrus.tls.certresolver=myresolver',
-        'traefik.http.routers.influxdb-solectrus.tls=true',
       ]
 
       this.compose.services.dashboard.ports = undefined
