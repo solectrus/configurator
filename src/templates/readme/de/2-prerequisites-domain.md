@@ -18,4 +18,4 @@ Nachdem alle Container gestartet wurden, wird Traefik automatisch ein TLS-Zertif
 
 Beachte, dass es nach dem Neustart des Traefik-Containers eine kurze Weile dauert, bis Traefik wieder vollständig verfügbar ist. Ein paar 404-Fehler direkt nach dem Neustart sind normal und kein Grund zur Sorge.
 
-InfluxDB wird ebenfalls über `https` verfügbar sein, allerdings auf einem anderen Port, du erreicht InfluxDB über `https://%{domain}:8086`.
+InfluxDB wird ebenfalls über `https` verfügbar sein, allerdings auf einem anderen Port, du erreichst InfluxDB über `https://%{domain}:8086`.
