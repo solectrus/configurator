@@ -1870,12 +1870,12 @@ __metadata:
   linkType: hard
 
 "cssstyle@npm:^4.2.1":
-  version: 4.4.0
-  resolution: "cssstyle@npm:4.4.0"
+  version: 4.5.0
+  resolution: "cssstyle@npm:4.5.0"
   dependencies:
     "@asamuzakjp/css-color": "npm:^3.2.0"
     rrweb-cssom: "npm:^0.8.0"
-  checksum: 10c0/6a9f7e32679abb959643ac169abfc920f5d32bbf4d61cd34b49a683e4dd2f42036cba6f503c75396a760f2872070e2def02cf2046850c43263f7ecb75f8aa80a
+  checksum: 10c0/dbb99529095661f0c33512318db08d8647164d20b71cf0740f15b278937948052abb9f3832c93b7fcf3837b50b1cc98c29a5d0f6dedd03fd8bd54bfca61e82aa
   languageName: node
   linkType: hard
 
