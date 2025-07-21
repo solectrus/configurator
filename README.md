@@ -1,4 +1,6 @@
 [![Build Status](https://github.com/solectrus/configurator/actions/workflows/ci.yml/badge.svg)](https://github.com/solectrus/configurator/actions)
+[![Maintainability](https://qlty.sh/gh/solectrus/projects/configurator/maintainability.svg)](https://qlty.sh/gh/solectrus/projects/configurator)
+[![Code Coverage](https://qlty.sh/gh/solectrus/projects/configurator/coverage.svg)](https://qlty.sh/gh/solectrus/projects/configurator)
 [![wakatime](https://wakatime.com/badge/user/697af4f5-617a-446d-ba58-407e7f3e0243/project/018dfe36-fa78-478c-a3ab-be3099f978c6.svg)](https://wakatime.com/badge/user/697af4f5-617a-446d-ba58-407e7f3e0243/project/018dfe36-fa78-478c-a3ab-be3099f978c6)
 
 # SOLECTRUS Configurator

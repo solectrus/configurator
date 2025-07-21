@@ -23,7 +23,12 @@ jobs:
 
       - run: yarn tsc
 
-      - run: yarn vitest run
+      - run: yarn vitest --coverage.enabled=true
+
+      - uses: qltysh/qlty-action/coverage@v1
+        with:
+          token: ${{ secrets.QLTY_COVERAGE_TOKEN }}
+          files: coverage/coverage-final.json
 
   validate:
     runs-on: ubuntu-latest
