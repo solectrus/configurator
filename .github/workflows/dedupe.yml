@@ -13,7 +13,6 @@ permissions:
 
 jobs:
   dedupe:
-    if: github.actor == 'dependabot[bot]' && contains(github.event.pull_request.labels.*.name, 'javascript')
     runs-on: ubuntu-latest
 
     steps:
