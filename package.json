@@ -19,8 +19,8 @@
     "highlight.js": "^11.11.1",
     "pinia": "^3.0.3",
     "plausible-tracker": "^0.3.9",
-    "survey-core": "^2.3.0",
-    "survey-vue3-ui": "^2.3.0",
+    "survey-core": "^2.3.1",
+    "survey-vue3-ui": "^2.3.1",
     "vue": "^3.5.18",
     "vue-markdown-render": "^2.2.1",
     "yaml": "^2.8.1"
