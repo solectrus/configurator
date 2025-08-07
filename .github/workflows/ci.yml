@@ -25,7 +25,7 @@ jobs:
 
       - run: yarn vitest --coverage.enabled=true
 
-      - uses: qltysh/qlty-action/coverage@v1
+      - uses: qltysh/qlty-action/coverage@v2
         with:
           token: ${{ secrets.QLTY_COVERAGE_TOKEN }}
           files: coverage/coverage-final.json
