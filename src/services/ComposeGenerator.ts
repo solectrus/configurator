@@ -87,11 +87,13 @@ export class ComposeGenerator {
         (this.answers.distributed_choice && this.answers.distributed_choice != 'local'))
     ) {
       this.addService('dashboard', dashboardService)
-      this.compose.services.dashboard.ports = [`${this.answers.app_port ?? 3000}:3000`]
+      if (this.compose.services.dashboard) {
+        this.compose.services.dashboard.ports = [`${this.answers.app_port ?? 3000}:3000`]
+      }
 
       this.addService('influxdb', influxdbService)
 
-      if (this.answers.distributed_choice === 'cloud') {
+      if (this.answers.distributed_choice === 'cloud' && this.compose.services.influxdb) {
         this.compose.services.influxdb.ports = ['8086:8086']
       }
 
@@ -179,10 +181,13 @@ export class ComposeGenerator {
       this.addService('watchtower', watchtowerService)
 
       for (const serviceName in this.compose.services) {
-        this.compose.services[serviceName].labels = [
-          ...(this.compose.services[serviceName].labels ?? []),
-          'com.centurylinklabs.watchtower.scope=solectrus',
-        ]
+        const service = this.compose.services[serviceName]
+        if (service) {
+          service.labels = [
+            ...(service.labels ?? []),
+            'com.centurylinklabs.watchtower.scope=solectrus',
+          ]
+        }
       }
     }
   }
@@ -215,16 +220,22 @@ export class ComposeGenerator {
         'traefik.http.routers.redirs.middlewares=redirect-to-https',
       ]
 
-      this.compose.services.influxdb.labels = [
-        ...(this.compose.services.influxdb.labels ?? []),
-        'traefik.enable=true',
-        'traefik.http.routers.influxdb-solectrus.rule=Host(`${APP_DOMAIN}`)',
-        'traefik.http.routers.influxdb-solectrus.entrypoints=influxdb',
-        'traefik.http.routers.influxdb-solectrus.tls.certresolver=myresolver',
-      ]
+      if (this.compose.services.influxdb) {
+        this.compose.services.influxdb.labels = [
+          ...(this.compose.services.influxdb.labels ?? []),
+          'traefik.enable=true',
+          'traefik.http.routers.influxdb-solectrus.rule=Host(`${APP_DOMAIN}`)',
+          'traefik.http.routers.influxdb-solectrus.entrypoints=influxdb',
+          'traefik.http.routers.influxdb-solectrus.tls.certresolver=myresolver',
+        ]
+      }
 
-      this.compose.services.dashboard.ports = undefined
-      this.compose.services.influxdb.ports = undefined
+      if (this.compose.services.dashboard) {
+        delete this.compose.services.dashboard.ports
+      }
+      if (this.compose.services.influxdb) {
+        delete this.compose.services.influxdb.ports
+      }
     }
   }
 

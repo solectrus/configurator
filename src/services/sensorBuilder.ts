@@ -108,6 +108,9 @@ export class SensorBuilder {
     const varName = sensor
 
     const varValue = this.build()[varName]
+    if (!varValue) {
+      throw new Error(`Sensor ${sensor} not found`)
+    }
     const [measurement, field] = varValue.split(':')
     return { measurement, field }
   }
