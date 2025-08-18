@@ -21,6 +21,7 @@ export interface Answers {
   senec_language?: 'de' | 'en' | 'it'
   senec_username?: string
   senec_password?: string
+  senec_totp_uri?: string
   senec_system_id?: string
   senec_interval_cloud?: number
   shelly_host?: string

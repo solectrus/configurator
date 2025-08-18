@@ -522,6 +522,24 @@
         },
         {
           "type": "text",
+          "name": "senec_totp_uri",
+          "title": {
+            "de": "URI für Multi-Faktor-Authentisierung",
+            "default": "URI for Multi-factor authentication"
+          },
+          "description": {
+            "de": "Nur erforderlich, falls explizit bei SENEC aktiviert. Muss den gesamten String enthalten, beginnend mit \"otpauth://\"",
+            "default": "Only required if explicitly enabled in SENEC. Must contain the entire string, starting with \"otpauth://\"."
+          },
+          "validators": [
+            {
+              "type": "expression",
+              "expression": "{senec_totp_uri} contains 'otpauth://'"
+            }
+          ]
+        },
+        {
+          "type": "text",
           "name": "senec_system_id",
           "title": {
             "de": "System-ID",

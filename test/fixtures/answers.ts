@@ -453,6 +453,24 @@ export const testCases: [string, Answers][] = [
     },
   ],
   [
+    'cloud-senec4-mfa',
+    {
+      devices: ['inverter', 'battery'],
+      installation_type: 'cloud',
+      battery_vendor: 'senec4',
+      senec_username: 'peter@gmx.de',
+      senec_password: 'mysecret',
+      senec_totp_uri:
+        'otpauth://totp/SENEC:peter%40gmx.de?secret=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&digits=6&algorithm=SHA1&issuer=SENEC&period=30',
+      senec_system_id: '111',
+      senec_interval_cloud: 60,
+      installation_date: '2021-01-06',
+      admin_password: 'admin-password',
+      traefik: true,
+      app_domain: 'solectrus.my-website.de',
+    },
+  ],
+  [
     'partial',
     {
       devices: ['inverter', 'battery'],

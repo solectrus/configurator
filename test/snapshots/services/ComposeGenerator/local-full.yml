@@ -175,6 +175,7 @@ services:
       - SENEC_LANGUAGE
       - SENEC_USERNAME
       - SENEC_PASSWORD
+      - SENEC_TOTP_URI
       - SENEC_IGNORE
       - SENEC_SYSTEM_ID
       - INFLUX_HOST
