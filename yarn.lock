@@ -1562,9 +1562,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vue/tsconfig@npm:^0.8.0":
-  version: 0.8.0
-  resolution: "@vue/tsconfig@npm:0.8.0"
+"@vue/tsconfig@npm:^0.8.1":
+  version: 0.8.1
+  resolution: "@vue/tsconfig@npm:0.8.1"
   peerDependencies:
     typescript: 5.x
     vue: ^3.4.0
@@ -1573,7 +1573,7 @@ __metadata:
       optional: true
     vue:
       optional: true
-  checksum: 10c0/a79ec3ab30c92d161b675a112dc9aa12074224a7c97b586c25293bb0febfd1f9fd8865e1723f084760f56aa7f05f4cbe5ab14a8c381b4cc16158f2719cad833c
+  checksum: 10c0/f4e37182dc2560ce2c78e66fbf837000dba5460c12913ef37f5d54b6c0da518df1118fcc1968ff51d9541287a9d9d105fb17072b0dbb095919cfb50d1fe67a78
   languageName: node
   linkType: hard
 
@@ -4007,7 +4007,7 @@ __metadata:
     "@vue/eslint-config-prettier": "npm:^10.2.0"
     "@vue/eslint-config-typescript": "npm:^14.6.0"
     "@vue/test-utils": "npm:^2.4.6"
-    "@vue/tsconfig": "npm:^0.8.0"
+    "@vue/tsconfig": "npm:^0.8.1"
     eslint: "npm:^9.33.0"
     eslint-plugin-vue: "npm:^10.4.0"
     highlight.js: "npm:^11.11.1"
