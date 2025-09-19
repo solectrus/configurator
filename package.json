@@ -54,6 +54,17 @@
     "vue-eslint-parser": "^10.2.0",
     "vue-tsc": "^3.0.7"
   },
+  "dependenciesMeta": {
+    "@tailwindcss/oxide": {
+      "built": true
+    },
+    "esbuild": {
+      "built": true
+    },
+    "vite": {
+      "built": true
+    }
+  },
   "engines": {
     "node": ">=22"
   },

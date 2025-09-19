@@ -4096,6 +4096,13 @@ __metadata:
     vue-markdown-render: "npm:^2.3.0"
     vue-tsc: "npm:^3.0.7"
     yaml: "npm:^2.8.1"
+  dependenciesMeta:
+    "@tailwindcss/oxide":
+      built: true
+    esbuild:
+      built: true
+    vite:
+      built: true
   languageName: unknown
   linkType: soft
 
