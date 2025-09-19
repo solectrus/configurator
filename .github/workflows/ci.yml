@@ -17,7 +17,9 @@ jobs:
         with:
           cache: yarn
 
-      - run: yarn install
+      - run: yarn install --immutable
+
+      - run: yarn npm audit
 
       - run: yarn lint
 
@@ -59,7 +61,7 @@ jobs:
         with:
           cache: yarn
 
-      - run: yarn install
+      - run: yarn install --immutable
 
       - name: Get build date
         run: echo "VITE_BUILD_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")" >> $GITHUB_ENV
