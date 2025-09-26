@@ -1,12 +1,12 @@
 # Don't change major version if you have an existing database!
 # If you have started with an older major version (like 15), you need to migrate your database.
 # This is not worth the effort, so don't do it.
-image: postgres:17-alpine
+image: postgres:18-alpine
 environment:
   - TZ
   - POSTGRES_PASSWORD
 volumes:
-  - ${DB_VOLUME_PATH}:/var/lib/postgresql/data
+  - ${DB_VOLUME_PATH}:/var/lib/postgresql
 restart: unless-stopped
 healthcheck:
   test: ['CMD-SHELL', 'pg_isready -U postgres']
