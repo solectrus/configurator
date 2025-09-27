@@ -278,6 +278,9 @@ services:
       - INFLUX_SENSOR_CUSTOM_POWER_20
       - INFLUX_EXCLUDE_FROM_HOUSE_POWER
       - REDIS_URL
+      - DB_HOST=postgresql
+      - DB_PASSWORD=${POSTGRES_PASSWORD}
+      - DB_USER=postgres
       - POWER_SPLITTER_INTERVAL
     logging:
       driver: json-file
