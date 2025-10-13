@@ -9,8 +9,12 @@ Object.assign(navigator, {
 })
 
 beforeEach(() => {
-  vi.clearAllMocks()
   vi.useFakeTimers()
+})
+
+afterEach(() => {
+  vi.restoreAllMocks()
+  vi.unstubAllGlobals()
 })
 
 describe('CopyButton', () => {
@@ -50,16 +54,16 @@ describe('CopyButton', () => {
       },
     })
 
-    global.Blob = vi.fn()
-    global.URL = {
-      createObjectURL: vi.fn(() => 'test-url'),
-    } as any // eslint-disable-line @typescript-eslint/no-explicit-any
+    URL.createObjectURL = vi.fn(() => 'test-url')
+    const originalBlob = global.Blob
+    const blobMock = vi.fn((parts, options) => new originalBlob(parts, options))
+    vi.stubGlobal('Blob', blobMock)
 
     // Click the button
     await wrapper.find('button[title="Download as file"]').trigger('click')
 
     // Check if the Blob and URL.createObjectURL were called
-    expect(global.Blob).toHaveBeenCalledWith(['Testtext'], { type: 'text/plain' })
-    expect(global.URL.createObjectURL).toHaveBeenCalled()
+    expect(blobMock).toHaveBeenCalledWith(['Testtext'], { type: 'text/plain' })
+    expect(URL.createObjectURL).toHaveBeenCalled()
   })
 })
