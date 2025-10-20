@@ -37,7 +37,7 @@ export default [
     },
   },
   {
-    ignores: ['dist/', 'node_modules/', '.yarn/', 'coverage/'],
+    ignores: ['dist/', 'node_modules/', 'coverage/'],
   },
   prettierConfig,
 ]

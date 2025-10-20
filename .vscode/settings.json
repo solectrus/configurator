@@ -16,15 +16,13 @@
   "files.trimTrailingWhitespace": true,
   "files.watcherExclude": {
     "**/node_modules/**": true,
-    "**/dist": true,
-    "**/.yarn": true
+    "**/dist": true
   },
   "files.exclude": {},
   "files.associations": {},
 
   "search.exclude": {
     "**/dist": true,
-    "**/.yarn": true,
     "**/node_modules": true
   },
   "yaml.schemas": {

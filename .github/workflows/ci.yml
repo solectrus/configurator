@@ -13,19 +13,15 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v6
-        with:
-          cache: yarn
+      - uses: oven-sh/setup-bun@v2
 
-      - run: yarn install --immutable
+      - run: bun install --frozen-lockfile
 
-      - run: yarn npm audit
+      - run: bun lint
 
-      - run: yarn lint
+      - run: bun run tsc
 
-      - run: yarn tsc
-
-      - run: yarn vitest --coverage.enabled=true
+      - run: bun run test --coverage.enabled=true
 
       - uses: qltysh/qlty-action/coverage@v2
         with:
@@ -57,16 +53,14 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v6
-        with:
-          cache: yarn
+      - uses: oven-sh/setup-bun@v2
 
-      - run: yarn install --immutable
+      - run: bun install --frozen-lockfile
 
       - name: Get build date
         run: echo "VITE_BUILD_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")" >> $GITHUB_ENV
 
-      - run: yarn build
+      - run: bun run build
 
       - uses: docker/login-action@v3
         with:

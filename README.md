@@ -10,31 +10,31 @@ This is a web application to interactively configure Docker for SOLECTRUS. It ge
 ## Project Setup
 
 ```sh
-yarn install
+bun install
 ```
 
 ### Compile and Hot-Reload for Development
 
 ```sh
-yarn dev
+bun dev
 ```
 
 ### Type-Check, Compile and Minify for Production
 
 ```sh
-yarn build
+bun run build
 ```
 
 ### Run Unit Tests with [Vitest](https://vitest.dev/)
 
 ```sh
-yarn test
+bun run test
 ```
 
 ### Lint with [ESLint](https://eslint.org/)
 
 ```sh
-yarn lint
+bun lint
 ```
 
 Copyright (c) 2024-2025 by Georg Ledermann (georg@ledermann.dev)
