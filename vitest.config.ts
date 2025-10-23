@@ -11,8 +11,9 @@ export default mergeConfig(
       exclude: [...configDefaults.exclude, 'e2e/*'],
       root: fileURLToPath(new URL('./', import.meta.url)),
       setupFiles: ['./test/setup.ts'],
+      pool: 'threads',
       coverage: {
-        include: ['src/**/*'],
+        include: ['src/**/*.{ts,vue}'],
         exclude: ['src/types/**/*'],
       },
     },

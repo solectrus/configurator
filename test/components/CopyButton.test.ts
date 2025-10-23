@@ -56,8 +56,14 @@ describe('CopyButton', () => {
 
     URL.createObjectURL = vi.fn(() => 'test-url')
     const originalBlob = global.Blob
-    const blobMock = vi.fn((parts, options) => new originalBlob(parts, options))
-    vi.stubGlobal('Blob', blobMock)
+    const blobMock = vi.fn()
+    class MockBlob extends originalBlob {
+      constructor(parts: BlobPart[], options?: BlobPropertyBag) {
+        super(parts, options)
+        blobMock(parts, options)
+      }
+    }
+    vi.stubGlobal('Blob', MockBlob)
 
     // Click the button
     await wrapper.find('button[title="Download as file"]').trigger('click')
