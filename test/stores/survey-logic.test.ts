@@ -2,6 +2,15 @@ import { createPinia, setActivePinia } from 'pinia'
 import { useSurveyStore } from '@/stores/survey'
 import { Model } from 'survey-core'
 
+// Mock generators to avoid async issues in CI
+vi.mock('@/services/ReadmeGenerator', () => ({
+  ReadmeGenerator: class {
+    build() {
+      return Promise.resolve('')
+    }
+  },
+}))
+
 describe('useSurveyStore', () => {
   let survey: Model
 
