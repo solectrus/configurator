@@ -534,7 +534,11 @@
           "validators": [
             {
               "type": "expression",
-              "expression": "{senec_totp_uri} contains 'otpauth://'"
+              "text": {
+                "de": "ist ungültig",
+                "default": "is invalid"
+              },
+              "expression": "{senec_totp_uri} contains 'otpauth://' or {senec_totp_uri} empty"
             }
           ]
         },
