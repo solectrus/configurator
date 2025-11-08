@@ -3,16 +3,18 @@ import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import tailwindcss from '@tailwindcss/vite'
 import vue from '@vitejs/plugin-vue'
-
-import { brotliCompress } from 'zlib'
-import { promisify } from 'util'
-import gzipPlugin from 'rollup-plugin-gzip'
-
-const brotliPromise = promisify(brotliCompress)
+import { compression } from 'vite-plugin-compression2'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [tailwindcss(), vue()],
+  plugins: [
+    tailwindcss(),
+    vue(),
+    // GZIP compression as .gz files
+    compression({ algorithms: ['gzip'], exclude: [/\.(br)$/, /\.(gz)$/] }),
+    // Brotli compression as .br files
+    compression({ algorithms: ['brotliCompress'], exclude: [/\.(br)$/, /\.(gz)$/] }),
+  ],
 
   resolve: {
     alias: {
@@ -22,15 +24,6 @@ export default defineConfig({
 
   build: {
     rollupOptions: {
-      plugins: [
-        // GZIP compression as .gz files
-        gzipPlugin(),
-        // Brotli compression as .br files
-        gzipPlugin({
-          customCompression: (content) => brotliPromise(Buffer.from(content as string)),
-          fileName: '.br',
-        }),
-      ],
       output: {
         manualChunks(id) {
           // Extract large dependencies into separate chunks
