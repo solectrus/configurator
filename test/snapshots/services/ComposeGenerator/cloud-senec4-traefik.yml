@@ -209,7 +209,7 @@ services:
     labels:
       - com.centurylinklabs.watchtower.scope=solectrus
   traefik:
-    image: traefik:v3.4
+    image: traefik:v3.6
     environment:
       - TZ
     command:
