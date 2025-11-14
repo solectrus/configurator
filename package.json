@@ -28,7 +28,7 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.1.17",
-    "@tsconfig/node22": "^22.0.2",
+    "@tsconfig/node22": "^22.0.3",
     "@types/js-yaml": "^4.0.9",
     "@types/jsdom": "^27.0.0",
     "@types/markdown-it": "^14.1.2",
