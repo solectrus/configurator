@@ -51,7 +51,7 @@
     "vite-plugin-compression2": "^2.3.1",
     "vitest": "^4.0.13",
     "vue-eslint-parser": "^10.2.0",
-    "vue-tsc": "^3.1.4"
+    "vue-tsc": "^3.1.5"
   },
   "dependenciesMeta": {
     "@tailwindcss/oxide": {
