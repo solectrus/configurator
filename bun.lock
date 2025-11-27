@@ -1,6 +1,5 @@
 {
   "lockfileVersion": 1,
-  "configVersion": 1,
   "workspaces": {
     "": {
       "name": "solectrus-configurator",
@@ -9,8 +8,8 @@
         "highlight.js": "^11.11.1",
         "pinia": "^3.0.4",
         "plausible-tracker": "^0.3.9",
-        "survey-core": "^2.3.16",
-        "survey-vue3-ui": "^2.3.16",
+        "survey-core": "^2.4.0",
+        "survey-vue3-ui": "^2.4.0",
         "vue": "^3.5.25",
         "vue-markdown-render": "^2.3.0",
         "yaml": "^2.8.1",
@@ -778,9 +777,9 @@
 
     "supports-color": ["supports-color@7.2.0", "", { "dependencies": { "has-flag": "^4.0.0" } }, "sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw=="],
 
-    "survey-core": ["survey-core@2.3.16", "", {}, "sha512-yRbeacio72oBmfODuJ8igRL3N8w7fjEwPPHd3CT019ht14qs4rVNGIs50kdip2NFo3B+xfvP1pQWcr2U7TxKrQ=="],
+    "survey-core": ["survey-core@2.4.0", "", {}, "sha512-KmdY203Oq4rUjnZsUnHi+3eSO4/rvVoej6JEDPXe040+aQa4NhG76wE00lNRLQgXU2Orvy0EA9jfEPCsCoH36Q=="],
 
-    "survey-vue3-ui": ["survey-vue3-ui@2.3.16", "", { "peerDependencies": { "survey-core": "2.3.16", "vue": "^3.2.41" } }, "sha512-7MpljMZsSmx4/PIuwTQNBcYMA4lxXBUc6aZfSK2wCWVMCuLdagjejxBYKSD7lF4L4iw8oEvrGKnLFjVljANnxQ=="],
+    "survey-vue3-ui": ["survey-vue3-ui@2.4.0", "", { "peerDependencies": { "survey-core": "2.4.0", "vue": "^3.2.41" } }, "sha512-tRVriwyBczk+FHyaIesIS80Z3Xajr96OunlvdjvLEOBoe8SO2zcixTPysNA8yRepbOv7BqgTmehcEusFAAg4wg=="],
 
     "symbol-tree": ["symbol-tree@3.2.4", "", {}, "sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw=="],
 
