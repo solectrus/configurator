@@ -194,7 +194,7 @@ export class SensorBuilder {
 
   private sensorsForecast() {
     return {
-      INVERTER_POWER_FORECAST: 'forecast:watt',
+      INVERTER_POWER_FORECAST: 'Forecast:watt',
     }
   }
 
