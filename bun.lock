@@ -9,7 +9,7 @@
         "highlight.js": "^11.11.1",
         "pinia": "^3.0.4",
         "plausible-tracker": "^0.3.9",
-        "survey-core": "^2.5.3",
+        "survey-core": "^2.5.4",
         "survey-vue3-ui": "^2.5.4",
         "vue": "^3.5.26",
         "vue-markdown-render": "^2.3.0",
@@ -774,7 +774,7 @@
 
     "supports-color": ["supports-color@7.2.0", "", { "dependencies": { "has-flag": "^4.0.0" } }, "sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw=="],
 
-    "survey-core": ["survey-core@2.5.3", "", {}, "sha512-CjYht6z0HsNUDZs6bgYYvqqieDRNSpDO2zSUpV3EGOBQMSxk/Slmpk5yV7BibHbGeobPslZwmiNzr01VKb4hKA=="],
+    "survey-core": ["survey-core@2.5.4", "", {}, "sha512-4FXrOPGGDwWhyN5+BfEfEMPiYcm/lA+CCVI+6p9BvysMZzt5zpar+NJxtU+eyWKJV0ixtOs2bt8lXYiELKRoVw=="],
 
     "survey-vue3-ui": ["survey-vue3-ui@2.5.4", "", { "peerDependencies": { "survey-core": "2.5.4", "vue": "^3.4.0" } }, "sha512-LJPXRiXxrqTO3QzB3PTEHsHcNjSHBEnO1Vsoo2yjCXqQsq8emvH0HveqbfJnyNMv1hylrnf/uQI9xwZpZOxkIw=="],
 
