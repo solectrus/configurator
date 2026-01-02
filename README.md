@@ -37,4 +37,4 @@ bun run test
 bun lint
 ```
 
-Copyright (c) 2024-2025 by Georg Ledermann (georg@ledermann.dev)
+Copyright (c) 2024-2026 by Georg Ledermann (georg@ledermann.dev)
