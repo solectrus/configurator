@@ -274,7 +274,7 @@ services:
     labels:
       - com.centurylinklabs.watchtower.scope=solectrus
   watchtower:
-    image: containrrr/watchtower
+    image: nickfedor/watchtower
     environment:
       - TZ
     volumes:

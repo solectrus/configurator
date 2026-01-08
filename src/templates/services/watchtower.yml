@@ -1,4 +1,4 @@
-image: containrrr/watchtower
+image: nickfedor/watchtower
 environment:
   - TZ
 volumes:
