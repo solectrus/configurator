@@ -8,6 +8,11 @@ export class SensorBuilder {
   constructor(private readonly answers: Answers) {}
 
   public build(): Sensors {
+    // For home automation systems (Home Assistant, ioBroker), use predefined sensor mappings
+    if (this.hasHomeAutomation()) {
+      return this.sensorsHomeAutomation()
+    }
+
     let result = this.getInitialSensors()
 
     result = this.mergeInverterSensors(result)
@@ -18,6 +23,64 @@ export class SensorBuilder {
     result = this.mergeForecastSensors(result)
 
     return result
+  }
+
+  private hasHomeAutomation(): boolean {
+    return Boolean(this.answers.home_automation && this.answers.home_automation.length > 0)
+  }
+
+  private sensorsHomeAutomation(): Sensors {
+    // Sensor mappings matching the Home Assistant integration / ioBroker adapter
+    // Format: measurement:field
+    return {
+      INVERTER_POWER: 'inverter:power',
+      INVERTER_POWER_1: 'inverter_1:power',
+      INVERTER_POWER_2: 'inverter_2:power',
+      INVERTER_POWER_3: 'inverter_3:power',
+      INVERTER_POWER_4: 'inverter_4:power',
+      INVERTER_POWER_5: 'inverter_5:power',
+      INVERTER_POWER_FORECAST: 'inverter_forecast:power',
+      INVERTER_POWER_FORECAST_CLEARSKY: 'inverter_forecast_clearsky:power',
+      HOUSE_POWER: 'house:power',
+      CUSTOM_POWER_01: 'custom_01:power',
+      CUSTOM_POWER_02: 'custom_02:power',
+      CUSTOM_POWER_03: 'custom_03:power',
+      CUSTOM_POWER_04: 'custom_04:power',
+      CUSTOM_POWER_05: 'custom_05:power',
+      CUSTOM_POWER_06: 'custom_06:power',
+      CUSTOM_POWER_07: 'custom_07:power',
+      CUSTOM_POWER_08: 'custom_08:power',
+      CUSTOM_POWER_09: 'custom_09:power',
+      CUSTOM_POWER_10: 'custom_10:power',
+      CUSTOM_POWER_11: 'custom_11:power',
+      CUSTOM_POWER_12: 'custom_12:power',
+      CUSTOM_POWER_13: 'custom_13:power',
+      CUSTOM_POWER_14: 'custom_14:power',
+      CUSTOM_POWER_15: 'custom_15:power',
+      CUSTOM_POWER_16: 'custom_16:power',
+      CUSTOM_POWER_17: 'custom_17:power',
+      CUSTOM_POWER_18: 'custom_18:power',
+      CUSTOM_POWER_19: 'custom_19:power',
+      CUSTOM_POWER_20: 'custom_20:power',
+      GRID_IMPORT_POWER: 'grid:import_power',
+      GRID_EXPORT_POWER: 'grid:export_power',
+      GRID_EXPORT_LIMIT: 'grid:export_limit',
+      BATTERY_CHARGING_POWER: 'battery:charging_power',
+      BATTERY_DISCHARGING_POWER: 'battery:discharging_power',
+      BATTERY_SOC: 'battery:soc',
+      WALLBOX_POWER: 'wallbox:power',
+      WALLBOX_CAR_CONNECTED: 'wallbox:connected',
+      CASE_TEMP: 'case:temperature',
+      CAR_BATTERY_SOC: 'car:battery_soc',
+      OUTDOOR_TEMP: 'outdoor:temperature',
+      OUTDOOR_TEMP_FORECAST: 'outdoor_forecast:temperature',
+      SYSTEM_STATUS: 'system:status',
+      SYSTEM_STATUS_OK: 'system:status_ok',
+      HEATPUMP_POWER: 'heatpump:power',
+      HEATPUMP_HEATING_POWER: 'heatpump:heating_power',
+      HEATPUMP_TANK_TEMP: 'heatpump:tank_temp',
+      HEATPUMP_STATUS: 'heatpump:status',
+    }
   }
 
   private getInitialSensors(): Sensors {

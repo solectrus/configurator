@@ -5,6 +5,7 @@ type TDateISODate = `${TYear}-${TMonth}-${TDay}`
 
 export interface Answers {
   devices?: Array<'inverter' | 'battery' | 'wallbox' | 'heatpump' | 'car'>
+  home_automation?: Array<'home_assistant' | 'iobroker'>
   battery_vendor?: 'senec3' | 'senec4' | 'other'
   heatpump_access?: 'shelly' | 'mqtt'
   wallbox_vendor?: 'senec' | 'other'

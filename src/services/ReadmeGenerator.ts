@@ -29,6 +29,11 @@ export class ReadmeGenerator {
     }
 
     result.push(await this.installation())
+
+    if (this.hasHomeAutomation()) {
+      result.push(await this.homeAutomationSection())
+    }
+
     result.push(await this.summary())
     result.push(await this.browserOpen())
     result.push(await this.final())
@@ -170,6 +175,24 @@ export class ReadmeGenerator {
     const raw = await this.loadMarkdown('5-final')
 
     return this.replacePlaceholders(raw, {})
+  }
+
+  private async homeAutomationSection() {
+    if (this.answers.home_automation?.includes('home_assistant')) {
+      const raw = await this.loadMarkdown('3-external-home-assistant')
+      return this.replacePlaceholders(raw, {})
+    }
+
+    if (this.answers.home_automation?.includes('iobroker')) {
+      const raw = await this.loadMarkdown('3-external-iobroker')
+      return this.replacePlaceholders(raw, {})
+    }
+
+    return ''
+  }
+
+  private hasHomeAutomation() {
+    return this.answers.home_automation && this.answers.home_automation.length > 0
   }
 
   private async loadMarkdown(fileName: string): Promise<string> {

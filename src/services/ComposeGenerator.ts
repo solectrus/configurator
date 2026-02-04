@@ -93,7 +93,11 @@ export class ComposeGenerator {
 
       this.addService('influxdb', influxdbService)
 
-      if (this.answers.distributed_choice === 'cloud' && this.compose.services.influxdb) {
+      // Open InfluxDB port for distributed cloud setup or home automation systems (Home Assistant, ioBroker)
+      if (
+        (this.answers.distributed_choice === 'cloud' || this.hasHomeAutomation()) &&
+        this.compose.services.influxdb
+      ) {
         this.compose.services.influxdb.ports = ['8086:8086']
       }
 
@@ -112,38 +116,45 @@ export class ComposeGenerator {
   }
 
   private configureCollectorServices() {
-    switch (this.answers.battery_vendor) {
-      case 'senec3':
-        if (
-          this.answers.installation_type &&
-          (this.answers.installation_type !== 'distributed' ||
-            (this.answers.distributed_choice && this.answers.distributed_choice === 'local'))
-        )
+    // Skip SENEC, Shelly and MQTT collectors when using home automation (Home Assistant or ioBroker)
+    if (!this.hasHomeAutomation()) {
+      switch (this.answers.battery_vendor) {
+        case 'senec3':
+          if (
+            this.answers.installation_type &&
+            (this.answers.installation_type !== 'distributed' ||
+              (this.answers.distributed_choice && this.answers.distributed_choice === 'local'))
+          )
+            this.addService('senec-collector', senecCollectorService)
+          break
+
+        case 'senec4':
           this.addService('senec-collector', senecCollectorService)
-        break
+          break
+      }
 
-      case 'senec4':
-        this.addService('senec-collector', senecCollectorService)
-        break
+      if (this.answers.heatpump_access == 'shelly') {
+        if (
+          this.answers.installation_type === 'local' ||
+          this.answers.distributed_choice === 'local'
+        )
+          this.addService('shelly-collector', shellyCollectorService)
+      }
+
+      if (this.mqttRequired()) {
+        // Deep clone to avoid modifying the original template
+        const service = structuredClone(mqttCollectorService)
+
+        // Add variable names
+        const varNames = Object.keys(this.mqttMapper.variables())
+        service.environment ||= []
+        service.environment.push(...varNames)
+
+        this.addService('mqtt-collector', service)
+      }
     }
 
-    if (this.answers.heatpump_access == 'shelly') {
-      if (this.answers.installation_type === 'local' || this.answers.distributed_choice === 'local')
-        this.addService('shelly-collector', shellyCollectorService)
-    }
-
-    if (this.mqttRequired()) {
-      // Deep clone to avoid modifying the original template
-      const service = structuredClone(mqttCollectorService)
-
-      // Add variable names
-      const varNames = Object.keys(this.mqttMapper.variables())
-      service.environment ||= []
-      service.environment.push(...varNames)
-
-      this.addService('mqtt-collector', service)
-    }
-
+    // Forecast collector is always available, even with external data source
     if (
       this.answers.forecast == 'forecast_forecast_solar' ||
       this.answers.forecast == 'forecast_solcast'
@@ -151,6 +162,7 @@ export class ComposeGenerator {
       this.addService('forecast-collector', forecastCollectorService)
     }
 
+    // Power splitter is always available, even with external data source
     if (
       this.answers.devices?.length &&
       this.answers.devices.includes('inverter') &&
@@ -241,5 +253,9 @@ export class ComposeGenerator {
 
   private get mqttMapper() {
     return new MqttMapper(this.answers)
+  }
+
+  private hasHomeAutomation() {
+    return this.answers.home_automation && this.answers.home_automation.length > 0
   }
 }

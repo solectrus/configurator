@@ -84,7 +84,45 @@
       ]
     },
     {
+      "name": "p_home_automation",
+      "title": {
+        "de": "Datenquelle",
+        "default": "Data source"
+      },
+      "elements": [
+        {
+          "type": "checkbox",
+          "name": "home_automation",
+          "title": {
+            "de": "Hast du alle Messwerte bereits in einem Smart-Home-System verfügbar?",
+            "default": "Do you already have all measurements available in a smart home system?"
+          },
+          "description": {
+            "de": "Damit können die Messwerte direkt an SOLECTRUS übertragen werden. Wenn du nichts auswählst, werden im nächsten Schritt die verfügbaren Collectoren abgefragt (z.B. für SENEC, Shelly oder MQTT).",
+            "default": "This allows measurements to be transferred directly to SOLECTRUS. If you don't select anything, the available collectors will be queried in the next step (e.g. for SENEC, Shelly or MQTT)."
+          },
+          "choices": [
+            {
+              "value": "home_assistant",
+              "text": {
+                "de": "Ich möchte Home Assistant nutzen",
+                "default": "I want to use Home Assistant"
+              }
+            },
+            {
+              "value": "iobroker",
+              "text": {
+                "de": "Ich möchte ioBroker nutzen",
+                "default": "I want to use ioBroker"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "p_battery",
+      "visibleIf": "{home_automation} empty",
       "title": {
         "de": "Stromspeicher",
         "default": "Battery vendor"
@@ -129,6 +167,7 @@
     },
     {
       "name": "p_heatpump",
+      "visibleIf": "{home_automation} empty",
       "title": {
         "de": "Wärmepumpe",
         "default": "Integration of heat pump"
@@ -164,7 +203,7 @@
     },
     {
       "name": "p_wallbox",
-      "visibleIf": "{devices} contains 'wallbox' and {battery_vendor} anyof ['senec3', 'senec4']",
+      "visibleIf": "{home_automation} empty and {devices} contains 'wallbox' and {battery_vendor} anyof ['senec3', 'senec4']",
       "title": {
         "de": "Wallbox",
         "default": "Vendor Wallbox"
@@ -398,7 +437,7 @@
     },
     {
       "name": "p_senec3",
-      "visibleIf": "{battery_vendor} = 'senec3' and {distributed_choice} <> 'cloud' and {installation_type} <> 'cloud'",
+      "visibleIf": "{home_automation} empty and {battery_vendor} = 'senec3' and {distributed_choice} <> 'cloud' and {installation_type} <> 'cloud'",
       "title": {
         "de": "Direktzugriff auf SENEC-Stromspeicher",
         "default": "Access to your SENEC battery"
@@ -490,7 +529,7 @@
     },
     {
       "name": "p_senec4",
-      "visibleIf": "{battery_vendor} = 'senec4' or {installation_type} = 'cloud' and {battery_vendor} = 'senec3'",
+      "visibleIf": "{home_automation} empty and ({battery_vendor} = 'senec4' or {installation_type} = 'cloud' and {battery_vendor} = 'senec3')",
       "title": {
         "de": "Zugangsdaten für SENEC",
         "default": "Credentials for SENEC"
@@ -574,7 +613,7 @@
     },
     {
       "name": "p_shelly",
-      "visibleIf": "(({heatpump_access} = 'shelly') and ({distributed_choice} != 'cloud')) and ({installation_type} != 'cloud')",
+      "visibleIf": "{home_automation} empty and (({heatpump_access} = 'shelly') and ({distributed_choice} != 'cloud')) and ({installation_type} != 'cloud')",
       "title": {
         "de": "Zugriff auf Shelly-Stromzähler",
         "default": "Access to Shelly energy monitor"
@@ -616,14 +655,14 @@
     },
     {
       "name": "p_mqtt",
-      "visibleIf": "({battery_vendor} = 'other' or ({devices} contains 'wallbox' and {wallbox_vendor} != 'senec') or {heatpump_access} = 'mqtt' or {devices} = ['inverter'] or {devices} contains 'car') and ({installation_type} = 'local' or {distributed_choice} = 'local')",
+      "visibleIf": "{home_automation} empty and ({battery_vendor} = 'other' or ({devices} contains 'wallbox' and {wallbox_vendor} != 'senec') or {heatpump_access} = 'mqtt' or {devices} = ['inverter'] or {devices} contains 'car') and ({installation_type} = 'local' or {distributed_choice} = 'local')",
       "title": {
         "de": "Zugriff auf MQTT-Broker",
         "default": "Access to MQTT broker"
       },
       "description": {
-        "de": "Aufgrund deiner Vorauswahl wird ein externer MQTT-Broker (z.B. ioBroker) benötigt, dessen Installation und Konfiguration hier nicht behandelt wird. Gib die Zugangsdaten zu diesem Server an.",
-        "default": "Based on your preselection, an external MQTT broker (e.g. ioBroker) is required, but its installation and configuration is not covered here. Enter the credentials for this server."
+        "de": "Aufgrund deiner Vorauswahl wird ein externer MQTT-Broker benötigt, dessen Installation und Konfiguration hier nicht behandelt wird. Gib die Zugangsdaten zu diesem Server an.",
+        "default": "Based on your preselection, an external MQTT broker is required, but its installation and configuration is not covered here. Enter the credentials for this server."
       },
       "elements": [
         {
@@ -684,7 +723,7 @@
     },
     {
       "name": "p_mqtt_topics",
-      "visibleIf": "({battery_vendor} = 'other' or ({devices} contains 'wallbox' and {wallbox_vendor} != 'senec') or {heatpump_access} = 'mqtt' or {devices} = ['inverter'] or {devices} contains 'car') and ({installation_type} = 'local' or {distributed_choice} = 'local')",
+      "visibleIf": "{home_automation} empty and ({battery_vendor} = 'other' or ({devices} contains 'wallbox' and {wallbox_vendor} != 'senec') or {heatpump_access} = 'mqtt' or {devices} = ['inverter'] or {devices} contains 'car') and ({installation_type} = 'local' or {distributed_choice} = 'local')",
       "title": {
         "default": "MQTT topics",
         "de": "MQTT-Topics"
