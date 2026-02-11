@@ -35,7 +35,6 @@ type DockerService = {
   environment?: string[]
   ports?: string[]
   volumes?: string[]
-  links?: string[]
   depends_on?: Record<string, { condition: string }>
   labels?: string[]
   healthcheck?: {
@@ -111,7 +110,6 @@ export class ComposeGenerator {
 
     if (serviceConfig.environment?.includes('INFLUX_HOST') && this.compose.services.influxdb) {
       this.compose.services[serviceName].depends_on = { influxdb: { condition: 'service_healthy' } }
-      this.compose.services[serviceName].links = ['influxdb']
     }
   }
 

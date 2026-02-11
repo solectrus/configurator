@@ -194,8 +194,6 @@ services:
     depends_on:
       influxdb:
         condition: service_healthy
-    links:
-      - influxdb
     labels:
       - com.centurylinklabs.watchtower.scope=solectrus
   shelly-collector:
@@ -224,8 +222,6 @@ services:
     depends_on:
       influxdb:
         condition: service_healthy
-    links:
-      - influxdb
     labels:
       - com.centurylinklabs.watchtower.scope=solectrus
   forecast-collector:
@@ -277,8 +273,6 @@ services:
     depends_on:
       influxdb:
         condition: service_healthy
-    links:
-      - influxdb
     labels:
       - com.centurylinklabs.watchtower.scope=solectrus
   power-splitter:
@@ -332,8 +326,6 @@ services:
     depends_on:
       influxdb:
         condition: service_healthy
-    links:
-      - influxdb
     labels:
       - com.centurylinklabs.watchtower.scope=solectrus
   postgresql-backup:

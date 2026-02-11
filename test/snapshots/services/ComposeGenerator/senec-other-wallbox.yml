@@ -194,8 +194,6 @@ services:
     depends_on:
       influxdb:
         condition: service_healthy
-    links:
-      - influxdb
     labels:
       - com.centurylinklabs.watchtower.scope=solectrus
   mqtt-collector:
@@ -234,8 +232,6 @@ services:
     depends_on:
       influxdb:
         condition: service_healthy
-    links:
-      - influxdb
     labels:
       - com.centurylinklabs.watchtower.scope=solectrus
   power-splitter:
@@ -289,8 +285,6 @@ services:
     depends_on:
       influxdb:
         condition: service_healthy
-    links:
-      - influxdb
     labels:
       - com.centurylinklabs.watchtower.scope=solectrus
   watchtower:
