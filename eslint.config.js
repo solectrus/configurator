@@ -37,6 +37,12 @@ export default [
     },
   },
   {
+    files: ['**/*.vue'],
+    rules: {
+      'no-useless-assignment': 'off',
+    },
+  },
+  {
     ignores: ['dist/', 'node_modules/', 'coverage/'],
   },
   prettierConfig,
