@@ -9,8 +9,8 @@
         "highlight.js": "^11.11.1",
         "pinia": "^3.0.4",
         "plausible-tracker": "^0.3.9",
-        "survey-core": "^2.5.22",
-        "survey-vue3-ui": "^2.5.22",
+        "survey-core": "^2.5.23",
+        "survey-vue3-ui": "^2.5.23",
         "vue": "^3.5.33",
         "vue-markdown-render": "^2.3.0",
         "yaml": "^2.8.4",
@@ -693,9 +693,9 @@
 
     "supports-color": ["supports-color@7.2.0", "", { "dependencies": { "has-flag": "^4.0.0" } }, "sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw=="],
 
-    "survey-core": ["survey-core@2.5.22", "", {}, "sha512-jPNMU3xLlWcXTLP537sc4vQGn+poTXqjkjKarA+T85ZEofBqi2LIPd0wP2JYnmKhoI89n9Uc99nv3asJ/pkIhA=="],
+    "survey-core": ["survey-core@2.5.23", "", {}, "sha512-82U9yQxaDrvmqn4HrOx55WitOaOOW2R6gBb+/B5DMYduU2+OrN/3oKh9tkcLrRNbRNTOEpI0IhkgYqDIgmwiZw=="],
 
-    "survey-vue3-ui": ["survey-vue3-ui@2.5.22", "", { "peerDependencies": { "survey-core": "2.5.22", "vue": "^3.4.0" } }, "sha512-h5lwk7Dy52H/xYNbnNqeaM0WSuGAmgdR5fiR+QtyFK8nKc46mMyDa8HkVUhFZVerfe0VX9lR1dU/6ZaRkUHXTA=="],
+    "survey-vue3-ui": ["survey-vue3-ui@2.5.23", "", { "peerDependencies": { "survey-core": "2.5.23", "vue": "^3.4.0" } }, "sha512-4LW/nPSJmdoNN0ajqNVHQzj+wN9iuEX4K73Hfdev96ZtiCaKcg591W8zmtugjXKJHfCgWndjw9GMUJNibX754Q=="],
 
     "symbol-tree": ["symbol-tree@3.2.4", "", {}, "sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw=="],
 
