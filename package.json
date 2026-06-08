@@ -22,7 +22,7 @@
     "survey-core": "^2.5.27",
     "survey-vue3-ui": "^2.5.27",
     "vue": "^3.5.35",
-    "vue-markdown-render": "^2.3.0",
+    "vue-markdown-render": "^2.3.1",
     "yaml": "^2.9.0"
   },
   "devDependencies": {
