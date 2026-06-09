@@ -1,0 +1,1 @@
+var e=`the remote part of SOLECTRUS on your cloud server`,t=`the local part of SOLECTRUS on your machine`,n=`SOLECTRUS on your machine`,r={part_remote:e,part_local:t,part_global:n};export{r as default,n as part_global,t as part_local,e as part_remote};

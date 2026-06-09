@@ -1,0 +1,71 @@
+---
+import '@/styles/global.css';
+
+const rootUrl = new URL('/', Astro.site).toString();
+const deUrl = new URL('/de/', Astro.site).toString();
+const enUrl = new URL('/en/', Astro.site).toString();
+
+const title = `SOLECTRUS – ${new URL(rootUrl).host}`;
+---
+
+<!doctype html>
+<html lang="de" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>{title}</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/icon-dark.svg"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/icon-light.svg"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="alternate" hreflang="de" href={deUrl} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="x-default" href={rootUrl} />
+    <noscript>
+      <meta http-equiv="refresh" content="0; url=/de/" />
+    </noscript>
+  </head>
+
+  <body
+    class="flex min-h-screen w-full flex-col items-center justify-center gap-6 bg-indigo-900 p-6 text-center text-indigo-200"
+  >
+    <p class="text-lg">Weiterleitung … / Redirecting …</p>
+    <nav class="flex gap-4">
+      <a
+        class="rounded-full bg-pink-600 px-5 py-2 font-medium text-white"
+        href="/de/"
+      >
+        Deutsch
+      </a>
+      <a
+        class="rounded-full bg-pink-600 px-5 py-2 font-medium text-white"
+        href="/en/"
+      >
+        English
+      </a>
+    </nav>
+  </body>
+</html>
+
+<script>
+  // Send visitors to their preferred locale: an explicit earlier choice wins,
+  // otherwise fall back to the browser language (default German).
+  try {
+    const stored = localStorage.getItem('helios-lang');
+    const lang =
+      stored ??
+      (navigator.language?.toLowerCase().startsWith('en') ? 'en' : 'de');
+    location.replace(lang === 'en' ? '/en/' : '/de/');
+  } catch {
+    location.replace('/de/');
+  }
+</script>

@@ -1,0 +1,272 @@
+---
+import type { Locale } from '@/i18n/content';
+import { content, commands, links } from '@/i18n/content';
+import { getImage } from 'astro:assets';
+import imgHelios from '@/images/helios.jpg';
+import CodeBlock from '@/components/CodeBlock.astro';
+import ScenarioSwitch from '@/components/ScenarioSwitch.astro';
+import Features from '@/components/Features.astro';
+import Screenshots from '@/components/Screenshots.astro';
+import Bleed from '@/components/Bleed.astro';
+import { Icon } from 'astro-icon/components';
+import ServerTower from '@/components/devices/ServerTower.astro';
+import Nas from '@/components/devices/Nas.astro';
+import MiniPc from '@/components/devices/MiniPc.astro';
+import RaspberryPi from '@/components/devices/RaspberryPi.astro';
+import CloudServer from '@/components/devices/CloudServer.astro';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = content[lang];
+
+// Decorative HELIOS photo (the solar cargo bike the helper is named after),
+// used as a subtle, faded backdrop behind the hero. Purely atmospheric — it
+// carries no information, so it is hidden from assistive tech.
+const heroBackdrop = await getImage({
+  src: imgHelios,
+  width: 1600,
+  format: 'webp',
+  quality: 70,
+});
+
+// Split sentences on the {url} token so the server URL can be rendered
+// as inline <code> instead of plain text.
+const firstRunLeadParts = t.firstRun.lead.split('{url}');
+
+const inlineCode =
+  'rounded-md bg-indigo-950/70 px-1.5 py-0.5 font-mono text-indigo-100';
+
+// Duotone device illustrations, in the same order as t.requirements.devices.
+const deviceGraphics = [ServerTower, Nas, MiniPc, RaspberryPi, CloudServer];
+
+// Icons for the hardware specs, in the same order as t.requirements.specs.
+const specIcons = ['tabler:cpu', 'tabler:database'];
+---
+
+<main class="mx-auto w-full max-w-3xl px-5 pb-12 lg:px-6">
+  {/* Hero */}
+  <section class="relative pt-10 pb-2 sm:pt-16">
+    {/* Decorative HELIOS backdrop — full-bleed, faded into the indigo body */}
+    <div
+      class="pointer-events-none absolute top-0 left-1/2 -z-10 h-[460px] w-screen -translate-x-1/2 overflow-hidden"
+      aria-hidden="true"
+    >
+      <img
+        src={heroBackdrop.src}
+        alt=""
+        loading="eager"
+        decoding="async"
+        class="h-full w-full [mask-image:radial-gradient(130%_85%_at_50%_38%,black,transparent_72%)] object-cover object-[center_30%] opacity-45"
+      />
+    </div>
+
+    {
+      /* Hero copy: pushed to the right so the HELIOS figure on the left stays clear */
+    }
+    <div class="relative left-1/2 w-screen -translate-x-1/2">
+      <div class="px-5 text-right sm:px-8 lg:px-12">
+        <h1
+          class="ml-auto max-w-2xl font-serif text-4xl font-light tracking-tight text-balance text-white sm:text-5xl xl:text-6xl"
+        >
+          {t.hero.title}
+        </h1>
+
+        <p
+          class="mt-6 ml-auto max-w-2xl text-lg leading-relaxed text-indigo-200 sm:text-xl"
+        >
+          {t.hero.lead}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* Installation — primary action, kept high up directly below the hero */}
+  <section id="install" class="mt-28 scroll-mt-8 sm:mt-36">
+    <Bleed inner="max-w-6xl">
+      <ScenarioSwitch {lang} />
+
+      <div class="mt-10 space-y-3">
+        <p class="text-indigo-300">{t.install.step2Lead}</p>
+        <CodeBlock code={commands.run} step={2} {lang} />
+      </div>
+      <p class="mt-2 text-center text-sm text-indigo-300">
+        <a
+          href={links.installScript}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="focus-ring rounded-sm underline decoration-indigo-300 underline-offset-4"
+        >
+          {t.install.securityLink}
+        </a>
+      </p>
+    </Bleed>
+  </section>
+
+  {/* First run — the natural next step right after running the command */}
+  <section class="mt-32">
+    <h2 class="section-heading text-center">
+      {t.firstRun.heading}
+    </h2>
+    <p class="mx-auto mt-4 max-w-xl text-center text-lg text-indigo-200">
+      {firstRunLeadParts[0]}<code class={inlineCode}>{t.serverUrl}</code>{
+        firstRunLeadParts[1]
+      }
+    </p>
+
+    <ol class="mt-10 grid gap-6 sm:grid-cols-3">
+      {
+        t.firstRun.steps.map((step, index) => (
+          <li class="card p-6 text-center">
+            <span
+              class="mx-auto flex h-10 w-10 items-center justify-center rounded-full border-2 border-pink-600 font-serif text-lg text-white"
+              aria-hidden="true"
+            >
+              {index + 1}
+            </span>
+            <h3 class="mt-4 font-semibold text-white">{step.title}</h3>
+            <p class="mt-2 leading-relaxed text-indigo-200">{step.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  {/* Screenshots */}
+  <Screenshots {lang} />
+
+  {/* Features */}
+  <Features {lang} />
+
+  {/* Requirements */}
+  <section class="mt-32 text-center">
+    <h2 class="section-heading">
+      {t.requirements.heading}
+    </h2>
+    <p class="mx-auto mt-4 max-w-xl text-lg text-indigo-200">
+      {t.requirements.lead}
+    </p>
+    <p class="mx-auto mt-2 max-w-xl text-sm text-indigo-300">
+      {t.requirements.devicesLead}
+    </p>
+
+    <ul
+      class="mx-auto mt-10 grid max-w-3xl grid-cols-5 gap-2 sm:gap-6 lg:gap-8"
+    >
+      {
+        t.requirements.devices.map((device, index) => {
+          const Graphic = deviceGraphics[index];
+          return (
+            <li class="flex flex-col items-center gap-2 sm:gap-3">
+              <Graphic class="h-12 w-12 sm:h-20 sm:w-20 lg:h-28 lg:w-28" />
+              <span class="text-center text-sm leading-tight font-medium text-indigo-100 lg:text-base">
+                {device}
+              </span>
+            </li>
+          );
+        })
+      }
+    </ul>
+
+    <ul class="mx-auto mt-10 grid max-w-xl gap-4 sm:grid-cols-2">
+      {
+        t.requirements.specs.map((spec, index) => {
+          const SpecIcon = specIcons[index];
+          return (
+            <li class="card flex items-center gap-4 px-6 py-4 text-left">
+              <Icon
+                name={SpecIcon}
+                class="h-9 w-9 shrink-0 text-pink-400"
+                aria-hidden="true"
+              />
+              <span>
+                <span class="block text-sm font-medium tracking-wide text-indigo-300 uppercase">
+                  {spec.label}
+                </span>
+                <span class="mt-0.5 block text-lg font-semibold text-white">
+                  {spec.min}
+                </span>
+                <span class="block text-sm text-indigo-300">
+                  {spec.recommended}
+                </span>
+              </span>
+            </li>
+          );
+        })
+      }
+    </ul>
+
+    <div class="mt-24">
+      <h3 class="font-serif text-2xl font-light text-white sm:text-3xl">
+        {t.requirements.dataHeading}
+      </h3>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-indigo-200">
+        {t.requirements.dataLead}
+      </p>
+
+      <ul class="mx-auto mt-8 grid max-w-3xl gap-4 sm:grid-cols-2">
+        {
+          t.requirements.dataSources.map((source) => (
+            <li class="card flex items-start gap-3 p-5 text-left">
+              <Icon
+                name="tabler:check"
+                class="mt-0.5 h-6 w-6 shrink-0 text-pink-400"
+                aria-hidden="true"
+              />
+              <span>
+                <span class="font-semibold text-white">{source.name}</span>
+                <span class="mt-1 block text-indigo-300">{source.note}</span>
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  {/* Help / report issues */}
+  <section class="mt-32 text-center">
+    <h2 class="section-heading">
+      {t.help.heading}
+    </h2>
+    <p class="mx-auto mt-4 max-w-xl text-lg text-indigo-200">
+      {t.help.body}
+    </p>
+
+    <div class="mt-8">
+      <a
+        href={links.issues}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="focus-ring inline-flex items-center rounded-full border border-indigo-500/60 px-6 py-3 font-medium text-indigo-100 transition-colors hover:border-pink-600 hover:bg-pink-600 hover:text-white"
+      >
+        {t.help.cta}
+      </a>
+    </div>
+  </section>
+
+  {/* Where did the old configurator go? */}
+  <section class="mt-32 text-center">
+    <h2 class="section-heading">
+      {t.legacy.heading}
+    </h2>
+    {
+      t.legacy.body.map((paragraph) => (
+        <p class="mx-auto mt-4 max-w-2xl text-lg text-indigo-200">
+          {paragraph}
+        </p>
+      ))
+    }
+
+    <p class="mt-8">
+      <a
+        href={links.legacy}
+        class="focus-ring rounded-md text-sm text-indigo-400 underline underline-offset-4 transition-colors hover:text-white"
+      >
+        {t.legacy.link} ❯
+      </a>
+    </p>
+  </section>
+</main>

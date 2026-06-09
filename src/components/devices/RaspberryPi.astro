@@ -1,0 +1,87 @@
+---
+// Raspberry Pi — PCB with GPIO pin header, SoC chip and edge ports
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<svg viewBox="0 0 64 64" class={className} aria-hidden="true">
+  <rect
+    x="8"
+    y="17"
+    width="48"
+    height="30"
+    rx="2.5"
+    class="fill-indigo-900 stroke-indigo-500"
+    stroke-width="2"
+  >
+  </rect>
+  <rect
+    x="13"
+    y="20"
+    width="33"
+    height="4.5"
+    rx="1"
+    class="fill-indigo-950 stroke-indigo-600"
+    stroke-width="1"
+  >
+  </rect>
+  <path
+    d="M16 21v2.5M20 21v2.5M24 21v2.5M28 21v2.5M32 21v2.5M36 21v2.5M40 21v2.5M44 21v2.5"
+    class="stroke-indigo-400"
+    stroke-width="1.2"
+    stroke-linecap="round"
+  >
+  </path>
+  <rect
+    x="21"
+    y="29"
+    width="13"
+    height="13"
+    rx="1"
+    class="fill-indigo-950 stroke-indigo-600"
+    stroke-width="1.5"
+  >
+  </rect>
+  <rect
+    x="39"
+    y="32"
+    width="10"
+    height="10"
+    rx="1"
+    class="fill-indigo-800 stroke-indigo-600"
+    stroke-width="1.2"
+  >
+  </rect>
+  <rect
+    x="53"
+    y="26"
+    width="5"
+    height="7"
+    rx="1"
+    class="fill-indigo-700 stroke-indigo-500"
+    stroke-width="1"
+  >
+  </rect>
+  <rect
+    x="53"
+    y="36"
+    width="5"
+    height="7"
+    rx="1"
+    class="fill-indigo-700 stroke-indigo-500"
+    stroke-width="1"
+  >
+  </rect>
+  <circle cx="51" cy="21" r="1.2" class="fill-pink-500"></circle>
+  <circle
+    cx="11.5"
+    cy="43"
+    r="1.6"
+    class="fill-indigo-800 stroke-indigo-500"
+    stroke-width="1"
+  >
+  </circle>
+</svg>

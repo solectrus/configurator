@@ -16,29 +16,22 @@ updates:
     labels:
       - 'dependencies'
     groups:
-      survey:
+      astro:
         patterns:
-          - 'survey-*'
-      vitest:
-        patterns:
-          - '@vitest*'
-          - 'vitest'
-      typescript:
-        patterns:
-          - 'typescript'
-          - 'vue-tsc'
-          - '@tsconfig*'
-          - '@vue/tsconfig'
-      eslint:
-        patterns:
-          - 'eslint'
-          - 'eslint-*'
-          - '@vue/eslint-*'
-          - 'typescript-eslint'
+          - 'astro'
+          - '@astrojs/*'
       tailwindcss:
         patterns:
           - 'tailwindcss'
           - '@tailwindcss/*'
+      prettier:
+        patterns:
+          - 'prettier'
+          - 'prettier-plugin-*'
+      icons:
+        patterns:
+          - 'astro-icon'
+          - '@iconify-json/*'
 
   - package-ecosystem: 'github-actions'
     directory: '/'

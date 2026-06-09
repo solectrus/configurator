@@ -1,0 +1,57 @@
+---
+// NAS — desktop enclosure with two removable drive bays
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<svg viewBox="0 0 64 64" class={className} aria-hidden="true">
+  <rect
+    x="13"
+    y="11"
+    width="38"
+    height="42"
+    rx="3"
+    class="fill-indigo-900 stroke-indigo-500"
+    stroke-width="2"
+  >
+  </rect>
+  <circle cx="44" cy="15" r="1.2" class="fill-emerald-400"></circle>
+  <circle cx="39.5" cy="15" r="1.2" class="fill-pink-500"></circle>
+  <rect
+    x="19"
+    y="19"
+    width="11"
+    height="29"
+    rx="1.5"
+    class="fill-indigo-800 stroke-indigo-600"
+    stroke-width="1.5"
+  >
+  </rect>
+  <rect
+    x="34"
+    y="19"
+    width="11"
+    height="29"
+    rx="1.5"
+    class="fill-indigo-800 stroke-indigo-600"
+    stroke-width="1.5"
+  >
+  </rect>
+  <path
+    d="M22 23v21M37 23v21"
+    class="stroke-indigo-600"
+    stroke-width="1.5"
+    stroke-linecap="round"
+  >
+  </path>
+  <path
+    d="M18 53v3.5M46 53v3.5"
+    class="stroke-indigo-600"
+    stroke-width="2.5"
+    stroke-linecap="round"
+  >
+  </path>
+</svg>

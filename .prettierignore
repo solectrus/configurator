@@ -1,0 +1,7 @@
+# Frozen, pre-built snapshot of the retired Vue/SurveyJS configurator —
+# minified vendor output, never hand-edited (see README / public/legacy/).
+public/legacy/
+
+# Build artifacts and caches
+dist/
+.astro/

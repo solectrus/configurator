@@ -1,0 +1,28 @@
+---
+// Cloud server — cloud holding a small stacked server
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<svg viewBox="0 0 64 64" class={className} aria-hidden="true">
+  <path
+    transform="translate(6 7) scale(2.25)"
+    d="M2.25 15a4.5 4.5 0 0 0 4.5 4.5H18a3.75 3.75 0 0 0 1.332-7.257 3 3 0 0 0-3.758-3.848 5.25 5.25 0 0 0-10.233 2.33A4.502 4.502 0 0 0 2.25 15Z"
+    class="fill-indigo-800 stroke-indigo-500"
+    stroke-width="0.9"
+    stroke-linejoin="round"
+  >
+  </path>
+  {/* Stacked server bars, nudged down to sit centered within the cloud */}
+  <g transform="translate(0 3)">
+    <rect x="23" y="27" width="18" height="5" rx="2.5" class="fill-indigo-600">
+    </rect>
+    <rect x="23" y="34" width="18" height="5" rx="2.5" class="fill-indigo-600">
+    </rect>
+    <circle cx="26.5" cy="29.5" r="1.1" class="fill-pink-400"></circle>
+    <circle cx="26.5" cy="36.5" r="1.1" class="fill-emerald-300"></circle>
+  </g>
+</svg>

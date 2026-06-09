@@ -1,0 +1,86 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  url: string;
+  image: string;
+  lang: 'de' | 'en';
+}
+
+const { title, description, url, image, lang } = Astro.props;
+
+const locale = lang === 'de' ? 'de_DE' : 'en_US';
+
+// Alternate language URLs (each locale is prefixed; bare root auto-redirects)
+const rootUrl = new URL('/', Astro.site).toString();
+const deUrl = new URL('/de/', Astro.site).toString();
+const enUrl = new URL('/en/', Astro.site).toString();
+const siteHost = new URL(rootUrl).host;
+
+const jsonLdSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'HELIOS',
+  applicationCategory: 'DeveloperApplication',
+  operatingSystem: 'Docker (Linux, AMD64/ARM64)',
+  description,
+  url: 'https://github.com/solectrus/helios',
+  isAccessibleForFree: true,
+  publisher: {
+    '@type': 'Organization',
+    name: 'SOLECTRUS',
+    url: 'https://solectrus.de',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://solectrus.de/icon.png',
+    },
+  },
+});
+---
+
+<title>{title}</title>
+
+<meta name="description" content={description} />
+<meta name="author" content="Georg Ledermann" />
+
+<link rel="canonical" href={url} />
+
+<link rel="alternate" hreflang="de" href={deUrl} />
+<link rel="alternate" hreflang="en" href={enUrl} />
+<link rel="alternate" hreflang="x-default" href={rootUrl} />
+
+<link
+  rel="icon"
+  type="image/svg+xml"
+  href="/icon-dark.svg"
+  media="(prefers-color-scheme: light)"
+/>
+<link
+  rel="icon"
+  type="image/svg+xml"
+  href="/icon-light.svg"
+  media="(prefers-color-scheme: dark)"
+/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+
+<!-- OpenGraph -->
+<meta property="og:url" content={url} />
+<meta property="og:type" content="website" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={image} />
+<meta property="og:locale" content={locale} />
+<meta property="og:site_name" content="SOLECTRUS" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:domain" content={siteHost} />
+<meta property="twitter:url" content={url} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image} />
+
+<!-- JSON-LD Schema -->
+<script is:inline type="application/ld+json" set:html={jsonLdSchema} />

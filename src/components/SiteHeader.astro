@@ -1,0 +1,52 @@
+---
+import type { Locale } from '@/i18n/content';
+import { content, links } from '@/i18n/content';
+import LangToggle from '@/components/LangToggle.astro';
+import { Icon } from 'astro-icon/components';
+import logo from '@/images/logo.svg';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = content[lang];
+---
+
+<header
+  class="sticky top-0 z-30 border-b border-indigo-800/50 bg-indigo-900/80 backdrop-blur-sm"
+>
+  <div
+    class="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-4 sm:px-8"
+  >
+    <a
+      href={links.solectrus}
+      aria-label={t.nav.backToSite}
+      class="focus-ring w-40 rounded-md text-indigo-200 transition-opacity hover:opacity-80 sm:w-44"
+    >
+      <img
+        src={logo.src}
+        alt="SOLECTRUS"
+        width="176"
+        height="30"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </a>
+
+    <div class="flex items-center gap-4">
+      <a
+        href={links.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={t.nav.github}
+        title={t.nav.github}
+        class="focus-ring rounded-md text-indigo-200 transition-colors hover:text-white"
+      >
+        <Icon name="simple-icons:github" class="h-7 w-7" aria-hidden="true" />
+      </a>
+
+      <LangToggle {lang} />
+    </div>
+  </div>
+</header>

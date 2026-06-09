@@ -1,0 +1,72 @@
+---
+import Seo from '@/components/Seo.astro';
+import SiteHeader from '@/components/SiteHeader.astro';
+import SiteFooter from '@/components/SiteFooter.astro';
+import { getImage, Font } from 'astro:assets';
+import imgBackground from '@/images/background.jpg';
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  lang: 'de' | 'en';
+}
+
+const { title, description, lang } = Astro.props;
+
+const optimizedBackground = await getImage({ src: imgBackground, quality: 1 });
+
+const url = new URL(Astro.url.pathname, Astro.site).toString();
+const image = new URL('og-image.jpg', Astro.site).toString();
+---
+
+<!doctype html>
+<html lang={lang} class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+
+    <Seo {title} {description} {url} {image} {lang} />
+
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <Font cssVariable="--font-inter" preload />
+    <Font cssVariable="--font-merriweather" preload />
+
+    <link rel="preconnect" href="https://p.solectrus.de" crossorigin />
+
+    <link
+      rel="preload"
+      as="image"
+      href={optimizedBackground.src}
+      fetchpriority="low"
+    />
+
+    <style set:html={`body { --bg-image: url(${optimizedBackground.src}); }`}
+    ></style>
+  </head>
+
+  <body class="flex min-h-screen w-full flex-col bg-indigo-900 text-indigo-100">
+    <SiteHeader {lang} />
+
+    <div class="flex-1">
+      <slot />
+    </div>
+
+    <SiteFooter {lang} />
+  </body>
+</html>
+
+<script>
+  import { init, track } from '@plausible-analytics/tracker';
+
+  init({
+    // The Plausible site is the host serving the page (ignored on localhost).
+    domain: location.hostname,
+    endpoint: 'https://p.solectrus.de/api/event',
+    autoCapturePageviews: false,
+    outboundLinks: true,
+  });
+
+  track('pageview', {});
+</script>
