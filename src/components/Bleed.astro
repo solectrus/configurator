@@ -1,0 +1,19 @@
+---
+// Full-bleed wrapper: breaks out of the narrow page column to span the
+// viewport, then re-centers its content at the given max-width. Relies on
+// `overflow-x-clip` on html/body (see base.css) to avoid horizontal scroll.
+interface Props {
+  /** Tailwind max-width for the centered inner container, e.g. "max-w-5xl". */
+  inner?: string;
+  /** Extra classes for the outer (full-bleed) element, e.g. spacing. */
+  class?: string;
+}
+
+const { inner = 'max-w-5xl', class: className } = Astro.props;
+---
+
+<div class:list={['relative left-1/2 w-screen -translate-x-1/2', className]}>
+  <div class:list={['mx-auto px-5 sm:px-8', inner]}>
+    <slot />
+  </div>
+</div>

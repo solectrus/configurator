@@ -1,0 +1,1 @@
+var e=`des entfernten Teils von SOLECTRUS auf deinem Cloud-Server`,t=`des lokalen Teils von SOLECTRUS auf deinem Rechner`,n=`von SOLECTRUS auf deinem Rechner`,r={part_remote:e,part_local:t,part_global:n};export{r as default,n as part_global,t as part_local,e as part_remote};

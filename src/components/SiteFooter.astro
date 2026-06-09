@@ -1,0 +1,47 @@
+---
+import type { Locale } from '@/i18n/content';
+import { content, links } from '@/i18n/content';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = content[lang];
+---
+
+<footer class="mt-24 border-t border-indigo-700/50 bg-indigo-950/40">
+  <div
+    class="mx-auto grid max-w-6xl grid-cols-1 items-center gap-2 px-5 py-6 text-sm text-indigo-300 sm:px-8 lg:grid-cols-2 lg:gap-4"
+  >
+    <a
+      href={links.solectrus}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="focus-ring justify-self-center rounded-md text-center whitespace-nowrap underline underline-offset-4 transition-colors hover:text-white lg:justify-self-start lg:text-left"
+    >
+      {t.footer.product}
+    </a>
+
+    <nav
+      class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 lg:justify-self-end"
+    >
+      <a
+        href={links.imprint}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="focus-ring rounded-md underline underline-offset-4 transition-colors hover:text-white"
+      >
+        {t.footer.imprint}
+      </a>
+      <a
+        href={links.privacy}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="focus-ring rounded-md underline underline-offset-4 transition-colors hover:text-white"
+      >
+        {t.footer.privacy}
+      </a>
+    </nav>
+  </div>
+</footer>

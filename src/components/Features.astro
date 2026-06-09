@@ -1,0 +1,49 @@
+---
+import type { Locale } from '@/i18n/content';
+import { content } from '@/i18n/content';
+import Bleed from '@/components/Bleed.astro';
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = content[lang];
+
+// One Tabler icon per feature (matched to content order)
+const icons = [
+  'tabler:adjustments-horizontal', // Thinks in sensors — sliders
+  'tabler:list-details', // Shows what's running — list / status
+  'tabler:search', // Recognizes what's already there — magnifying glass
+  'tabler:click', // No Docker knowledge needed — cursor / click
+  'tabler:shield-check', // Backs up your data — shield
+  'tabler:refresh', // Keeps everything current — update
+  'tabler:plug-connected', // Knows the dependencies — connected services
+  'tabler:file-text', // Shows the log files — document
+];
+---
+
+<section class="mt-32">
+  <h2 class="section-heading text-center">
+    {t.features.heading}
+  </h2>
+
+  <Bleed inner="max-w-5xl">
+    <ul class="mt-10 grid gap-4 sm:grid-cols-2">
+      {
+        t.features.items.map((feature, index) => (
+          <li class="card flex gap-4 p-5">
+            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-pink-600/15 text-pink-400">
+              <Icon name={icons[index]} class="h-6 w-6" aria-hidden="true" />
+            </span>
+            <div class="space-y-1">
+              <h3 class="font-semibold text-white">{feature.title}</h3>
+              <p class="leading-relaxed text-indigo-200">{feature.body}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </Bleed>
+</section>

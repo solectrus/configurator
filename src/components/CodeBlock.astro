@@ -1,0 +1,103 @@
+---
+import type { Locale } from '@/i18n/content';
+import { content } from '@/i18n/content';
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  code: string;
+  lang: Locale;
+  copy?: boolean;
+  step?: number | string;
+}
+
+const { code, lang, copy = true, step } = Astro.props;
+const t = content[lang];
+---
+
+<div
+  class="flex items-stretch overflow-hidden rounded-xl border-2 border-pink-500 bg-indigo-950/70 shadow-lg shadow-pink-500/30"
+  data-code-block
+>
+  {
+    step != null && (
+      <span
+        class="flex shrink-0 items-center justify-center border-r-2 border-pink-500 bg-pink-600 px-4 font-serif text-lg text-white"
+        aria-hidden="true"
+      >
+        {step}
+      </span>
+    )
+  }
+
+  <pre
+    class="flex-1 overflow-x-auto px-4 py-4 text-base leading-relaxed whitespace-pre text-indigo-100"><code class="font-mono">{code}</code></pre>
+
+  {
+    copy && (
+      <button
+        type="button"
+        data-copy-button
+        aria-label={t.ui.copy}
+        title={t.ui.copy}
+        class="relative inline-flex shrink-0 items-center justify-center border-l-2 border-pink-500 bg-pink-600 px-4 text-white transition-colors hover:bg-pink-500 focus-visible:ring-2 focus-visible:ring-pink-400 focus-visible:outline-hidden focus-visible:ring-inset"
+      >
+        <Icon
+          name="tabler:copy"
+          data-copy-label
+          class="h-5 w-5"
+          aria-hidden="true"
+        />
+        <Icon
+          name="tabler:check"
+          data-copy-check
+          class="absolute inset-0 m-auto hidden h-6 w-6 text-white"
+          aria-hidden="true"
+        />
+        <span
+          class="sr-only"
+          data-copy-status
+          data-copied={t.ui.copied}
+          aria-live="polite"
+        />
+      </button>
+    )
+  }
+</div>
+
+<script>
+  function attachCopyButtons() {
+    document
+      .querySelectorAll<HTMLButtonElement>('[data-copy-button]')
+      .forEach((button) => {
+        if (button.dataset.bound === 'true') return;
+        button.dataset.bound = 'true';
+
+        const label = button.querySelector('[data-copy-label]');
+        const check = button.querySelector('[data-copy-check]');
+        const status = button.querySelector<HTMLElement>('[data-copy-status]');
+
+        button.addEventListener('click', async () => {
+          const block = button.closest('[data-code-block]');
+          const code = block?.querySelector('code')?.textContent ?? '';
+
+          try {
+            await navigator.clipboard.writeText(code);
+            // Show a white checkmark centered over the label, keeping the
+            // button width unchanged (label stays in flow, just invisible).
+            label?.classList.add('invisible');
+            check?.classList.remove('hidden');
+            if (status) status.textContent = status.dataset.copied ?? '';
+            window.setTimeout(() => {
+              label?.classList.remove('invisible');
+              check?.classList.add('hidden');
+              if (status) status.textContent = '';
+            }, 1500);
+          } catch {
+            // Clipboard API unavailable — leave the command for manual copy.
+          }
+        });
+      });
+  }
+
+  attachCopyButtons();
+</script>

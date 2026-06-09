@@ -1,0 +1,98 @@
+---
+import type { Locale } from '@/i18n/content';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+
+// The toggle always switches to the other language — a click anywhere on it
+// (including on the active label) navigates to the other locale.
+const target: Locale = lang === 'de' ? 'en' : 'de';
+const href = `/${target}/`;
+const ariaLabel =
+  lang === 'de' ? 'Auf Englisch umschalten' : 'Switch to German';
+
+const segments: { code: Locale; label: string }[] = [
+  { code: 'de', label: 'DE' },
+  { code: 'en', label: 'EN' },
+];
+
+const activeIndex = lang === 'de' ? 0 : 1;
+---
+
+<a
+  href={href}
+  hreflang={target}
+  data-lang-toggle
+  data-target={target}
+  aria-label={ariaLabel}
+  class="focus-ring relative grid grid-cols-2 rounded-full border border-indigo-400/40 bg-indigo-950/40 p-0.5 text-base font-medium"
+>
+  <span
+    data-pill
+    aria-hidden="true"
+    class="absolute inset-y-0.5 left-0.5 w-[calc(50%-0.125rem)] rounded-full bg-pink-600 transition-transform duration-300 ease-out"
+    style={`transform: translateX(${activeIndex * 100}%)`}
+  >
+  </span>
+
+  {
+    segments.map((segment) => (
+      <span
+        data-seg={segment.code}
+        class:list={[
+          'relative z-10 rounded-full px-3 py-1 text-center tracking-wider uppercase transition-colors',
+          segment.code === lang ? 'text-white' : 'text-indigo-200',
+        ]}
+      >
+        {segment.label}
+      </span>
+    ))
+  }
+</a>
+
+<script>
+  // Matches the pill's `duration-300` slide; navigate once it settles.
+  const SLIDE_MS = 300;
+
+  document
+    .querySelectorAll<HTMLAnchorElement>('[data-lang-toggle]')
+    .forEach((toggle) => {
+      if (toggle.dataset.bound === 'true') return;
+      toggle.dataset.bound = 'true';
+
+      toggle.addEventListener('click', (event) => {
+        const href = toggle.getAttribute('href');
+        const target = toggle.dataset.target;
+        if (!href || !target) return;
+
+        // Persist the choice so the root redirect respects it next time.
+        try {
+          localStorage.setItem('helios-lang', target);
+        } catch {
+          // ignore storage errors (private mode etc.)
+        }
+
+        const reduceMotion = window.matchMedia(
+          '(prefers-reduced-motion: reduce)',
+        ).matches;
+        if (reduceMotion) return; // let the normal navigation happen
+
+        // Animate the pill sliding to the target, then navigate.
+        event.preventDefault();
+        const targetIndex = target === 'de' ? 0 : 1;
+        const pill = toggle.querySelector<HTMLElement>('[data-pill]');
+        if (pill) pill.style.transform = `translateX(${targetIndex * 100}%)`;
+
+        toggle.querySelectorAll<HTMLElement>('[data-seg]').forEach((seg) => {
+          const isTarget = seg.dataset.seg === target;
+          seg.classList.toggle('text-white', isTarget);
+          seg.classList.toggle('text-indigo-200', !isTarget);
+        });
+
+        window.setTimeout(() => window.location.assign(href), SLIDE_MS);
+      });
+    });
+</script>

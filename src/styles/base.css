@@ -1,0 +1,12 @@
+/* Prevent horizontal scrolling */
+html,
+body {
+  @apply max-w-screen overflow-x-clip;
+}
+
+/* Background image */
+body::before {
+  @apply fixed inset-0 -z-50 bg-cover bg-center mix-blend-multiply;
+  content: '';
+  background-image: var(--bg-image);
+}
