@@ -15,6 +15,20 @@ if (navigator.language.startsWith('de')) {
     metaDescription.setAttribute('content', 'In einfachen Schritten zur Docker-Konfiguration')
 }
 
+const isGerman = store.locale === 'de'
+
+const notice = isGerman
+  ? {
+      title: 'Dieser Konfigurator ist überholt',
+      text: 'Es gibt jetzt eine deutlich bessere Möglichkeit, SOLECTRUS zu installieren.',
+      link: 'Zur neuen Installation',
+    }
+  : {
+      title: 'This configurator is outdated',
+      text: 'There is now a much better way to install SOLECTRUS.',
+      link: 'Go to the new installation',
+    }
+
 const buildDate = import.meta.env.VITE_BUILD_DATE
   ? new Date(import.meta.env.VITE_BUILD_DATE).toLocaleString(undefined, {
       year: 'numeric',
@@ -31,6 +45,33 @@ const buildDate = import.meta.env.VITE_BUILD_DATE
   <div class="background-image" />
 
   <div class="flex h-screen w-screen flex-col">
+    <a
+      href="https://solectrus.de/install"
+      class="flex items-center justify-center gap-3 bg-linear-to-r from-pink-600 to-indigo-700 px-4 py-3 text-center text-sm text-pink-100 transition-colors hover:text-white"
+    >
+      <svg
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.8"
+        stroke="currentColor"
+        class="hidden size-6 shrink-0 sm:block"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"
+        />
+      </svg>
+
+      <span>
+        <strong class="font-semibold">{{ notice.title }}</strong>
+        <span class="hidden sm:inline"> &mdash; {{ notice.text }}</span>
+        <span class="ml-1 font-semibold underline underline-offset-2"
+          >{{ notice.link }} &rarr;</span
+        >
+      </span>
+    </a>
+
     <svg
       clip-rule="evenodd"
       fill-rule="evenodd"
