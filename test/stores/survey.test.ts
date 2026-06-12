@@ -63,20 +63,20 @@ describe('useSurveyStore', () => {
     expect(store.survey.locale).toBe('') // default is 'en'
   })
 
-  it('can set answers', () => {
+  it('can set answers', async () => {
     const store = useSurveyStore()
     store.initSurvey()
     const newAnswers: Answers = { devices: ['inverter'], installation_type: 'local' }
-    store.setAnswers(newAnswers)
+    await store.setAnswers(newAnswers)
 
     expect(store.answers).toStrictEqual(newAnswers)
     expect(store.finished).toBe(false)
   })
 
-  it('can restart the survey', () => {
+  it('can restart the survey', async () => {
     const store = useSurveyStore()
     store.initSurvey()
-    store.setAnswers({ installation_date: '2021-01-01' })
+    await store.setAnswers({ installation_date: '2021-01-01' })
     store.restart()
 
     expect(store.survey).toBeDefined()
@@ -84,10 +84,10 @@ describe('useSurveyStore', () => {
     expect(store.finished).toBe(false)
   })
 
-  it('can go back', () => {
+  it('can go back', async () => {
     const store = useSurveyStore()
     store.initSurvey()
-    store.setAnswers({ installation_date: '2021-01-01' })
+    await store.setAnswers({ installation_date: '2021-01-01' })
     store.back()
 
     expect(store.survey.currentPageNo).toBe(0)

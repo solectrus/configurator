@@ -49,18 +49,16 @@ export const useSurveyStore = defineStore('survey', {
       this.setAnswers(null)
     },
 
-    setAnswers(newAnswers: Answers | null) {
+    async setAnswers(newAnswers: Answers | null) {
       this.answers = newAnswers
       this.finished = false
 
       if (this.answers) {
-        new ReadmeGenerator(this.answers, this.locale)
-          .build()
-          .then((readme) => (this.readmeFile = readme))
-
         const compose = new ComposeGenerator(this.answers).build()
         this.composeFile = compose.text()
         this.envFile = new EnvGenerator(compose.raw(), this.answers).build()
+
+        this.readmeFile = await new ReadmeGenerator(this.answers, this.locale).build()
       } else {
         this.readmeFile = this.composeFile = this.envFile = ''
       }
