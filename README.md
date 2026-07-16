@@ -5,6 +5,13 @@
 
 # SOLECTRUS Configurator
 
+> [!WARNING]
+> **This project is discontinued and no longer maintained.**
+>
+> It has been superseded by **HELIOS**, a helper app that installs, configures, and manages SOLECTRUS directly on your device — permanently, not just as a one-time setup. HELIOS provides a browser-based interface, manages Docker automatically, and supports sensor setup, service control, backups, updates, and log viewing.
+>
+> 👉 Please use HELIOS instead: **https://solectrus.de/install/en/**
+
 This is a web application to interactively configure Docker for SOLECTRUS. It generates a `compose.yaml` and `.env` file based on the answers to some questions. A `readme.md` file is also generated to guide the user through the installation process.
 
 ## Project Setup
